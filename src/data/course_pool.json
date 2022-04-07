@@ -1,0 +1,18 @@
+[
+    {
+        "code": "ENG110",
+        "title": "Seminar in Composition",
+        "description": "Freshman english class required for all students",
+        "credits": 3,
+        "prerequisites": [],
+        "requirement": "none"
+    },
+    {
+        "code": "CISC108",
+        "title": "Intro to Computer Science I",
+        "description": "Basic coding principles",
+        "credits": 3,
+        "prerequisites": [],
+        "requirement": "none"
+    }
+]
