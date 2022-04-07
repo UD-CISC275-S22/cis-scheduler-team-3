@@ -1,6 +1,10 @@
 import { Course } from "./course";
 
-export interface Semeseter {
+export type session = "Fall" | "Winter" | "Summer" | "Spring";
+
+export interface Semester {
     courses: Course[];
     year: number;
+    session: session;
+    credits: number;
 }
