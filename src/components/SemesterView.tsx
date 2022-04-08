@@ -12,6 +12,10 @@ export function SemesterView({
         <Container>
             <Row>
                 <Col>
+                    <h3>
+                        {semester.session}:{semester.year}
+                    </h3>
+                    <h4>Total Credits: {semester.semester_credits}</h4>
                     <CourseList courses={semester.courses}></CourseList>
                 </Col>
             </Row>
