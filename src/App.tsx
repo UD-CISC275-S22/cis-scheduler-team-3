@@ -1,14 +1,8 @@
 import React from "react";
 import "./App.css";
-import { CourseList } from "./components/CourseList";
-import course_pool from "./data/course_pool.json";
-import { Course } from "./interfaces/course";
+import { SemesterList } from "./components/SemesterList";
+import { SEMESTERS } from "./interfaces/semester";
 
-const courses = course_pool.map(
-    (course): Course => ({
-        ...course
-    })
-);
 function App(): JSX.Element {
     return (
         <>
@@ -28,7 +22,7 @@ function App(): JSX.Element {
                 </h5>
             </div>
             <div>
-                <CourseList courses={courses}></CourseList>
+                <SemesterList semesters={...SEMESTERS}></SemesterList>
             </div>
         </>
     );
