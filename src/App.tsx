@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import { SemesterList } from "./components/SemesterList";
-import { SEMESTERS } from "./interfaces/semester";
+import { BASE_SEMESTERS } from "./interfaces/semester";
 
 function App(): JSX.Element {
     return (
@@ -22,7 +22,7 @@ function App(): JSX.Element {
                 </h5>
             </div>
             <div>
-                <SemesterList semesters={...SEMESTERS}></SemesterList>
+                <SemesterList semesters={BASE_SEMESTERS}></SemesterList>
             </div>
         </>
     );
