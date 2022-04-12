@@ -2,28 +2,8 @@
 > react-typescript-starter@0.1.0 test
 > react-scripts test "--coverage"
 
-FAIL src/components/SemesterList.test.tsx
-  ● Test suite failed to run
-
-    Your test suite must contain at least one test.
-
-      at onResult (node_modules/@jest/core/build/TestScheduler.js:175:18)
-      at node_modules/@jest/core/build/TestScheduler.js:316:17
-      at node_modules/emittery/index.js:260:13
-          at Array.map (<anonymous>)
-      at Emittery.emit (node_modules/emittery/index.js:258:23)
-
-FAIL src/components/SemesterView.test.tsx
-  ● Test suite failed to run
-
-    Your test suite must contain at least one test.
-
-      at onResult (node_modules/@jest/core/build/TestScheduler.js:175:18)
-      at node_modules/@jest/core/build/TestScheduler.js:316:17
-      at node_modules/emittery/index.js:260:13
-          at Array.map (<anonymous>)
-      at Emittery.emit (node_modules/emittery/index.js:258:23)
-
+PASS src/components/SemesterView.test.tsx
+PASS src/components/SemesterList.test.tsx
 FAIL src/App.test.tsx
   ● renders the course name somewhere
 
@@ -53,12 +33,14 @@ FAIL src/App.test.tsx
         [36m<div>[39m
           [36m<div[39m
             [33mclass[39m=[32m"vstack gap-3"[39m
+            [33mdata-testid[39m=[32m"Semester_List"[39m
           [36m>[39m
             [36m<div[39m
               [33mclass[39m=[32m"bg-light border m-2 p-2"[39m
             [36m>[39m
               [36m<div[39m
                 [33mclass[39m=[32m"container"[39m
+                [33mdata-testid[39m=[32m"Semester"[39m
               [36m>[39m
                 [36m<div[39m
                   [33mclass[39m=[32m"row"[39m
@@ -66,17 +48,22 @@ FAIL src/App.test.tsx
                   [36m<div[39m
                     [33mclass[39m=[32m"col"[39m
                   [36m>[39m
-                    [36m<h3>[39m
+                    [36m<h3[39m
+                      [33mdata-testid[39m=[32m"Semester_Title"[39m
+                    [36m>[39m
                       [0mFall[0m
                       [0m:[0m
                       [0m2021[0m
                     [36m</h3>[39m
-                    [36m<h4>[39m
+                    [36m<h4[39m
+                      [33mdata-testid[39m=[32m"Semester_Credits"[39m
+                    [36m>[39m
                       [0mTotal Credits: [0m
                       [0m0[0m
                     [36m</h4>[39m
                     [36m<div[39m
                       [33mclass[39m=[32m"Container vstack gap-2"[39m
+                      [33mdata-testid[39m=[32m"Course_List"[39m
                     [36m>[39m
                       [36m<div[39m
                         [33mclass[39m=[32m"bg-light border m-2 p-2"[39m
@@ -160,6 +147,7 @@ FAIL src/App.test.tsx
             [36m>[39m
               [36m<div[39m
                 [33mclass[39m=[32m"container"[39m
+                [33mdata-testid[39m=[32m"Semester"[39m
               [36m>[39m
                 [36m<div[39m
                   [33mclass[39m=[32m"row"[39m
@@ -167,17 +155,22 @@ FAIL src/App.test.tsx
                   [36m<div[39m
                     [33mclass[39m=[32m"col"[39m
                   [36m>[39m
-                    [36m<h3>[39m
+                    [36m<h3[39m
+                      [33mdata-testid[39m=[32m"Semester_Title"[39m
+                    [36m>[39m
                       [0mSpring[0m
                       [0m:[0m
                       [0m2022[0m
                     [36m</h3>[39m
-                    [36m<h4>[39m
+                    [36m<h4[39m
+                      [33mdata-testid[39m=[32m"Semester_Credits"[39m
+                    [36m>[39m
                       [0mTotal Credits: [0m
                       [0m0[0m
                     [36m</h4>[39m
                     [36m<div[39m
                       [33mclass[39m=[32m"Container vstack gap-2"[39m
+                      [33mdata-testid[39m=[32m"Course_List"[39m
                     [36m>[39m
                       [36m<div[39m
                         [33mclass[39m=[32m"bg-light border m-2 p-2"[39m
@@ -295,8 +288,8 @@ All files          |     100 |      100 |     100 |     100 |
   degreeplan.tsx   |       0 |        0 |       0 |       0 |                   
   semester.tsx     |     100 |      100 |     100 |     100 |                   
 -------------------|---------|----------|---------|---------|-------------------
-Test Suites: 3 failed, 3 total
-Tests:       1 failed, 1 total
+Test Suites: 1 failed, 2 passed, 3 total
+Tests:       1 failed, 6 passed, 7 total
 Snapshots:   0 total
-Time:        2.65 s
+Time:        2.916 s
 Ran all test suites.
