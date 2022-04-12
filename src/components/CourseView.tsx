@@ -7,13 +7,11 @@ export function CourseView({ course }: { course: Course }): JSX.Element {
         <Container>
             <Row>
                 <Col>
-                    <h3>Title: {course.title}</h3>
-                    <h6>Code: {course.code}</h6>
+                    <h6>Title: {course.title}</h6>
+                    <p>Code: {course.code}</p>
                     <p>Description: {course.description}</p>
                     <i>Credits: {course.course_credits}</i>
-                </Col>
-                <Col>
-                    <h6>Requirements fulfilled: {course.requirement}</h6>
+                    <p>Requirements fulfilled: {course.requirement}</p>
                 </Col>
             </Row>
         </Container>
