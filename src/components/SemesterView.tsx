@@ -9,13 +9,15 @@ export function SemesterView({
     semester: Semester;
 }): JSX.Element {
     return (
-        <Container>
+        <Container data-testid="Semester">
             <Row>
                 <Col>
-                    <h3>
+                    <h3 data-testid="Semester_Title">
                         {semester.session}:{semester.year}
                     </h3>
-                    <h4>Total Credits: {semester.semester_credits}</h4>
+                    <h4 data-testid="Semester_Credits">
+                        Total Credits: {semester.semester_credits}
+                    </h4>
                     <CourseList courses={semester.courses}></CourseList>
                 </Col>
             </Row>
