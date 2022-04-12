@@ -48,7 +48,7 @@ export function ValidateNewCourse({
             code: code,
             title: title,
             description: description,
-            credits: credits,
+            course_credits: credits,
             prerequisites: [],
             requirement: "false"
         };

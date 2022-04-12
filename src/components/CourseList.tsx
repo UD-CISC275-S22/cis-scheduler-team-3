@@ -12,7 +12,7 @@ export function CourseList({ courses }: { courses: Course[] }): JSX.Element {
     }
     return (
         <Stack gap={3} className="Container" data-testid="Course_List">
-          <Button onClick={addCourse}>Add Course to Pool</Button>
+            <Button onClick={addCourse}>Add Course to Pool</Button>
             {courses.map((course: Course) => (
                 <div key={course.code} className="bg-light border m-2 p-2">
                     <CourseView course={course}></CourseView>
