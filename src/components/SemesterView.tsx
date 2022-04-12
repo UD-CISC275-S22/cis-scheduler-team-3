@@ -9,7 +9,7 @@ export function SemesterView({
     semester: Semester;
 }): JSX.Element {
     return (
-        <Container>
+        <Container data-testid="Semester">
             <Row>
                 <Col>
                     <h3>
