@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { SemesterList } from "./SemesterList";
 
 const TEST_SEMESTERS = [
@@ -54,5 +54,13 @@ const TEST_SEMESTERS = [
 describe("Test suite for SemesterView component", () => {
     beforeEach(() => {
         render(<SemesterList semesters={TEST_SEMESTERS} />);
+    });
+    test("There is at least one semester rendered.", () => {
+        const list = screen.getByTestId("Semester-List");
+        expect(list).toBeInTheDocument();
+    });
+    test("Multiple Semesters can and are rendered.", () => {
+        const list = screen.getAllByTestId("Semester");
+        expect(list.length).toEqual(TEST_SEMESTERS.length);
     });
 });
