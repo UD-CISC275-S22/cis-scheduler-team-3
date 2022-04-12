@@ -1,6 +1,10 @@
 .App {
     text-align: center;
 }
+.Container {
+    width: 25%;
+    font-size: 12px;
+}
 
 .App-logo {
     height: 40vmin;

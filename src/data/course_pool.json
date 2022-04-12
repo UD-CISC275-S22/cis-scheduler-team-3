@@ -3,7 +3,7 @@
         "code": "ENG110",
         "title": "Seminar in Composition",
         "description": "Freshman english class required for all students",
-        "credits": 3,
+        "course_credits": 3,
         "prerequisites": [],
         "requirement": "none"
     },
@@ -11,8 +11,104 @@
         "code": "CISC108",
         "title": "Intro to Computer Science I",
         "description": "Basic coding principles",
-        "credits": 3,
+        "course_credits": 3,
         "prerequisites": [],
         "requirement": "none"
+    },
+    {
+        "code": "EGGG101",
+        "title": "Intro to Engineering",
+        "description": "",
+        "course_credits": 2,
+        "prerequisites": ["FYE"],
+        "requirement": "none"
+    },
+    {
+        "code": "MATH241",
+        "title": "Analytic Geometry & Calculus A",
+        "description": "",
+        "course_credits": 4,
+        "prerequisites": [],
+        "requirement": "math"
+    },
+    {
+        "code": "CISC181",
+        "title": "Intro to Computer Science II",
+        "description": "",
+        "course_credits": 3,
+        "prerequisites": [],
+        "requirement": ""
+    },
+    {
+        "code": "CISC220",
+        "title": "Data Structures",
+        "description": "",
+        "course_credits": 3,
+        "prerequisites": [],
+        "requirement": ""
+    },
+    {
+        "code": "CISC260",
+        "title": "Machine Org. & Assembly",
+        "description": "",
+        "course_credits": 3,
+        "prerequisites": [],
+        "requirement": ""
+    },
+    {
+        "code": "MATH210",
+        "title": "Discrete Math",
+        "description": "",
+        "course_credits": 3,
+        "prerequisites": [],
+        "requirement": ""
+    },
+    {
+        "code": "CISC275",
+        "title": "Intro to Software Engineering",
+        "description": "",
+        "course_credits": 3,
+        "prerequisites": [],
+        "requirement": ""
+    },
+    {
+        "code": "CISC320",
+        "title": "intro to Algorithms",
+        "description": "",
+        "course_credits": 3,
+        "prerequisites": [],
+        "requirement": ""
+    },
+    {
+        "code": "CISC360",
+        "title": "Computer Architecture",
+        "description": "",
+        "course_credits": 3,
+        "prerequisites": [],
+        "requirement": ""
+    },
+    {
+        "code": "CISC355",
+        "title": "Computers, Ethics, & Society",
+        "description": "",
+        "course_credits": 3,
+        "prerequisites": [],
+        "requirement": ""
+    },
+    {
+        "code": "CISC361",
+        "title": "Operating Systems",
+        "description": "",
+        "course_credits": 3,
+        "prerequisites": [],
+        "requirement": ""
+    },
+    {
+        "code": "CISC303",
+        "title": "Automata Theory",
+        "description": "",
+        "course_credits": 3,
+        "prerequisites": [],
+        "requirement": ""
     }
 ]
