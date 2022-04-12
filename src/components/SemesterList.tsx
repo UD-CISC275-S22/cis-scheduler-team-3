@@ -9,7 +9,7 @@ export function SemesterList({
     semesters: Semester[];
 }): JSX.Element {
     return (
-        <Stack gap={3} data-testid="Semester-List">
+        <Stack gap={3} data-testid="Semester_List">
             {semesters.map((semester: Semester) => (
                 <div
                     key={semester.session + semester.year}
