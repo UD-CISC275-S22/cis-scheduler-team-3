@@ -62,9 +62,15 @@ FAIL src/App.test.tsx
                       [0m0[0m
                     [36m</h4>[39m
                     [36m<div[39m
-                      [33mclass[39m=[32m"Container vstack gap-2"[39m
+                      [33mclass[39m=[32m"Container vstack gap-3"[39m
                       [33mdata-testid[39m=[32m"Course_List"[39m
                     [36m>[39m
+                      [36m<button[39m
+                        [33mclass[39m=[32m"btn btn-primary"[39m
+                        [33mtype[39m=[32m"button"[39m
+                      [36m>[39m
+                        [0mAdd Course to Pool[0m
+                      [36m</button>[39m
                       [36m<div[39m
                         [33mclass[39m=[32m"bg-light border m-2 p-2"[39m
                       [36m>[39m
@@ -169,9 +175,15 @@ FAIL src/App.test.tsx
                       [0m0[0m
                     [36m</h4>[39m
                     [36m<div[39m
-                      [33mclass[39m=[32m"Container vstack gap-2"[39m
+                      [33mclass[39m=[32m"Container vstack gap-3"[39m
                       [33mdata-testid[39m=[32m"Course_List"[39m
                     [36m>[39m
+                      [36m<button[39m
+                        [33mclass[39m=[32m"btn btn-primary"[39m
+                        [33mtype[39m=[32m"button"[39m
+                      [36m>[39m
+                        [0mAdd Course to Pool[0m
+                      [36m</button>[39m
                       [36m<div[39m
                         [33mclass[39m=[32m"bg-light border m-2 p-2"[39m
                       [36m>[39m
@@ -275,12 +287,13 @@ FAIL src/App.test.tsx
 -------------------|---------|----------|---------|---------|-------------------
 File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 -------------------|---------|----------|---------|---------|-------------------
-All files          |     100 |      100 |     100 |     100 |                   
+All files          |   25.71 |       25 |   41.17 |   25.71 |                   
  src               |     100 |      100 |     100 |     100 |                   
   App.tsx          |     100 |      100 |     100 |     100 |                   
- src/components    |     100 |      100 |     100 |     100 |                   
-  CourseList.tsx   |     100 |      100 |     100 |     100 |                   
+ src/components    |   21.21 |       25 |    37.5 |   21.21 |                   
+  CourseList.tsx   |      75 |       50 |   66.66 |      75 | 11                
   CourseView.tsx   |     100 |      100 |     100 |     100 |                   
+  NewCourse.tsx    |       0 |        0 |       0 |       0 | 10-131            
   SemesterList.tsx |     100 |      100 |     100 |     100 |                   
   SemesterView.tsx |     100 |      100 |     100 |     100 |                   
  src/interfaces    |     100 |      100 |     100 |     100 |                   
@@ -291,5 +304,5 @@ All files          |     100 |      100 |     100 |     100 |
 Test Suites: 1 failed, 2 passed, 3 total
 Tests:       1 failed, 6 passed, 7 total
 Snapshots:   0 total
-Time:        2.916 s
+Time:        4.02 s
 Ran all test suites.
