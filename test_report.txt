@@ -7,34 +7,6 @@ PASS src/tests/CourseView.test.tsx
 PASS src/tests/SemesterList.test.tsx
 PASS src/tests/CourseList.test.tsx
 PASS src/tests/NewCourse.test.tsx
-  ● Console
-
-    console.error
-      Warning: validateDOMNesting(...): <form> cannot appear as a descendant of <form>.
-          at form
-          at /home/runner/work/cis-scheduler-team-3/cis-scheduler-team-3/node_modules/react-bootstrap/cjs/Form.js:59:3
-          at div
-          at /home/runner/work/cis-scheduler-team-3/cis-scheduler-team-3/node_modules/react-bootstrap/cjs/Row.js:22:3
-          at form
-          at /home/runner/work/cis-scheduler-team-3/cis-scheduler-team-3/node_modules/react-bootstrap/cjs/Form.js:59:3
-          at div
-          at /home/runner/work/cis-scheduler-team-3/cis-scheduler-team-3/node_modules/react-bootstrap/cjs/Row.js:22:3
-          at ValidateNewCourse (/home/runner/work/cis-scheduler-team-3/cis-scheduler-team-3/src/components/NewCourse.tsx:6:5)
-          at div
-          at /home/runner/work/cis-scheduler-team-3/cis-scheduler-team-3/node_modules/react-bootstrap/cjs/Row.js:22:3
-          at div
-          at /home/runner/work/cis-scheduler-team-3/cis-scheduler-team-3/node_modules/react-bootstrap/cjs/Container.js:24:3
-          at CoursePool (/home/runner/work/cis-scheduler-team-3/cis-scheduler-team-3/src/components/CoursePool.tsx:10:39)
-
-      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:67:30)
-      at error (node_modules/react-dom/cjs/react-dom.development.js:43:5)
-      at validateDOMNesting (node_modules/react-dom/cjs/react-dom.development.js:10083:7)
-      at createInstance (node_modules/react-dom/cjs/react-dom.development.js:10181:5)
-      at completeWork (node_modules/react-dom/cjs/react-dom.development.js:19464:28)
-      at completeUnitOfWork (node_modules/react-dom/cjs/react-dom.development.js:22812:16)
-      at performUnitOfWork (node_modules/react-dom/cjs/react-dom.development.js:22787:5)
-      at workLoopSync (node_modules/react-dom/cjs/react-dom.development.js:22707:5)
-
 PASS src/tests/CoursePool.test.tsx
 PASS src/App.test.tsx
 -------------------|---------|----------|---------|---------|-------------------
@@ -59,5 +31,5 @@ All files          |   77.35 |       60 |   76.92 |   77.35 |
 Test Suites: 7 passed, 7 total
 Tests:       18 passed, 18 total
 Snapshots:   0 total
-Time:        5.08 s
+Time:        6.408 s
 Ran all test suites.
