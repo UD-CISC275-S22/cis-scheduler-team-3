@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Stack, Button, Container, Row } from "react-bootstrap";
+import { Button, Container, Row } from "react-bootstrap";
 import { CourseView } from "./CourseView";
 import { ValidateNewCourse } from "./NewCourse";
 import POOL_DATA from "../data/course_pool.json";
@@ -26,7 +26,6 @@ export function CoursePool(): JSX.Element {
             <Row>
                 {newCourse ? (
                     <ValidateNewCourse
-                        courses={poolCourses}
                         createCourse={createCourse}
                     ></ValidateNewCourse>
                 ) : null}

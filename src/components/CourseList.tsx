@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import type { Course } from "../interfaces/course";
-import { Stack, Button } from "react-bootstrap";
+import { Stack } from "react-bootstrap";
 import { CourseView } from "./CourseView";
-import { ValidateNewCourse } from "./NewCourse";
 
 export function CourseList({ courses }: { courses: Course[] }): JSX.Element {
     return (
