@@ -90,6 +90,7 @@ export function ValidateNewCourse({
                             type="text"
                             placeholder=""
                             value={title}
+                            data-testid="course-title-box"
                             onChange={updateTitle}
                         />
                         <Form.Control.Feedback>
@@ -104,6 +105,7 @@ export function ValidateNewCourse({
                             placeholder=""
                             value={code}
                             onChange={updateCode}
+                            data-testid="course-code-box"
                         />
                         <Form.Control.Feedback>
                             Looks good!
@@ -119,6 +121,7 @@ export function ValidateNewCourse({
                                 required
                                 type="text"
                                 placeholder=""
+                                data-testid="course-des-box"
                                 value={description}
                                 onChange={updateDescription}
                             />
@@ -129,7 +132,11 @@ export function ValidateNewCourse({
                     </Row>
                     <Form.Group controlId="valid-credits">
                         <Form.Label>Number of Credits: </Form.Label>
-                        <Form.Select value={credits} onChange={updateCredits}>
+                        <Form.Select
+                            data-testid="course-credits-box"
+                            value={credits}
+                            onChange={updateCredits}
+                        >
                             {possibleCredits.map((creditAmount: number) => (
                                 <option key={creditAmount} value={creditAmount}>
                                     {creditAmount}
@@ -189,7 +196,11 @@ export function ValidateNewCourse({
                         </div>
                     )}
                 </Row>
-                <Button type="submit" onClick={saveNewQuiz}>
+                <Button
+                    type="submit"
+                    onClick={saveNewQuiz}
+                    data-testid="addcourse-btn"
+                >
                     Add course
                 </Button>
             </Form>
