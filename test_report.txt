@@ -60,22 +60,27 @@ FAIL src/components/SemesterList.test.tsx
                             [0mTitle: [0m
                             [0mSeminar in Composition[0m
                           [36m</h6>[39m
-                          [36m<p>[39m
-                            [0mCode: [0m
-                            [0mENG110[0m
-                          [36m</p>[39m
-                          [36m<p>[39m
-                            [0mDescription: [0m
-                            [0mFreshman english class required for all students[0m
-                          [36m</p>[39m
-                          [36m<i>[39m
-                            [0mCredits: [0m
-                            [0m3[0m
-                          [36m</i>[39m
-                          [36m<p>[39m
-                            [0mRequirements fulfilled: [0m
-                            [0mnone[0m
-                          [36m</p>[39m
+                          [36m<ul>[39m
+                            [36m<li>[39m
+                              [0mCode: [0m
+                              [0mENG110[0m
+                            [36m</li>[39m
+                            [36m<li>[39m
+                              [0mDescription: [0m
+                              [0mFreshman english class required for all students[0m
+                            [36m</li>[39m
+                            [36m<li>[39m
+                              [0mCredits: [0m
+                              [0m3[0m
+                            [36m</li>[39m
+                            [36m<li>[39m
+                              [0mFulfills requirement: [0m
+                              [0myes[0m
+                            [36m</li>[39m
+                            [36m<li>[39m
+                              [0mPrerequisites:[0m
+                            [36m</li>[39m
+                          [36m</ul>[39m
                         [36m</div>[39m
                       [36m</div>[39m
                       [36m<div[39m
@@ -88,22 +93,27 @@ FAIL src/components/SemesterList.test.tsx
                             [0mTitle: [0m
                             [0mIntro to Computer Science I[0m
                           [36m</h6>[39m
-                          [36m<p>[39m
-                            [0mCode: [0m
-                            [0mCISC108[0m
-                          [36m</p>[39m
-                          [36m<p>[39m
-                            [0mDescription: [0m
-                            [0mBasic coding principles[0m
-                          [36m</p>[39m
-                          [36m<i>[39m
-                            [0mCredits: [0m
-                            [0m3[0m
-                          [36m</i>[39m
-                          [36m<p>[39m
-                            [0mRequirements fulfilled: [0m
-                            [0mnone[0m
-                          [36m</p>[39m
+                          [36m<ul>[39m
+                            [36m<li>[39m
+                              [0mCode: [0m
+                              [0mCISC108[0m
+                            [36m</li>[39m
+                            [36m<li>[39m
+                              [0mDescription: [0m
+                              [0mBasic coding principles[0m
+                            [36m</li>[39m
+                            [36m<li>[39m
+                              [0mCredits: [0m
+                              [0m3[0m
+                            [36m</li>[39m
+                            [36m<li>[39m
+                              [0mFulfills requirement: [0m
+                              [0myes[0m
+                            [36m</li>[39m
+                            [36m<li>[39m
+                              [0mPrerequisites:[0m
+                            [36m</li>[39m
+                          [36m</ul>[39m
                         [36m</div>[39m
                       [36m</div>[39m
                     [36m</div>[39m
@@ -151,22 +161,27 @@ FAIL src/components/SemesterList.test.tsx
                             [0mTitle: [0m
                             [0mCalculus 1[0m
                           [36m</h6>[39m
-                          [36m<p>[39m
-                            [0mCode: [0m
-                            [0mMATH241[0m
-                          [36m</p>[39m
-                          [36m<p>[39m
-                            [0mDescription: [0m
-                            [0mMath Class required for CISC majors[0m
-                          [36m</p>[39m
-                          [36m<i>[39m
-                            [0mCredits: [0m
-                            [0m3[0m
-                          [36m</i>[39m
-                          [36m<p>[39m
-                            [0mRequirements fulfilled: [0m
-                            [0mnone[0m
-                          [36m</p>[39m
+                          [36m<ul>[39m
+                            [36m<li>[39m
+                              [0mCode: [0m
+                              [0mMATH241[0m
+                            [36m</li>[39m
+                            [36m<li>[39m
+                              [0mDescription: [0m
+                              [0mMath Class required for CISC majors[0m
+                            [36m</li>[39m
+                            [36m<li>[39m
+                              [0mCredits: [0m
+                              [0m3[0m
+                            [36m</li>[39m
+                            [36m<li>[39m
+                              [0mFulfills requirement: [0m
+                              [0myes[0m
+                            [36m</li>[39m
+                            [36m<li>[39m
+                              [0mPrerequisites:[0m
+                            [36m</li>[39m
+                          [36m</ul>[39m
                         [36m</div>[39m
                       [36m</div>[39m
                       [36m<div[39m
@@ -179,22 +194,27 @@ FAIL src/components/SemesterList.test.tsx
                             [0mTitle: [0m
                             [0mIntro to Computer Science II[0m
                           [36m</h6>[39m
-                          [36m<p>[39m
-                            [0mCode: [0m
-                            [0mCISC181[0m
-                          [36m</p>[39m
-                          [36m<p>[39m
-                            [0mDescription: [0m
-                            [0mMore advanced coding principles[0m
-                          [36m</p>[39m
-                          [36m<i>[39m
-                            [0mCredits: [0m
-                            [0m3[0m
-                          [36m</i>[39m
-                          [36m<p>[39m
-                            [0mRequirements fulfilled: [0m
-                            [0mnone[0m
-                          [36m</p>[39m
+                          [36m<ul>[39m
+                            [36m<li>[39m
+                              [0mCode: [0m
+                              [0mCISC181[0m
+                            [36m</li>[39m
+                            [36m<li>[39m
+                              [0mDescription: [0m
+                              [0mMore advanced coding principles[0m
+                            [36m</li>[39m
+                            [36m<li>[39m
+                              [0mCredits: [0m
+                              [0m3[0m
+                            [36m</li>[39m
+                            [36m<li>[39m
+                              [0mFulfills requirement: [0m
+                              [0myes[0m
+                            [36m</li>[39m
+                            [36m<li>[39m
+                              [0mPrerequisites:[0m
+                            [36m</li>[39m
+                          [36m</ul>[39m
                         [36m</div>[39m
                       [36m</div>[39m
                     [36m</div>[39m
@@ -225,13 +245,13 @@ PASS src/App.test.tsx
 -------------------|---------|----------|---------|---------|-------------------
 File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 -------------------|---------|----------|---------|---------|-------------------
-All files          |   26.53 |     12.5 |    37.5 |   26.53 |                   
+All files          |   30.18 |       30 |   38.46 |   30.18 |                   
  src               |     100 |      100 |     100 |     100 |                   
   App.tsx          |     100 |      100 |     100 |     100 |                   
- src/components    |    23.4 |     12.5 |   34.78 |    23.4 |                   
+ src/components    |   27.45 |       30 |      36 |   27.45 |                   
   CourseList.tsx   |     100 |      100 |     100 |     100 |                   
   CoursePool.tsx   |   71.42 |       50 |      50 |   71.42 | 14-18             
-  CourseView.tsx   |     100 |      100 |     100 |     100 |                   
+  CourseView.tsx   |      80 |      100 |   66.66 |      80 | 23                
   NewCourse.tsx    |       0 |        0 |       0 |       0 | 10-185            
   SemesterList.tsx |     100 |      100 |     100 |     100 |                   
   SemesterView.tsx |     100 |      100 |     100 |     100 |                   
@@ -244,5 +264,5 @@ All files          |   26.53 |     12.5 |    37.5 |   26.53 |
 Test Suites: 1 failed, 2 passed, 3 total
 Tests:       1 failed, 6 passed, 7 total
 Snapshots:   0 total
-Time:        4.566 s
+Time:        3.03 s
 Ran all test suites.
