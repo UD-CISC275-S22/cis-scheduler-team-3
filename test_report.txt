@@ -2,257 +2,52 @@
 > react-typescript-starter@0.1.0 test
 > react-scripts test "--coverage"
 
-PASS src/components/SemesterView.test.tsx
-FAIL src/components/SemesterList.test.tsx
-  ● Test suite for SemesterView component › There is at least one semester rendered.
+PASS src/tests/SemesterView.test.tsx
+PASS src/tests/CourseView.test.tsx
+PASS src/tests/SemesterList.test.tsx
+PASS src/tests/CourseList.test.tsx
+PASS src/tests/NewCourse.test.tsx
+  ● Console
 
-    TestingLibraryElementError: Unable to find an element by: [data-testid="Semester_List"]
+    console.error
+      Warning: validateDOMNesting(...): <form> cannot appear as a descendant of <form>.
+          at form
+          at /home/runner/work/cis-scheduler-team-3/cis-scheduler-team-3/node_modules/react-bootstrap/cjs/Form.js:59:3
+          at div
+          at /home/runner/work/cis-scheduler-team-3/cis-scheduler-team-3/node_modules/react-bootstrap/cjs/Row.js:22:3
+          at form
+          at /home/runner/work/cis-scheduler-team-3/cis-scheduler-team-3/node_modules/react-bootstrap/cjs/Form.js:59:3
+          at div
+          at /home/runner/work/cis-scheduler-team-3/cis-scheduler-team-3/node_modules/react-bootstrap/cjs/Row.js:22:3
+          at ValidateNewCourse (/home/runner/work/cis-scheduler-team-3/cis-scheduler-team-3/src/components/NewCourse.tsx:6:5)
+          at div
+          at /home/runner/work/cis-scheduler-team-3/cis-scheduler-team-3/node_modules/react-bootstrap/cjs/Row.js:22:3
+          at div
+          at /home/runner/work/cis-scheduler-team-3/cis-scheduler-team-3/node_modules/react-bootstrap/cjs/Container.js:24:3
+          at CoursePool (/home/runner/work/cis-scheduler-team-3/cis-scheduler-team-3/src/components/CoursePool.tsx:10:39)
 
-    Ignored nodes: comments, <script />, <style />
-    [36m<body>[39m
-      [36m<div>[39m
-        [36m<div[39m
-          [33mclass[39m=[32m"course-pool container"[39m
-        [36m>[39m
-          [36m<div[39m
-            [33mclass[39m=[32m"row"[39m
-          [36m>[39m
-            [36m<h2>[39m
-              [0mSemester View:[0m
-            [36m</h2>[39m
-            [36m<div[39m
-              [33mclass[39m=[32m"bg-light border m-2 p-2"[39m
-            [36m>[39m
-              [36m<div[39m
-                [33mclass[39m=[32m"container"[39m
-                [33mdata-testid[39m=[32m"Semester"[39m
-              [36m>[39m
-                [36m<div[39m
-                  [33mclass[39m=[32m"row"[39m
-                [36m>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"col"[39m
-                  [36m>[39m
-                    [36m<h3[39m
-                      [33mdata-testid[39m=[32m"Semester_Title"[39m
-                    [36m>[39m
-                      [0mFall[0m
-                      [0m:[0m
-                      [0m2021[0m
-                    [36m</h3>[39m
-                    [36m<h4[39m
-                      [33mdata-testid[39m=[32m"Semester_Credits"[39m
-                    [36m>[39m
-                      [0mTotal Credits: [0m
-                      [0m0[0m
-                    [36m</h4>[39m
-                    [36m<div[39m
-                      [33mclass[39m=[32m"Container vstack gap-3"[39m
-                      [33mdata-testid[39m=[32m"Course_List"[39m
-                    [36m>[39m
-                      [36m<div[39m
-                        [33mclass[39m=[32m"bg-light border m-2 p-2"[39m
-                      [36m>[39m
-                        [36m<div[39m
-                          [33mclass[39m=[32m"bg-light border m-2 p-2"[39m
-                        [36m>[39m
-                          [36m<h6>[39m
-                            [0mTitle: [0m
-                            [0mSeminar in Composition[0m
-                          [36m</h6>[39m
-                          [36m<ul>[39m
-                            [36m<li>[39m
-                              [0mCode: [0m
-                              [0mENG110[0m
-                            [36m</li>[39m
-                            [36m<li>[39m
-                              [0mDescription: [0m
-                              [0mFreshman english class required for all students[0m
-                            [36m</li>[39m
-                            [36m<li>[39m
-                              [0mCredits: [0m
-                              [0m3[0m
-                            [36m</li>[39m
-                            [36m<li>[39m
-                              [0mFulfills requirement: [0m
-                              [0myes[0m
-                            [36m</li>[39m
-                            [36m<li>[39m
-                              [0mPrerequisites:[0m
-                            [36m</li>[39m
-                          [36m</ul>[39m
-                        [36m</div>[39m
-                      [36m</div>[39m
-                      [36m<div[39m
-                        [33mclass[39m=[32m"bg-light border m-2 p-2"[39m
-                      [36m>[39m
-                        [36m<div[39m
-                          [33mclass[39m=[32m"bg-light border m-2 p-2"[39m
-                        [36m>[39m
-                          [36m<h6>[39m
-                            [0mTitle: [0m
-                            [0mIntro to Computer Science I[0m
-                          [36m</h6>[39m
-                          [36m<ul>[39m
-                            [36m<li>[39m
-                              [0mCode: [0m
-                              [0mCISC108[0m
-                            [36m</li>[39m
-                            [36m<li>[39m
-                              [0mDescription: [0m
-                              [0mBasic coding principles[0m
-                            [36m</li>[39m
-                            [36m<li>[39m
-                              [0mCredits: [0m
-                              [0m3[0m
-                            [36m</li>[39m
-                            [36m<li>[39m
-                              [0mFulfills requirement: [0m
-                              [0myes[0m
-                            [36m</li>[39m
-                            [36m<li>[39m
-                              [0mPrerequisites:[0m
-                            [36m</li>[39m
-                          [36m</ul>[39m
-                        [36m</div>[39m
-                      [36m</div>[39m
-                    [36m</div>[39m
-                  [36m</div>[39m
-                [36m</div>[39m
-              [36m</div>[39m
-            [36m</div>[39m
-            [36m<div[39m
-              [33mclass[39m=[32m"bg-light border m-2 p-2"[39m
-            [36m>[39m
-              [36m<div[39m
-                [33mclass[39m=[32m"container"[39m
-                [33mdata-testid[39m=[32m"Semester"[39m
-              [36m>[39m
-                [36m<div[39m
-                  [33mclass[39m=[32m"row"[39m
-                [36m>[39m
-                  [36m<div[39m
-                    [33mclass[39m=[32m"col"[39m
-                  [36m>[39m
-                    [36m<h3[39m
-                      [33mdata-testid[39m=[32m"Semester_Title"[39m
-                    [36m>[39m
-                      [0mSpring[0m
-                      [0m:[0m
-                      [0m2022[0m
-                    [36m</h3>[39m
-                    [36m<h4[39m
-                      [33mdata-testid[39m=[32m"Semester_Credits"[39m
-                    [36m>[39m
-                      [0mTotal Credits: [0m
-                      [0m0[0m
-                    [36m</h4>[39m
-                    [36m<div[39m
-                      [33mclass[39m=[32m"Container vstack gap-3"[39m
-                      [33mdata-testid[39m=[32m"Course_List"[39m
-                    [36m>[39m
-                      [36m<div[39m
-                        [33mclass[39m=[32m"bg-light border m-2 p-2"[39m
-                      [36m>[39m
-                        [36m<div[39m
-                          [33mclass[39m=[32m"bg-light border m-2 p-2"[39m
-                        [36m>[39m
-                          [36m<h6>[39m
-                            [0mTitle: [0m
-                            [0mCalculus 1[0m
-                          [36m</h6>[39m
-                          [36m<ul>[39m
-                            [36m<li>[39m
-                              [0mCode: [0m
-                              [0mMATH241[0m
-                            [36m</li>[39m
-                            [36m<li>[39m
-                              [0mDescription: [0m
-                              [0mMath Class required for CISC majors[0m
-                            [36m</li>[39m
-                            [36m<li>[39m
-                              [0mCredits: [0m
-                              [0m3[0m
-                            [36m</li>[39m
-                            [36m<li>[39m
-                              [0mFulfills requirement: [0m
-                              [0myes[0m
-                            [36m</li>[39m
-                            [36m<li>[39m
-                              [0mPrerequisites:[0m
-                            [36m</li>[39m
-                          [36m</ul>[39m
-                        [36m</div>[39m
-                      [36m</div>[39m
-                      [36m<div[39m
-                        [33mclass[39m=[32m"bg-light border m-2 p-2"[39m
-                      [36m>[39m
-                        [36m<div[39m
-                          [33mclass[39m=[32m"bg-light border m-2 p-2"[39m
-                        [36m>[39m
-                          [36m<h6>[39m
-                            [0mTitle: [0m
-                            [0mIntro to Computer Science II[0m
-                          [36m</h6>[39m
-                          [36m<ul>[39m
-                            [36m<li>[39m
-                              [0mCode: [0m
-                              [0mCISC181[0m
-                            [36m</li>[39m
-                            [36m<li>[39m
-                              [0mDescription: [0m
-                              [0mMore advanced coding principles[0m
-                            [36m</li>[39m
-                            [36m<li>[39m
-                              [0mCredits: [0m
-                              [0m3[0m
-                            [36m</li>[39m
-                            [36m<li>[39m
-                              [0mFulfills requirement: [0m
-                              [0myes[0m
-                            [36m</li>[39m
-                            [36m<li>[39m
-                              [0mPrerequisites:[0m
-                            [36m</li>[39m
-                          [36m</ul>[39m
-                        [36m</div>[39m
-                      [36m</div>[39m
-                    [36m</div>[39m
-                  [36m</div>[39m
-                [36m</div>[39m
-              [36m</div>[39m
-            [36m</div>[39m
-          [36m</div>[39m
-        [36m</div>[39m
-      [36m</div>[39m
-    [36m</body>[39m
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:67:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:43:5)
+      at validateDOMNesting (node_modules/react-dom/cjs/react-dom.development.js:10083:7)
+      at createInstance (node_modules/react-dom/cjs/react-dom.development.js:10181:5)
+      at completeWork (node_modules/react-dom/cjs/react-dom.development.js:19464:28)
+      at completeUnitOfWork (node_modules/react-dom/cjs/react-dom.development.js:22812:16)
+      at performUnitOfWork (node_modules/react-dom/cjs/react-dom.development.js:22787:5)
+      at workLoopSync (node_modules/react-dom/cjs/react-dom.development.js:22707:5)
 
-      57 |     });
-      58 |     test("There is at least one semester rendered.", () => {
-    > 59 |         const list = screen.getByTestId("Semester_List");
-         |                             ^
-      60 |         expect(list).toBeInTheDocument();
-      61 |     });
-      62 |     test("Multiple Semesters can and are rendered.", () => {
-
-      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:38:19)
-      at node_modules/@testing-library/dom/dist/query-helpers.js:90:38
-      at node_modules/@testing-library/dom/dist/query-helpers.js:62:17
-      at getByTestId (node_modules/@testing-library/dom/dist/query-helpers.js:111:19)
-      at Object.<anonymous> (src/components/SemesterList.test.tsx:59:29)
-
+PASS src/tests/CoursePool.test.tsx
 PASS src/App.test.tsx
 -------------------|---------|----------|---------|---------|-------------------
 File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 -------------------|---------|----------|---------|---------|-------------------
-All files          |   30.18 |       30 |   38.46 |   30.18 |                   
+All files          |   77.35 |       60 |   76.92 |   77.35 |                   
  src               |     100 |      100 |     100 |     100 |                   
   App.tsx          |     100 |      100 |     100 |     100 |                   
- src/components    |   27.45 |       30 |      36 |   27.45 |                   
+ src/components    |   76.47 |       60 |      76 |   76.47 |                   
   CourseList.tsx   |     100 |      100 |     100 |     100 |                   
-  CoursePool.tsx   |   71.42 |       50 |      50 |   71.42 | 14-18             
-  CourseView.tsx   |      80 |      100 |   66.66 |      80 | 23                
-  NewCourse.tsx    |       0 |        0 |       0 |       0 | 10-185            
+  CoursePool.tsx   |     100 |      100 |     100 |     100 |                   
+  CourseView.tsx   |      80 |      100 |   66.66 |      80 | 29                
+  NewCourse.tsx    |   67.64 |    33.33 |   61.53 |   67.64 | 25-26,51-67,192   
   SemesterList.tsx |     100 |      100 |     100 |     100 |                   
   SemesterView.tsx |     100 |      100 |     100 |     100 |                   
  src/interfaces    |     100 |      100 |     100 |     100 |                   
@@ -261,8 +56,8 @@ All files          |   30.18 |       30 |   38.46 |   30.18 |
   semester.tsx     |     100 |      100 |     100 |     100 |                   
 -------------------|---------|----------|---------|---------|-------------------
 
-Test Suites: 1 failed, 2 passed, 3 total
-Tests:       1 failed, 6 passed, 7 total
+Test Suites: 7 passed, 7 total
+Tests:       18 passed, 18 total
 Snapshots:   0 total
-Time:        3.03 s
+Time:        5.08 s
 Ran all test suites.
