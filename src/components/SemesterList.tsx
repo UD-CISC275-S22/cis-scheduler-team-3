@@ -9,7 +9,7 @@ export function SemesterList({
     semesters: Semester[];
 }): JSX.Element {
     return (
-        <Container className="course-pool">
+        <Container className="course-pool" data-testid="Semester_List">
             <Row>
                 <h2>Semester View:</h2>
                 {semesters.map((semester: Semester) => (
