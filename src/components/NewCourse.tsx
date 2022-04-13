@@ -1,20 +1,10 @@
 import React, { useState } from "react";
-import {
-    Container,
-    Row,
-    Col,
-    Form,
-    Button,
-    InputGroup,
-    FormControl
-} from "react-bootstrap";
+import { Row, Col, Form, Button } from "react-bootstrap";
 import type { Course } from "../interfaces/course";
 
 export function ValidateNewCourse({
-    courses,
     createCourse
 }: {
-    courses: Course[];
     createCourse: (newCourse: Course) => void;
 }): JSX.Element {
     const [validated, setValidated] = useState(false);
@@ -64,10 +54,6 @@ export function ValidateNewCourse({
     function updateRequired() {
         setIsRequired(!isRequired);
     }
-
-    const addPrerequisite = () => {
-        console.log(prerequisiteList);
-    };
 
     function updateCurrentPrereq(event: React.ChangeEvent<HTMLInputElement>) {
         setCurrentPrereq(event.target.value);

@@ -1,5 +1,4 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
 import { Course } from "../interfaces/course";
 
 export function CourseView({ course }: { course: Course }): JSX.Element {

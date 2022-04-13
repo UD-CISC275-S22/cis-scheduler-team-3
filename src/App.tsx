@@ -3,8 +3,6 @@ import "./App.css";
 import { SemesterList } from "./components/SemesterList";
 import { CoursePool } from "./components/CoursePool";
 import { BASE_SEMESTERS } from "./interfaces/semester";
-import POOL_DATA from "./data/course_pool.json";
-import type { Course } from "./interfaces/course";
 
 function App(): JSX.Element {
     return (
