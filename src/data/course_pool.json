@@ -5,7 +5,7 @@
         "description": "Freshman english class required for all students",
         "course_credits": 3,
         "prerequisites": [],
-        "requirement": "none"
+        "requirement": true
     },
     {
         "code": "CISC108",
@@ -13,15 +13,15 @@
         "description": "Basic coding principles",
         "course_credits": 3,
         "prerequisites": [],
-        "requirement": "none"
+        "requirement": true
     },
     {
         "code": "EGGG101",
         "title": "Intro to Engineering",
         "description": "",
         "course_credits": 2,
-        "prerequisites": ["FYE"],
-        "requirement": "none"
+        "prerequisites": [],
+        "requirement": true
     },
     {
         "code": "MATH241",
@@ -29,7 +29,7 @@
         "description": "",
         "course_credits": 4,
         "prerequisites": [],
-        "requirement": "math"
+        "requirement": true
     },
     {
         "code": "CISC181",
@@ -37,7 +37,7 @@
         "description": "",
         "course_credits": 3,
         "prerequisites": [],
-        "requirement": ""
+        "requirement": false
     },
     {
         "code": "CISC220",
@@ -45,7 +45,7 @@
         "description": "",
         "course_credits": 3,
         "prerequisites": [],
-        "requirement": ""
+        "requirement": false
     },
     {
         "code": "CISC260",
@@ -53,7 +53,7 @@
         "description": "",
         "course_credits": 3,
         "prerequisites": [],
-        "requirement": ""
+        "requirement": false
     },
     {
         "code": "MATH210",
@@ -61,7 +61,7 @@
         "description": "",
         "course_credits": 3,
         "prerequisites": [],
-        "requirement": ""
+        "requirement": false
     },
     {
         "code": "CISC275",
@@ -69,7 +69,7 @@
         "description": "",
         "course_credits": 3,
         "prerequisites": [],
-        "requirement": ""
+        "requirement": false
     },
     {
         "code": "CISC320",
@@ -77,7 +77,7 @@
         "description": "",
         "course_credits": 3,
         "prerequisites": [],
-        "requirement": ""
+        "requirement": false
     },
     {
         "code": "CISC360",
@@ -85,7 +85,7 @@
         "description": "",
         "course_credits": 3,
         "prerequisites": [],
-        "requirement": ""
+        "requirement": false
     },
     {
         "code": "CISC355",
@@ -93,7 +93,7 @@
         "description": "",
         "course_credits": 3,
         "prerequisites": [],
-        "requirement": ""
+        "requirement": false
     },
     {
         "code": "CISC361",
@@ -101,7 +101,7 @@
         "description": "",
         "course_credits": 3,
         "prerequisites": [],
-        "requirement": ""
+        "requirement": false
     },
     {
         "code": "CISC303",
@@ -109,6 +109,6 @@
         "description": "",
         "course_credits": 3,
         "prerequisites": [],
-        "requirement": ""
+        "requirement": false
     }
 ]

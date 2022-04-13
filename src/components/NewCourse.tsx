@@ -75,7 +75,7 @@ export function ValidateNewCourse({
             description: description,
             course_credits: credits,
             prerequisites: prerequisiteList,
-            requirement: isRequired.toString()
+            requirement: isRequired
         });
     }
 

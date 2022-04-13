@@ -15,9 +15,9 @@ function App(): JSX.Element {
                 <p> </p>
                 <h5>
                     Hello! Welcome to our CIS scheduler. In this app, you will
-                    be able to map out different CIS degree plans. On the right,
-                    you will see a pool of typical courses at UD. You can add to
-                    and edit these courses as you see fit. On the left, you may
+                    be able to map out different CIS degree plans. At the top,
+                    you can see a pool of typical courses at UD. You can add to
+                    and edit these courses as you see fit. Below, you may
                     construct and edit your semesters all while making sure
                     requirements for graduation are met.
                 </h5>
