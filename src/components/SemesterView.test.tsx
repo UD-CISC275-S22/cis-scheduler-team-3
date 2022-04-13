@@ -11,7 +11,7 @@ const TEST_SEMESTERS = [
                 description: "Freshman english class required for all students",
                 course_credits: 3,
                 prerequisites: [],
-                requirement: "none"
+                requirement: true
             },
             {
                 code: "CISC108",
@@ -19,7 +19,7 @@ const TEST_SEMESTERS = [
                 description: "Basic coding principles",
                 course_credits: 3,
                 prerequisites: [],
-                requirement: "none"
+                requirement: true
             }
         ],
         year: 2021,
@@ -34,7 +34,7 @@ const TEST_SEMESTERS = [
                 description: "Math Class required for CISC majors",
                 course_credits: 3,
                 prerequisites: [],
-                requirement: "none"
+                requirement: true
             },
             {
                 code: "CISC181",
@@ -42,7 +42,7 @@ const TEST_SEMESTERS = [
                 description: "More advanced coding principles",
                 course_credits: 3,
                 prerequisites: [],
-                requirement: "none"
+                requirement: true
             }
         ],
         year: 2022,
