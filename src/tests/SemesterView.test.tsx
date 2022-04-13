@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import { SemesterList } from "./SemesterList";
+import { SemesterView } from "../components/SemesterView";
 
 const TEST_SEMESTERS = [
     {
@@ -53,14 +53,22 @@ const TEST_SEMESTERS = [
 
 describe("Test suite for SemesterView component", () => {
     beforeEach(() => {
-        render(<SemesterList semesters={TEST_SEMESTERS} />);
+        render(<SemesterView semester={TEST_SEMESTERS[0]} />);
     });
-    test("There is at least one semester rendered.", () => {
-        const list = screen.getByTestId("Semester_List");
+    test("The semester is rendered", () => {
+        const semester = screen.getByTestId("Semester");
+        expect(semester).toBeInTheDocument();
+    });
+    test("The semester renders the title", () => {
+        const title = screen.getByTestId("Semester_Title");
+        expect(title).toBeInTheDocument();
+    });
+    test("The semester renders the credits", () => {
+        const credits = screen.getByTestId("Semester_Credits");
+        expect(credits).toBeInTheDocument();
+    });
+    test("The semester renders the courses", () => {
+        const list = screen.getByTestId("Course_List");
         expect(list).toBeInTheDocument();
-    });
-    test("Multiple Semesters can and are rendered.", () => {
-        const list = screen.getAllByTestId("Semester");
-        expect(list.length).toEqual(TEST_SEMESTERS.length);
     });
 });
