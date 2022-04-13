@@ -11,6 +11,19 @@
     pointer-events: none;
 }
 
+#course-cards {
+    width: 20%;
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    max-width: 100%;
+}
+
+#course-row {
+    margin: 0;
+    /* justify-content: center; */
+}
+
 @media (prefers-reduced-motion: no-preference) {
     .App-logo {
         animation: App-logo-spin infinite 20s linear;
