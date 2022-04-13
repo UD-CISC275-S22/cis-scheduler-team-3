@@ -144,7 +144,7 @@ export function ValidateNewCourse({
                             ))}
                         </Form.Select>
                     </Form.Group>
-                    <Form>
+                    <div>
                         <Form.Check
                             inline
                             type="radio"
@@ -161,7 +161,7 @@ export function ValidateNewCourse({
                             onChange={updateRequired}
                             label="this course is not required for my degree"
                         />
-                    </Form>
+                    </div>
                     <Form.Group>
                         <Form.Check
                             type="checkbox"
