@@ -1,7 +1,12 @@
 import React from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
+import { Semester } from "../interfaces/semester";
 
-export function CourseMover(): JSX.Element {
+export function CourseMover({
+    semesters
+}: {
+    semesters: Semester[];
+}): JSX.Element {
     return (
         <Col>
             <Row>

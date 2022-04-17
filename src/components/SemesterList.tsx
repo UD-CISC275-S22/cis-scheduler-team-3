@@ -17,7 +17,9 @@ export function SemesterList({
                 <Button onClick={() => setMoveCourse(!moveCourse)}>
                     Course Mover
                 </Button>
-                {moveCourse ? <CourseMover></CourseMover> : null}
+                {moveCourse ? (
+                    <CourseMover semesters={semesters}></CourseMover>
+                ) : null}
                 {semesters.map((semester: Semester) => (
                     <div
                         key={semester.session + semester.year}
