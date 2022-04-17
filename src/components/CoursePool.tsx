@@ -4,13 +4,11 @@ import { CourseView } from "./CourseView";
 import { ValidateNewCourse } from "./NewCourse";
 import POOL_DATA from "../data/course_pool.json";
 import type { Course } from "../interfaces/course";
-import { CourseMover } from "./CourseMover";
 
 export function CoursePool(): JSX.Element {
     const POOLCOURSES = POOL_DATA as Course[];
     const [newCourse, setNewCourse] = useState<boolean>(false);
     const [poolCourses, setPoolCourses] = useState<Course[]>(POOLCOURSES);
-    const [movecourse, setMoveCourse] = useState<boolean>(false);
 
     function createCourse(newCourse: Course) {
         setPoolCourses([...poolCourses, newCourse]);
@@ -38,12 +36,6 @@ export function CoursePool(): JSX.Element {
                 {poolCourses.map((course: Course) => (
                     <CourseView key={course.code} course={course}></CourseView>
                 ))}
-            </Row>
-            <Row>
-                <Button onClick={() => setMoveCourse(!movecourse)}>
-                    Move Course from Pool
-                </Button>
-                {movecourse ? <CourseMover></CourseMover> : null}
             </Row>
         </Container>
     );
