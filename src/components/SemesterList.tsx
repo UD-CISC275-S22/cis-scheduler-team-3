@@ -1,17 +1,23 @@
-import React from "react";
-import { Container, Row } from "react-bootstrap";
+import React, { useState } from "react";
+import { Button, Container, Row } from "react-bootstrap";
 import { Semester } from "../interfaces/semester";
 import { SemesterView } from "./SemesterView";
+import { CourseMover } from "./CourseMover";
 
 export function SemesterList({
     semesters
 }: {
     semesters: Semester[];
 }): JSX.Element {
+    const [moveCourse, setMoveCourse] = useState<boolean>(false);
     return (
         <Container className="course-pool" data-testid="Semester_List">
             <Row>
                 <h2>Semester View:</h2>
+                <Button onClick={() => setMoveCourse(!moveCourse)}>
+                    Course Mover
+                </Button>
+                {moveCourse ? <CourseMover></CourseMover> : null}
                 {semesters.map((semester: Semester) => (
                     <div
                         key={semester.session + semester.year}
