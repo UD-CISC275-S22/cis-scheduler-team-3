@@ -15,7 +15,7 @@ export function CoursePool(): JSX.Element {
     }
 
     function hasNewQuiz() {
-        setNewCourse(true);
+        setNewCourse(!newCourse);
     }
     return (
         <Container className="course-pool">
