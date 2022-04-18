@@ -22,7 +22,6 @@ export function SemesterView({
     }
 
     function deleteCourse() {
-        console.log(course.code);
         if (semesterCourses.length === 0) {
             setSemesterCourses([]);
         } else {
@@ -40,7 +39,6 @@ export function SemesterView({
         const chosenInd = semesterCourses.findIndex(
             (course: Course): boolean => course.code === event.target.value
         );
-        console.log(semesterCourses[chosenInd]);
         setCourse(semesterCourses[chosenInd]);
     }
 
