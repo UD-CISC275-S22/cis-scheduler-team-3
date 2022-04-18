@@ -24,7 +24,7 @@ function App(): JSX.Element {
             </div>
             <div>
                 <CoursePool></CoursePool>
-                <SemesterList semesters={BASE_SEMESTERS}></SemesterList>
+                <SemesterList in_semesters={BASE_SEMESTERS}></SemesterList>
             </div>
         </>
     );
