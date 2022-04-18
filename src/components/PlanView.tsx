@@ -1,7 +1,5 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
 import { DegreePlan } from "../interfaces/degreeplan";
-import { CourseList } from "./CourseList";
 import { SemesterList } from "./SemesterList";
 
 export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {

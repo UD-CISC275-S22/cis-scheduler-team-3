@@ -1,8 +1,8 @@
 import React from "react";
 import "./App.css";
-import { SemesterList } from "./components/SemesterList";
+import { PlanList } from "./components/PlanList";
 import { CoursePool } from "./components/CoursePool";
-import { BASE_SEMESTERS } from "./interfaces/semester";
+import { SAMPLE_PLANS } from "./interfaces/degreeplan";
 
 function App(): JSX.Element {
     return (
@@ -24,7 +24,7 @@ function App(): JSX.Element {
             </div>
             <div>
                 <CoursePool></CoursePool>
-                <SemesterList semesters={BASE_SEMESTERS}></SemesterList>
+                <PlanList plans={SAMPLE_PLANS}></PlanList>
             </div>
         </>
     );
