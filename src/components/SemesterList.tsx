@@ -18,7 +18,50 @@ export function SemesterList({
         moving: Course,
         origin: Semester,
         destination: Semester
-    ) {}
+    ) {
+        const moving_index = origin.courses.findIndex(
+            (course: Course): boolean => course.code === moving.code
+        );
+        const origin_index = semesters.findIndex(
+            (semester: Semester): boolean =>
+                semester.session + semester.year ===
+                origin.session + origin.year
+        );
+        const destination_index = semesters.findIndex(
+            (semester: Semester): boolean =>
+                semester.session + semester.year ===
+                destination.session + destination.year
+        );
+        origin = {
+            ...origin,
+            courses: [
+                ...origin.courses.slice(0, moving_index),
+                ...origin.courses.slice(moving_index + 1)
+            ]
+        };
+        destination = {
+            ...destination,
+            courses: [...destination.courses, moving]
+        };
+
+        if (origin_index < destination_index) {
+            setSemesters([
+                ...semesters.slice(0, origin_index),
+                origin,
+                ...semesters.slice(origin_index + 1, destination_index),
+                destination,
+                ...semesters.slice(destination_index + 1)
+            ]);
+        } else if (destination_index < origin_index) {
+            setSemesters([
+                ...semesters.slice(0, destination_index),
+                destination,
+                ...semesters.slice(destination_index + 1, origin_index),
+                origin,
+                ...semesters.slice(origin_index + 1)
+            ]);
+        }
+    }
 
     return (
         <Container className="course-pool" data-testid="Semester_List">
