@@ -7,29 +7,33 @@ PASS src/tests/CourseView.test.tsx
 PASS src/tests/SemesterList.test.tsx
 PASS src/tests/CourseList.test.tsx
 PASS src/tests/NewCourse.test.tsx
+PASS src/tests/PlanView.test.tsx
+PASS src/tests/PlanList.test.tsx
 PASS src/tests/CoursePool.test.tsx
 PASS src/App.test.tsx
 -------------------|---------|----------|---------|---------|-------------------
 File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 -------------------|---------|----------|---------|---------|-------------------
-All files          |   77.35 |       60 |   76.92 |   77.35 |                   
+All files          |   78.94 |       60 |   79.31 |   78.94 |                   
  src               |     100 |      100 |     100 |     100 |                   
   App.tsx          |     100 |      100 |     100 |     100 |                   
- src/components    |   76.47 |       60 |      76 |   76.47 |                   
+ src/components    |   77.77 |       60 |   78.57 |   77.77 |                   
   CourseList.tsx   |     100 |      100 |     100 |     100 |                   
   CoursePool.tsx   |     100 |      100 |     100 |     100 |                   
   CourseView.tsx   |      80 |      100 |   66.66 |      80 | 29                
   NewCourse.tsx    |   67.64 |    33.33 |   61.53 |   67.64 | 25-26,51-67,192   
+  PlanList.tsx     |     100 |      100 |     100 |     100 |                   
+  PlanView.tsx     |     100 |      100 |     100 |     100 |                   
   SemesterList.tsx |     100 |      100 |     100 |     100 |                   
   SemesterView.tsx |     100 |      100 |     100 |     100 |                   
  src/interfaces    |     100 |      100 |     100 |     100 |                   
   course.tsx       |       0 |        0 |       0 |       0 |                   
-  degreeplan.tsx   |       0 |        0 |       0 |       0 |                   
+  degreeplan.tsx   |     100 |      100 |     100 |     100 |                   
   semester.tsx     |     100 |      100 |     100 |     100 |                   
 -------------------|---------|----------|---------|---------|-------------------
 
-Test Suites: 7 passed, 7 total
-Tests:       18 passed, 18 total
+Test Suites: 9 passed, 9 total
+Tests:       25 passed, 25 total
 Snapshots:   0 total
-Time:        6.408 s
+Time:        5.983 s
 Ran all test suites.
