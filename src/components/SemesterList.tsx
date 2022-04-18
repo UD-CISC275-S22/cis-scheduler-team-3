@@ -22,18 +22,6 @@ export function SemesterList({
         const moving_index = origin.courses.findIndex(
             (course: Course): boolean => course.code === moving.code
         );
-        /*
-        const origin_index = semesters.findIndex(
-            (semester: Semester): boolean =>
-                semester.session + semester.year ===
-                origin.session + origin.year
-        );
-        const destination_index = semesters.findIndex(
-            (semester: Semester): boolean =>
-                semester.session + semester.year ===
-                destination.session + destination.year
-        );
-        */
         origin = {
             ...origin,
             courses: [...origin.courses.splice(moving_index, 1)]
@@ -43,29 +31,7 @@ export function SemesterList({
             ...destination,
             courses: [...destination.courses.splice(len, 0, moving)]
         };
-        console.log(semesters);
         setSemesters([...semesters]);
-        /*
-        if (origin_index < destination_index) {
-            setSemesters([
-                ...semesters.slice(0, origin_index),
-                origin,
-                ...semesters.slice(origin_index + 1, destination_index),
-                destination,
-                ...semesters.slice(destination_index + 1)
-            ]);
-            console.log(semesters);
-        } else if (destination_index < origin_index) {
-            setSemesters([
-                ...semesters.slice(0, destination_index),
-                destination,
-                ...semesters.slice(destination_index + 1, origin_index),
-                origin,
-                ...semesters.slice(origin_index + 1)
-            ]);
-            console.log(semesters);
-        }
-        */
     }
 
     return (
