@@ -3,6 +3,7 @@ import { Button, Container, Row } from "react-bootstrap";
 import { Semester } from "../interfaces/semester";
 import { SemesterView } from "./SemesterView";
 import { CourseMover } from "./CourseMover";
+import { Course } from "../interfaces/course";
 
 export function SemesterList({
     in_semesters
@@ -12,6 +13,13 @@ export function SemesterList({
     const [moveCourse, setMoveCourse] = useState<boolean>(false);
     const [semesters, setSemesters] = useState<Semester[]>(in_semesters);
 
+    //function here needs to be completed to get moveable semesters working
+    function completeMove(
+        moving: Course,
+        origin: Semester,
+        destination: Semester
+    ) {}
+
     return (
         <Container className="course-pool" data-testid="Semester_List">
             <Row>
@@ -20,7 +28,10 @@ export function SemesterList({
                     Course Mover
                 </Button>
                 {moveCourse ? (
-                    <CourseMover semesters={semesters}></CourseMover>
+                    <CourseMover
+                        semesters={semesters}
+                        completeMove={completeMove}
+                    ></CourseMover>
                 ) : null}
                 {semesters.map((semester: Semester) => (
                     <div
