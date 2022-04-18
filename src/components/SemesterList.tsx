@@ -11,7 +11,7 @@ export function SemesterList({
     return (
         <Container className="course-pool" data-testid="Semester_List">
             <Row>
-                <h2>Semester View:</h2>
+                <i>Semesters:</i>
                 {semesters.map((semester: Semester) => (
                     <div
                         key={semester.session + semester.year}
