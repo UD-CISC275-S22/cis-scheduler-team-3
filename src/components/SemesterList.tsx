@@ -5,11 +5,13 @@ import { SemesterView } from "./SemesterView";
 import { CourseMover } from "./CourseMover";
 
 export function SemesterList({
-    semesters
+    in_semesters
 }: {
-    semesters: Semester[];
+    in_semesters: Semester[];
 }): JSX.Element {
     const [moveCourse, setMoveCourse] = useState<boolean>(false);
+    const [semesters, setSemesters] = useState<Semester[]>(in_semesters);
+
     return (
         <Container className="course-pool" data-testid="Semester_List">
             <Row>
