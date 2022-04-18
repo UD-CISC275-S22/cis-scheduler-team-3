@@ -4,9 +4,15 @@ import { Course } from "../interfaces/course";
 import { Semester } from "../interfaces/semester";
 
 export function CourseMover({
-    semesters
+    semesters,
+    completeMove
 }: {
     semesters: Semester[];
+    completeMove: (
+        course: Course,
+        origin: Semester,
+        destination: Semester
+    ) => void;
 }): JSX.Element {
     const [origin, setOrigin] = useState<Semester>(semesters[0]);
     const [course, setCourse] = useState<Course>(origin.courses[0]);
@@ -35,7 +41,9 @@ export function CourseMover({
         setDestination(semesters[chosenInd]);
     }
 
-    function completeMove() {}
+    function startMove() {
+        completeMove(course, origin, destination);
+    }
     return (
         <Col>
             <Row>
@@ -90,7 +98,7 @@ export function CourseMover({
                 </Form.Group>
             </Row>
             <Row>
-                <Button onClick={completeMove}>Move Course</Button>
+                <Button onClick={startMove}>Move Course</Button>
             </Row>
         </Col>
     );
