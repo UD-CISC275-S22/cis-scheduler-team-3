@@ -47,6 +47,7 @@ export function SemesterList({
                         completeMove={completeMove}
                     ></CourseMover>
                 ) : null}
+                <i>Semesters:</i>
                 {semesters.map((semester: Semester) => (
                     <div
                         key={semester.session + semester.year}
