@@ -13,7 +13,6 @@ export function SemesterList({
     const [moveCourse, setMoveCourse] = useState<boolean>(false);
     const [semesters, setSemesters] = useState<Semester[]>(in_semesters);
 
-    //function here needs to be completed to get moveable semesters working
     function completeMove(
         moving: Course,
         origin: Semester,
