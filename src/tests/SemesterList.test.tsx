@@ -53,7 +53,7 @@ const TEST_SEMESTERS = [
 
 describe("Test suite for SemesterList component", () => {
     beforeEach(() => {
-        render(<SemesterList semesters={TEST_SEMESTERS} />);
+        render(<SemesterList in_semesters={TEST_SEMESTERS} />);
     });
     test("There is at least one semester rendered.", () => {
         const list = screen.getByTestId("Semester_List");
