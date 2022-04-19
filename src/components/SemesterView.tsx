@@ -22,13 +22,17 @@ export function SemesterView({
     }
 
     function deleteCourse() {
-        const delInd = semesterCourses.findIndex(
-            (c_course: Course): boolean => c_course.code === course.code
-        );
-        setSemesterCourses([
-            ...semesterCourses.slice(0, delInd),
-            ...semesterCourses.slice(delInd + 1, semesterCourses.length)
-        ]);
+        if (semesterCourses.length === 0) {
+            setSemesterCourses([]);
+        } else {
+            const delInd = semesterCourses.findIndex(
+                (c_course: Course): boolean => c_course.code === course.code
+            );
+            setSemesterCourses([
+                ...semesterCourses.slice(0, delInd),
+                ...semesterCourses.slice(delInd + 1)
+            ]);
+        }
     }
 
     function updateCourse(event: React.ChangeEvent<HTMLSelectElement>) {
@@ -72,6 +76,7 @@ export function SemesterView({
                                         value={course.code}
                                         onChange={updateCourse}
                                     >
+                                        <option></option>
                                         {semesterCourses.map(
                                             (course: Course) => (
                                                 <option
