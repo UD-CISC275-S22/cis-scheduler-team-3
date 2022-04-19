@@ -72,6 +72,7 @@ export function SemesterView({
                                         value={course.code}
                                         onChange={updateCourse}
                                     >
+                                        <option></option>
                                         {semesterCourses.map(
                                             (course: Course) => (
                                                 <option
