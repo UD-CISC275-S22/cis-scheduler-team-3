@@ -46,12 +46,13 @@ export function SemesterView({
         <Container data-testid="Semester">
             <Row>
                 <Col>
-                    <h3 data-testid="Semester_Title">
+                    <h5 data-testid="Semester_Title">
                         {semester.session}:{semester.year}
-                    </h3>
-                    <h4 data-testid="Semester_Credits">
+                    </h5>
+                    <i data-testid="Semester_Credits">
                         Total Credits: {semester.semester_credits}
-                    </h4>
+                    </i>
+                    <p> </p>
                     <Row>
                         <Button
                             className="Buttons"

@@ -58,6 +58,9 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
             <h4 data-testid="name">{plan.name}</h4>
             <h6 data-testid="start-year">Start Year: {plan.Start_Year}</h6>
             <h6 data-testid="end-year">End Year: {plan.End_Year}</h6>
+            <h6 data-testid="degree-credits">
+                Degree Credits: {plan.degree_credits}
+            </h6>
             <Button
                 className="Buttons"
                 onClick={() => setMoveCourse(!moveCourse)}
@@ -107,9 +110,6 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
             </div>
             <h6 data-testid="semester-list">
                 <SemesterList semesters={semesters}></SemesterList>
-            </h6>
-            <h6 data-testid="degree-credits">
-                Degree Credits: {plan.degree_credits}
             </h6>
         </div>
     );

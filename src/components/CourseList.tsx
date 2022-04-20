@@ -5,9 +5,9 @@ import { CourseView } from "./CourseView";
 
 export function CourseList({ courses }: { courses: Course[] }): JSX.Element {
     return (
-        <Stack gap={3} className="Container" data-testid="Course_List">
+        <Stack gap={1} className="course-cards" data-testid="Course_List">
             {courses.map((course: Course) => (
-                <div key={course.code} className="bg-light border m-2 p-2">
+                <div key={course.code}>
                     <CourseView course={course}></CourseView>
                 </div>
             ))}
