@@ -8,6 +8,7 @@ export function PlanList({ plans }: { plans: DegreePlan[] }): JSX.Element {
         <Container data-testid="Plan-list">
             <Row>
                 <h2>Plans:</h2>
+                <hr />
                 {plans.map((plan: DegreePlan) => (
                     <div
                         key={plan.Start_Year + plan.End_Year}

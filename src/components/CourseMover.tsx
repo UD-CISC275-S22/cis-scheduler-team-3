@@ -99,7 +99,9 @@ export function CourseMover({
                 </Form.Group>
             </Row>
             <Row>
-                <Button onClick={startMove}>Move Course</Button>
+                <Button className="Move-course" onClick={startMove}>
+                    Move Course
+                </Button>
             </Row>
         </Col>
     );

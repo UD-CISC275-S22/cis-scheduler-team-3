@@ -46,14 +46,19 @@ export function SemesterView({
         <Container data-testid="Semester">
             <Row>
                 <Col>
-                    <h3 data-testid="Semester_Title">
+                    <h5 data-testid="Semester_Title">
                         {semester.session}:{semester.year}
-                    </h3>
-                    <h4 data-testid="Semester_Credits">
+                    </h5>
+                    <i data-testid="Semester_Credits">
                         Total Credits: {semester.semester_credits}
-                    </h4>
+                    </i>
+                    <p> </p>
                     <Row>
-                        <Button onClick={() => setNewCourse(!newCourse)}>
+                        <Button
+                            className="Buttons"
+                            variant="outline-dark"
+                            onClick={() => setNewCourse(!newCourse)}
+                        >
                             Add Course to Semester
                         </Button>
                         {newCourse ? (
@@ -61,11 +66,17 @@ export function SemesterView({
                                 createCourse={createCourse}
                             ></ValidateNewCourse>
                         ) : null}
+                        <p> </p>
                     </Row>
                     <Row>
-                        <Button onClick={() => setRemoveCourse(!removeCourse)}>
+                        <Button
+                            className="Buttons"
+                            variant="outline-dark"
+                            onClick={() => setRemoveCourse(!removeCourse)}
+                        >
                             Remove Course from Semester
                         </Button>
+                        <p> </p>
                         {removeCourse ? (
                             <div>
                                 <Form.Group>
