@@ -53,7 +53,10 @@ export function SemesterView({
                         Total Credits: {semester.semester_credits}
                     </h4>
                     <Row>
-                        <Button onClick={() => setNewCourse(!newCourse)}>
+                        <Button
+                            className="Buttons"
+                            onClick={() => setNewCourse(!newCourse)}
+                        >
                             Add Course to Semester
                         </Button>
                         {newCourse ? (
@@ -61,9 +64,13 @@ export function SemesterView({
                                 createCourse={createCourse}
                             ></ValidateNewCourse>
                         ) : null}
+                        <p> </p>
                     </Row>
                     <Row>
-                        <Button onClick={() => setRemoveCourse(!removeCourse)}>
+                        <Button
+                            className="Buttons"
+                            onClick={() => setRemoveCourse(!removeCourse)}
+                        >
                             Remove Course from Semester
                         </Button>
                         {removeCourse ? (

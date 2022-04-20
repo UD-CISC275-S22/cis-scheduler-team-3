@@ -15,6 +15,10 @@
     height: 40vmin;
     pointer-events: none;
 }
+.Buttons {
+    width: 25%;
+    font-size: 13px;
+}
 
 #course-cards {
     width: 20%;

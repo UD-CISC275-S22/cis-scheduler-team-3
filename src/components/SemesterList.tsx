@@ -37,8 +37,11 @@ export function SemesterList({
         <Container className="course-pool" data-testid="Semester_List">
             <Row>
                 <h2>Semester View:</h2>
-                <Button onClick={() => setMoveCourse(!moveCourse)}>
-                    Course Mover
+                <Button
+                    className="Buttons"
+                    onClick={() => setMoveCourse(!moveCourse)}
+                >
+                    Move Courses
                 </Button>
                 {moveCourse ? (
                     <CourseMover
