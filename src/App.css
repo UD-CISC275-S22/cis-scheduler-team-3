@@ -19,6 +19,11 @@
     width: 25%;
     font-size: 13px;
 }
+.Move-course {
+    width: 15%;
+    font-size: 13px;
+    margin: 10px;
+}
 
 #course-cards {
     width: 20%;

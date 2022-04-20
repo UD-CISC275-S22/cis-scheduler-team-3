@@ -68,6 +68,7 @@ export function CourseMover({
                 <Form.Group>
                     <Form.Label>Select a Course to Move:</Form.Label>
                     <Form.Select value={course.code} onChange={updateCourse}>
+                        <option></option>
                         {origin.courses.map((course: Course) => (
                             <option key={course.code} value={course.code}>
                                 {course.code}:{course.title}
@@ -98,7 +99,9 @@ export function CourseMover({
                 </Form.Group>
             </Row>
             <Row>
-                <Button onClick={startMove}>Move Course</Button>
+                <Button className="Move-course" onClick={startMove}>
+                    Move Course
+                </Button>
             </Row>
         </Col>
     );
