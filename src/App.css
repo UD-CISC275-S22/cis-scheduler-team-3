@@ -5,6 +5,11 @@
     width: 25%;
     font-size: 12px;
 }
+.Add-Plan {
+    width: 25%;
+    font-size: 13px;
+    margin: 25px;
+}
 
 .App-logo {
     height: 40vmin;

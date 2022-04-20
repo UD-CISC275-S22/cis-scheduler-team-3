@@ -1,10 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import { PlanList } from "./components/PlanList";
 import { CoursePool } from "./components/CoursePool";
 import { SAMPLE_PLANS } from "./interfaces/degreeplan";
+import { DegreePlan } from "./interfaces/degreeplan";
+import { Button, Form } from "react-bootstrap";
+
+type ChangeEvent = React.ChangeEvent<
+    HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement
+>;
 
 function App(): JSX.Element {
+    const [plans, setplans] = useState<DegreePlan[]>(SAMPLE_PLANS);
+    const [name, setname] = useState<string>("");
+    const [start, setstart] = useState<number>(0);
+    const [end, setend] = useState<number>(0);
+    function addPlan() {
+        const newPlan = {
+            name: name,
+            Start_Year: start,
+            End_Year: end,
+            semesters: [],
+            degree_credits: 0
+        };
+        const newPlanList = [...plans, newPlan];
+        setplans(newPlanList);
+    }
+    function updateStart(event: ChangeEvent) {
+        const inputToNumber = parseInt(event.target.value);
+        setstart(inputToNumber);
+    }
+    function updateEnd(event: ChangeEvent) {
+        const inputToNumber = parseInt(event.target.value);
+        setend(inputToNumber);
+    }
+    function updateName(event: ChangeEvent) {
+        setname(event.target.value);
+    }
+
     return (
         <>
             <div className="App">
@@ -24,8 +57,38 @@ function App(): JSX.Element {
             </div>
             <div>
                 <CoursePool></CoursePool>
-                <PlanList plans={SAMPLE_PLANS}></PlanList>
+                <PlanList plans={plans}></PlanList>
             </div>
+            <div>
+                <Form.Group className="Add-Plan" data-testid="addNewPlan">
+                    <Form.Label>Plan Name: </Form.Label>
+                    <Form.Control
+                        value={name}
+                        onChange={updateName}
+                    ></Form.Control>
+                    <Form.Label>Start Year: </Form.Label>
+                    <Form.Control
+                        value={start}
+                        onChange={updateStart}
+                    ></Form.Control>
+                    <Form.Label>End Year: </Form.Label>
+                    <Form.Control
+                        value={end}
+                        onChange={updateEnd}
+                    ></Form.Control>
+                </Form.Group>
+            </div>
+            <div>
+                <Button
+                    className="me-3"
+                    variant="success"
+                    size="sm"
+                    onClick={() => addPlan()}
+                >
+                    Add Plan
+                </Button>
+            </div>
+            <hr></hr>
         </>
     );
 }
