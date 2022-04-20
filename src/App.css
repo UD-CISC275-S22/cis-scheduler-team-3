@@ -5,10 +5,10 @@
     width: 25%;
     font-size: 12px;
 }
-.Add-Plan {
-    width: 25%;
-    font-size: 13px;
-    margin: 25px;
+.Description {
+    text-align: center;
+    margin: 50px;
+    font-size: 17px;
 }
 
 .App-logo {
@@ -16,7 +16,7 @@
     pointer-events: none;
 }
 .Buttons {
-    width: 25%;
+    width: 22%;
     font-size: 13px;
 }
 .Semester {
@@ -47,16 +47,22 @@
         animation: App-logo-spin infinite 20s linear;
     }
 }
+.Course {
+    font-size: 12px;
+}
+.title {
+    font-size: 13px;
+}
 
 .App-header {
     width: 100%;
-    background-color: #3e3e3e;
+    background-color: #837d7d;
     min-height: 20vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-size: calc(10px + 2vmin);
+    font-size: calc(15px + 2vmin);
     color: white;
 }
 

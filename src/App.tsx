@@ -15,6 +15,10 @@ function App(): JSX.Element {
     const [name, setname] = useState<string>("");
     const [start, setstart] = useState<number>(0);
     const [end, setend] = useState<number>(0);
+    const [add, setadd] = useState<boolean>(false);
+    function updateAdd() {
+        setadd(!add);
+    }
     function addPlan() {
         const newPlan = {
             name: name,
@@ -24,6 +28,7 @@ function App(): JSX.Element {
             degree_credits: 0
         };
         const newPlanList = [...plans, newPlan];
+        updateAdd();
         setplans(newPlanList);
     }
     function updateStart(event: ChangeEvent) {
@@ -46,7 +51,7 @@ function App(): JSX.Element {
                     Group Members: Madison Holloway, John Neilson, & Sara Fleck
                 </h6>
                 <p> </p>
-                <h5>
+                <h5 className="Description">
                     Hello! Welcome to our CIS scheduler. In this app, you will
                     be able to map out different CIS degree plans. At the top,
                     you can see a pool of typical courses at UD. You can add to
@@ -60,34 +65,39 @@ function App(): JSX.Element {
                 <PlanList plans={plans}></PlanList>
             </div>
             <div>
-                <Form.Group className="Add-Plan" data-testid="addNewPlan">
-                    <Form.Label>Plan Name: </Form.Label>
-                    <Form.Control
-                        value={name}
-                        onChange={updateName}
-                    ></Form.Control>
-                    <Form.Label>Start Year: </Form.Label>
-                    <Form.Control
-                        value={start}
-                        onChange={updateStart}
-                    ></Form.Control>
-                    <Form.Label>End Year: </Form.Label>
-                    <Form.Control
-                        value={end}
-                        onChange={updateEnd}
-                    ></Form.Control>
-                </Form.Group>
-            </div>
-            <div>
-                <Button
-                    className="me-3"
-                    variant="success"
-                    size="sm"
-                    onClick={() => addPlan()}
-                >
+                <Button variant="success" size="sm" onClick={() => updateAdd()}>
                     Add Plan
                 </Button>
             </div>
+            {add ? (
+                <div>
+                    <Form.Group className="Add-Plan" data-testid="addNewPlan">
+                        <Form.Label>Plan Name: </Form.Label>
+                        <Form.Control
+                            value={name}
+                            onChange={updateName}
+                        ></Form.Control>
+                        <Form.Label>Start Year: </Form.Label>
+                        <Form.Control
+                            value={start}
+                            onChange={updateStart}
+                        ></Form.Control>
+                        <Form.Label>End Year: </Form.Label>
+                        <Form.Control
+                            value={end}
+                            onChange={updateEnd}
+                        ></Form.Control>
+                    </Form.Group>
+                    <Button
+                        className="me-3"
+                        variant="success"
+                        size="sm"
+                        onClick={() => addPlan()}
+                    >
+                        add
+                    </Button>
+                </div>
+            ) : null}
             <hr></hr>
         </>
     );

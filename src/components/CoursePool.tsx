@@ -20,8 +20,12 @@ export function CoursePool(): JSX.Element {
     return (
         <Container className="course-pool">
             <Row>
-                <h1>Course Pool: </h1>
-                <Button onClick={hasNewQuiz} data-testid="add-course-btn">
+                <h5>Course Pool: </h5>
+                <Button
+                    onClick={hasNewQuiz}
+                    className="Buttons"
+                    data-testid="add-course-btn"
+                >
                     Add Course to Pool
                 </Button>
             </Row>
@@ -32,7 +36,7 @@ export function CoursePool(): JSX.Element {
                     ></ValidateNewCourse>
                 ) : null}
             </Row>
-            <Row lg={4} id="course-row" data-testid="course-pool">
+            <Row lg={6} id="course-row" data-testid="course-pool">
                 {poolCourses.map((course: Course) => (
                     <CourseView key={course.code} course={course}></CourseView>
                 ))}

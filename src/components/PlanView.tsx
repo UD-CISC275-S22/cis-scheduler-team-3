@@ -82,6 +82,7 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
                 >
                     Add Semester
                 </Button>
+                <p> </p>
                 {newsem ? (
                     <>
                         <Form.Group data-testid="add-semester">

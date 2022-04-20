@@ -56,6 +56,7 @@ export function SemesterView({
                     <Row>
                         <Button
                             className="Buttons"
+                            variant="outline-dark"
                             onClick={() => setNewCourse(!newCourse)}
                         >
                             Add Course to Semester
@@ -70,10 +71,12 @@ export function SemesterView({
                     <Row>
                         <Button
                             className="Buttons"
+                            variant="outline-dark"
                             onClick={() => setRemoveCourse(!removeCourse)}
                         >
                             Remove Course from Semester
                         </Button>
+                        <p> </p>
                         {removeCourse ? (
                             <div>
                                 <Form.Group>
