@@ -11,13 +11,14 @@ export function ValidateNewCourse({
     const [title, setTitle] = useState<string>("");
     const [code, setCode] = useState<string>("");
     const [description, setDescription] = useState<string>("");
-    const [credits, setCredits] = useState<number>(0);
+    const [credits, setCredits] = useState<string>("");
     // const [courseList, setCourseList] = useState<Course[]>(courses);
     const [hasPrerequisites, setHasPrerequisites] = useState<boolean>(false);
-    const [prerequisiteList, setPrerequisiteList] = useState<string[]>([]);
+    // const [prerequisiteList, setPrerequisiteList] = useState<string[]>([]);
+    const [prerequisiteList, setPrerequisiteList] = useState<string>("");
     const [isRequired, setIsRequired] = useState<boolean>(false);
     const [currentPrereq, setCurrentPrereq] = useState<string>("");
-    const possibleCredits = [1, 2, 3, 4];
+    const possibleCredits = ["", "1", "2", "3", "4"];
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         const form = event.currentTarget;
@@ -31,8 +32,8 @@ export function ValidateNewCourse({
     };
 
     function updateCredits(event: React.ChangeEvent<HTMLSelectElement>) {
-        const inputToNumber = parseInt(event.target.value);
-        setCredits(inputToNumber);
+        // const inputToNumber = parseInt(event.target.value);
+        setCredits(event.target.value);
     }
 
     function updateTitle(event: React.ChangeEvent<HTMLInputElement>) {
@@ -61,11 +62,12 @@ export function ValidateNewCourse({
 
     function updatePrereqList() {
         console.log(currentPrereq);
-        if (currentPrereq !== "") {
-            setPrerequisiteList([...prerequisiteList, currentPrereq]);
-            console.log(prerequisiteList);
-            setCurrentPrereq("");
-        }
+        // if (currentPrereq !== "") {
+        //     setPrerequisiteList([...prerequisiteList, currentPrereq]);
+        //     console.log(prerequisiteList);
+        //     setCurrentPrereq("");
+        // }
+        setPrerequisiteList(prerequisiteList + currentPrereq);
     }
 
     function saveNewQuiz() {
@@ -137,7 +139,7 @@ export function ValidateNewCourse({
                             value={credits}
                             onChange={updateCredits}
                         >
-                            {possibleCredits.map((creditAmount: number) => (
+                            {possibleCredits.map((creditAmount: string) => (
                                 <option key={creditAmount} value={creditAmount}>
                                     {creditAmount}
                                 </option>
@@ -188,11 +190,12 @@ export function ValidateNewCourse({
                                 add prerequisite
                             </Button>
                             <p>Course Prerequisites: </p>
-                            {prerequisiteList.map((prereq: string) => (
+                            {prerequisiteList}
+                            {/* {prerequisiteList.map((prereq: string) => (
                                 <div key={prereq}>
                                     <h6>{prereq}</h6>
                                 </div>
-                            ))}
+                            ))} */}
                         </div>
                     )}
                 </Row>

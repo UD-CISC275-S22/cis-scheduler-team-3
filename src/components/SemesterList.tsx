@@ -9,9 +9,9 @@ export function SemesterList({
     semesters: Semester[];
 }): JSX.Element {
     return (
-        <Container className="course-pool" data-testid="Semester_List">
+        <Container className="Semester" data-testid="Semester_List">
             <Row>
-                <i>Semesters:</i>
+                <h4>Semesters:</h4>
                 {semesters.map((semester: Semester) => (
                     <div
                         key={semester.session + semester.year}

@@ -5,9 +5,6 @@
         "description": "Introduces students to the central ideas of computing and computer science including programs, algorithms, abstraction, the internet, and information systems. Instills ideas and practices of computational thinking and engages students in activities that show how computing and computer science change the world. Explores computing as a creative activity and empowers students to apply computational thinking to all disciplines including the arts, humanities, business, social and physical sciences, health, and entertainment.",
         "course_credits": " 3",
         "prerequisites": "",
-        "restrict": "",
-        "breadth": "University: Mathematics, Natural Sciences and Technology; A&S: GROUP D: A&S Math, Nat Sci & Technology",
-        "offered": "Fall, Winter and Spring",
         "requirement": false
     },
     {
@@ -16,9 +13,6 @@
         "description": "Principles of computer science illustrated through programming in scripting languages such as JavaScript and VBScript. Topics include control structures, arrays, functions, and procedures. Programming projects illustrate web-based applications.",
         "course_credits": " 3",
         "prerequisites": "",
-        "restrict": "Open to non-majors.",
-        "breadth": "University: Mathematics, Natural Sciences and Technology; A&S: GROUP D: A&S Math, Nat Sci & Technology",
-        "offered": "Fall and Spring",
         "requirement": false
     },
     {
@@ -27,9 +21,6 @@
         "description": "Principles of computer science illustrated and applied through programming in a general-purpose language. Programming projects illustrate computational problems, styles, and issues that arise in engineering.",
         "course_credits": " 3",
         "prerequisites": "",
-        "restrict": "",
-        "breadth": "University: Mathematics, Natural Sciences and Technology; A&S: GROUP D: A&S Math, Nat Sci & Technology",
-        "offered": "Fall, Summer and Spring",
         "requirement": false
     },
     {
@@ -38,9 +29,6 @@
         "description": "Computing and principles of programming with an emphasis on systematic program design. Topics include functional programming, data abstraction, procedural abstraction, use of control and state, recursion, testing, and object-oriented programming concepts. Requires no prior programming experience, open to any major, but intended primarily for majors and minors in computer science or mathematics.",
         "course_credits": " 3",
         "prerequisites": "",
-        "restrict": "",
-        "breadth": "University: Mathematics, Natural Sciences and Technology; A&S: GROUP D: A&S Math, Nat Sci & Technology",
-        "offered": "Fall and Spring",
         "requirement": true
     },
     {
@@ -49,9 +37,6 @@
         "description": "",
         "course_credits": " 1-3",
         "prerequisites": "",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -60,9 +45,6 @@
         "description": "",
         "course_credits": " 1-6",
         "prerequisites": "",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -71,9 +53,6 @@
         "description": "Principles of computer science illustrated and applied through programming in an object oriented language. Programming projects illustrate computational problems, styles and issues that arise in computer systems development and in all application areas of computation.",
         "course_credits": " 3",
         "prerequisites": "Grade of C- or better in CISC 108 or CISC 106.",
-        "restrict": "",
-        "breadth": "University: Mathematics, Natural Sciences and Technology; A&S: GROUP D: A&S Math, Nat Sci & Technology",
-        "offered": "Fall, Summer and Spring",
         "requirement": true
     },
     {
@@ -82,9 +61,6 @@
         "description": "The Vertically-Integrated Projects (VIP) Program operates in a research and development context. Undergraduate students that join VIP teams earn academic credit for their participation in design/discovery efforts that assist faculty and graduate students with research and development issues in their areas of expertise.",
         "course_credits": " 1",
         "prerequisites": "",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "Fall and Spring",
         "requirement": false
     },
     {
@@ -93,9 +69,6 @@
         "description": "",
         "course_credits": " 3",
         "prerequisites": "A grade of C- or better in CISC 106 or CISC 108.",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "Fall and Spring",
         "requirement": true
     },
     {
@@ -104,9 +77,6 @@
         "description": "Review of data type abstraction, recursion, arrays, stacks, queues, multiple stacks and linked lists. Emphasis on dynamic storage management, garbage collection, trees, graphs, tables, sorting and searching.",
         "course_credits": " 3",
         "prerequisites": "A minimum grade of C- in CISC 210.",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "Fall, Summer and Spring",
         "requirement": true
     },
     {
@@ -115,9 +85,6 @@
         "description": "Examines technologies of information transmission currently utilized in the business environments and the implications of these technologies upon the development and implementation of information systems. Provides a basic background in the convergence of voice, data and video services into common digital networks. Security issues also considered.",
         "course_credits": " 3",
         "prerequisites": "CISC 181 or MISY 160.",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "Spring",
         "requirement": false
     },
     {
@@ -126,9 +93,6 @@
         "description": "Introduction to the basics of machine organization. Programming tools and techniques at the machine and assembly levels. Assembly language programming and computer arithmetic techniques.",
         "course_credits": " 3",
         "prerequisites": "A minimum grade of C- in CISC 210.",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "Fall and Spring",
         "requirement": true
     },
     {
@@ -137,9 +101,6 @@
         "description": "",
         "course_credits": " 1-3",
         "prerequisites": "",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -148,9 +109,6 @@
         "description": "",
         "course_credits": " 1-6",
         "prerequisites": "",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -159,9 +117,6 @@
         "description": "Object oriented software design and development through use of an object oriented programming language. Topics include team programming, design patterns, graphical user interfaces, software engineering tools (e.g., integrated development environments, version control, build management, bug tracking, automated testing).",
         "course_credits": " 3",
         "prerequisites": "Minimum grade of C- in CISC 181 and CISC 220.",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "Fall and Spring",
         "requirement": true
     },
     {
@@ -170,9 +125,6 @@
         "description": "The Vertically-Integrated Projects (VIP) Program operates in a research and development context. Undergraduate students that join VIP teams earn academic credit for their participation in design/discovery efforts that assist faculty and graduate students with research and development issues in their areas of expertise.",
         "course_credits": " 1-2",
         "prerequisites": "",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "Fall and Spring",
         "requirement": false
     },
     {
@@ -181,9 +133,6 @@
         "description": "Automata and formal language theory. Background for advanced applications in compilers, computer networks, operating systems, and natural language processing. Finite automata and regular languages. Push down automata and context free grammars. Turing machines.",
         "course_credits": " 3",
         "prerequisites": "A minimum grade of C- in both MATH 210 and CISC 220.",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "Fall and Spring",
         "requirement": false
     },
     {
@@ -192,9 +141,6 @@
         "description": "Propositional and predicate logic for general reasoning and advanced applications in knowledge representation in artificial intelligence and database, program correctness and programming semantics. Models, resolution, logic programming, and natural deduction.",
         "course_credits": " 3",
         "prerequisites": "CISC 220, MATH 210 (with minimum C- grade in both).",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "Spring",
         "requirement": false
     },
     {
@@ -203,9 +149,6 @@
         "description": "Design and analysis of algorithms: worst/average case analysis, proofs for correctness and performance of algorithms. Algorithmic strategies (divide and conquer, greedy methods, dynamic programming, etc.). Algorithms for searching, forming and traversal of strings, trees and graphs. Categorization of computational problems: classes P and NP. NP completeness.",
         "course_credits": " 3",
         "prerequisites": "MATH 210 and a minimum grade of C- in CISC 220.",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "Fall and Spring",
         "requirement": false
     },
     {
@@ -214,9 +157,6 @@
         "description": "",
         "course_credits": " 3",
         "prerequisites": "",
-        "restrict": "Cannot be used as a technical elective for CISC or INSY majors or minors.",
-        "breadth": "University: Creative Arts and Humanities; A&S: GROUP A: A&S Creative Arts & Humanities",
-        "offered": "Fall, Winter and Spring",
         "requirement": true
     },
     {
@@ -225,9 +165,6 @@
         "description": "Explore economic, philosophical, social, and technical approaches to intellectual property (1500 BCE to present) then will research contemporary IP issues in software, entertainment, the Internet, and biotechnology.",
         "course_credits": " 3",
         "prerequisites": "",
-        "restrict": "Junior or Senior standing. Cannot be used as a technical elective for CISC or INSY majors or minors.",
-        "breadth": "University: Social and Behavioral Sciences; A&S: GROUP C: A&S Social & Behavioral Sci",
-        "offered": "Spring",
         "requirement": false
     },
     {
@@ -236,9 +173,6 @@
         "description": "",
         "course_credits": " 1-3",
         "prerequisites": "CISC 101 or CISC 103 or CISC 106 or CISC 108.",
-        "restrict": "Student must have sufficient time in their schedule to visit schools weekly between 9am and 3pm. Students must pass a background check that clears them for teaching. Cannot be used as a technical elective by CISC or INSY majors.",
-        "breadth": "University: ; A&S: ",
-        "offered": "Fall and Spring",
         "requirement": false
     },
     {
@@ -247,9 +181,6 @@
         "description": "Principles and techniques used in the architecture of digital computers. Machine elements and their interrelation. Instruction sets, risc vs cisc, registers, busses and switches.",
         "course_credits": " 3",
         "prerequisites": "A minimum grade of C- in CISC 220 and CISC 260 (or equivalent courses).",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "Fall and Spring",
         "requirement": false
     },
     {
@@ -258,9 +189,6 @@
         "description": "Principles and techniques employed in the development of operating systems and their control programs. Includes management of memory, processors, I/O devices.",
         "course_credits": " 3",
         "prerequisites": "A minimum grade of C- in both CISC 220 and CISC 260. CPEG 222 may be substituted for CISC 260.",
-        "restrict": "CISC 360 recommended as a prerequisitesuisite.",
-        "breadth": "University: ; A&S: ",
-        "offered": "Fall and Spring",
         "requirement": false
     },
     {
@@ -269,9 +197,6 @@
         "description": "",
         "course_credits": " 1-6",
         "prerequisites": "",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "Fall and Spring",
         "requirement": false
     },
     {
@@ -280,9 +205,6 @@
         "description": "",
         "course_credits": " 1-6",
         "prerequisites": "",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -291,9 +213,6 @@
         "description": "Introduction to parallel computing concepts, methodologies, and tools. Programming and algorithmic techniques for code that will run simultaneously on parallel computing architectures. Topics include: single and multi-core parallelism, shared and distributed memory architectures, concurrency, program decomposition, data distribution, communication, load balancing, scalability, locality, granularity, debugging, performance evaluation.",
         "course_credits": " 3",
         "prerequisites": "C- or better in both CISC 220 and CISC 260.",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "Spring",
         "requirement": false
     },
     {
@@ -302,9 +221,6 @@
         "description": "Experience the software engineering process through creating educational games for youth; open-ended, project-oriented team learning while assisting regional teachers in integrating computing and computational thinking into the classroom; interact with teachers as clients, hone communication skills and experience design-studio-based critiques of your ideas.",
         "course_credits": " 3",
         "prerequisites": "CISC 220.",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "Spring",
         "requirement": false
     },
     {
@@ -313,9 +229,6 @@
         "description": "The Vertically-Integrated Projects (VIP) Program operates in a research and development context. Undergraduate students that join VIP teams earn academic credit for their participation in design/discovery efforts that assist faculty and graduate students with research and development issues in their areas of expertise.",
         "course_credits": " 1-3",
         "prerequisites": "",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "Fall and Spring",
         "requirement": false
     },
     {
@@ -324,9 +237,6 @@
         "description": "General models of computation, formal languages and automata theory and algorithmic unsolvability.",
         "course_credits": " 3",
         "prerequisites": "CISC 303.",
-        "restrict": "Students who received credit in CISC601 are not eligible to take this course without permission.",
-        "breadth": "University: ; A&S: ",
-        "offered": "Spring",
         "requirement": false
     },
     {
@@ -335,9 +245,6 @@
         "description": "Formal introduction to first-order logic with emphasis on its relevance to computer science. Syntax, semantics, models, formal proofs and results on soundness, consistency, completeness, compactness and undecidability. Automated theorem proving also covered.",
         "course_credits": " 3",
         "prerequisites": "CISC 304.",
-        "restrict": "Students who received credit in CISC604 are not eligible to take this course without permission.",
-        "breadth": "University: ; A&S: ",
-        "offered": "Fall",
         "requirement": false
     },
     {
@@ -346,9 +253,6 @@
         "description": "Floating point numbers; conditioning and stability; LU, Cholesky, and QR factorizations; square and overdetermined linear systems; Newton and quasi- Newton rootfinding methods; piecewise polynomials for interpolation, integration, and finite differences; explicit methods for initial-value problems. prerequisitesuisites: MATH 305, MATH 349, or MATH 351. Students may not receive credit for both MATH 353 and MATH 426.",
         "course_credits": " 3",
         "prerequisites": "MATH 305 or MATH 351 or MATH 349.",
-        "restrict": "Requires familiarity with computing (e.g., programming language).",
-        "breadth": "University: ; A&S: ",
-        "offered": "Fall",
         "requirement": false
     },
     {
@@ -357,9 +261,6 @@
         "description": "Eigenvalue and singular-value decompositions; power and Krylov subspace iterations; global interpolation and quadrature; methods for boundary-value problems and Poisson\u2019s equation; implicit solvers for stiff problems; method of lines for partial differential equations; diffusion and advection problems.",
         "course_credits": " 3",
         "prerequisites": "MATH 426 or CISC 410 or MATH 353.",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -368,9 +269,6 @@
         "description": "Formal approaches to the specification, verification, and design of software systems. Topics include representing programs as transition systems; liveness and safety properties; state space reachability; explicit, symbolic and automata-based model checking; temporal logics; symbolic execution; automated theorem-proving; and relational calculus. Learn to use state-of-the-art tools based on these methods, such as the model checker Spin.",
         "course_credits": " 3",
         "prerequisites": "CISC 304 or equivalent course, or permission of instructor.",
-        "restrict": "Students who received credit in CISC614 are not eligible to take this course without permission.",
-        "breadth": "University: ; A&S: ",
-        "offered": "Fall",
         "requirement": false
     },
     {
@@ -379,9 +277,6 @@
         "description": "Concepts, methodologies, and tools in bioinformatics. Abstraction of biological problems for computational solutions. Genome sequencing and assembly, bio-sequence analysis and comparison and database search, dynamics programming, hidden Markov models, and phylogenetic trees.",
         "course_credits": " 3",
         "prerequisites": "CISC 220 or permission of instructor.",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "Fall",
         "requirement": false
     },
     {
@@ -390,9 +285,6 @@
         "description": "Physical and logical organization of databases. Data retrieval languages, relational database languages, security and integrity, concurrency, distributed databases.",
         "course_credits": " 3",
         "prerequisites": "A minimum grade of C- in CISC 220.",
-        "restrict": "Students who received credit in CISC637 are not eligible to take this course without permission.",
-        "breadth": "University: ; A&S: ",
-        "offered": "Fall and Spring",
         "requirement": false
     },
     {
@@ -401,9 +293,6 @@
         "description": "Computer graphics technology, two- and three-dimensional systems, graphics software systems, modeling and object hierarchy, and animation.",
         "course_credits": " 3",
         "prerequisites": "CISC 220 and MATH 241.",
-        "restrict": "Students who received credit in CISC640 are not eligible to take this course without permission.",
-        "breadth": "University: ; A&S: ",
-        "offered": "Spring",
         "requirement": false
     },
     {
@@ -412,9 +301,6 @@
         "description": "Analysis of images and video to recognize, reconstruct, model, and otherwise infer static and dynamic properties of objects in the three-dimensional world. Geometry of image formation; image processing such as smoothing, edge and feature detection, color, and texture; segmentation; shape representation including deformable templates; stereo vision; motion estimation and tracking; techniques for 3-D reconstruction; image registration methods.",
         "course_credits": " 3",
         "prerequisites": "CISC 220.",
-        "restrict": "Students who received credit in CISC642 are not eligible to take this course without permission.",
-        "breadth": "University: ; A&S: ",
-        "offered": "Verify offering with Dept",
         "requirement": false
     },
     {
@@ -423,9 +309,6 @@
         "description": "Contents will vary to coincide with the interests of students and current faculty.",
         "course_credits": " 3",
         "prerequisites": "",
-        "restrict": "Students who received credit in CISC649 are not eligible to take this course without permission.",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -434,9 +317,6 @@
         "description": "Foundation principles, architectures and techniques employed in computer and communication networks. Focuses on mechanisms used in TCP/IP protocol suite. Topics include connection management, end-to-end reliable data transfer, sliding window protocols, quality of service, flow control, congestion control, routing, LANs, framing, error control, analog versus digital transmission, packet versus circuit switching, multiplexing.",
         "course_credits": " 3",
         "prerequisites": "CISC 260 or CPEG 222.",
-        "restrict": "Knowledge of probability and statistics recommended. Students who received credit in CISC 250, CPEG 419, CISC650, or ELEG651 are not eligible to take this course without permission.",
-        "breadth": "University: ; A&S: ",
-        "offered": "Fall and Spring",
         "requirement": false
     },
     {
@@ -445,9 +325,6 @@
         "description": "Modeling and computer simulation of discrete systems using discrete event simulation techniques. Application to the performance evaluation and modeling of computer networks and networking protocols. Study and use of simulation systems such as OPNET, Qualnet, and ns-2.",
         "course_credits": " 3",
         "prerequisites": "CISC 450, or equivalent.",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "Verify offering with Dept",
         "requirement": false
     },
     {
@@ -456,9 +333,6 @@
         "description": "Contents vary to coincide with the interests of students and current faculty.",
         "course_credits": " 3",
         "prerequisites": "CISC 450.",
-        "restrict": "Students who received credit in CISC659 are not eligible to take this course without permission.",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -467,9 +341,6 @@
         "description": "Practical introduction to network security field. Covers material on cryptography, intrusions, denial-of-service attacks, worms, honeynets and other hot topics in network security.",
         "course_credits": " 3",
         "prerequisites": "CISC 450 or equivalent.",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "Verify offering with Dept",
         "requirement": false
     },
     {
@@ -489,9 +360,6 @@
         "description": "",
         "course_credits": " 1-6",
         "prerequisites": "",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "Fall",
         "requirement": false
     },
     {
@@ -500,9 +368,6 @@
         "description": "",
         "course_credits": " 1-6",
         "prerequisites": "",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "Verify offering with Dept",
         "requirement": false
     },
     {
@@ -511,9 +376,6 @@
         "description": "Introduction to the design and implementation of compilers, with a focus on lexical analysis, parsing and syntax directed translation.",
         "course_credits": " 3",
         "prerequisites": "CISC 260 and CISC 303",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "Fall",
         "requirement": false
     },
     {
@@ -522,9 +384,6 @@
         "description": "This seminar-style cybersecurity course covers one specific discipline of information security known as application security. This discipline (APPSEC) refers to the development of software that can continue to function correctly even under constant scrutiny and attack by determined adversaries.",
         "course_credits": " 3",
         "prerequisites": "",
-        "restrict": "Programming experience in a high level language (e.g. C, C++, java, python).",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -533,9 +392,6 @@
         "description": "Experimental, theoretical and literature studies of computer science problems.",
         "course_credits": " 3",
         "prerequisites": "",
-        "restrict": "Open to majors only. Requires permission of instructor. May be taken twice for credit when topics vary.",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -544,9 +400,6 @@
         "description": "Programming and architecture of web servers and the technologies for implementing high performance, sophisticated web sites for applications like e-commerce. Students learn how to install and set-up a web server, how to write and install programs for a web server, and how to design and implement multi-tier client/server applications with database backends.",
         "course_credits": " 3",
         "prerequisites": "CISC 275",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "Spring",
         "requirement": false
     },
     {
@@ -555,9 +408,6 @@
         "description": "Understand and apply a complete modern software engineering process. Topics include requirements analysis, specification, design, implementation, verification, and project management. Real-life team projects cover all aspects of the software development lifecycle, from the requirements to acceptance testing.",
         "course_credits": " 3",
         "prerequisites": "CISC 275. CISC 361 is recommended.",
-        "restrict": "Students who received credit in CISC675 are not eligible to take this course without permission.",
-        "breadth": "University: ; A&S: ",
-        "offered": "Fall and Spring",
         "requirement": false
     },
     {
@@ -566,9 +416,6 @@
         "description": "This cybersecurity course introduce the theory and practices used to help make a computer program secure and provide the skills needed to implement programs that are free from vulnerabilities.",
         "course_credits": " 3",
         "prerequisites": "",
-        "restrict": "Programming experience in a high level language (e.g. C, C++, java, python). Graduate or upper level software course (design, etc.) recommended.",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -577,9 +424,6 @@
         "description": "Contents will vary to coincide with the interests of students and faculty.",
         "course_credits": " 3-6",
         "prerequisites": "CISC 361.",
-        "restrict": "Students who received credit in CISC679 are not eligible to take this course without permission.",
-        "breadth": "University: ; A&S: ",
-        "offered": "Verify offering with Dept",
         "requirement": false
     },
     {
@@ -588,9 +432,6 @@
         "description": "Programming techniques for problems not amenable to algorithmic solutions. Problem formulation, search strategies, state spaces, applications of logic, knowledge representation, planning and application areas.",
         "course_credits": " 3",
         "prerequisites": "CISC 220 with a minimum grade of C-, CISC 304.",
-        "restrict": "Students who received credit in CISC681 are not eligible to take this course without permission.",
-        "breadth": "University: ; A&S: ",
-        "offered": "Fall and Spring",
         "requirement": false
     },
     {
@@ -599,9 +440,6 @@
         "description": "Research and theoretical methods for the study, design, implementation, and evaluation of effective user-interactive systems, including requirements for gathering, survey design, and rapid prototyping. Hands-on group projects supplement theoretical knowledge.",
         "course_credits": " 3",
         "prerequisites": "CISC 275.",
-        "restrict": "Students who received credit in CISC682 are not eligible to take this course without permission.",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -610,9 +448,6 @@
         "description": "Concepts, techniques, and algorithms for mining large data sets to discover structural patterns that can be used to make subsequent predictions. Emphasis on practical approaches and empirical evaluation. Use of a workbench of data mining tools, such as the Weka toolkit.",
         "course_credits": " 3",
         "prerequisites": "CISC 220 and  MATH 205 or MATH 350.",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "Fall",
         "requirement": false
     },
     {
@@ -621,9 +456,6 @@
         "description": "Development of methods to learn to solve a task using examples. Explore different machine learning algorithms/techniques and discuss their strengths and weaknesses and situations they are or are not suited for.",
         "course_credits": " 3",
         "prerequisites": "CISC 220 and MATH 205 or MATH 350.",
-        "restrict": "Students who received credit in CISC684 are not eligible to take this course without permission.",
-        "breadth": "University: ; A&S: ",
-        "offered": "Spring",
         "requirement": false
     },
     {
@@ -632,9 +464,6 @@
         "description": "The Vertically-Integrated Projects (VIP) Program operates in a research and development context. Undergraduate students that join VIP teams earn academic credit for their participation in design/discovery efforts that assist faculty and graduate students with research and development issues in their areas of expertise.",
         "course_credits": " 1-3",
         "prerequisites": "",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "Fall and Spring",
         "requirement": false
     },
     {
@@ -643,9 +472,6 @@
         "description": "Contents vary to coincide with the interests of students and current faculty.",
         "course_credits": " 3",
         "prerequisites": "",
-        "restrict": "Students who received credit in CISC689 are not eligible to take this course without permission.",
-        "breadth": "University: ; A&S: ",
-        "offered": "Verify offering with Dept",
         "requirement": false
     },
     {
@@ -654,9 +480,6 @@
         "description": "First semester of two-semester senior software design course.  Students work in teams to develop solutions to real-world problems for a client.  Application of a modern software engineering process; requirement solicitation, analysis, and specification; prototyping; design; incremental development; testing and verification; client interaction; and presentation. Offered in Fall only.",
         "course_credits": " 3",
         "prerequisites": "CISC 275 and CISC 320.",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "Fall",
         "requirement": true
     },
     {
@@ -665,9 +488,6 @@
         "description": "",
         "course_credits": " 3",
         "prerequisites": "CISC 498.",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "Spring",
         "requirement": true
     },
     {
@@ -676,9 +496,6 @@
         "description": "",
         "course_credits": " 1-12",
         "prerequisites": "",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -687,9 +504,6 @@
         "description": "General models of computation, formal languages and automata theory, and algorithmic unsolvability",
         "course_credits": " 3",
         "prerequisites": "A course in which the student was required to prove theorems",
-        "restrict": "Credit cannot be received for both CISC401 and CISC601.",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -698,9 +512,6 @@
         "description": "Formal introduction to first-order logic with emphasis on its relevance to computer science. Syntax, semantics, models, formal proofs and results on soundness, consistency, completeness, compactness and undecidability. Automated theorem proving also covered.",
         "course_credits": " 3",
         "prerequisites": "CISC304 equivalent.",
-        "restrict": "Credit cannot be received for both CISC604 and CISC404.",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -709,9 +520,6 @@
         "description": "Introduction to computing as a creative activity for broad participation. Engages in computational thinking activities: abstraction, data and information, algorithms, programming, internet, and global impact of computing. Empowers students to apply computing to all disciplines including arts, humanities, business, sciences, health, and education.",
         "course_credits": " 3",
         "prerequisites": "",
-        "restrict": "Can not be used for credit towards the MS or PhD in computer science.",
-        "breadth": "University: ; A&S: ",
-        "offered": "Fall",
         "requirement": false
     },
     {
@@ -720,9 +528,6 @@
         "description": "Introduction to the concepts and practice of programming for graduate students with minimal to no prior experience in programming, to prepare to teach programming, use programming in another field of study, or gain skills for graduate study in a computer science-related field.",
         "course_credits": " 3",
         "prerequisites": "",
-        "restrict": "Cannot be used for credit towards the MS or PhD in computer science.",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -731,9 +536,6 @@
         "description": "Software management studies processes and concepts for planning and monitoring all software life-cycle phases. Topics include management models and structures, project planning including scheduling, effort estimation and risk management, project personnel and organization, project control (monitoring, measurement, correction and performance standards), software configuration management, and process description languages and tools.",
         "course_credits": " 3",
         "prerequisites": "",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -742,9 +544,6 @@
         "description": "Key software design concepts are introduced. Topics include basic design concepts, principles of good design, design strategies, software architecture and styles of architectural design, and design and architectural notations and languages. Detailed design, including design patterns and component design are also covered. Implementation issues that affect the design, including design support tools and tools for analyzing designs are discussed.",
         "course_credits": " 3",
         "prerequisites": "",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -753,9 +552,6 @@
         "description": "Rigorous methods to elicit, analyze, and specify the requirements of a software system. The tasks range from identifying stakeholders and their goals producing a precise software specification document. Topics may include data flow diagrams, use cases, UML sequence and collaboration diagrams, finite state machines, requirements for real-time and concurrent systems, entity-relationship diagrams, and logic-based specifications, as well as the analysis of specifications for consistency and completeness.",
         "course_credits": " 3",
         "prerequisites": "",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "Fall",
         "requirement": false
     },
     {
@@ -764,9 +560,6 @@
         "description": "Formal approaches to the specification, verification, and design of software systems. Topics include representing programs as transition systems; liveness and safety properties; state space reachability; explicit, symbolic and automata-based model checking; temporal logics; symbolic execution; automated theorem-proving; and relational calculus. Learn to use state-of-the-art tools based on these methods, such as the model checker Spin.",
         "course_credits": " 3",
         "prerequisites": "",
-        "restrict": "Credit cannot be received for both CISC614 and CISC414.",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -775,9 +568,6 @@
         "description": "Study of software testing and maintenance methodologies for modern software. Topics include approaches to automatic test case generation, test oracles, test coverage analysis, regression testing, program understanding, and software maintenance tools. A primary focus will be automation in software testing and maintenance approaches.",
         "course_credits": " 3",
         "prerequisites": "",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -786,9 +576,6 @@
         "description": "Emphasis on developing expertise in the design and analysis of algorithms. Equal importance given to techniques and specific algorithms. Particular topics include advanced data structures, graph algorithms, disjoint set manipulation, sorting and selection, amortized analysis, NP-completeness, and matrix and polynomial multiplication.",
         "course_credits": " 3",
         "prerequisites": "Undergraduate algorithms and discrete math courses",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -797,9 +584,6 @@
         "description": "Concepts, methodologies, and tools in bioinformatics. Abstraction of biological problems for computational solutions. Genome sequencing and assembly, bio-sequence analysis and comparison and database search, dynamics programming, hidden Markov models, and phylogenetic trees.",
         "course_credits": " 3",
         "prerequisites": "CISC220 or permission of instructor.",
-        "restrict": "Credit can not be earned for both CISC636 and CISC436.",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -808,9 +592,6 @@
         "description": "Physical and logical organization of databases. Data retrieval languages, relational database languages, security and integrity, concurrency, distributed databases.",
         "course_credits": " 3",
         "prerequisites": "CISC220 or equivalent.",
-        "restrict": "Students who received credit in CISC437 are not eligible to take this course without permission.",
-        "breadth": "University: ; A&S: ",
-        "offered": "Fall",
         "requirement": false
     },
     {
@@ -819,9 +600,6 @@
         "description": "Computer graphics technology, two- and three-dimensional systems, graphics software systems, modeling and object hierarchy, and animation.",
         "course_credits": " 3",
         "prerequisites": "CISC220 or equivalent.",
-        "restrict": "Students who received credit in CISC440 are not eligible to take this course without permission.",
-        "breadth": "University: ; A&S: ",
-        "offered": "Spring",
         "requirement": false
     },
     {
@@ -830,9 +608,6 @@
         "description": "An introduction to the analysis of images and video in order to recognize, reconstruct, model, and otherwise infer static and dynamic properties of objects in the three-dimensional world. Studies the geometry of image formation; basic concepts in image processing such as smoothing, edge and feature detection, color, and texture; segmentation; shape representation including deformable templates; stereo vision; motion estimation and tracking; techniques for 3-D reconstruction; image registration methods.",
         "course_credits": " 3",
         "prerequisites": "CISC220 equivalent",
-        "restrict": "Credit cannot be received for both CISC 442 and CISC 642.",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -841,9 +616,6 @@
         "description": "Contents will vary to coincide with the interests of students and current faculty.",
         "course_credits": " 3",
         "prerequisites": "",
-        "restrict": "Students who received credit in CISC 449 are not eligible to take this course without permission.",
-        "breadth": "University: ; A&S: ",
-        "offered": "Verify Offering with Dept",
         "requirement": false
     },
     {
@@ -852,9 +624,6 @@
         "description": "Foundation principles, architectures, and techniques employed in computer and communication networks. Focuses on mechanisms used in TCP/IP protocol suite. Topics include connection management, end-to-end reliable data transfer, sliding window protocols, quality of service, flow control, congestion control, routing, LANs, framing, error control, analog versus digital transmission, packet versus circuit switching, multiplexing.",
         "course_credits": " 3",
         "prerequisites": "An undergraduate level course in computer architecture and operating systems.",
-        "restrict": "Knowledge of probability and statistics recommended. Credit cannot be received for CISC650 and any of the following courses: CIS250, CPEG419, CIS450, ELEG 651.",
-        "breadth": "University: ; A&S: ",
-        "offered": "Fall and Spring",
         "requirement": false
     },
     {
@@ -863,9 +632,6 @@
         "description": "Modeling and computer simulation of discrete systems using discrete event simulation techniques. Application to the performance evaluation and modeling of computer networks and networking protocols. Study and use of simulation systems such as OPNET, Qualnet, and ns-2.",
         "course_credits": " 3",
         "prerequisites": "CISC450 or CISC 650.",
-        "restrict": "Credit cannot be received for both CISC653 and CISC453.",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -874,9 +640,6 @@
         "description": "Mentored experience in writing computer science research papers, proposals, and dissertations through focused writing exercises and critiques. Practice in developing and presenting elevator talks, research posters, conference and thesis defense presentations, and research interview talks. This course is open to graduate and undergraduates.",
         "course_credits": " 3",
         "prerequisites": "One semester of computer science research experience with an advisor and a current research project.",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "Spring",
         "requirement": false
     },
     {
@@ -885,9 +648,6 @@
         "description": "Contents vary to coincide with the interests of students and faculty.",
         "course_credits": " 3",
         "prerequisites": "CISC 650",
-        "restrict": "Credit cannot be received for both CISC659 and CISC459.",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -896,9 +656,6 @@
         "description": "Recent advances in computer architecture and their impact on architectural design. Multicomputer and multiprocessor architectures. Parallel machines.",
         "course_credits": " 3",
         "prerequisites": "CISC360 or equivalent.",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "Fall",
         "requirement": false
     },
     {
@@ -907,9 +664,6 @@
         "description": "Comparison and analysis of strategies for the management of memory, processors, I/O devices and file systems.",
         "course_credits": " 3",
         "prerequisites": "CISC260 or equivalent",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -918,9 +672,6 @@
         "description": "Detailed, in-depth overview of pressing network security problems and discusses potential solutions. Covers a broad variety of security topics, such as cryptography, authentication, denial-of-service attacks, worms, viruses, etc. Lecture and optional reading provide background information on the key network security concepts, and course projects create opportunity to exercise concepts learned in class.",
         "course_credits": " 3",
         "prerequisites": "CISC450 or CISC 650.",
-        "restrict": "Credit cannot be received for both CISC664 and CISC464.",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -929,9 +680,6 @@
         "description": "Introduction to computer and network security and covers the foundation security policies and methods to provide confidentiality, integrity, and availability, as well as cryptography, auditing, and user security. Topics are reinforced with hands-on exercises run in a virtual machine environment.",
         "course_credits": " 3",
         "prerequisites": "",
-        "restrict": "Students who received credit in CISC465, CPEG465, CPEG 665, ELEG465, ELEG 665, MISY465 or MISY 665 are not eligible to take this course without permission.",
-        "breadth": "University: ; A&S: ",
-        "offered": "Spring",
         "requirement": false
     },
     {
@@ -940,9 +688,6 @@
         "description": "",
         "course_credits": " 1-12",
         "prerequisites": "",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -951,9 +696,6 @@
         "description": "",
         "course_credits": " 1-12",
         "prerequisites": "",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -962,9 +704,6 @@
         "description": "Selection, use and implementation of appropriate language(s) for given problems. Syntax, semantics, pragmatics, parameter passing and abstract data types.",
         "course_credits": " 3",
         "prerequisites": "CISC303 or equivalent.",
-        "restrict": "Credit cannot be received for both CISC670 and CISC470.",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -973,9 +712,6 @@
         "description": "Advanced design and implementation of programming language translators. Emphasis on parsing methods, run-time, storage management techniques, code generation and optimization.",
         "course_credits": " 3",
         "prerequisites": "CISC320 or equivalent, and CISC 601 recommended.",
-        "restrict": "Undergraduates must obtain instructor\u2019s permission. Credit cannot be received for both CISC672 and CISC471.",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -984,9 +720,6 @@
         "description": "Understand and apply a complete modern software engineeringprocess. Topics include requirements analysis, specification, design,implementation, verification, and project management. Real-life teamprojects cover all aspects of software development lifecycle, from requirements to acceptance testing. Use of formal methods in the specification, design, and verification of software will be explored.",
         "course_credits": " 3",
         "prerequisites": "By permission of instructor only.",
-        "restrict": "Credit cannot be received for both CISC475 and CISC675.",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -995,9 +728,6 @@
         "description": "Programming techniques for problems not amenable to algorithmic solutions. Problem formulation, search strategies, state spaces, applications of logic, knowledge representation, planning and application areas.",
         "course_credits": " 3",
         "prerequisites": "CISC220.",
-        "restrict": "Students who received credit in CISC481, CGSC481, or CGSC 681 are not eligible to take this course without permission.",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -1006,9 +736,6 @@
         "description": "Research and theoretical methods for the study, design, implementation, and evaluation of effective user-interactive systems, including requirements for gathering, survey design, and rapid prototyping. Hands-on group projects supplement theoretical knowledge.",
         "course_credits": " 3",
         "prerequisites": "Software engineering experience.",
-        "restrict": "Credit cannot be received for both CISC482 and CISC682.",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -1017,9 +744,6 @@
         "description": "Concepts, techniques, and algorithms for mining large data sets to discover structural patterns that can be used to make subsequent predictions. Emphasis on practical approaches and empirical evaluation. Use of a workbench of data mining tools, such as the Weka toolkit.",
         "course_credits": " 3",
         "prerequisites": "CISC 220.",
-        "restrict": "Students who received credit in CISC483 are not eligible to take this course without permission.",
-        "breadth": "University: ; A&S: ",
-        "offered": "Fall and Spring",
         "requirement": false
     },
     {
@@ -1028,9 +752,6 @@
         "description": "Development of methods to learn to solve a task using examples. Explore different machine learning algorithms/techniques and discuss their strengths and weaknesses and situations they are or are not suited for.",
         "course_credits": " 3",
         "prerequisites": "Basic background in probability and statistics.",
-        "restrict": "Credit cannot be received for both CISC484 and CISC684.",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -1039,9 +760,6 @@
         "description": "Concepts, techniques, and tools for modeling and simulation of biological systems. Topics include gene regulation, signal transduction, and metabolism, Bayesian networks, Monte Carlo and Gibbs sampling, and optimization.",
         "course_credits": " 3",
         "prerequisites": "CISC 636.",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "Fall and Spring",
         "requirement": false
     },
     {
@@ -1050,9 +768,6 @@
         "description": "Contents vary to coincide with the interests of students and faculty.",
         "course_credits": " 3-12",
         "prerequisites": "CISC 681",
-        "restrict": "Credit cannot be received for both CISC689 and CISC489.",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -1061,9 +776,6 @@
         "description": "Technical practicum guided by the individual student\u2019s interests. The student will contribute a significant software engineering project either on campus or in association with an off-campus private business or government agency. Must be arranged with, and approved in advance by, a CIS or ECE faculty member.",
         "course_credits": " 3",
         "prerequisites": "",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -1072,9 +784,6 @@
         "description": "",
         "course_credits": " 1",
         "prerequisites": "",
-        "restrict": "Requires permission of the instructor.",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -1083,9 +792,6 @@
         "description": "Contents vary to coincide with the interests of students and faculty.",
         "course_credits": " 3",
         "prerequisites": "",
-        "restrict": "Requires permission of instructor.",
-        "breadth": "University: ; A&S: ",
-        "offered": "Fall",
         "requirement": false
     },
     {
@@ -1094,9 +800,6 @@
         "description": "Survey methods and approaches in algorithms, statistics and machine learning, along with their current applications in bio- and medical- informatics.",
         "course_credits": " 3",
         "prerequisites": "",
-        "restrict": "Should have some background in basic probability and statistics, and background in computing (algorithms). For students outside CIS, Biomedical Engineering or Bioinformatics, permission from the instructor.",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -1105,9 +808,6 @@
         "description": "Contents vary to coincide with the interests of students and faculty.",
         "course_credits": " 3-12",
         "prerequisites": "",
-        "restrict": "Requires permission of instructor.",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -1116,9 +816,6 @@
         "description": "Concentrated study on selected areas in Financial Services Analytics.",
         "course_credits": " 3",
         "prerequisites": "",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -1127,9 +824,6 @@
         "description": "Performance analysis of computer networks and network protocols. Introduction to queuing theory, stochastic processes, Markov chains, and various queuing models. Open and closed queuing networks. Analysis of ARQ retransmission strategies, multi-access communication, routing, flow control, and congestion control schemes.",
         "course_credits": " 3",
         "prerequisites": "CISC 650 or equivalent.",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -1138,9 +832,6 @@
         "description": "Introduction to network management concepts. Network management architectures and protocols: the Internet and OSI frameworks, management functionalities, management domains and objects, protocols and services (SNMP, CMIS/P). Design of management agents and clients. Concepts of performance management, fault management, configuration management and other management applications.",
         "course_credits": " 3",
         "prerequisites": "CISC 650.",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -1149,9 +840,6 @@
         "description": "",
         "course_credits": " 1-12",
         "prerequisites": "",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -1160,9 +848,6 @@
         "description": "",
         "course_credits": " 1-12",
         "prerequisites": "",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -1171,9 +856,6 @@
         "description": "Upper-level graduate research oriented toward a student\u2019s potential master\u2019s thesis or Ph.D. dissertation.",
         "course_credits": " 1-9",
         "prerequisites": "",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -1182,9 +864,6 @@
         "description": "",
         "course_credits": " 1-6",
         "prerequisites": "",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -1193,9 +872,6 @@
         "description": "Contents vary to coincide with the interests of students and faculty.",
         "course_credits": " 3-12",
         "prerequisites": "CISC 662 or CISC 663.",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -1204,9 +880,6 @@
         "description": "Introduction to computational models of syntax, semantics and pragmatics for natural language understanding. Emphasis on design of English interfaces to data bases and ill-formed input.",
         "course_credits": " 3",
         "prerequisites": "CISC 681.",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -1215,9 +888,6 @@
         "description": "Introduction to the field of Multi-Agent Systems, examining issues that arise when groups of self-interested or cooperating autonomous agents interact to solve shared problems. Issues include reasoning about the knowledge and beliefs of other agents, communication and negotiation, computational organization, coordination and control.",
         "course_credits": " 3",
         "prerequisites": "CISC 681 or equivalent.",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -1226,9 +896,6 @@
         "description": "Contents vary to coincide with the interests of students and faculty.",
         "course_credits": " 3",
         "prerequisites": "CISC 681",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -1237,9 +904,6 @@
         "description": "Weekly lectures by faculty and visiting researchers provide a broad overview of the scope as well as an insight into significant results of current research in computer science.",
         "course_credits": " 0",
         "prerequisites": "",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -1248,9 +912,6 @@
         "description": "Research and readings in preparation of dissertation topic and/or qualifying examinations for doctoral students before admission to candidacy but after completion of all required course work.",
         "course_credits": " 3-12",
         "prerequisites": "",
-        "restrict": "Not open to students who have been admitted to candidacy.",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
     },
     {
@@ -1259,9 +920,214 @@
         "description": "",
         "course_credits": " 1-12",
         "prerequisites": "",
-        "restrict": "",
-        "breadth": "University: ; A&S: ",
-        "offered": "",
         "requirement": false
+    },
+    {
+        "code": "ENGL 110",
+        "title": "Seminar in Composition",
+        "descriptiion": "",
+        "credits": " 3",
+        "preReq": "",
+        "requirement": true
+    },
+    {
+        "code": "ENGL 312",
+        "title": "Written Communications in Business",
+        "descriptiion": "",
+        "credits": " 3",
+        "preReq": "ENGL 110.",
+        "requirement": true
+    },
+    {
+        "code": "ENGL 410",
+        "title": "Technical Writing",
+        "descriptiion": "",
+        "credits": " 3",
+        "preReq": "ENGL 110.",
+        "requirement": true
+    },
+    {
+        "code": "UNIV 101",
+        "title": "First Year Experience I",
+        "descriptiion": "The seminar is designed to help students adjust to college life. Led by faculty who will work closely with a peer mentor and others to help ensure that the first semester is successful and provides the foundation for your future success at UD.  Opportunity for class discussion while utilizing the common reader, class assignments and university wide programming.  Highlights our commitment at UD to being a community that recognizes and appreciates diversity and difference.",
+        "credits": " 1",
+        "preReq": "",
+        "requirement": true
+    },
+    {
+        "code": "UNIV 401",
+        "title": "Senior Thesis",
+        "descriptiion": "Senior thesis for students working toward a degree with distinction.",
+        "credits": " 2-4",
+        "preReq": "",
+        "requirement": true
+    },
+    {
+        "code": "EGGG 101",
+        "title": "Introduction to Engineering",
+        "descriptiion": "Introduction to profession, including disciplines of chemical, civil, computer, electrical, environmental, and mechanical engineering.  Prepares students for success through integration of:  technical problem solving and engineering design, ethical decision-making, teamwork, and communicating to diverse audiences.",
+        "credits": " 2",
+        "preReq": "",
+        "requirement": true
+    },
+    {
+        "code": "MATH 241",
+        "title": "Analytic Geometry and Calculus A",
+        "descriptiion": "Functions, limits, continuity, derivatives. Polynomial, rational, exponential, hyperbolic, logarithmic, trigonometric and inverse trigonometric functions. Definite and indefinite integrals and the Fundamental Theorem of Calculus. Simple differential equations (separable ODE, linear ODE). ODE models leading to exponential growth and decay.",
+        "credits": " 4",
+        "preReq": "MATH 117 or acceptable score on the Math Placement Exam in accordance with current standards determined by the Department of Mathematical Sciences. See https://www.mathsci.udel.edu/courses-placement/ud-math-placement for more information.",
+        "requirement": true
+    },
+    {
+        "code": "MATH 242",
+        "title": "Analytic Geometry and Calculus B",
+        "descriptiion": "Brief review of MATH 241; evaluation of limits by L\u2019Hospital\u2019s rule; applications of integration; integration techniques; parametric curves; polar coordinates; infinite sequences and series. Includes use of computers to perform symbolic, numerical and graphical analysis.",
+        "credits": " 4",
+        "preReq": "MATH 241 or MATH 232.",
+        "requirement": true
+    },
+    {
+        "code": "MATH 205",
+        "title": "Statistical Methods",
+        "descriptiion": "Descriptive statistics, graphical displays, sampling, variation, normal distribution, estimation, hypothesis testing, one-way analysis of variance, simple linear regression and goodness of fit. Laboratory covers use of statistical packages on mainframe and microcomputers.",
+        "credits": " 4",
+        "preReq": "MATH 210 or MATH 230.",
+        "requirement": true
+    },
+    {
+        "code": "MATH 210",
+        "title": "Discrete Mathematics I",
+        "descriptiion": "Elements of sets and logic. Relations, functions. Integers. Induction and recursion. Principles and techniques of counting. Graphs. Paths and circuits",
+        "credits": " 3",
+        "preReq": "",
+        "requirement": true
+    },
+    {
+        "code": "MATH 350",
+        "title": "Probability Theory and Simulation Methods",
+        "descriptiion": "Introduces the basic theory of discrete and continuous aspects of probability theory. Topics include bivariate distributions, sums of independent random variables, moment generating functions, laws of large numbers and central limit theorem.",
+        "credits": " 3",
+        "preReq": "",
+        "requirement": true
+    },
+    {
+        "code": "MATH 349",
+        "title": "Elementary Linear Algebra",
+        "descriptiion": "Systems of linear equations, linear combinations of vectors, and matrix algebra. Determinants, eigenvalues and eigenvectors, similarity and diagonalization of square matrices. Vector spaces, linear dependence and independence, basis and dimension, linear transformations. Inner product spaces, orthogonality, orthogonal projections, fundamental subspaces. A software package may be used for the analysis and solution of linear algebra problems.",
+        "credits": " 3",
+        "preReq": "MATH 230 or MATH 242.",
+        "requirement": true
+    },
+    {
+        "code": "PHYS 207",
+        "title": "Fundamentals of Physics I",
+        "descriptiion": "First course in a sequence with PHYS 208 that provides an introduction to physics for those in physical sciences and engineering. Emphasis on Newton\u2019s laws of motion and conservation principles. These are applied to motion in a gravitational field, and to rotation of a rigid body. Integrates conceptual understanding with extensive problem solving.",
+        "credits": " 3",
+        "preReq": "",
+        "requirement": true
+    },
+    {
+        "code": "PHYS 208",
+        "title": "Fundamentals of Physics II",
+        "descriptiion": "Second course in a sequence with PHYS 207 that provides an introduction to physics for those in the physical sciences and engineering. Emphasis on electro- and magnetostatics in terms of forces, fields and potentials, with some elements of circuit theory. Furthermore, magnetic induction and Maxwell\u2019s equations in integral form are introduced. Integrates conceptual understanding with extensive problem solving.",
+        "credits": " 3",
+        "preReq": "PHYS 203 or PHYS 207 and PHYS 227, MATH 241 or MATH 232.",
+        "requirement": true
+    },
+    {
+        "code": "PHYS 227",
+        "title": "Fundamentals of Physics Laboratory I",
+        "descriptiion": "Introductory laboratory experience associated with the course content in PHYS 207.  This includes exploring projectile motion, linear and rotational dynamics, energy, momentum, and simple harmonic motion.",
+        "credits": " 1",
+        "preReq": "",
+        "requirement": true
+    },
+    {
+        "code": "PHYS 228",
+        "title": "Fundamentials of Physics Laboratory II",
+        "descriptiion": "Introductory laboratory associated with topics coverd in PHYS 208.  This includes investigaing the properties of Electric and Magnetic fields, simple circuits, and simple motors.",
+        "credits": " 1",
+        "preReq": "",
+        "requirement": true
+    },
+    {
+        "code": "BISC 207",
+        "title": "Introductory Biology I",
+        "descriptiion": "Molecular basis of life. Structure and function of cells, including signal transduction pathways. Energy transformations. Classical Mendelian genetics and the flow of information from DNA to RNA to proteins. Laboratory focuses on the testing of hypotheses, data analysis and scientific writing.",
+        "credits": " 4",
+        "preReq": "",
+        "requirement": true
+    },
+    {
+        "code": "BISC 208",
+        "title": "Introductory Biology II",
+        "descriptiion": "Mechanisms of evolution. Physiology of multicellular plants and animals. Principles of ecology with emphasis on the biology of populations. Laboratory focuses on testing of hypotheses, data analysis and scientific writing. Animal and plant anatomy also studied.",
+        "credits": " 4",
+        "preReq": "BISC 207.",
+        "requirement": true
+    },
+    {
+        "code": "GEOL 105",
+        "title": "Geological Hazards and Their Human Impact",
+        "descriptiion": "Geological processes and events that adversely affect humans and civilization. Methods for predicting and dealing with geological hazards. May be taken with a 1 credit lab, GEOL 115.",
+        "credits": " 3",
+        "preReq": "",
+        "requirement": true
+    },
+    {
+        "code": "GEOL 107",
+        "title": "Geology of Dynamic Earth",
+        "descriptiion": "Principles of physical geology and its application in interpreting earth processes. Laboratory covers identification of earth materials and the interpretation of topographic and geologic maps.",
+        "credits": " 4",
+        "preReq": "",
+        "requirement": true
+    },
+    {
+        "code": "GEOL 115",
+        "title": "Geological Hazards Laboratory",
+        "descriptiion": "Laboratory investigation of environmental geological processes and their impact on society: earthquakes, volcanoes, coastal hazards, rivers and streams, groundwater. Identification of earth materials and study of earth processes using topographical, geological and tectonic maps.",
+        "credits": " 1",
+        "preReq": "",
+        "requirement": true
+    },
+    {
+        "code": "GEOL 110",
+        "title": "Earth\u2019s Evolving Systems",
+        "descriptiion": "History of the earth and its biota.  Origins, evolution and mass extinctionsof major groups of organisms as demonstrated by the earth\u2019s fossil record.  Laboratory covers identification of basic fossil groups and exercises in interpreting Earth history.",
+        "credits": " 4",
+        "preReq": "",
+        "requirement": true
+    },
+    {
+        "code": "CHEM 103",
+        "title": "General Chemistry",
+        "descriptiion": "Matter, the changes that matter undergoes, and the laws governing these changes, with greater emphasis on atomic and molecular structure, chemicalbonding, and energy relationships. Properties of gases, liquids, solids and solutions.",
+        "credits": " 3",
+        "preReq": "",
+        "requirement": true
+    },
+    {
+        "code": "CHEM 104",
+        "title": "General Chemistry",
+        "descriptiion": "Continuation and application of CHEM 103 with additional emphasis on chemical spontaneity, equilibrium, rates of reactions, electrochemistry and organic chemistry.",
+        "credits": " 3",
+        "preReq": "CHEM 103 and CHEM 133 or CHEM 111.",
+        "requirement": true
+    },
+    {
+        "code": "CHEM 133",
+        "title": "General Chemistry Laboratory",
+        "descriptiion": "Laboratory topics and techniques covered include: stoichiometry, gases, liquids, solids, atomic and molecular structure, chemical reactions in solution, and properties of solutions. 42h lab experiments.",
+        "credits": " 1",
+        "preReq": "",
+        "requirement": true
+    },
+    {
+        "code": "CHEM 134",
+        "title": "General Chemistry Laboratory",
+        "description": "This laboratory course is the second in a two-semester sequence designed (and required) for science and engineering majors. Covers thermodynamics, kinetics, equilibrium among gases, liquids and solids, equilibrium in solution, acids and bases, electrochemistry, and nuclear chemistry.  Topics touched on briefly include transition elements and types and nomenclature of organic compounds. Descriptive chemistry of representative elements is interspersed throughout the course.  42h laboratory experiments.",
+        "credits": " 1",
+        "preReq": "CHEM 103 and CHEM 133, or CHEM 111.",
+        "requirement": true
     }
 ]
