@@ -29,6 +29,7 @@ export function SemesterList({
                             size="sm"
                             variant="outline-danger"
                             onClick={() => deleteSemester(semester)}
+                            data-testid="delete-sem-btn"
                         >
                             delete semester
                         </Button>
