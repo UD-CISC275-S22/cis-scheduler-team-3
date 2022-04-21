@@ -85,13 +85,14 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
                     className="Buttons"
                     variant="success"
                     onClick={() => updatenewsem()}
+                    data-testid="add-semester-btn"
                 >
                     Add Semester
                 </Button>
                 <p> </p>
                 {newsem ? (
                     <>
-                        <Form.Group data-testid="add-semester">
+                        <Form.Group>
                             <Form.Label>
                                 Semester Session (Fall, Winter, Spring, Summer):
                             </Form.Label>
@@ -109,6 +110,7 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
                             size="sm"
                             variant="success"
                             onClick={() => addSemester()}
+                            data-testid="add-btn2"
                         >
                             add
                         </Button>

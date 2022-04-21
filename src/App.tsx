@@ -75,6 +75,7 @@ export function App(): JSX.Element {
                     variant="success"
                     className="Delete-plan"
                     onClick={() => updateAdd()}
+                    data-testid="add-plan-btn"
                 >
                     Add Plan
                 </Button>
@@ -103,6 +104,7 @@ export function App(): JSX.Element {
                         variant="success"
                         size="sm"
                         onClick={() => addPlan()}
+                        data-testid="add-btn"
                     >
                         add
                     </Button>
