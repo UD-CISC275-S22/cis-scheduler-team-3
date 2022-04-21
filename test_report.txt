@@ -5473,16 +5473,16 @@ FAIL src/App.test.tsx
 -------------------|---------|----------|---------|---------|-------------------
 File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 -------------------|---------|----------|---------|---------|-------------------
-All files          |   47.96 |       55 |   37.09 |   47.96 |                   
- src               |   33.33 |       50 |    12.5 |   33.33 |                   
-  App.tsx          |   33.33 |       50 |    12.5 |   33.33 | 20-43,68-95       
- src/components    |   49.51 |    55.55 |   40.74 |   49.51 |                   
+All files          |   46.09 |       55 |   34.84 |   46.09 |                   
+ src               |   28.57 |       50 |      10 |   28.57 |                   
+  App.tsx          |   28.57 |       50 |      10 |   28.57 | 20-49,77-105      
+ src/components    |   48.57 |    55.55 |   39.28 |   48.57 |                   
   CourseList.tsx   |     100 |      100 |     100 |     100 |                   
-  CourseMover.tsx  |       0 |      100 |       0 |       0 | 17-91             
+  CourseMover.tsx  |       0 |      100 |       0 |       0 | 17-94             
   CoursePool.tsx   |     100 |      100 |     100 |     100 |                   
   CourseView.tsx   |     100 |      100 |     100 |     100 |                   
   NewCourse.tsx    |   75.86 |       50 |   66.66 |   75.86 | 26-27,52-70       
-  PlanList.tsx     |     100 |      100 |     100 |     100 |                   
+  PlanList.tsx     |      50 |      100 |      50 |      50 | 14,30             
   PlanView.tsx     |   27.27 |       50 |      10 |   27.27 | 18-54,66-105      
   SemesterList.tsx |     100 |      100 |     100 |     100 |                   
   SemesterView.tsx |   29.41 |    33.33 |   11.11 |   29.41 | 21-42,60-93       
@@ -5494,5 +5494,5 @@ All files          |   47.96 |       55 |   37.09 |   47.96 |
 Test Suites: 2 failed, 7 passed, 9 total
 Tests:       2 failed, 23 passed, 25 total
 Snapshots:   0 total
-Time:        6.974 s
+Time:        7.468 s
 Ran all test suites.
