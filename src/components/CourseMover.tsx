@@ -17,6 +17,7 @@ export function CourseMover({
     const [origin, setOrigin] = useState<Semester>(semesters[0]);
     const [course, setCourse] = useState<Course>(origin.courses[0]);
     const [destination, setDestination] = useState<Semester>(semesters[0]);
+    //let flag = false;
 
     function updateOrigin(event: React.ChangeEvent<HTMLSelectElement>) {
         const chosenInd = semesters.findIndex(
@@ -68,7 +69,9 @@ export function CourseMover({
                 <Form.Group>
                     <Form.Label>Select a Course to Move:</Form.Label>
                     <Form.Select value={course.code} onChange={updateCourse}>
-                        <option></option>
+                        <option selected disabled>
+                            choose course
+                        </option>
                         {origin.courses.map((course: Course) => (
                             <option key={course.code} value={course.code}>
                                 {course.code}:{course.title}

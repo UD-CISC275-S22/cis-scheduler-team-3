@@ -16,6 +16,12 @@ function App(): JSX.Element {
     const [start, setstart] = useState<number>(0);
     const [end, setend] = useState<number>(0);
     const [add, setadd] = useState<boolean>(false);
+    const [remove, setremove] = useState<boolean>(false);
+    const [plan, setplan] = useState<DegreePlan>(plans[0]);
+    let flag = true;
+    function updateRemove() {
+        setremove(!remove);
+    }
     function updateAdd() {
         setadd(!add);
     }
@@ -42,6 +48,24 @@ function App(): JSX.Element {
     function updateName(event: ChangeEvent) {
         setname(event.target.value);
     }
+    function updatePlan(event: React.ChangeEvent<HTMLSelectElement>) {
+        const chosenInd = plans.findIndex(
+            (plan: DegreePlan): boolean => plan.name === event.target.value
+        );
+        setplan(plans[chosenInd]);
+    }
+    function deletePlan() {
+        if (plans.length === 0) {
+            setplans([]);
+            flag = false;
+        } else {
+            const delInd = plans.findIndex(
+                (Plan: DegreePlan): boolean => Plan.name === plan.name
+            );
+            plans.splice(delInd, 1);
+            setplans([...plans]);
+        }
+    }
 
     return (
         <>
@@ -62,10 +86,14 @@ function App(): JSX.Element {
             </div>
             <div>
                 <CoursePool></CoursePool>
-                <PlanList plans={plans}></PlanList>
+                {flag ? <PlanList plans={plans}></PlanList> : null}
             </div>
             <div>
-                <Button variant="success" size="sm" onClick={() => updateAdd()}>
+                <Button
+                    variant="success"
+                    className="Delete-plan"
+                    onClick={() => updateAdd()}
+                >
                     Add Plan
                 </Button>
             </div>
@@ -98,9 +126,41 @@ function App(): JSX.Element {
                     </Button>
                 </div>
             ) : null}
+            <Button
+                className="Delete-plan"
+                variant="warning"
+                onClick={() => updateRemove()}
+            >
+                Remove Plan
+            </Button>
+            <p> </p>
+            {remove ? (
+                <div>
+                    <Form.Group className="Delete-plan">
+                        <Form.Label>Select Plan to Delete:</Form.Label>
+                        <Form.Select
+                            value={plans[0].name}
+                            onChange={updatePlan}
+                        >
+                            <option></option>
+                            {plans.map((plan: DegreePlan) => (
+                                <option key={plan.name} value={plan.name}>
+                                    {plan.name}
+                                </option>
+                            ))}
+                        </Form.Select>
+                    </Form.Group>
+                    <Button
+                        size="sm"
+                        variant="danger"
+                        onClick={() => deletePlan()}
+                    >
+                        Delete Plan
+                    </Button>
+                </div>
+            ) : null}
             <hr></hr>
         </>
     );
 }
-
 export default App;
