@@ -29,11 +29,12 @@ export function CourseView({ course }: { course: Course }): JSX.Element {
                 </li>
                 <li data-testid="course-prereq" className="Course">
                     Prerequisites:
-                    {course.prerequisites.map((prereq: string) => (
+                    {course.prerequisites}
+                    {/* {course.prerequisites.map((prereq: string) => (
                         <div key={prereq}>
                             <i>{prereq},</i>
                         </div>
-                    ))}
+                    ))} */}
                 </li>
             </ul>
         </div>
