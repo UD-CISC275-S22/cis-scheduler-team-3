@@ -26,7 +26,7 @@ export function PlanList({
                         <PlanView plan={plan}></PlanView>
                         <Button
                             className="me-3"
-                            variant="danger"
+                            variant="outline-danger"
                             onClick={() => deletePlan(plan.name)}
                         >
                             delete plan

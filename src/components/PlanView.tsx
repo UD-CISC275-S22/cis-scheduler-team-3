@@ -17,6 +17,12 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
     function updatenewsem() {
         setnewsem(!newsem);
     }
+    function removeSemester(termyear: string) {
+        const newsemesters = [...semesters].filter(
+            (sem: Semester): boolean => sem.session + ":" + sem.year != termyear
+        );
+        setsemesters(newsemesters);
+    }
     function addSemester() {
         const newSemester = {
             courses: [],
@@ -110,7 +116,10 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
                 ) : null}
             </div>
             <h6 data-testid="semester-list">
-                <SemesterList semesters={semesters}></SemesterList>
+                <SemesterList
+                    semesters={semesters}
+                    removesem={removeSemester}
+                ></SemesterList>
             </h6>
         </div>
     );
