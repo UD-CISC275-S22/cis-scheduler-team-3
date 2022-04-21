@@ -42,6 +42,12 @@ function App(): JSX.Element {
     function updateName(event: ChangeEvent) {
         setname(event.target.value);
     }
+    function completeRemove(n: string) {
+        const newplans = [...plans].filter(
+            (dp: DegreePlan): boolean => dp.name != n
+        );
+        setplans(newplans);
+    }
 
     return (
         <>
@@ -62,10 +68,14 @@ function App(): JSX.Element {
             </div>
             <div>
                 <CoursePool></CoursePool>
-                <PlanList plans={plans}></PlanList>
+                <PlanList plans={plans} remove={completeRemove}></PlanList>
             </div>
             <div>
-                <Button variant="success" size="sm" onClick={() => updateAdd()}>
+                <Button
+                    variant="success"
+                    className="Delete-plan"
+                    onClick={() => updateAdd()}
+                >
                     Add Plan
                 </Button>
             </div>
@@ -98,9 +108,9 @@ function App(): JSX.Element {
                     </Button>
                 </div>
             ) : null}
+            <p> </p>
             <hr></hr>
         </>
     );
 }
-
 export default App;
