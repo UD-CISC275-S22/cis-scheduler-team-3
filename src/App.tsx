@@ -10,7 +10,7 @@ type ChangeEvent = React.ChangeEvent<
     HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement
 >;
 
-function App(): JSX.Element {
+export function App(): JSX.Element {
     const [plans, setplans] = useState<DegreePlan[]>(SAMPLE_PLANS);
     const [name, setname] = useState<string>("");
     const [start, setstart] = useState<number>(0);
@@ -52,7 +52,7 @@ function App(): JSX.Element {
     return (
         <>
             <div className="App">
-                <header className="App-header">CIS Scheduler</header>
+                <header className="App-header">UD CIS Scheduler</header>
                 <h6>
                     Group Members: Madison Holloway, John Neilson, & Sara Fleck
                 </h6>

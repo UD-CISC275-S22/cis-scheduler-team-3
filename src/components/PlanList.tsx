@@ -28,6 +28,7 @@ export function PlanList({
                             className="me-3"
                             variant="outline-danger"
                             onClick={() => deletePlan(plan.name)}
+                            data-testid="delete-plan-btn"
                         >
                             delete plan
                         </Button>
