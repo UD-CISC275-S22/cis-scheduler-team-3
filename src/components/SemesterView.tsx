@@ -42,6 +42,10 @@ export function SemesterView({
         setCourse(semesterCourses[chosenInd]);
     }
 
+    function clearCourses() {
+        setSemesterCourses([]);
+    }
+
     return (
         <Container data-testid="Semester">
             <Row>
@@ -100,11 +104,24 @@ export function SemesterView({
                                         )}
                                     </Form.Select>
                                 </Form.Group>
-                                <Button onClick={deleteCourse}>
+                                <Button
+                                    className="Buttons"
+                                    variant="outline-dark"
+                                    onClick={deleteCourse}
+                                >
                                     Delete Course
                                 </Button>
+                                <p> </p>
                             </div>
                         ) : null}
+                        <Button
+                            className="Buttons"
+                            variant="outline-dark"
+                            onClick={clearCourses}
+                        >
+                            Clear Courses
+                        </Button>
+                        <p> </p>
                     </Row>
                     <CourseList courses={semesterCourses}></CourseList>
                 </Col>
