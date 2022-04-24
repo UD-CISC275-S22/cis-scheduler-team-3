@@ -63,7 +63,10 @@ export function SemesterView({
                         ) : null}
                     </Row>
                     <Row>
-                        <Button onClick={() => setRemoveCourse(!removeCourse)}>
+                        <Button
+                            data-testid="Remove Toggle"
+                            onClick={() => setRemoveCourse(!removeCourse)}
+                        >
                             Remove Course from Semester
                         </Button>
                         {removeCourse ? (
@@ -80,6 +83,7 @@ export function SemesterView({
                                         {semesterCourses.map(
                                             (course: Course) => (
                                                 <option
+                                                    data-testid={course.code}
                                                     key={course.code}
                                                     value={course.code}
                                                 >
@@ -89,7 +93,10 @@ export function SemesterView({
                                         )}
                                     </Form.Select>
                                 </Form.Group>
-                                <Button onClick={deleteCourse}>
+                                <Button
+                                    data-testid="Remove Confirm"
+                                    onClick={deleteCourse}
+                                >
                                     Delete Course
                                 </Button>
                             </div>
