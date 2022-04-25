@@ -63,7 +63,13 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
             ...destination,
             courses: [...destination.courses.splice(len, 0, moving)]
         };*/
-        if (origin === "Course_Pool") {
+        if (destination === origin) {
+            // Do nothing if origin is same as destination
+            setAllCourses({
+                semesters: [...allCourses.semesters],
+                coursePool: [...allCourses.coursePool]
+            });
+        } else if (origin === "Course_Pool") {
             let origin_final = allCourses.coursePool;
             const moving_index = origin_final.findIndex(
                 (course: Course): boolean => course.code === moving
@@ -85,6 +91,31 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
                     ...destination_final.courses.splice(len, 0, moving_course)
                 ]
             };
+            setAllCourses({
+                semesters: [...allCourses.semesters],
+                coursePool: [...allCourses.coursePool]
+            });
+        } else if (destination === "Course_Pool") {
+            let origin_final =
+                allCourses.semesters[
+                    allCourses.semesters.findIndex(
+                        (semester: Semester): boolean =>
+                            semester.session + ":" + semester.year === origin
+                    )
+                ];
+            const moving_index = origin_final.courses.findIndex(
+                (course: Course): boolean => course.code === moving
+            );
+            let destination_final = allCourses.coursePool;
+            origin_final = {
+                ...origin_final,
+                courses: [...origin_final.courses.splice(moving_index, 1)]
+            };
+            const moving_course = origin_final.courses[moving_index];
+            const len = destination_final.length;
+            destination_final = [
+                ...destination_final.splice(len, 0, moving_course)
+            ];
             setAllCourses({
                 semesters: [...allCourses.semesters],
                 coursePool: [...allCourses.coursePool]
