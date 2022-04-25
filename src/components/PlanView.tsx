@@ -64,11 +64,13 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
             courses: [...destination.courses.splice(len, 0, moving)]
         };*/
         if (destination === origin) {
+            //Do Nothing
             setAllCourses({
                 semesters: [...allCourses.semesters],
                 coursePool: [...allCourses.coursePool]
             });
         } else if (origin === "Course_Pool") {
+            // Move from Course Pool to Selected Semester
             let origin_final = allCourses.coursePool;
             const moving_index = origin_final.findIndex(
                 (course: Course): boolean => course.code === moving
@@ -95,6 +97,7 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
                 coursePool: [...allCourses.coursePool]
             });
         } else if (destination === "Course_Pool") {
+            // Move from Selected Semester to course pool
             let origin_final =
                 allCourses.semesters[
                     allCourses.semesters.findIndex(

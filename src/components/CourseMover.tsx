@@ -12,13 +12,9 @@ export function CourseMover({
     plan_pool: Course[];
     completeMove: (course: string, origin: string, destination: string) => void;
 }): JSX.Element {
-    const [origin, setOrigin] = useState<string>(
-        semesters[0].session + ":" + semesters[0].year
-    );
-    const [course, setCourse] = useState<string>(semesters[0].courses[0].code);
-    const [destination, setDestination] = useState<string>(
-        semesters[0].session + ":" + semesters[0].year
-    );
+    const [origin, setOrigin] = useState<string>("Course_Pool");
+    const [course, setCourse] = useState<string>("");
+    const [destination, setDestination] = useState<string>("Course_Pool");
     //let flag = false;
 
     function courseListSelector(): Course[] {
@@ -68,6 +64,9 @@ export function CourseMover({
                         Select a Semester or Course Pool to Move From:
                     </Form.Label>
                     <Form.Select value={origin} onChange={updateOrigin}>
+                        <option selected disabled>
+                            Choose an Origin
+                        </option>
                         <option value="Course_Pool">Course Pool</option>
                         {semesters.map((semester: Semester) => (
                             <option
@@ -84,9 +83,7 @@ export function CourseMover({
                 <Form.Group>
                     <Form.Label>Select a Course to Move:</Form.Label>
                     <Form.Select value={course} onChange={updateCourse}>
-                        <option selected disabled>
-                            choose course
-                        </option>
+                        <option selected>Choose Course</option>
                         {courseListSelector().map((course: Course) => (
                             <option key={course.code} value={course.code}>
                                 {course.code}:{course.title}
@@ -104,6 +101,9 @@ export function CourseMover({
                         value={destination}
                         onChange={updateDestination}
                     >
+                        <option selected disabled>
+                            Choose a Destination
+                        </option>
                         <option value="Course_Pool">Course Pool</option>
                         {semesters.map((semester: Semester) => (
                             <option
