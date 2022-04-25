@@ -14,10 +14,28 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
     const [semesters, setsemesters] = useState<Semester[]>(plan.semesters);
     const [newsem, setnewsem] = useState<boolean>(false);
     const [moveCourse, setMoveCourse] = useState<boolean>(false);
+    const s = plan.semesters;
+    const num_credits_insems = s.map(
+        (sem: Semester): number => sem.semester_credits
+    );
+    let sum = 0;
+    if (num_credits_insems.length > 0) {
+        sum = num_credits_insems.reduce(
+            (currentTotal: number, credits: number) => currentTotal + credits
+        );
+    }
+    const [plan_credits, setplan_credits] = useState<number>(sum);
     function updatenewsem() {
         setnewsem(!newsem);
     }
     function removeSemester(termyear: string) {
+        const delInd = semesters.findIndex(
+            (sem: Semester): boolean =>
+                sem.session + ":" + sem.year === termyear
+        );
+        const credits_lost = semesters[delInd].semester_credits;
+        const new_credits = plan_credits - credits_lost;
+        setplan_credits(new_credits);
         const newsemesters = [...semesters].filter(
             (sem: Semester): boolean => sem.session + ":" + sem.year != termyear
         );
@@ -64,9 +82,7 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
             <h4 data-testid="name">{plan.name}</h4>
             <h6 data-testid="start-year">Start Year: {plan.Start_Year}</h6>
             <h6 data-testid="end-year">End Year: {plan.End_Year}</h6>
-            <h6 data-testid="degree-credits">
-                Degree Credits: {plan.degree_credits}
-            </h6>
+            <h6 data-testid="degree-credits">Degree Credits: {plan_credits}</h6>
             <Button
                 className="Buttons"
                 onClick={() => setMoveCourse(!moveCourse)}

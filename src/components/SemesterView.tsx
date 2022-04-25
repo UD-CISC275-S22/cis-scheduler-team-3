@@ -22,6 +22,7 @@ export function SemesterView({
     const sum = courses_as_nums.reduce(
         (currentTotal: number, credits: number) => currentTotal + credits
     );
+    semester.semester_credits = sum;
     const [credits, setcredits] = useState<number>(sum);
     const [course, setCourse] = useState<Course>(semesterCourses[0]);
     function createCourse(newCourse: Course) {
@@ -29,6 +30,7 @@ export function SemesterView({
             newCourse.course_credits.trim().charAt(0).charAt(0)
         );
         const new_credits = credits + credits_gained;
+        semester.semester_credits = new_credits;
         setcredits(new_credits);
         setSemesterCourses([...semesterCourses, newCourse]);
         setNewCourse(!newCourse);
@@ -36,6 +38,7 @@ export function SemesterView({
 
     function deleteCourse() {
         if (semesterCourses.length === 0) {
+            semester.semester_credits = 0;
             setcredits(0);
             setSemesterCourses([]);
         } else {
@@ -49,6 +52,7 @@ export function SemesterView({
                     .charAt(0)
             );
             const new_credits = credits - credit_amt_lost;
+            semester.semester_credits = new_credits;
             setcredits(new_credits);
             setSemesterCourses([
                 ...semesterCourses.slice(0, delInd),
