@@ -10,11 +10,7 @@ export function CourseMover({
 }: {
     semesters: Semester[];
     plan_pool: Course[];
-    completeMove: (
-        course: Course,
-        origin: Semester,
-        destination: Semester
-    ) => void;
+    completeMove: (course: string, origin: string, destination: string) => void;
 }): JSX.Element {
     const [origin, setOrigin] = useState<string>(
         semesters[0].session + ":" + semesters[0].year
