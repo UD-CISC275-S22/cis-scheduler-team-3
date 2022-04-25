@@ -64,15 +64,11 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
             courses: [...destination.courses.splice(len, 0, moving)]
         };*/
         if (origin === "Course_Pool") {
-            const moving_course =
-                allCourses.coursePool[
-                    allCourses.coursePool.findIndex(
-                        (course: Course): boolean => course.code === moving
-                    )
-                ];
-            const origin_final = allCourses.coursePool.filter(
-                (course: Course): boolean => course.code != moving
+            let origin_final = allCourses.coursePool;
+            const moving_index = origin_final.findIndex(
+                (course: Course): boolean => course.code === moving
             );
+            const moving_course = origin_final[moving_index];
             let destination_final =
                 allCourses.semesters[
                     allCourses.semesters.findIndex(
@@ -81,6 +77,7 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
                             destination
                     )
                 ];
+            origin_final = [...origin_final.splice(moving_index, 1)];
             const len = destination_final.courses.length;
             destination_final = {
                 ...destination_final,
@@ -88,6 +85,10 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
                     ...destination_final.courses.splice(len, 0, moving_course)
                 ]
             };
+            setAllCourses({
+                semesters: [...allCourses.semesters],
+                coursePool: [...allCourses.coursePool]
+            });
         } else {
             let origin_final =
                 allCourses.semesters[
