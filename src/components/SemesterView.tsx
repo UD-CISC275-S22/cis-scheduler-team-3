@@ -15,7 +15,24 @@ export function SemesterView({
     const [semesterCourses, setSemesterCourses] = useState<Course[]>(
         semester.courses
     );
+    const [credits, setcredits] = useState<number>(0);
     const [course, setCourse] = useState<Course>(semesterCourses[0]);
+    function updateCredits(courses: Course[]) {
+        console.log("in update credits");
+        console.log(courses);
+        if (courses.length === 0) {
+            setcredits(0);
+        } else {
+            const courses_as_nums = courses.map((c: Course): number =>
+                parseInt(c.course_credits.trim().charAt(0))
+            );
+            const sum = courses_as_nums.reduce(
+                (currentTotal: number, credits: number) =>
+                    currentTotal + credits
+            );
+            setcredits(sum);
+        }
+    }
 
     function createCourse(newCourse: Course) {
         setSemesterCourses([...semesterCourses, newCourse]);
@@ -50,9 +67,15 @@ export function SemesterView({
                         {semester.session}:{semester.year}
                     </h5>
                     <i data-testid="Semester_Credits">
-                        Total Credits: {semester.semester_credits}
+                        Total Credits: {credits}
                     </i>
                     <p> </p>
+                    <Button
+                        size="sm"
+                        onClick={() => updateCredits(semesterCourses)}
+                    >
+                        update credits
+                    </Button>
                     <Row>
                         <Button
                             className="Buttons"
