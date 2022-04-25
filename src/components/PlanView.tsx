@@ -44,12 +44,8 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
     function updatesession(event: ChangeEvent) {
         setsession(event.target.value);
     }
-    function completeMove(
-        moving: Course,
-        origin: Semester,
-        destination: Semester
-    ) {
-        const moving_index = origin.courses.findIndex(
+    function completeMove(moving: string, origin: string, destination: string) {
+        /*const moving_index = origin.courses.findIndex(
             (course: Course): boolean => course.code === moving.code
         );
         origin = {
@@ -60,7 +56,47 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
         destination = {
             ...destination,
             courses: [...destination.courses.splice(len, 0, moving)]
-        };
+        };*/
+        if (origin === destination) {
+            console.log("DO NOTHING");
+        } else if (origin === "Course_Pool") {
+        } else if (destination === "Course_Pool") {
+        } else {
+            let origin_semester =
+                semesters[
+                    semesters.findIndex(
+                        (semester: Semester): boolean =>
+                            semester.session + ":" + semester.year === origin
+                    )
+                ];
+            const moving_index = origin_semester.courses.findIndex(
+                (course: Course): boolean => course.code === moving
+            );
+            const moving_course = origin_semester.courses[moving_index];
+            let destination_semester =
+                semesters[
+                    semesters.findIndex(
+                        (semester: Semester): boolean =>
+                            semester.session + ":" + semester.year ===
+                            destination
+                    )
+                ];
+            origin_semester = {
+                ...origin_semester,
+                courses: [...origin_semester.courses.splice(moving_index, 1)]
+            };
+            const len = destination_semester.courses.length;
+            destination_semester = {
+                ...destination_semester,
+                courses: [
+                    ...destination_semester.courses.splice(
+                        len,
+                        0,
+                        moving_course
+                    )
+                ]
+            };
+        }
         setsemesters([...semesters]);
     }
     return (
