@@ -64,7 +64,6 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
             courses: [...destination.courses.splice(len, 0, moving)]
         };*/
         if (destination === origin) {
-            // Do nothing if origin is same as destination
             setAllCourses({
                 semesters: [...allCourses.semesters],
                 coursePool: [...allCourses.coursePool]
