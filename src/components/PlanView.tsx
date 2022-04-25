@@ -13,19 +13,24 @@ type ChangeEvent = React.ChangeEvent<
 export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
     const [year, setyear] = useState<number>(0);
     const [session, setsession] = useState<string>("");
-    const [semesters, setsemesters] = useState<Semester[]>(plan.semesters);
+    const [allCourses, setAllCourses] = useState({
+        semesters: plan.semesters,
+        coursePool: plan.plan_pool
+    });
     const [newsem, setnewsem] = useState<boolean>(false);
     const [moveCourse, setMoveCourse] = useState<boolean>(false);
-    const [coursepool, setCoursePool] = useState<Course[]>(plan.plan_pool);
 
     function updatenewsem() {
         setnewsem(!newsem);
     }
     function removeSemester(termyear: string) {
-        const newsemesters = [...semesters].filter(
+        const newsemesters = [...allCourses.semesters].filter(
             (sem: Semester): boolean => sem.session + ":" + sem.year != termyear
         );
-        setsemesters(newsemesters);
+        setAllCourses({
+            semesters: newsemesters,
+            coursePool: allCourses.coursePool
+        });
     }
     function addSemester() {
         const newSemester = {
@@ -34,8 +39,11 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
             session: session,
             semester_credits: 0
         };
-        const newSemesterList = [...semesters, newSemester];
-        setsemesters(newSemesterList);
+        const newSemesterList = [...allCourses.semesters, newSemester];
+        setAllCourses({
+            semesters: newSemesterList,
+            coursePool: allCourses.coursePool
+        });
     }
     function updateyear(event: ChangeEvent) {
         const inputToNumber = parseInt(event.target.value);
@@ -45,9 +53,7 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
         setsession(event.target.value);
     }
     function completeMove(moving: string, origin: string, destination: string) {
-        /*const moving_index = origin.courses.findIndex(
-            (course: Course): boolean => course.code === moving.code
-        );
+        /*
         origin = {
             ...origin,
             courses: [...origin.courses.splice(moving_index, 1)]
@@ -57,47 +63,67 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
             ...destination,
             courses: [...destination.courses.splice(len, 0, moving)]
         };*/
-        if (origin === destination) {
-            console.log("DO NOTHING");
-        } else if (origin === "Course_Pool") {
-        } else if (destination === "Course_Pool") {
-        } else {
-            let origin_semester =
-                semesters[
-                    semesters.findIndex(
-                        (semester: Semester): boolean =>
-                            semester.session + ":" + semester.year === origin
+        if (origin === "Course_Pool") {
+            const moving_course =
+                allCourses.coursePool[
+                    allCourses.coursePool.findIndex(
+                        (course: Course): boolean => course.code === moving
                     )
                 ];
-            const moving_index = origin_semester.courses.findIndex(
-                (course: Course): boolean => course.code === moving
+            const origin_final = allCourses.coursePool.filter(
+                (course: Course): boolean => course.code != moving
             );
-            const moving_course = origin_semester.courses[moving_index];
-            let destination_semester =
-                semesters[
-                    semesters.findIndex(
+            let destination_final =
+                allCourses.semesters[
+                    allCourses.semesters.findIndex(
                         (semester: Semester): boolean =>
                             semester.session + ":" + semester.year ===
                             destination
                     )
                 ];
-            origin_semester = {
-                ...origin_semester,
-                courses: [...origin_semester.courses.splice(moving_index, 1)]
-            };
-            const len = destination_semester.courses.length;
-            destination_semester = {
-                ...destination_semester,
+            const len = destination_final.courses.length;
+            destination_final = {
+                ...destination_final,
                 courses: [
-                    ...destination_semester.courses.splice(
-                        len,
-                        0,
-                        moving_course
-                    )
+                    ...destination_final.courses.splice(len, 0, moving_course)
                 ]
             };
+        } else {
+            let origin_final =
+                allCourses.semesters[
+                    allCourses.semesters.findIndex(
+                        (semester: Semester): boolean =>
+                            semester.session + ":" + semester.year === origin
+                    )
+                ];
+            const moving_index = origin_final.courses.findIndex(
+                (course: Course): boolean => course.code === moving
+            );
+            const moving_course = origin_final.courses[moving_index];
+            let destination_final =
+                allCourses.semesters[
+                    allCourses.semesters.findIndex(
+                        (semester: Semester): boolean =>
+                            semester.session + ":" + semester.year ===
+                            destination
+                    )
+                ];
+            origin_final = {
+                ...origin_final,
+                courses: [...origin_final.courses.splice(moving_index, 1)]
+            };
+            const len = destination_final.courses.length;
+            destination_final = {
+                ...destination_final,
+                courses: [
+                    ...destination_final.courses.splice(len, 0, moving_course)
+                ]
+            };
+            setAllCourses({
+                semesters: [...allCourses.semesters],
+                coursePool: [...allCourses.coursePool]
+            });
         }
-        setsemesters([...semesters]);
     }
     return (
         <div data-testid="degree-plan">
@@ -115,8 +141,8 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
             </Button>
             {moveCourse ? (
                 <CourseMover
-                    semesters={semesters}
-                    plan_pool={coursepool}
+                    semesters={allCourses.semesters}
+                    plan_pool={allCourses.coursePool}
                     completeMove={completeMove}
                 ></CourseMover>
             ) : null}
@@ -160,12 +186,12 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
             </div>
             <h6 data-testid="semester-list">
                 <SemesterList
-                    semesters={semesters}
+                    semesters={allCourses.semesters}
                     removesem={removeSemester}
                 ></SemesterList>
             </h6>
             <div>
-                <CoursePool plan_pool={coursepool}></CoursePool>
+                <CoursePool plan_pool={allCourses.coursePool}></CoursePool>
             </div>
         </div>
     );
