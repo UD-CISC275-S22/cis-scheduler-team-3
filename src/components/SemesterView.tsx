@@ -15,38 +15,41 @@ export function SemesterView({
     const [semesterCourses, setSemesterCourses] = useState<Course[]>(
         semester.courses
     );
-    const [credits, setcredits] = useState<number>(0);
+    const courses = semester.courses;
+    const courses_as_nums = courses.map((c: Course): number =>
+        parseInt(c.course_credits.trim().charAt(0))
+    );
+    const sum = courses_as_nums.reduce(
+        (currentTotal: number, credits: number) => currentTotal + credits
+    );
+    const [credits, setcredits] = useState<number>(sum);
     const [course, setCourse] = useState<Course>(semesterCourses[0]);
-    function updateCredits() {
-        console.log("in update credits");
-        console.log(semesterCourses);
-        const courses = semesterCourses;
-        if (courses.length === 0) {
-            setcredits(0);
-        } else {
-            const courses_as_nums = courses.map((c: Course): number =>
-                parseInt(c.course_credits.trim().charAt(0))
-            );
-            const sum = courses_as_nums.reduce(
-                (currentTotal: number, credits: number) =>
-                    currentTotal + credits
-            );
-            setcredits(sum);
-        }
-    }
-
     function createCourse(newCourse: Course) {
+        const credits_gained = parseInt(
+            newCourse.course_credits.trim().charAt(0).charAt(0)
+        );
+        const new_credits = credits + credits_gained;
+        setcredits(new_credits);
         setSemesterCourses([...semesterCourses, newCourse]);
         setNewCourse(!newCourse);
     }
 
     function deleteCourse() {
         if (semesterCourses.length === 0) {
+            setcredits(0);
             setSemesterCourses([]);
         } else {
             const delInd = semesterCourses.findIndex(
                 (c_course: Course): boolean => c_course.code === course.code
             );
+            const credit_amt_lost = parseInt(
+                semesterCourses[delInd].course_credits
+                    .trim()
+                    .charAt(0)
+                    .charAt(0)
+            );
+            const new_credits = credits - credit_amt_lost;
+            setcredits(new_credits);
             setSemesterCourses([
                 ...semesterCourses.slice(0, delInd),
                 ...semesterCourses.slice(delInd + 1)
@@ -73,14 +76,6 @@ export function SemesterView({
                     </i>
                     <p> </p>
                     <Row>
-                        <Button
-                            className="Buttons"
-                            variant="outline-dark"
-                            onClick={() => updateCredits()}
-                        >
-                            update credits
-                        </Button>
-                        <p> </p>
                         <Button
                             className="Buttons"
                             variant="outline-dark"
