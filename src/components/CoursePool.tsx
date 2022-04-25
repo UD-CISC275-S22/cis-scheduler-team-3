@@ -2,14 +2,15 @@ import React, { useState } from "react";
 import { Button, Container, Row } from "react-bootstrap";
 import { CourseView } from "./CourseView";
 import { ValidateNewCourse } from "./NewCourse";
-import POOL_DATA from "../data/course_catalog.json";
 import type { Course } from "../interfaces/course";
 
-export function CoursePool(): JSX.Element {
-    const POOLCOURSES = POOL_DATA as Course[];
-    console.log(POOLCOURSES);
+export function CoursePool({
+    plan_pool
+}: {
+    plan_pool: Course[];
+}): JSX.Element {
     const [newCourse, setNewCourse] = useState<boolean>(false);
-    const [poolCourses, setPoolCourses] = useState<Course[]>(POOLCOURSES);
+    const [poolCourses, setPoolCourses] = useState<Course[]>(plan_pool);
 
     function createCourse(newCourse: Course) {
         setPoolCourses([...poolCourses, newCourse]);

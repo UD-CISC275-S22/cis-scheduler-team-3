@@ -16,6 +16,8 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
     const [semesters, setsemesters] = useState<Semester[]>(plan.semesters);
     const [newsem, setnewsem] = useState<boolean>(false);
     const [moveCourse, setMoveCourse] = useState<boolean>(false);
+    const [coursepool, setCoursePool] = useState<Course[]>(plan.plan_pool);
+
     function updatenewsem() {
         setnewsem(!newsem);
     }
@@ -78,6 +80,7 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
             {moveCourse ? (
                 <CourseMover
                     semesters={semesters}
+                    plan_pool={coursepool}
                     completeMove={completeMove}
                 ></CourseMover>
             ) : null}
@@ -126,7 +129,7 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
                 ></SemesterList>
             </h6>
             <div>
-                <CoursePool></CoursePool>
+                <CoursePool plan_pool={coursepool}></CoursePool>
             </div>
         </div>
     );
