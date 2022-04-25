@@ -5,6 +5,8 @@ import { DegreePlan } from "../interfaces/degreeplan";
 import { Semester } from "../interfaces/semester";
 import { CourseMover } from "./CourseMover";
 import { SemesterList } from "./SemesterList";
+import { CoursePool } from "./CoursePool";
+
 type ChangeEvent = React.ChangeEvent<
     HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement
 >;
@@ -123,6 +125,9 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
                     removesem={removeSemester}
                 ></SemesterList>
             </h6>
+            <div>
+                <CoursePool></CoursePool>
+            </div>
         </div>
     );
 }

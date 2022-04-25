@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
 import { PlanList } from "./components/PlanList";
-import { CoursePool } from "./components/CoursePool";
 import { SAMPLE_PLANS } from "./interfaces/degreeplan";
 import { DegreePlan } from "./interfaces/degreeplan";
 import { Button, Form } from "react-bootstrap";
@@ -67,7 +66,6 @@ export function App(): JSX.Element {
                 </h5>
             </div>
             <div>
-                <CoursePool></CoursePool>
                 <PlanList plans={plans} remove={completeRemove}></PlanList>
             </div>
             <div>
