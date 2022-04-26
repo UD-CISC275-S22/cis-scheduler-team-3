@@ -6,9 +6,11 @@ import { ValidateNewCourse } from "./NewCourse";
 import { Course } from "../interfaces/course";
 
 export function SemesterView({
-    semester
+    semester,
+    updateplan_credits
 }: {
     semester: Semester;
+    updateplan_credits: (credit: number) => void;
 }): JSX.Element {
     const [newCourse, setNewCourse] = useState<boolean>(false);
     const [removeCourse, setRemoveCourse] = useState<boolean>(false);
@@ -30,6 +32,7 @@ export function SemesterView({
             newCourse.course_credits.trim().charAt(0).charAt(0)
         );
         const new_credits = credits + credits_gained;
+        updateplan_credits(credits_gained);
         semester.semester_credits = new_credits;
         setcredits(new_credits);
         setSemesterCourses([...semesterCourses, newCourse]);
@@ -45,13 +48,15 @@ export function SemesterView({
             const delInd = semesterCourses.findIndex(
                 (c_course: Course): boolean => c_course.code === course.code
             );
-            const credit_amt_lost = parseInt(
+            let credit_amt_lost = parseInt(
                 semesterCourses[delInd].course_credits
                     .trim()
                     .charAt(0)
                     .charAt(0)
             );
-            const new_credits = credits - credit_amt_lost;
+            credit_amt_lost = 0 - credit_amt_lost;
+            updateplan_credits(credit_amt_lost);
+            const new_credits = credits + credit_amt_lost;
             semester.semester_credits = new_credits;
             setcredits(new_credits);
             setSemesterCourses([

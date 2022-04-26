@@ -15,16 +15,28 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
     const [newsem, setnewsem] = useState<boolean>(false);
     const [moveCourse, setMoveCourse] = useState<boolean>(false);
     const s = plan.semesters;
-    const num_credits_insems = s.map(
-        (sem: Semester): number => sem.semester_credits
-    );
+    console.log(s);
+    const courses = s.map((sem: Semester): Course[] => sem.courses);
+    console.log(courses);
     let sum = 0;
-    if (num_credits_insems.length > 0) {
-        sum = num_credits_insems.reduce(
+    if (courses.length != 0) {
+        const indv_courses = courses.reduce(
+            (currArr: Course[], c: Course[]) => currArr.concat(c),
+            []
+        );
+        console.log(indv_courses);
+        const courses_as_nums = indv_courses.map((c: Course): number =>
+            parseInt(c.course_credits.trim().charAt(0))
+        );
+        sum = courses_as_nums.reduce(
             (currentTotal: number, credits: number) => currentTotal + credits
         );
     }
+
     const [plan_credits, setplan_credits] = useState<number>(sum);
+    function updateplan_credits(credit: number) {
+        setplan_credits(plan_credits + credit);
+    }
     function updatenewsem() {
         setnewsem(!newsem);
     }
@@ -137,6 +149,7 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
                 <SemesterList
                     semesters={semesters}
                     removesem={removeSemester}
+                    updateplan_credits={updateplan_credits}
                 ></SemesterList>
             </h6>
         </div>
