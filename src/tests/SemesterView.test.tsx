@@ -1,6 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import { SemesterView } from "../components/SemesterView";
+import { Semester } from "../interfaces/semester";
 
 const TEST_SEMESTERS = [
     {
@@ -50,10 +51,17 @@ const TEST_SEMESTERS = [
         semester_credits: 0
     }
 ];
-
+function update(x: number) {
+    console.log(x);
+}
 describe("Test suite for SemesterView component", () => {
     beforeEach(() => {
-        render(<SemesterView semester={TEST_SEMESTERS[0]} />);
+        render(
+            <SemesterView
+                updateplan_credits={update}
+                semester={TEST_SEMESTERS[0]}
+            />
+        );
     });
     test("The semester is rendered", () => {
         const semester = screen.getByTestId("Semester");

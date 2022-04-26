@@ -19,9 +19,11 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
     });
     const [newsem, setnewsem] = useState<boolean>(false);
     const [moveCourse, setMoveCourse] = useState<boolean>(false);
-
     function updatenewsem() {
         setnewsem(!newsem);
+    }
+    function updateplan_credits() {
+        console.log("hi");
     }
     function removeSemester(termyear: string) {
         const newsemesters = [...allCourses.semesters].filter(
@@ -164,9 +166,7 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
             <h4 data-testid="name">{plan.name}</h4>
             <h6 data-testid="start-year">Start Year: {plan.Start_Year}</h6>
             <h6 data-testid="end-year">End Year: {plan.End_Year}</h6>
-            <h6 data-testid="degree-credits">
-                Degree Credits: {plan.degree_credits}
-            </h6>
+            <h6 data-testid="degree-credits">Degree Credits:</h6>
             <Button
                 className="Buttons"
                 onClick={() => setMoveCourse(!moveCourse)}
@@ -222,6 +222,7 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
                 <SemesterList
                     semesters={allCourses.semesters}
                     removesem={removeSemester}
+                    updateplan_credits={updateplan_credits}
                 ></SemesterList>
             </h6>
             <div>

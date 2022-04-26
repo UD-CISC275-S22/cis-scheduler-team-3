@@ -1,6 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import { SemesterList } from "../components/SemesterList";
+import { Semester } from "../interfaces/semester";
 
 const TEST_SEMESTERS = [
     {
@@ -53,12 +54,16 @@ const TEST_SEMESTERS = [
 function completeRemove() {
     return null;
 }
+function update(x: number) {
+    console.log(x);
+}
 describe("Test suite for SemesterList component", () => {
     beforeEach(() => {
         render(
             <SemesterList
                 semesters={TEST_SEMESTERS}
                 removesem={completeRemove}
+                updateplan_credits={update}
             />
         );
     });
