@@ -22,8 +22,9 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
     function updatenewsem() {
         setnewsem(!newsem);
     }
-    function updateplan_credits() {
-        console.log("hi");
+    function updateplan_credits(credits: number) {
+        const new_credits = plan_credits + credits;
+        setplan_credits(new_credits);
     }
     const courses = allCourses.semesters.map(
         (sem: Semester): Course[] => sem.courses
@@ -46,6 +47,24 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
         const newsemesters = [...allCourses.semesters].filter(
             (sem: Semester): boolean => sem.session + ":" + sem.year != termyear
         );
+        const courses = newsemesters.map(
+            (sem: Semester): Course[] => sem.courses
+        );
+        let sum = 0;
+        if (courses.length > 0) {
+            const indv_courses = courses.reduce(
+                (currArr: Course[], c: Course[]) => currArr.concat(c),
+                []
+            );
+            const courses_as_nums = indv_courses.map((c: Course): number =>
+                parseInt(c.course_credits.trim().charAt(0))
+            );
+            sum = courses_as_nums.reduce(
+                (currentTotal: number, credits: number) =>
+                    currentTotal + credits
+            );
+        }
+        setplan_credits(sum);
         setAllCourses({
             semesters: newsemesters,
             coursePool: allCourses.coursePool
@@ -59,6 +78,24 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
             semester_credits: 0
         };
         const newSemesterList = [...allCourses.semesters, newSemester];
+        const courses = newSemesterList.map(
+            (sem: Semester): Course[] => sem.courses
+        );
+        let sum = 0;
+        if (courses.length > 0) {
+            const indv_courses = courses.reduce(
+                (currArr: Course[], c: Course[]) => currArr.concat(c),
+                []
+            );
+            const courses_as_nums = indv_courses.map((c: Course): number =>
+                parseInt(c.course_credits.trim().charAt(0))
+            );
+            sum = courses_as_nums.reduce(
+                (currentTotal: number, credits: number) =>
+                    currentTotal + credits
+            );
+        }
+        setplan_credits(sum);
         setAllCourses({
             semesters: newSemesterList,
             coursePool: allCourses.coursePool
