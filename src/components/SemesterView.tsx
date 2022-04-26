@@ -21,9 +21,12 @@ export function SemesterView({
     const courses_as_nums = courses.map((c: Course): number =>
         parseInt(c.course_credits.trim().charAt(0))
     );
-    const sum = courses_as_nums.reduce(
-        (currentTotal: number, credits: number) => currentTotal + credits
-    );
+    let sum = 0;
+    if (courses_as_nums.length > 0) {
+        sum = courses_as_nums.reduce(
+            (currentTotal: number, credits: number) => currentTotal + credits
+        );
+    }
     semester.semester_credits = sum;
     const [credits, setcredits] = useState<number>(sum);
     const [course, setCourse] = useState<Course>(semesterCourses[0]);
