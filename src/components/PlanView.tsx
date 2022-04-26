@@ -38,9 +38,12 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
         const courses_as_nums = indv_courses.map((c: Course): number =>
             parseInt(c.course_credits.trim().charAt(0))
         );
-        sum = courses_as_nums.reduce(
-            (currentTotal: number, credits: number) => currentTotal + credits
-        );
+        if (courses_as_nums.length > 0) {
+            sum = courses_as_nums.reduce(
+                (currentTotal: number, credits: number) =>
+                    currentTotal + credits
+            );
+        }
     }
     const [plan_credits, setplan_credits] = useState<number>(sum);
     function removeSemester(termyear: string) {
@@ -90,10 +93,12 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
             const courses_as_nums = indv_courses.map((c: Course): number =>
                 parseInt(c.course_credits.trim().charAt(0))
             );
-            sum = courses_as_nums.reduce(
-                (currentTotal: number, credits: number) =>
-                    currentTotal + credits
-            );
+            if (courses_as_nums.length > 0) {
+                sum = courses_as_nums.reduce(
+                    (currentTotal: number, credits: number) =>
+                        currentTotal + credits
+                );
+            }
         }
         setplan_credits(sum);
         setAllCourses({
@@ -215,6 +220,12 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
             });
         }
     }
+    function clearSemesters() {
+        setAllCourses({
+            semesters: [],
+            coursePool: [...allCourses.coursePool]
+        });
+    }
     return (
         <div data-testid="degree-plan">
             <h4 data-testid="name">{plan.name}</h4>
@@ -272,6 +283,13 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
                     </>
                 ) : null}
             </div>
+            <Button
+                className="Buttons"
+                variant="warning"
+                onClick={() => clearSemesters()}
+            >
+                Clear Semesters
+            </Button>
             <h6 data-testid="semester-list">
                 <SemesterList
                     semesters={allCourses.semesters}
