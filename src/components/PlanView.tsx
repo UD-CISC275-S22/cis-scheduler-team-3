@@ -25,6 +25,23 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
     function updateplan_credits() {
         console.log("hi");
     }
+    const courses = allCourses.semesters.map(
+        (sem: Semester): Course[] => sem.courses
+    );
+    let sum = 0;
+    if (courses.length > 0) {
+        const indv_courses = courses.reduce(
+            (currArr: Course[], c: Course[]) => currArr.concat(c),
+            []
+        );
+        const courses_as_nums = indv_courses.map((c: Course): number =>
+            parseInt(c.course_credits.trim().charAt(0))
+        );
+        sum = courses_as_nums.reduce(
+            (currentTotal: number, credits: number) => currentTotal + credits
+        );
+    }
+    const [plan_credits, setplan_credits] = useState<number>(sum);
     function removeSemester(termyear: string) {
         const newsemesters = [...allCourses.semesters].filter(
             (sem: Semester): boolean => sem.session + ":" + sem.year != termyear
@@ -166,7 +183,7 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
             <h4 data-testid="name">{plan.name}</h4>
             <h6 data-testid="start-year">Start Year: {plan.Start_Year}</h6>
             <h6 data-testid="end-year">End Year: {plan.End_Year}</h6>
-            <h6 data-testid="degree-credits">Degree Credits:</h6>
+            <h6 data-testid="degree-credits">Degree Credits: {plan_credits}</h6>
             <Button
                 className="Buttons"
                 onClick={() => setMoveCourse(!moveCourse)}
