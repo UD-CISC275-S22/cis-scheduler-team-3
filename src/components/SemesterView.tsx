@@ -75,6 +75,10 @@ export function SemesterView({
         setCourse(semesterCourses[chosenInd]);
     }
 
+    function clearCourses() {
+        setSemesterCourses([]);
+    }
+
     return (
         <Container data-testid="Semester">
             <Row>
@@ -103,6 +107,7 @@ export function SemesterView({
                     </Row>
                     <Row>
                         <Button
+                            data-testid="Remove Toggle"
                             className="Buttons"
                             variant="outline-dark"
                             onClick={() => setRemoveCourse(!removeCourse)}
@@ -124,6 +129,7 @@ export function SemesterView({
                                         {semesterCourses.map(
                                             (course: Course) => (
                                                 <option
+                                                    data-testid={course.code}
                                                     key={course.code}
                                                     value={course.code}
                                                 >
@@ -133,11 +139,25 @@ export function SemesterView({
                                         )}
                                     </Form.Select>
                                 </Form.Group>
-                                <Button onClick={deleteCourse}>
+                                <Button
+                                    data-testid="Remove Confirm"
+                                    className="Buttons"
+                                    variant="outline-dark"
+                                    onClick={deleteCourse}
+                                >
                                     Delete Course
                                 </Button>
+                                <p> </p>
                             </div>
                         ) : null}
+                        <Button
+                            className="Buttons"
+                            variant="outline-dark"
+                            onClick={clearCourses}
+                        >
+                            Clear Courses
+                        </Button>
+                        <p> </p>
                     </Row>
                     <CourseList courses={semesterCourses}></CourseList>
                 </Col>

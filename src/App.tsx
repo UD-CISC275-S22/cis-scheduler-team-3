@@ -1,16 +1,18 @@
 import React, { useState } from "react";
 import "./App.css";
 import { PlanList } from "./components/PlanList";
-import { CoursePool } from "./components/CoursePool";
 import { SAMPLE_PLANS } from "./interfaces/degreeplan";
 import { DegreePlan } from "./interfaces/degreeplan";
+import { Course } from "./interfaces/course";
 import { Button, Form } from "react-bootstrap";
+import POOL_DATA from "./data/course_catalog.json";
 
 type ChangeEvent = React.ChangeEvent<
     HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement
 >;
 
 export function App(): JSX.Element {
+    const POOLCOURSES = POOL_DATA as Course[];
     const [plans, setplans] = useState<DegreePlan[]>(SAMPLE_PLANS);
     const [name, setname] = useState<string>("");
     const [start, setstart] = useState<number>(0);
@@ -25,7 +27,8 @@ export function App(): JSX.Element {
             Start_Year: start,
             End_Year: end,
             semesters: [],
-            degree_credits: 0
+            degree_credits: 0,
+            plan_pool: POOLCOURSES
         };
         const newPlanList = [...plans, newPlan];
         updateAdd();
@@ -67,7 +70,6 @@ export function App(): JSX.Element {
                 </h5>
             </div>
             <div>
-                <CoursePool></CoursePool>
                 <PlanList plans={plans} remove={completeRemove}></PlanList>
             </div>
             <div>
