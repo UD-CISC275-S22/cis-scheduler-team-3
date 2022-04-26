@@ -14,17 +14,14 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
     const [semesters, setsemesters] = useState<Semester[]>(plan.semesters);
     const [newsem, setnewsem] = useState<boolean>(false);
     const [moveCourse, setMoveCourse] = useState<boolean>(false);
-    const s = plan.semesters;
-    console.log(s);
+    const s = semesters;
     const courses = s.map((sem: Semester): Course[] => sem.courses);
-    console.log(courses);
     let sum = 0;
     if (courses.length != 0) {
         const indv_courses = courses.reduce(
             (currArr: Course[], c: Course[]) => currArr.concat(c),
             []
         );
-        console.log(indv_courses);
         const courses_as_nums = indv_courses.map((c: Course): number =>
             parseInt(c.course_credits.trim().charAt(0))
         );
@@ -40,12 +37,29 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
     function updatenewsem() {
         setnewsem(!newsem);
     }
+    if (semesters.length > 1) {
+        console.log(
+            "semester credits: " +
+                semesters[0].semester_credits +
+                " " +
+                semesters[1].semester_credits
+        );
+    }
     function removeSemester(termyear: string) {
+        console.log(
+            "semester credits inside removeSemester: " +
+                semesters[0].semester_credits +
+                " " +
+                semesters[1].semester_credits
+        );
         const delInd = semesters.findIndex(
             (sem: Semester): boolean =>
                 sem.session + ":" + sem.year === termyear
         );
         const credits_lost = semesters[delInd].semester_credits;
+        console.log(
+            "this is the semester credits from planView" + credits_lost
+        );
         const new_credits = plan_credits - credits_lost;
         setplan_credits(new_credits);
         const newsemesters = [...semesters].filter(

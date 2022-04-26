@@ -1,6 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import { SemesterList } from "../components/SemesterList";
+import { Semester } from "../interfaces/semester";
 
 const TEST_SEMESTERS = [
     {

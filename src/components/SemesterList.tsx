@@ -12,8 +12,20 @@ export function SemesterList({
     removesem: (n: string) => void;
     updateplan_credits: (credit: number) => void;
 }): JSX.Element {
+    if (semesters.length > 1) {
+        console.log(
+            "semester credits in semesterList: " +
+                semesters[0].semester_credits +
+                " " +
+                semesters[1].semester_credits
+        );
+    }
     function deleteSemester(semester: Semester) {
         const ty = semester.session + ":" + semester.year;
+        console.log(
+            "this is the credits of semester being deleted: " +
+                semester.semester_credits
+        );
         removesem(ty);
     }
     return (
@@ -29,6 +41,10 @@ export function SemesterList({
                             semester={semester}
                             updateplan_credits={updateplan_credits}
                         ></SemesterView>
+                        {console.log(
+                            "individual semesters' credits: " +
+                                semester.semester_credits
+                        )}
                         <Button
                             className="me-3"
                             size="sm"

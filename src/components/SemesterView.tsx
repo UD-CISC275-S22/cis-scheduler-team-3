@@ -35,11 +35,10 @@ export function SemesterView({
             newCourse.course_credits.trim().charAt(0).charAt(0)
         );
         const new_credits = credits + credits_gained;
-        updateplan_credits(credits_gained);
         semester.semester_credits = new_credits;
+        updateplan_credits(credits_gained);
         setcredits(new_credits);
         setSemesterCourses([...semesterCourses, newCourse]);
-        setNewCourse(!newCourse);
     }
 
     function deleteCourse() {
@@ -58,9 +57,9 @@ export function SemesterView({
                     .charAt(0)
             );
             credit_amt_lost = 0 - credit_amt_lost;
-            updateplan_credits(credit_amt_lost);
             const new_credits = credits + credit_amt_lost;
             semester.semester_credits = new_credits;
+            updateplan_credits(credit_amt_lost);
             setcredits(new_credits);
             setSemesterCourses([
                 ...semesterCourses.slice(0, delInd),
