@@ -44,6 +44,7 @@ export function AddCourseToPlan({
         // console.log(selectedPlan);
         // console.log(selectedSemester);
         console.log(selectedSemester);
+        handleClose();
     }
 
     return (

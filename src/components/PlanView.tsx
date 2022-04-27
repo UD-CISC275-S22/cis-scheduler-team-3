@@ -6,6 +6,7 @@ import { Semester } from "../interfaces/semester";
 import { CourseMover } from "./CourseMover";
 import { SemesterList } from "./SemesterList";
 import { CoursePool } from "./CoursePool";
+import { SAMPLE_PLANS } from "../interfaces/degreeplan";
 
 type ChangeEvent = React.ChangeEvent<
     HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement
@@ -304,9 +305,6 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
                     updateplan_credits={updateplan_credits}
                 ></SemesterList>
             </h6>
-            <div>
-                <CoursePool plan_pool={allCourses.coursePool}></CoursePool>
-            </div>
         </div>
     );
 }
