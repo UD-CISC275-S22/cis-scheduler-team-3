@@ -1,21 +1,13 @@
 import React, { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { Course } from "../interfaces/course";
-import type { DegreePlan } from "../interfaces/degreeplan";
-import { AddCourseToPlan } from "../components/AddCourseToPlan";
+//import type { DegreePlan } from "../interfaces/degreeplan";
+//import { AddCourseToPlan } from "../components/AddCourseToPlan";
 
-export function CoursePoolTable({
-    course,
-    plans
-}: {
-    course: Course;
-    plans: DegreePlan[];
-}): JSX.Element {
+export function CoursePoolTable({ course }: { course: Course }): JSX.Element {
     const [open, setOpen] = useState<boolean>(false);
     const [style, setStyle] = useState<string>("collapse hide");
-    const [showModal, setShowModal] = useState<boolean>(false);
-    //the following code may be implemented in the future to allow users to
-    //edit courses in the course pool.
+    // const [showModal, setShowModal] = useState<boolean>(false);
     // const [editMode, setEditMode] = useState<boolean>(false);
     // const [updateCode, setUpdatedCode] = useState<string>(course.code);
     // const [updateTitle, setUpdatedTitle] = useState<string>(course.title);
@@ -44,9 +36,9 @@ export function CoursePoolTable({
         open ? setStyle("collapse hide") : setStyle("collapse show");
     };
 
-    function openModal() {
-        setShowModal(!showModal);
-    }
+    //function openModal() {
+    //    setShowModal(!showModal);
+    //}
 
     // function defaultPrereqs(): string {
     //     const isEmpty = checkPrerequisites();
@@ -192,21 +184,6 @@ export function CoursePoolTable({
                                 data-bs-target="#collapseExample"
                                 aria-expanded="false"
                                 aria-controls="collapseExample"
-                                onClick={openModal}
-                            >
-                                add course to plan
-                            </button>
-                        </p>
-                    </Col>
-                    <Col md="auto">
-                        <p>
-                            <button
-                                className="btn default"
-                                type="button"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#collapseExample"
-                                aria-expanded="false"
-                                aria-controls="collapseExample"
                                 onClick={toggleRow}
                             >
                                 {open ? "hide course info" : " see course info"}
@@ -221,13 +198,6 @@ export function CoursePoolTable({
                     </Col>
                 </Row>
             </Container>
-            {showModal ? (
-                <AddCourseToPlan
-                    newCourse={course}
-                    plans={plans}
-                    show={showModal}
-                ></AddCourseToPlan>
-            ) : null}
         </div>
     );
 }
