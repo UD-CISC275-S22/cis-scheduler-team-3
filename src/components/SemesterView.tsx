@@ -42,7 +42,7 @@ export function SemesterView({
     }
 
     function deleteCourse() {
-        if (semesterCourses.length === 0) {
+        if (semesterCourses.length === 1) {
             semester.semester_credits = 0;
             setcredits(0);
             setSemesterCourses([]);
@@ -125,7 +125,6 @@ export function SemesterView({
                                         value={course.code}
                                         onChange={updateCourse}
                                     >
-                                        <option></option>
                                         {semesterCourses.map(
                                             (course: Course) => (
                                                 <option

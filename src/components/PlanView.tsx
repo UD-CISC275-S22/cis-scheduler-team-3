@@ -38,9 +38,12 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
         const courses_as_nums = indv_courses.map((c: Course): number =>
             parseInt(c.course_credits.trim().charAt(0))
         );
-        sum = courses_as_nums.reduce(
-            (currentTotal: number, credits: number) => currentTotal + credits
-        );
+        if (courses_as_nums.length > 0) {
+            sum = courses_as_nums.reduce(
+                (currentTotal: number, credits: number) =>
+                    currentTotal + credits
+            );
+        }
     }
     const [plan_credits, setplan_credits] = useState<number>(sum);
     function removeSemester(termyear: string) {
@@ -90,10 +93,12 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
             const courses_as_nums = indv_courses.map((c: Course): number =>
                 parseInt(c.course_credits.trim().charAt(0))
             );
-            sum = courses_as_nums.reduce(
-                (currentTotal: number, credits: number) =>
-                    currentTotal + credits
-            );
+            if (courses_as_nums.length > 0) {
+                sum = courses_as_nums.reduce(
+                    (currentTotal: number, credits: number) =>
+                        currentTotal + credits
+                );
+            }
         }
         setplan_credits(sum);
         setAllCourses({
@@ -106,6 +111,7 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
         setyear(inputToNumber);
     }
     function updatesession(event: ChangeEvent) {
+        console.log(event.target.value);
         setsession(event.target.value);
     }
     function completeMove(moving: string, origin: string, destination: string) {
@@ -215,6 +221,12 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
             });
         }
     }
+    function clearSemesters() {
+        setAllCourses({
+            semesters: [],
+            coursePool: [...allCourses.coursePool]
+        });
+    }
     return (
         <div data-testid="degree-plan">
             <h4 data-testid="name">{plan.name}</h4>
@@ -248,13 +260,17 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
                 {newsem ? (
                     <>
                         <Form.Group>
-                            <Form.Label>
-                                Semester Session (Fall, Winter, Spring, Summer):
-                            </Form.Label>
-                            <Form.Control
+                            <Form.Label>Semester Session:</Form.Label>
+                            <Form.Select
                                 value={session}
                                 onChange={updatesession}
-                            ></Form.Control>
+                            >
+                                <option> </option>
+                                <option value={"Fall"}>Fall</option>
+                                <option value={"Winter"}>Winter</option>
+                                <option value={"Spring"}>Spring</option>
+                                <option value={"Summer"}>Summer</option>
+                            </Form.Select>
                             <Form.Label>Semester Year: </Form.Label>
                             <Form.Control
                                 value={year}
@@ -272,6 +288,13 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
                     </>
                 ) : null}
             </div>
+            <Button
+                className="Buttons"
+                variant="warning"
+                onClick={() => clearSemesters()}
+            >
+                Clear Semesters
+            </Button>
             <h6 data-testid="semester-list">
                 <SemesterList
                     semesters={allCourses.semesters}
