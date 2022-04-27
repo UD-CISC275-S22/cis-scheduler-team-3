@@ -38,7 +38,6 @@ export function CoursePoolTable({
 
     const toggleRow = () => {
         console.log(course.code);
-        console.log(editMode);
         setOpen(!open);
         open ? setStyle("collapse hide") : setStyle("collapse show");
     };
