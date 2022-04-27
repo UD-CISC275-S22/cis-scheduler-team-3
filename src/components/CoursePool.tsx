@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Button, Container, Row } from "react-bootstrap";
-import { CourseView } from "./CourseView";
+//import { CourseView } from "./CourseView";
 import { ValidateNewCourse } from "./NewCourse";
 import type { Course } from "../interfaces/course";
+import { CoursePoolTable } from "./CoursePoolTable";
 
 export function CoursePool({
     plan_pool
@@ -20,7 +21,10 @@ export function CoursePool({
         setNewCourse(!newCourse);
     }
     return (
-        <Container className="course-pool">
+        <Container
+            className="course-pool"
+            style={{ overflowY: "scroll", height: "400px" }}
+        >
             <Row>
                 <h5>Course Pool: </h5>
                 <Button
@@ -40,7 +44,10 @@ export function CoursePool({
             </Row>
             <Row lg={6} id="course-row" data-testid="course-pool">
                 {poolCourses.map((course: Course) => (
-                    <CourseView key={course.code} course={course}></CourseView>
+                    <CoursePoolTable
+                        key={course.code}
+                        course={course}
+                    ></CoursePoolTable>
                 ))}
             </Row>
         </Container>
