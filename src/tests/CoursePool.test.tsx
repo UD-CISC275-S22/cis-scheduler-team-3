@@ -8,7 +8,7 @@ describe("Test suite for CoursePool component", () => {
         render(<CoursePool plans={SAMPLE_PLANS} />);
     });
     test("The course pool renders courses", () => {
-        const pool = screen.getByTestId("course-pool");
+        const pool = screen.getByTestId("scroll-courses");
         expect(pool).toBeInTheDocument();
     });
     test("Add course to pool btn exists", () => {

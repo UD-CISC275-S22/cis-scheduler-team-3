@@ -61,12 +61,13 @@ export function AddCourseToPlan({
                 <Form.Group>
                     <Form.Label>Select Plan</Form.Label>
                     <Form.Select onChange={selectPlan}>
-                        {plans.map((plan: DegreePlan) => (
-                            //this crashes when you select a plan w no semesters
-                            <option value={plan.name} key={plan.name}>
-                                {plan.name}
-                            </option>
-                        ))}
+                        {plans.map((plan: DegreePlan) =>
+                            plan.semesters.length > 0 ? (
+                                <option value={plan.name} key={plan.name}>
+                                    {plan.name}
+                                </option>
+                            ) : null
+                        )}
                     </Form.Select>
                     {/* </div>
                     ))} */}

@@ -68,10 +68,9 @@ export function App(): JSX.Element {
                 </h6>
                 <p> </p>
                 <h5 className="Description">
-                    Hello! Welcome to our UD CIS scheduler. In this app, you
-                    will be able to map out different CIS degree plans. You can
-                    add, edit, move, and delete semesters and courses as you see
-                    fit.
+                    Hello! Welcome to our scheduler. In this app, you will be
+                    able to map out different CIS degree plans. You can add,
+                    edit, move, and delete semesters and courses as you see fit.
                 </h5>
             </div>
             <div>

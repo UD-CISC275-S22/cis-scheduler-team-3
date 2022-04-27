@@ -302,6 +302,7 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
                 ) : null}
             </div>
             <Button
+                data-testid="clear-sem-btn"
                 className="Buttons"
                 variant="warning"
                 onClick={() => clearSemesters()}

@@ -172,7 +172,10 @@ export function CoursePoolTable({
 
     return (
         <div>
-            <Container className="course-pool-scrollable">
+            <Container
+                data-testid="scroll-courses"
+                className="course-pool-scrollable"
+            >
                 <Row>
                     <Col>
                         {" "}
