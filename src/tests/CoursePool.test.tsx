@@ -9,10 +9,6 @@ const POOLCOURSES = POOL_DATA as Course[];
 describe("Test suite for CoursePool component", () => {
     beforeEach(() => {
         render(<CoursePool plans={SAMPLE_PLANS} />);
-
-describe("Test suite for CoursePool component", () => {
-    beforeEach(() => {
-        render(<CoursePool plan_pool={POOLCOURSES} />);
     });
     test("The course pool renders courses", () => {
         const pool = screen.getByTestId("course-pool");

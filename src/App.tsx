@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import { PlanList } from "./components/PlanList";
+import { CoursePool } from "./components/CoursePool";
 import { SAMPLE_PLANS } from "./interfaces/degreeplan";
 import { DegreePlan } from "./interfaces/degreeplan";
 import { Course } from "./interfaces/course";
@@ -86,11 +87,10 @@ export function App(): JSX.Element {
                             : "Show Pool of CISC-related courses"}
                     </Button>
                 </div>
-                {showPool ? <CoursePool plans={plans}></CoursePool> : null}
                 <div>
-                    <PlanList plans={plans}></PlanList>
+                    {showPool ? <CoursePool plans={plans}></CoursePool> : null}
+                    <PlanList plans={plans} remove={completeRemove}></PlanList>
                 </div>
-                <PlanList plans={plans} remove={completeRemove}></PlanList>
             </div>
             <div>
                 <Button

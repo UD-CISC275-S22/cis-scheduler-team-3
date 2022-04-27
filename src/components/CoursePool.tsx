@@ -4,12 +4,13 @@ import { CoursePoolTable } from "./CoursePoolTable";
 import { ValidateNewCourse } from "./NewCourse";
 import type { Course } from "../interfaces/course";
 import { DegreePlan } from "../interfaces/degreeplan";
+import POOL_DATA from "../data/course_catalog.json";
 
 export function CoursePool({ plans }: { plans: DegreePlan[] }): JSX.Element {
     const POOLCOURSES = POOL_DATA as Course[];
     const DEGREEPLANS = [...plans];
     const [newCourse, setNewCourse] = useState<boolean>(false);
-    const [poolCourses, setPoolCourses] = useState<Course[]>(plan_pool);
+    const [poolCourses, setPoolCourses] = useState<Course[]>(POOLCOURSES);
 
     function createCourse(newCourse: Course) {
         setPoolCourses([...poolCourses, newCourse]);
