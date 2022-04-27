@@ -10,35 +10,264 @@ PASS src/tests/NewCourse.test.tsx
 PASS src/tests/PlanView.test.tsx
 PASS src/tests/CoursePool.test.tsx
 PASS src/tests/PlanList.test.tsx
-PASS src/tests/add-semester.test.tsx
+FAIL src/tests/add-semester.test.tsx
+  ● Add Semester Tests › can add a semester
+
+    expect(received).toBeInTheDocument()
+
+    received value must be an HTMLElement or an SVGElement.
+    Received has value: null
+
+      14 |         const add = screen.getByTestId("add-btn2");
+      15 |         add.click();
+    > 16 |         expect(screen.queryByText(/Fall:0/i)).toBeInTheDocument();
+         |                                               ^
+      17 |     });
+      18 | });
+      19 |
+
+      at __EXTERNAL_MATCHER_TRAP__ (node_modules/expect/build/index.js:386:30)
+      at Object.toBeInTheDocument (node_modules/expect/build/index.js:387:15)
+      at Object.<anonymous> (src/tests/add-semester.test.tsx:16:47)
+
 PASS src/tests/add-plan.test.tsx
 PASS src/tests/RemoveSemester.test.tsx
 PASS src/tests/RemovePlan.test.tsx
-PASS src/App.test.tsx
--------------------|---------|----------|---------|---------|---------------------------
-File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s         
--------------------|---------|----------|---------|---------|---------------------------
-All files          |   55.65 |       50 |   59.34 |   55.65 |                           
- src               |   81.81 |      100 |      80 |   81.81 |                           
-  App.tsx          |   81.81 |      100 |      80 |   81.81 | 38-43                     
- src/components    |   52.04 |    47.05 |   56.79 |   52.04 |                           
-  CourseList.tsx   |     100 |      100 |     100 |     100 |                           
-  CourseMover.tsx  |       0 |        0 |       0 |       0 | 15-109                    
-  CoursePool.tsx   |     100 |      100 |     100 |     100 |                           
-  CourseView.tsx   |     100 |      100 |     100 |     100 |                           
-  NewCourse.tsx    |   62.06 |       25 |   58.33 |   62.06 | 24-30,52-70               
-  PlanList.tsx     |     100 |      100 |     100 |     100 |                           
-  PlanView.tsx     |   55.05 |    43.75 |   64.51 |   55.05 | 26-27,105-106,122-212,226 
-  SemesterList.tsx |     100 |      100 |     100 |     100 |                           
-  SemesterView.tsx |      35 |       50 |      25 |      35 | 34-79,97-131              
- src/interfaces    |     100 |      100 |     100 |     100 |                           
-  course.ts        |       0 |        0 |       0 |       0 |                           
-  degreeplan.ts    |     100 |      100 |     100 |     100 |                           
-  semester.ts      |     100 |      100 |     100 |     100 |                           
--------------------|---------|----------|---------|---------|---------------------------
+FAIL src/App.test.tsx
+  ● renders the course name somewhere
 
-Test Suites: 13 passed, 13 total
-Tests:       29 passed, 29 total
+    TestingLibraryElementError: Found multiple elements with the text: /UD CIS/i
+
+    Here are the matching elements:
+
+    Ignored nodes: comments, <script />, <style />
+    [36m<header[39m
+      [33mclass[39m=[32m"App-header"[39m
+    [36m>[39m
+      [0mUD CIS Scheduler[0m
+    [36m</header>[39m
+
+    Ignored nodes: comments, <script />, <style />
+    [36m<h5[39m
+      [33mclass[39m=[32m"Description"[39m
+    [36m>[39m
+      [0mHello! Welcome to our UD CIS scheduler. In this app, you will be able to map out different CIS degree plans. You can add, edit, move, and delete semesters and courses as you see fit.[0m
+    [36m</h5>[39m
+
+    (If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
+
+    Ignored nodes: comments, <script />, <style />
+    [36m<body>[39m
+      [36m<div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"App"[39m
+        [36m>[39m
+          [36m<header[39m
+            [33mclass[39m=[32m"App-header"[39m
+          [36m>[39m
+            [0mUD CIS Scheduler[0m
+          [36m</header>[39m
+          [36m<h6>[39m
+            [0mGroup Members: Madison Holloway, John Neilson, & Sara Fleck[0m
+          [36m</h6>[39m
+          [36m<p>[39m
+            [0m [0m
+          [36m</p>[39m
+          [36m<h5[39m
+            [33mclass[39m=[32m"Description"[39m
+          [36m>[39m
+            [0mHello! Welcome to our UD CIS scheduler. In this app, you will be able to map out different CIS degree plans. You can add, edit, move, and delete semesters and courses as you see fit.[0m
+          [36m</h5>[39m
+        [36m</div>[39m
+        [36m<div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"container"[39m
+            [33mdata-testid[39m=[32m"Plan-list"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"row"[39m
+            [36m>[39m
+              [36m<h2>[39m
+                [0mPlans:[0m
+              [36m</h2>[39m
+              [36m<hr />[39m
+              [36m<div[39m
+                [33mdata-testid[39m=[32m"plan"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mdata-testid[39m=[32m"degree-plan"[39m
+                [36m>[39m
+                  [36m<h4[39m
+                    [33mdata-testid[39m=[32m"name"[39m
+                  [36m>[39m
+                    [0mSample Plan 1[0m
+                  [36m</h4>[39m
+                  [36m<h6[39m
+                    [33mdata-testid[39m=[32m"start-year"[39m
+                  [36m>[39m
+                    [0mStart Year: [0m
+                    [0m2022[0m
+                  [36m</h6>[39m
+                  [36m<h6[39m
+                    [33mdata-testid[39m=[32m"end-year"[39m
+                  [36m>[39m
+                    [0mEnd Year: [0m
+                    [0m2023[0m
+                  [36m</h6>[39m
+                  [36m<h6[39m
+                    [33mdata-testid[39m=[32m"degree-credits"[39m
+                  [36m>[39m
+                    [0mDegree Credits: [0m
+                    [0m12[0m
+                  [36m</h6>[39m
+                  [36m<button[39m
+                    [33mclass[39m=[32m"Buttons btn btn-primary"[39m
+                    [33mtype[39m=[32m"button"[39m
+                  [36m>[39m
+                    [0mMove Courses[0m
+                  [36m</button>[39m
+                  [36m<p>[39m
+                    [0m [0m
+                  [36m</p>[39m
+                  [36m<div>[39m
+                    [36m<button[39m
+                      [33mclass[39m=[32m"Buttons btn btn-success"[39m
+                      [33mdata-testid[39m=[32m"add-semester-btn"[39m
+                      [33mtype[39m=[32m"button"[39m
+                    [36m>[39m
+                      [0mAdd Semester[0m
+                    [36m</button>[39m
+                    [36m<p>[39m
+                      [0m [0m
+                    [36m</p>[39m
+                  [36m</div>[39m
+                  [36m<button[39m
+                    [33mclass[39m=[32m"Buttons btn btn-warning"[39m
+                    [33mtype[39m=[32m"button"[39m
+                  [36m>[39m
+                    [0mClear Semesters[0m
+                  [36m</button>[39m
+                  [36m<h6[39m
+                    [33mdata-testid[39m=[32m"semester-list"[39m
+                  [36m>[39m
+                    [36m<div[39m
+                      [33mclass[39m=[32m"Semester container"[39m
+                      [33mdata-testid[39m=[32m"Semester_List"[39m
+                    [36m>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"row"[39m
+                      [36m>[39m
+                        [36m<h4>[39m
+                          [0mSemesters:[0m
+                        [36m</h4>[39m
+                        [36m<div[39m
+                          [33mclass[39m=[32m"bg-light border m-2 p-2"[39m
+                        [36m>[39m
+                          [36m<div[39m
+                            [33mclass[39m=[32m"container"[39m
+                            [33mdata-testid[39m=[32m"Semester"[39m
+                          [36m>[39m
+                            [36m<div[39m
+                              [33mclass[39m=[32m"row"[39m
+                            [36m>[39m
+                              [36m<div[39m
+                                [33mclass[39m=[32m"col"[39m
+                              [36m>[39m
+                                [36m<h5[39m
+                                  [33mdata-testid[39m=[32m"Semester_Title"[39m
+                                [36m>[39m
+                                  [0mFall[0m
+                                  [0m:[0m
+                                  [0m2021[0m
+                                [36m</h5>[39m
+                                [36m<i[39m
+                                  [33mdata-testid[39m=[32m"Semester_Credits"[39m
+                                [36m>[39m
+                                  [0mTotal Credits: [0m
+                                  [0m6[0m
+                                [36m</i>[39m
+                                [36m<p>[39m
+                                  [0m [0m
+                                [36m</p>[39m
+                                [36m<div[39m
+                                  [33mclass[39m=[32m"row"[39m
+                                [36m>[39m
+                                  [36m<button[39m
+                                    [33mclass[39m=[32m"Buttons btn btn-outline-dark"[39m
+                                    [33mtype[39m=[32m"button"[39m
+                                  [36m>[39m
+                                    [0mAdd Course to Semester[0m
+                                  [36m</button>[39m
+                                  [36m<p>[39m
+                                    [0m [0m
+                                  [36m</p>[39m
+                                [36m</div>[39m
+                                [36m<div[39m
+                                  [33mclass[39m=[32m"row"[39m
+                                [36m>[39m
+                                  [36m<button[39m
+                                    [33mclass[39m=[32m"Buttons btn btn-outline-dark"[39m
+                                    [33mdata-testid[39m=[32m"Remove Toggle"[39m
+                                    [33mtype[39m=[32m"button"[39m
+                                  [36m>[39m
+                                    [0mRemove Course from Semester[0m
+                                  [36m</button>[39m
+                                  [36m<p>[39m
+                                    [0m [0m
+                                  [36m</p>[39m
+                                  [36m<button[39m
+                                    [33mclass[39m=[32m"Buttons btn btn-outline-dark"[39m
+                                    [33mtype[39m=[32m"button"[39m
+                                  [36m>[39m
+                                    [0mClear Courses[0m
+                                  [36m</button>[39m
+                                  [36m<p>[39m
+                                    [0m [0m
+                                  [36m</p>[39m
+                                [3...
+
+       5 | test("renders the course name somewhere", () => {
+       6 |     render(<App />);
+    >  7 |     const linkElement = screen.getByText(/UD CIS/i);
+         |                                ^
+       8 |     expect(linkElement).toBeInTheDocument();
+       9 | });
+      10 |
+
+      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:38:19)
+      at getElementError (node_modules/@testing-library/dom/dist/query-helpers.js:25:35)
+      at getMultipleElementsFoundError (node_modules/@testing-library/dom/dist/query-helpers.js:29:10)
+      at node_modules/@testing-library/dom/dist/query-helpers.js:66:13
+      at getByText (node_modules/@testing-library/dom/dist/query-helpers.js:111:19)
+      at Object.<anonymous> (src/App.test.tsx:7:32)
+      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
+      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
+      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
+      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
+
+-------------------|---------|----------|---------|---------|-----------------------
+File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s     
+-------------------|---------|----------|---------|---------|-----------------------
+All files          |   55.75 |       50 |   58.06 |   55.75 |                       
+ src               |   81.81 |      100 |      80 |   81.81 |                       
+  App.tsx          |   81.81 |      100 |      80 |   81.81 | 38-43                 
+ src/components    |   52.23 |    47.36 |   55.42 |   52.23 |                       
+  CourseList.tsx   |     100 |      100 |     100 |     100 |                       
+  CourseMover.tsx  |       0 |        0 |       0 |       0 | 15-109                
+  CoursePool.tsx   |     100 |      100 |     100 |     100 |                       
+  CourseView.tsx   |     100 |      100 |     100 |     100 |                       
+  NewCourse.tsx    |   62.06 |       25 |   58.33 |   62.06 | 24-30,52-70           
+  PlanList.tsx     |     100 |      100 |     100 |     100 |                       
+  PlanView.tsx     |   55.31 |       45 |    60.6 |   55.31 | 26-27,114-225,238,294 
+  SemesterList.tsx |     100 |      100 |     100 |     100 |                       
+  SemesterView.tsx |      35 |       50 |      25 |      35 | 34-79,97-130          
+ src/interfaces    |     100 |      100 |     100 |     100 |                       
+  course.ts        |       0 |        0 |       0 |       0 |                       
+  degreeplan.ts    |     100 |      100 |     100 |     100 |                       
+  semester.ts      |     100 |      100 |     100 |     100 |                       
+-------------------|---------|----------|---------|---------|-----------------------
+Test Suites: 2 failed, 11 passed, 13 total
+Tests:       2 failed, 27 passed, 29 total
 Snapshots:   0 total
-Time:        17.44 s
+Time:        12.484 s
 Ran all test suites.
