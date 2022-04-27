@@ -18,25 +18,31 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
     });
     const [newsem, setnewsem] = useState<boolean>(false);
     const [moveCourse, setMoveCourse] = useState<boolean>(false);
+    //whether form to create a new semester is visible
     function updatenewsem() {
         setnewsem(!newsem);
     }
+    //changes plan credits based on state of courses (deleted course credits go in as a negative)
     function updateplan_credits(credits: number) {
         const new_credits = plan_credits + credits;
         setplan_credits(new_credits);
     }
+    //creates an array of course arrays
     const courses = allCourses.semesters.map(
         (sem: Semester): Course[] => sem.courses
     );
     let sum = 0;
     if (courses.length > 0) {
+        //converts 2D array to one long array of course objects
         const indv_courses = courses.reduce(
             (currArr: Course[], c: Course[]) => currArr.concat(c),
             []
         );
+        //converts course objects to array of numbers representing credits
         const courses_as_nums = indv_courses.map((c: Course): number =>
             parseInt(c.course_credits.trim().charAt(0))
         );
+        //sums credits
         if (courses_as_nums.length > 0) {
             sum = courses_as_nums.reduce(
                 (currentTotal: number, credits: number) =>
@@ -44,11 +50,14 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
             );
         }
     }
+    //set plan_credits initial value to sum calculated above
     const [plan_credits, setplan_credits] = useState<number>(sum);
+    //actually removes semester from the array based on id obtained from SemesterView
     function removeSemester(termyear: string) {
         const newsemesters = [...allCourses.semesters].filter(
             (sem: Semester): boolean => sem.session + ":" + sem.year != termyear
         );
+        //same logic as above to update plan_credits
         const courses = newsemesters.map(
             (sem: Semester): Course[] => sem.courses
         );
@@ -72,6 +81,7 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
             coursePool: allCourses.coursePool
         });
     }
+    //actually adds a semester to the array
     function addSemester() {
         const newSemester = {
             courses: [],
@@ -80,6 +90,7 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
             semester_credits: 0
         };
         const newSemesterList = [...allCourses.semesters, newSemester];
+        //same logic as above to calculate plan credit total
         const courses = newSemesterList.map(
             (sem: Semester): Course[] => sem.courses
         );
@@ -225,6 +236,7 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
             semesters: [],
             coursePool: [...allCourses.coursePool]
         });
+        setplan_credits(0);
     }
     return (
         <div data-testid="degree-plan">
