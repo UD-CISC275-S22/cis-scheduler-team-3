@@ -5,8 +5,6 @@ import { DegreePlan } from "../interfaces/degreeplan";
 import { Semester } from "../interfaces/semester";
 import { CourseMover } from "./CourseMover";
 import { SemesterList } from "./SemesterList";
-import { CoursePool } from "./CoursePool";
-import { SAMPLE_PLANS } from "../interfaces/degreeplan";
 
 type ChangeEvent = React.ChangeEvent<
     HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement
