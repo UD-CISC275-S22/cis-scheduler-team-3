@@ -111,6 +111,7 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
         setyear(inputToNumber);
     }
     function updatesession(event: ChangeEvent) {
+        console.log(event.target.value);
         setsession(event.target.value);
     }
     function completeMove(moving: string, origin: string, destination: string) {
@@ -259,13 +260,17 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
                 {newsem ? (
                     <>
                         <Form.Group>
-                            <Form.Label>
-                                Semester Session (Fall, Winter, Spring, Summer):
-                            </Form.Label>
-                            <Form.Control
+                            <Form.Label>Semester Session:</Form.Label>
+                            <Form.Select
                                 value={session}
                                 onChange={updatesession}
-                            ></Form.Control>
+                            >
+                                <option> </option>
+                                <option value={"Fall"}>Fall</option>
+                                <option value={"Winter"}>Winter</option>
+                                <option value={"Spring"}>Spring</option>
+                                <option value={"Summer"}>Summer</option>
+                            </Form.Select>
                             <Form.Label>Semester Year: </Form.Label>
                             <Form.Control
                                 value={year}
