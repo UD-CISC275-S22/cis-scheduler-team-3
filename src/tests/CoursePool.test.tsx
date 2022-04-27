@@ -4,7 +4,6 @@ import { CoursePool } from "../components/CoursePool";
 import { SAMPLE_PLANS } from "../interfaces/degreeplan";
 import { Course } from "../interfaces/course";
 import POOL_DATA from "../data/course_catalog.json";
-const POOLCOURSES = POOL_DATA as Course[];
 
 describe("Test suite for CoursePool component", () => {
     beforeEach(() => {
