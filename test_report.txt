@@ -6,10 +6,215 @@ PASS src/tests/SemesterView.test.tsx
 PASS src/tests/SemesterList.test.tsx
 PASS src/tests/CourseView.test.tsx
 PASS src/tests/CourseList.test.tsx
-PASS src/tests/NewCourse.test.tsx
+FAIL src/tests/NewCourse.test.tsx
+  ● Test suite for CoursePool component › Can add a new course
+
+    expect(received).toBeInTheDocument()
+
+    received value must be an HTMLElement or an SVGElement.
+    Received has value: null
+
+      22 |         const add = screen.getByTestId("addcourse-btn");
+      23 |         add.click();
+    > 24 |         expect(screen.queryByText(/test course/i)).toBeInTheDocument();
+         |                                                    ^
+      25 |         expect(screen.queryByText(/test101/i)).toBeInTheDocument();
+      26 |         expect(screen.queryByText(/intro to testing/i)).toBeInTheDocument();
+      27 |     });
+
+      at __EXTERNAL_MATCHER_TRAP__ (node_modules/expect/build/index.js:386:30)
+      at Object.toBeInTheDocument (node_modules/expect/build/index.js:387:15)
+      at Object.<anonymous> (src/tests/NewCourse.test.tsx:24:52)
+
 PASS src/tests/PlanView.test.tsx
-PASS src/tests/CoursePool.test.tsx
 PASS src/tests/PlanList.test.tsx
+FAIL src/tests/CoursePool.test.tsx
+  ● Test suite for CoursePool component › The course pool renders courses
+
+    TestingLibraryElementError: Unable to find an element by: [data-testid="course-pool"]
+
+    Ignored nodes: comments, <script />, <style />
+    [36m<body>[39m
+      [36m<div>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"course-pool container"[39m
+          [33mstyle[39m=[32m"overflow-y: scroll; height: 400px;"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"row"[39m
+          [36m>[39m
+            [36m<h5>[39m
+              [0mCourse Pool: [0m
+            [36m</h5>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"Buttons btn btn-primary"[39m
+              [33mdata-testid[39m=[32m"add-course-btn"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mAdd Course to Pool[0m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"row"[39m
+          [36m/>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"row"[39m
+          [36m>[39m
+            [36m<div>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"course-pool-scrollable container"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"row"[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"col"[39m
+                  [36m>[39m
+                    [0m [0m
+                    [36m<p>[39m
+                      [0mCISC 101[0m
+                      [0m : [0m
+                      [0mPrinciples of Computing[0m
+                    [36m</p>[39m
+                  [36m</div>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"col-md-auto"[39m
+                  [36m>[39m
+                    [36m<p>[39m
+                      [36m<button[39m
+                        [33maria-controls[39m=[32m"collapseExample"[39m
+                        [33maria-expanded[39m=[32m"false"[39m
+                        [33mclass[39m=[32m"btn default"[39m
+                        [33mdata-bs-target[39m=[32m"#collapseExample"[39m
+                        [33mdata-bs-toggle[39m=[32m"collapse"[39m
+                        [33mtype[39m=[32m"button"[39m
+                      [36m>[39m
+                        [0madd course to plan[0m
+                      [36m</button>[39m
+                    [36m</p>[39m
+                  [36m</div>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"col-md-auto"[39m
+                  [36m>[39m
+                    [36m<p>[39m
+                      [36m<button[39m
+                        [33maria-controls[39m=[32m"collapseExample"[39m
+                        [33maria-expanded[39m=[32m"false"[39m
+                        [33mclass[39m=[32m"btn default"[39m
+                        [33mdata-bs-target[39m=[32m"#collapseExample"[39m
+                        [33mdata-bs-toggle[39m=[32m"collapse"[39m
+                        [33mtype[39m=[32m"button"[39m
+                      [36m>[39m
+                        [0m see course info[0m
+                        [36m<i[39m
+                          [33mclass[39m=[32m"bi bi-plus-lg"[39m
+                        [36m/>[39m
+                      [36m</button>[39m
+                    [36m</p>[39m
+                  [36m</div>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"row"[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"col"[39m
+                  [36m>[39m
+                    [36m<div[39m
+                      [33mclass[39m=[32m"collapse hide"[39m
+                      [33mid[39m=[32m"course-info-collapse"[39m
+                    [36m>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"card card-body"[39m
+                      [36m>[39m
+                        [36m<h6>[39m
+                          [0mCredits: [0m
+                          [0m 3[0m
+                        [36m</h6>[39m
+                        [36m<h6>[39m
+                          [0mDescription: [0m
+                          [0mIntroduces students to the central ideas of computing and computer science including programs, algorithms, abstraction, the internet, and information systems. Instills ideas and practices of computational thinking and engages students in activities that show how computing and computer science change the world. Explores computing as a creative activity and empowers students to apply computational thinking to all disciplines including the arts, humanities, business, social and physical sciences, health, and entertainment.[0m
+                        [36m</h6>[39m
+                        [36m<h6>[39m
+                          [0mPrerequisites: none[0m
+                        [36m</h6>[39m
+                      [36m</div>[39m
+                    [36m</div>[39m
+                  [36m</div>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+            [36m<div>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"course-pool-scrollable container"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"row"[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"col"[39m
+                  [36m>[39m
+                    [0m [0m
+                    [36m<p>[39m
+                      [0mCISC 103[0m
+                      [0m : [0m
+                      [0mIntroduction to Computer Science with Web Applications[0m
+                    [36m</p>[39m
+                  [36m</div>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"col-md-auto"[39m
+                  [36m>[39m
+                    [36m<p>[39m
+                      [36m<button[39m
+                        [33maria-controls[39m=[32m"collapseExample"[39m
+                        [33maria-expanded[39m=[32m"false"[39m
+                        [33mclass[39m=[32m"btn default"[39m
+                        [33mdata-bs-target[39m=[32m"#collapseExample"[39m
+                        [33mdata-bs-toggle[39m=[32m"collapse"[39m
+                        [33mtype[39m=[32m"button"[39m
+                      [36m>[39m
+                        [0madd course to plan[0m
+                      [36m</button>[39m
+                    [36m</p>[39m
+                  [36m</div>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"col-md-auto"[39m
+                  [36m>[39m
+                    [36m<p>[39m
+                      [36m<button[39m
+                        [33maria-controls[39m=[32m"collapseExample"[39m
+                        [33maria-expanded[39m=[32m"false"[39m
+                        [33mclass[39m=[32m"btn default"[39m
+                        [33mdata-bs-target[39m=[32m"#collapseExample"[39m
+                        [33mdata-bs-toggle[39m=[32m"collapse"[39m
+                        [33mtype[39m=[32m"button"[39m
+                      [36m>[39m
+                        [0m see course info[0m
+                        [36m<i[39m
+                          [33mclass[39m=[32m"bi bi-plus-lg"[39m
+                        [36m/>[39m
+                      [36m</button>[39m
+                    [36m</p>[39m
+                  [36m</div>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"row"[39m
+                [36m>[39m
+    ...
+
+       9 |     });
+      10 |     test("The course pool renders courses", () => {
+    > 11 |         const pool = screen.getByTestId("course-pool");
+         |                             ^
+      12 |         expect(pool).toBeInTheDocument();
+      13 |     });
+      14 |     test("Add course to pool btn exists", () => {
+
+      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:38:19)
+      at node_modules/@testing-library/dom/dist/query-helpers.js:90:38
+      at node_modules/@testing-library/dom/dist/query-helpers.js:62:17
+      at getByTestId (node_modules/@testing-library/dom/dist/query-helpers.js:111:19)
+      at Object.<anonymous> (src/tests/CoursePool.test.tsx:11:29)
+
 FAIL src/tests/add-semester.test.tsx
   ● Add Semester Tests › can add a semester
 
@@ -81,150 +286,588 @@ FAIL src/App.test.tsx
         [36m</div>[39m
         [36m<div>[39m
           [36m<div[39m
-            [33mclass[39m=[32m"container"[39m
-            [33mdata-testid[39m=[32m"Plan-list"[39m
+            [33mclass[39m=[32m"show-course-pool-button"[39m
           [36m>[39m
-            [36m<div[39m
-              [33mclass[39m=[32m"row"[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"show-course-pool-button btn btn-success btn-sm"[39m
+              [33mtype[39m=[32m"button"[39m
             [36m>[39m
-              [36m<h2>[39m
-                [0mPlans:[0m
-              [36m</h2>[39m
-              [36m<hr />[39m
+              [0mShow Pool of CISC-related courses[0m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"container"[39m
+              [33mdata-testid[39m=[32m"Plan-list"[39m
+            [36m>[39m
               [36m<div[39m
-                [33mdata-testid[39m=[32m"plan"[39m
+                [33mclass[39m=[32m"row"[39m
               [36m>[39m
+                [36m<h2>[39m
+                  [0mPlans:[0m
+                [36m</h2>[39m
+                [36m<hr />[39m
                 [36m<div[39m
-                  [33mdata-testid[39m=[32m"degree-plan"[39m
+                  [33mdata-testid[39m=[32m"plan"[39m
                 [36m>[39m
-                  [36m<h4[39m
-                    [33mdata-testid[39m=[32m"name"[39m
+                  [36m<div[39m
+                    [33mdata-testid[39m=[32m"degree-plan"[39m
                   [36m>[39m
-                    [0mSample Plan 1[0m
-                  [36m</h4>[39m
-                  [36m<h6[39m
-                    [33mdata-testid[39m=[32m"start-year"[39m
-                  [36m>[39m
-                    [0mStart Year: [0m
-                    [0m2022[0m
-                  [36m</h6>[39m
-                  [36m<h6[39m
-                    [33mdata-testid[39m=[32m"end-year"[39m
-                  [36m>[39m
-                    [0mEnd Year: [0m
-                    [0m2023[0m
-                  [36m</h6>[39m
-                  [36m<h6[39m
-                    [33mdata-testid[39m=[32m"degree-credits"[39m
-                  [36m>[39m
-                    [0mDegree Credits: [0m
-                    [0m12[0m
-                    [0m/ 124 required[0m
-                  [36m</h6>[39m
-                  [36m<button[39m
-                    [33mclass[39m=[32m"Buttons btn btn-primary"[39m
-                    [33mtype[39m=[32m"button"[39m
-                  [36m>[39m
-                    [0mMove Courses[0m
-                  [36m</button>[39m
-                  [36m<p>[39m
-                    [0m [0m
-                  [36m</p>[39m
-                  [36m<div>[39m
+                    [36m<h4[39m
+                      [33mdata-testid[39m=[32m"name"[39m
+                    [36m>[39m
+                      [0mSample Plan 1[0m
+                    [36m</h4>[39m
+                    [36m<h6[39m
+                      [33mdata-testid[39m=[32m"start-year"[39m
+                    [36m>[39m
+                      [0mStart Year: [0m
+                      [0m2022[0m
+                    [36m</h6>[39m
+                    [36m<h6[39m
+                      [33mdata-testid[39m=[32m"end-year"[39m
+                    [36m>[39m
+                      [0mEnd Year: [0m
+                      [0m2023[0m
+                    [36m</h6>[39m
+                    [36m<h6[39m
+                      [33mdata-testid[39m=[32m"degree-credits"[39m
+                    [36m>[39m
+                      [0mDegree Credits: [0m
+                      [0m12[0m
+                      [0m/ 124 required[0m
+                    [36m</h6>[39m
                     [36m<button[39m
-                      [33mclass[39m=[32m"Buttons btn btn-success"[39m
-                      [33mdata-testid[39m=[32m"add-semester-btn"[39m
+                      [33mclass[39m=[32m"Buttons btn btn-primary"[39m
                       [33mtype[39m=[32m"button"[39m
                     [36m>[39m
-                      [0mAdd Semester[0m
+                      [0mMove Courses[0m
                     [36m</button>[39m
                     [36m<p>[39m
                       [0m [0m
                     [36m</p>[39m
-                  [36m</div>[39m
-                  [36m<button[39m
-                    [33mclass[39m=[32m"Buttons btn btn-warning"[39m
-                    [33mtype[39m=[32m"button"[39m
-                  [36m>[39m
-                    [0mClear Semesters[0m
-                  [36m</button>[39m
-                  [36m<h6[39m
-                    [33mdata-testid[39m=[32m"semester-list"[39m
-                  [36m>[39m
-                    [36m<div[39m
-                      [33mclass[39m=[32m"Semester container"[39m
-                      [33mdata-testid[39m=[32m"Semester_List"[39m
+                    [36m<div>[39m
+                      [36m<button[39m
+                        [33mclass[39m=[32m"Buttons btn btn-success"[39m
+                        [33mdata-testid[39m=[32m"add-semester-btn"[39m
+                        [33mtype[39m=[32m"button"[39m
+                      [36m>[39m
+                        [0mAdd Semester[0m
+                      [36m</button>[39m
+                      [36m<p>[39m
+                        [0m [0m
+                      [36m</p>[39m
+                    [36m</div>[39m
+                    [36m<button[39m
+                      [33mclass[39m=[32m"Buttons btn btn-warning"[39m
+                      [33mtype[39m=[32m"button"[39m
+                    [36m>[39m
+                      [0mClear Semesters[0m
+                    [36m</button>[39m
+                    [36m<h6[39m
+                      [33mdata-testid[39m=[32m"semester-list"[39m
                     [36m>[39m
                       [36m<div[39m
-                        [33mclass[39m=[32m"row"[39m
+                        [33mclass[39m=[32m"Semester container"[39m
+                        [33mdata-testid[39m=[32m"Semester_List"[39m
                       [36m>[39m
-                        [36m<h4>[39m
-                          [0mSemesters:[0m
-                        [36m</h4>[39m
                         [36m<div[39m
-                          [33mclass[39m=[32m"bg-light border m-2 p-2"[39m
+                          [33mclass[39m=[32m"row"[39m
                         [36m>[39m
+                          [36m<h4>[39m
+                            [0mSemesters:[0m
+                          [36m</h4>[39m
                           [36m<div[39m
-                            [33mclass[39m=[32m"container"[39m
-                            [33mdata-testid[39m=[32m"Semester"[39m
+                            [33mclass[39m=[32m"bg-light border m-2 p-2"[39m
                           [36m>[39m
                             [36m<div[39m
-                              [33mclass[39m=[32m"row"[39m
+                              [33mclass[39m=[32m"container"[39m
+                              [33mdata-testid[39m=[32m"Semester"[39m
                             [36m>[39m
                               [36m<div[39m
-                                [33mclass[39m=[32m"col"[39m
+                                [33mclass[39m=[32m"row"[39m
                               [36m>[39m
-                                [36m<h5[39m
-                                  [33mdata-testid[39m=[32m"Semester_Title"[39m
-                                [36m>[39m
-                                  [0mFall[0m
-                                  [0m:[0m
-                                  [0m2021[0m
-                                [36m</h5>[39m
-                                [36m<i[39m
-                                  [33mdata-testid[39m=[32m"Semester_Credits"[39m
-                                [36m>[39m
-                                  [0mTotal Credits: [0m
-                                  [0m6[0m
-                                [36m</i>[39m
-                                [36m<p>[39m
-                                  [0m [0m
-                                [36m</p>[39m
                                 [36m<div[39m
-                                  [33mclass[39m=[32m"row"[39m
+                                  [33mclass[39m=[32m"col"[39m
                                 [36m>[39m
-                                  [36m<button[39m
-                                    [33mclass[39m=[32m"Buttons btn btn-outline-dark"[39m
-                                    [33mtype[39m=[32m"button"[39m
+                                  [36m<h5[39m
+                                    [33mdata-testid[39m=[32m"Semester_Title"[39m
                                   [36m>[39m
-                                    [0mAdd Course to Semester[0m
-                                  [36m</button>[39m
+                                    [0mFall[0m
+                                    [0m:[0m
+                                    [0m2021[0m
+                                  [36m</h5>[39m
+                                  [36m<i[39m
+                                    [33mdata-testid[39m=[32m"Semester_Credits"[39m
+                                  [36m>[39m
+                                    [0mTotal Credits: [0m
+                                    [0m6[0m
+                                  [36m</i>[39m
                                   [36m<p>[39m
                                     [0m [0m
                                   [36m</p>[39m
+                                  [36m<div[39m
+                                    [33mclass[39m=[32m"row"[39m
+                                  [36m>[39m
+                                    [36m<button[39m
+                                      [33mclass[39m=[32m"Buttons btn btn-outline-dark"[39m
+                                      [33mtype[39m=[32m"button"[39m
+                                    [36m>[39m
+                                      [0mAdd Course to Semester[0m
+                                    [36m</button>[39m
+                                    [36m<p>[39m
+                                      [0m [0m
+                                    [36m</p>[39m
+                                  [36m</div>[39m
+                                  [36m<div[39m
+                                    [33mclass[39m=[32m"row"[39m
+                                  [36m>[39m
+                                    [36m<button[39m
+                                      [33mclass[39m=[32m"Buttons btn btn-outline-dark"[39m
+                                      [33mdata-testid[39m=[32m"Remove Toggle"[39m
+                                      [33mtype[39m=[32m"button"[39m
+                                    [36m>[39m
+                                      [0mRemove Course from Semester[0m
+                                    [36m</button>[39m
+                                    [36m<p>[39m
+                                      [0m [0m
+                                    [36m</p>[39m
+                                    [36m<button[39m
+                                      [33mclass[39m=[32m"Buttons btn btn-outline-dark"[39m
+                                      [33mtype[39m=[32m"button"[39m
+                                    [36m>[39m
+                                      [0mClear Courses[0m
+                                    [36m</button>[39m
+                                    [36m<p>[39m
+                                      [0m [0m
+                                    [36m</p>[39m
+                                  [36m</div>[39m
+                                  [36m<div[39m
+                                    [33mclass[39m=[32m"course-pool container"[39m
+                                    [33mdata-testid[39m=[32m"Course_List"[39m
+                                  [36m>[39m
+                                    [36m<div[39m
+                                      [33mclass[39m=[32m"row row-cols-lg-4"[39m
+                                      [33mid[39m=[32m"course-row"[39m
+                                    [36m>[39m
+                                      [36m<div>[39m
+                                        [36m<div[39m
+                                          [33mclass[39m=[32m"bg-light border m-2 p-2"[39m
+                                          [33mdata-testid[39m=[32m"Course"[39m
+                                        [36m>[39m
+                                          [36m<b[39m
+                                            [33mclass[39m=[32m"title"[39m
+                                            [33mdata-testid[39m=[32m"course-title"[39m
+                                          [36m>[39m
+                                            [0mTitle: [0m
+                                            [0mSeminar in Composition[0m
+                                          [36m</b>[39m
+                                          [36m<ul>[39m
+                                            [36m<li[39m
+                                              [33mclass[39m=[32m"Course"[39m
+                                              [33mdata-testid[39m=[32m"course-code"[39m
+                                            [36m>[39m
+                                              [0mCode: [0m
+                                              [0mENG110[0m
+                                            [36m</li>[39m
+                                            [36m<li[39m
+                                              [33mclass[39m=[32m"Course"[39m
+                                              [33mdata-testid[39m=[32m"course-des"[39m
+                                            [36m>[39m
+                                              [0mDescription: [0m
+                                              [0mFreshman english class required for all students[0m
+                                            [36m</li>[39m
+                                            [36m<li[39m
+                                              [33mclass[39m=[32m"Course"[39m
+                                              [33mdata-testid[39m=[32m"course-credits"[39m
+                                            [36m>[39m
+                                              [0mCredits: [0m
+                                              [0m3[0m
+                                            [36m</li>[39m
+                                            [36m<li[39m
+                                              [33mclass[39m=[32m"Course"[39m
+                                              [33mdata-testid[39m=[32m"course-req"[39m
+                                            [36m>[39m
+                                              [0mFulfills requirement: [0m
+                                              [0myes[0m
+                                            [36m</li>[39m
+                                            [36m<li[39m
+                                              [33mclass[39m=[32m"Course"[39m
+                                              [33mdata-testid[39m=[32m"course-prereq"[39m
+                                            [36m>[39m
+                                              [0mPrerequisites:[0m
+                                              [0m[0m
+                                            [36m</li>[39m
+                                          [36m</ul>[39m
+                                        [36m</div>[39m
+                                      [36m</div>[39m
+                                      [36m<div>[39m
+                                        [36m<div[39m
+                                          [33mclass[39m=[32m"bg-light border m-2 p-2"[39m
+                                          [33mdata-testid[39m=[32m"Course"[39m
+                                        [36m>[39m
+                                          [36m<b[39m
+                                            [33mclass[39m=[32m"title"[39m
+                                            [33mdata-testid[39m=[32m"course-title"[39m
+                                          [36m>[39m
+                                            [0mTitle: [0m
+                                            [0mIntro to Computer Science I[0m
+                                          [36m</b>[39m
+                                          [36m<ul>[39m
+                                            [36m<li[39m
+                                              [33mclass[39m=[32m"Course"[39m
+                                              [33mdata-testid[39m=[32m"course-code"[39m
+                                            [36m>[39m
+                                              [0mCode: [0m
+                                              [0mCISC108[0m
+                                            [36m</li>[39m
+                                            [36m<li[39m
+                                              [33mclass[39m=[32m"Course"[39m
+                                              [33mdata-testid[39m=[32m"course-des"[39m
+                                            [36m>[39m
+                                              [0mDescription: [0m
+                                              [0mBasic coding principles[0m
+                                            [36m</li>[39m
+                                            [36m<li[39m
+                                              [33mclass[39m=[32m"Course"[39m
+                                              [33mdata-testid[39m=[32m"course-credits"[39m
+                                            [36m>[39m
+                                              [0mCredits: [0m
+                                              [0m3[0m
+                                            [36m</li>[39m
+                                            [36m<li[39m
+                                              [33mclass[39m=[32m"Course"[39m
+                                              [33mdata-testid[39m=[32m"course-req"[39m
+                                            [36m>[39m
+                                              [0mFulfills requirement: [0m
+                                              [0myes[0m
+                                            [36m</li>[39m
+                                            [36m<li[39m
+                                              [33mclass[39m=[32m"Course"[39m
+                                              [33mdata-testid[39m=[32m"course-prereq"[39m
+                                            [36m>[39m
+                                              [0mPrerequisites:[0m
+                                              [0m[0m
+                                            [36m</li>[39m
+                                          [36m</ul>[39m
+                                        [36m</div>[39m
+                                      [36m</div>[39m
+                                    [36m</div>[39m
+                                  [36m</div>[39m
                                 [36m</div>[39m
+                              [36m</div>[39m
+                            [36m</div>[39m
+                            [36m<button[39m
+                              [33mclass[39m=[32m"me-3 btn btn-outline-danger btn-sm"[39m
+                              [33mdata-testid[39m=[32m"delete-sem-btn"[39m
+                              [33mtype[39m=[32m"button"[39m
+                            [36m>[39m
+                              [0mdelete semester[0m
+                            [36m</button>[39m
+                          [36m</div>[39m
+                          [36m<div[39m
+                            [33mclass[39m=[32m"bg-light border m-2 p-2"[39m
+                          [36m>[39m
+                            [36m<div[39m
+                              [33mclass[39m=[32m"container"[39m
+                              [33mdata-testid[39m=[32m"Semester"[39m
+                            [36m>[39m
+                              [36m<div[39m
+                                [33mclass[39m=[32m"row"[39m
+                              [36m>[39m
                                 [36m<div[39m
-                                  [33mclass[39m=[32m"row"[39m
+                                  [33mclass[39m=[32m"col"[39m
                                 [36m>[39m
-                                  [36m<button[39m
-                                    [33mclass[39m=[32m"Buttons btn btn-outline-dark"[39m
-                                    [33mdata-testid[39m=[32m"Remove Toggle"[39m
-                                    [33mtype[39m=[32m"button"[39m
+                                  [36m<h5[39m
+                                    [33mdata-testid[39m=[32m"Semester_Title"[39m
                                   [36m>[39m
-                                    [0mRemove Course from Semester[0m
-                                  [36m</button>[39m
+                                    [0mSpring[0m
+                                    [0m:[0m
+                                    [0m2022[0m
+                                  [36m</h5>[39m
+                                  [36m<i[39m
+                                    [33mdata-testid[39m=[32m"Semester_Credits"[39m
+                                  [36m>[39m
+                                    [0mTotal Credits: [0m
+                                    [0m6[0m
+                                  [36m</i>[39m
                                   [36m<p>[39m
                                     [0m [0m
                                   [36m</p>[39m
-                                  [36m<button[39m
-                                    [33mclass[39m=[32m"Buttons btn btn-outline-dark"[39m
-                                    [33mtype[39m=[32m"button"[39m
+                                  [36m<div[39m
+                                    [33mclass[39m=[32m"row"[39m
                                   [36m>[39m
-                                    [0mClear Courses[0m
-                                  [36m</button>[39m
-                                  [36m<p>[39m
-                                    [0m [0m
-                                  [36m</...
+                                    [36m<button[39m
+                                      [33mclass[39m=[32m"Buttons btn btn-outline-dark"[39m
+                                      [33mtype[39m=[32m"button"[39m
+                                    [36m>[39m
+                                      [0mAdd Course to Semester[0m
+                                    [36m</button>[39m
+                                    [36m<p>[39m
+                                      [0m [0m
+                                    [36m</p>[39m
+                                  [36m</div>[39m
+                                  [36m<div[39m
+                                    [33mclass[39m=[32m"row"[39m
+                                  [36m>[39m
+                                    [36m<button[39m
+                                      [33mclass[39m=[32m"Buttons btn btn-outline-dark"[39m
+                                      [33mdata-testid[39m=[32m"Remove Toggle"[39m
+                                      [33mtype[39m=[32m"button"[39m
+                                    [36m>[39m
+                                      [0mRemove Course from Semester[0m
+                                    [36m</button>[39m
+                                    [36m<p>[39m
+                                      [0m [0m
+                                    [36m</p>[39m
+                                    [36m<button[39m
+                                      [33mclass[39m=[32m"Buttons btn btn-outline-dark"[39m
+                                      [33mtype[39m=[32m"button"[39m
+                                    [36m>[39m
+                                      [0mClear Courses[0m
+                                    [36m</button>[39m
+                                    [36m<p>[39m
+                                      [0m [0m
+                                    [36m</p>[39m
+                                  [36m</div>[39m
+                                  [36m<div[39m
+                                    [33mclass[39m=[32m"course-pool container"[39m
+                                    [33mdata-testid[39m=[32m"Course_List"[39m
+                                  [36m>[39m
+                                    [36m<div[39m
+                                      [33mclass[39m=[32m"row row-cols-lg-4"[39m
+                                      [33mid[39m=[32m"course-row"[39m
+                                    [36m>[39m
+                                      [36m<div>[39m
+                                        [36m<div[39m
+                                          [33mclass[39m=[32m"bg-light border m-2 p-2"[39m
+                                          [33mdata-testid[39m=[32m"Course"[39m
+                                        [36m>[39m
+                                          [36m<b[39m
+                                            [33mclass[39m=[32m"title"[39m
+                                            [33mdata-testid[39m=[32m"course-title"[39m
+                                          [36m>[39m
+                                            [0mTitle: [0m
+                                            [0mCalculus 1[0m
+                                          [36m</b>[39m
+                                          [36m<ul>[39m
+                                            [36m<li[39m
+                                              [33mclass[39m=[32m"Course"[39m
+                                              [33mdata-testid[39m=[32m"course-code"[39m
+                                            [36m>[39m
+                                              [0mCode: [0m
+                                              [0mMATH241[0m
+                                            [36m</li>[39m
+                                            [36m<li[39m
+                                              [33mclass[39m=[32m"Course"[39m
+                                              [33mdata-testid[39m=[32m"course-des"[39m
+                                            [36m>[39m
+                                              [0mDescription: [0m
+                                              [0mMath Class required for CISC majors[0m
+                                            [36m</li>[39m
+                                            [36m<li[39m
+                                              [33mclass[39m=[32m"Course"[39m
+                                              [33mdata-testid[39m=[32m"course-credits"[39m
+                                            [36m>[39m
+                                              [0mCredits: [0m
+                                              [0m3[0m
+                                            [36m</li>[39m
+                                            [36m<li[39m
+                                              [33mclass[39m=[32m"Course"[39m
+                                              [33mdata-testid[39m=[32m"course-req"[39m
+                                            [36m>[39m
+                                              [0mFulfills requirement: [0m
+                                              [0myes[0m
+                                            [36m</li>[39m
+                                            [36m<li[39m
+                                              [33mclass[39m=[32m"Course"[39m
+                                              [33mdata-testid[39m=[32m"course-prereq"[39m
+                                            [36m>[39m
+                                              [0mPrerequisites:[0m
+                                              [0m[0m
+                                            [36m</li>[39m
+                                          [36m</ul>[39m
+                                        [36m</div>[39m
+                                      [36m</div>[39m
+                                      [36m<div>[39m
+                                        [36m<div[39m
+                                          [33mclass[39m=[32m"bg-light border m-2 p-2"[39m
+                                          [33mdata-testid[39m=[32m"Course"[39m
+                                        [36m>[39m
+                                          [36m<b[39m
+                                            [33mclass[39m=[32m"title"[39m
+                                            [33mdata-testid[39m=[32m"course-title"[39m
+                                          [36m>[39m
+                                            [0mTitle: [0m
+                                            [0mIntro to Computer Science II[0m
+                                          [36m</b>[39m
+                                          [36m<ul>[39m
+                                            [36m<li[39m
+                                              [33mclass[39m=[32m"Course"[39m
+                                              [33mdata-testid[39m=[32m"course-code"[39m
+                                            [36m>[39m
+                                              [0mCode: [0m
+                                              [0mCISC181[0m
+                                            [36m</li>[39m
+                                            [36m<li[39m
+                                              [33mclass[39m=[32m"Course"[39m
+                                              [33mdata-testid[39m=[32m"course-des"[39m
+                                            [36m>[39m
+                                              [0mDescription: [0m
+                                              [0mMore advanced coding principles[0m
+                                            [36m</li>[39m
+                                            [36m<li[39m
+                                              [33mclass[39m=[32m"Course"[39m
+                                              [33mdata-testid[39m=[32m"course-credits"[39m
+                                            [36m>[39m
+                                              [0mCredits: [0m
+                                              [0m3[0m
+                                            [36m</li>[39m
+                                            [36m<li[39m
+                                              [33mclass[39m=[32m"Course"[39m
+                                              [33mdata-testid[39m=[32m"course-req"[39m
+                                            [36m>[39m
+                                              [0mFulfills requirement: [0m
+                                              [0myes[0m
+                                            [36m</li>[39m
+                                            [36m<li[39m
+                                              [33mclass[39m=[32m"Course"[39m
+                                              [33mdata-testid[39m=[32m"course-prereq"[39m
+                                            [36m>[39m
+                                              [0mPrerequisites:[0m
+                                              [0m[0m
+                                            [36m</li>[39m
+                                          [36m</ul>[39m
+                                        [36m</div>[39m
+                                      [36m</div>[39m
+                                    [36m</div>[39m
+                                  [36m</div>[39m
+                                [36m</div>[39m
+                              [36m</div>[39m
+                            [36m</div>[39m
+                            [36m<button[39m
+                              [33mclass[39m=[32m"me-3 btn btn-outline-danger btn-sm"[39m
+                              [33mdata-testid[39m=[32m"delete-sem-btn"[39m
+                              [33mtype[39m=[32m"button"[39m
+                            [36m>[39m
+                              [0mdelete semester[0m
+                            [36m</button>[39m
+                          [36m</div>[39m
+                        [36m</div>[39m
+                      [36m</div>[39m
+                    [36m</h6>[39m
+                  [36m</div>[39m
+                  [36m<button[39m
+                    [33mclass[39m=[32m"me-3 btn btn-outline-danger"[39m
+                    [33mdata-testid[39m=[32m"delete-plan-btn"[39m
+                    [33mtype[39m=[32m"button"[39m
+                  [36m>[39m
+                    [0mdelete plan[0m
+                  [36m</button>[39m
+                  [36m<hr />[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33mdata-testid[39m=[32m"plan"[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33mdata-testid[39m=[32m"degree-plan"[39m
+                  [36m>[39m
+                    [36m<h4[39m
+                      [33mdata-testid[39m=[32m"name"[39m
+                    [36m>[39m
+                      [0mSample Plan 2[0m
+                    [36m</h4>[39m
+                    [36m<h6[39m
+                      [33mdata-testid[39m=[32m"start-year"[39m
+                    [36m>[39m
+                      [0mStart Year: [0m
+                      [0m2023[0m
+                    [36m</h6>[39m
+                    [36m<h6[39m
+                      [33mdata-testid[39m=[32m"end-year"[39m
+                    [36m>[39m
+                      [0mEnd Year: [0m
+                      [0m2024[0m
+                    [36m</h6>[39m
+                    [36m<h6[39m
+                      [33mdata-testid[39m=[32m"degree-credits"[39m
+                    [36m>[39m
+                      [0mDegree Credits: [0m
+                      [0m0[0m
+                      [0m/ 124 required[0m
+                    [36m</h6>[39m
+                    [36m<button[39m
+                      [33mclass[39m=[32m"Buttons btn btn-primary"[39m
+                      [33mtype[39m=[32m"button"[39m
+                    [36m>[39m
+                      [0mMove Courses[0m
+                    [36m</button>[39m
+                    [36m<p>[39m
+                      [0m [0m
+                    [36m</p>[39m
+                    [36m<div>[39m
+                      [36m<button[39m
+                        [33mclass[39m=[32m"Buttons btn btn-success"[39m
+                        [33mdata-testid[39m=[32m"add-semester-btn"[39m
+                        [33mtype[39m=[32m"button"[39m
+                      [36m>[39m
+                        [0mAdd Semester[0m
+                      [36m</button>[39m
+                      [36m<p>[39m
+                        [0m [0m
+                      [36m</p>[39m
+                    [36m</div>[39m
+                    [36m<button[39m
+                      [33mclass[39m=[32m"Buttons btn btn-warning"[39m
+                      [33mtype[39m=[32m"button"[39m
+                    [36m>[39m
+                      [0mClear Semesters[0m
+                    [36m</button>[39m
+                    [36m<h6[39m
+                      [33mdata-testid[39m=[32m"semester-list"[39m
+                    [36m>[39m
+                      [36m<div[39m
+                        [33mclass[39m=[32m"Semester container"[39m
+                        [33mdata-testid[39m=[32m"Semester_List"[39m
+                      [36m>[39m
+                        [36m<div[39m
+                          [33mclass[39m=[32m"row"[39m
+                        [36m>[39m
+                          [36m<h4>[39m
+                            [0mSemesters:[0m
+                          [36m</h4>[39m
+                        [36m</div>[39m
+                      [36m</div>[39m
+                    [36m</h6>[39m
+                  [36m</div>[39m
+                  [36m<button[39m
+                    [33mclass[39m=[32m"me-3 btn btn-outline-danger"[39m
+                    [33mdata-testid[39m=[32m"delete-plan-btn"[39m
+                    [33mtype[39m=[32m"button"[39m
+                  [36m>[39m
+                    [0mdelete plan[0m
+                  [36m</button>[39m
+                  [36m<hr />[39m
+                [36m</div>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+        [36m</div>[39m
+        [36m<div>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"Delete-plan btn btn-success"[39m
+            [33mdata-testid[39m=[32m"add-plan-btn"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mAdd Plan[0m
+          [36m</button>[39m
+        [36m</div>[39m
+        [36m<p>[39m
+          [0m [0m
+        [36m</p>[39m
+        [36m<hr />[39m
+      [36m</div>[39m
+    [36m</body>[39m
 
        5 | test("renders the course name somewhere", () => {
        6 |     render(<App />);
@@ -245,29 +888,31 @@ FAIL src/App.test.tsx
       at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
       at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
 
--------------------|---------|----------|---------|---------|-----------------------
-File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s     
--------------------|---------|----------|---------|---------|-----------------------
-All files          |   55.75 |       50 |   58.06 |   55.75 |                       
- src               |   81.81 |      100 |      80 |   81.81 |                       
-  App.tsx          |   81.81 |      100 |      80 |   81.81 | 38-43                 
- src/components    |   52.23 |    47.36 |   55.42 |   52.23 |                       
-  CourseList.tsx   |     100 |      100 |     100 |     100 |                       
-  CourseMover.tsx  |       0 |        0 |       0 |       0 | 15-109                
-  CoursePool.tsx   |     100 |      100 |     100 |     100 |                       
-  CourseView.tsx   |     100 |      100 |     100 |     100 |                       
-  NewCourse.tsx    |   62.06 |       25 |   58.33 |   62.06 | 24-30,52-70           
-  PlanList.tsx     |     100 |      100 |     100 |     100 |                       
-  PlanView.tsx     |   55.31 |       45 |    60.6 |   55.31 | 26-27,114-225,240,296 
-  SemesterList.tsx |     100 |      100 |     100 |     100 |                       
-  SemesterView.tsx |      35 |       50 |      25 |      35 | 34-79,97-130          
- src/interfaces    |     100 |      100 |     100 |     100 |                       
-  course.ts        |       0 |        0 |       0 |       0 |                       
-  degreeplan.ts    |     100 |      100 |     100 |     100 |                       
-  semester.ts      |     100 |      100 |     100 |     100 |                       
--------------------|---------|----------|---------|---------|-----------------------
-Test Suites: 2 failed, 11 passed, 13 total
-Tests:       2 failed, 27 passed, 29 total
+----------------------|---------|----------|---------|---------|-----------------------
+File                  | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s     
+----------------------|---------|----------|---------|---------|-----------------------
+All files             |      50 |       50 |   51.85 |      50 |                       
+ src                  |   79.16 |    66.66 |   72.72 |   79.16 |                       
+  App.tsx             |   79.16 |    66.66 |   72.72 |   79.16 | 41-46,59              
+ src/components       |    46.5 |       48 |   49.48 |    46.5 |                       
+  AddCourseToPlan.tsx |       0 |      100 |       0 |       0 | 16-77                 
+  CourseList.tsx      |     100 |      100 |     100 |     100 |                       
+  CourseMover.tsx     |       0 |        0 |       0 |       0 | 15-109                
+  CoursePool.tsx      |    87.5 |      100 |      75 |    87.5 | 16                    
+  CoursePoolTable.tsx |   66.66 |       50 |      60 |   66.66 | 40-46                 
+  CourseView.tsx      |      75 |       50 |     100 |      75 | 9                     
+  NewCourse.tsx       |      45 |    33.33 |   53.84 |      45 | 24-30,52-82,87-95     
+  PlanList.tsx        |     100 |      100 |     100 |     100 |                       
+  PlanView.tsx        |   55.31 |       45 |    60.6 |   55.31 | 25-26,113-224,239,295 
+  SemesterList.tsx    |     100 |      100 |     100 |     100 |                       
+  SemesterView.tsx    |      35 |       50 |      25 |      35 | 34-79,97-130          
+ src/interfaces       |     100 |      100 |     100 |     100 |                       
+  course.ts           |       0 |        0 |       0 |       0 |                       
+  degreeplan.ts       |     100 |      100 |     100 |     100 |                       
+  semester.ts         |     100 |      100 |     100 |     100 |                       
+----------------------|---------|----------|---------|---------|-----------------------
+Test Suites: 4 failed, 9 passed, 13 total
+Tests:       4 failed, 25 passed, 29 total
 Snapshots:   0 total
-Time:        15.641 s
+Time:        9.888 s
 Ran all test suites.
