@@ -232,7 +232,9 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
             <h4 data-testid="name">{plan.name}</h4>
             <h6 data-testid="start-year">Start Year: {plan.Start_Year}</h6>
             <h6 data-testid="end-year">End Year: {plan.End_Year}</h6>
-            <h6 data-testid="degree-credits">Degree Credits: {plan_credits}</h6>
+            <h6 data-testid="degree-credits">
+                Degree Credits: {plan_credits}/ 124 required
+            </h6>
             <Button
                 className="Buttons"
                 onClick={() => setMoveCourse(!moveCourse)}
