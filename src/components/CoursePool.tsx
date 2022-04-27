@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import { Button, Container, Row } from "react-bootstrap";
-import { CourseView } from "./CourseView";
+import { CoursePoolTable } from "./CoursePoolTable";
 import { ValidateNewCourse } from "./NewCourse";
 import type { Course } from "../interfaces/course";
+import { DegreePlan } from "../interfaces/degreeplan";
 
-export function CoursePool({
-    plan_pool
-}: {
-    plan_pool: Course[];
-}): JSX.Element {
+export function CoursePool({ plans }: { plans: DegreePlan[] }): JSX.Element {
+    const POOLCOURSES = POOL_DATA as Course[];
+    const DEGREEPLANS = [...plans];
     const [newCourse, setNewCourse] = useState<boolean>(false);
     const [poolCourses, setPoolCourses] = useState<Course[]>(plan_pool);
 
@@ -20,7 +19,10 @@ export function CoursePool({
         setNewCourse(!newCourse);
     }
     return (
-        <Container className="course-pool">
+        <Container
+            className="course-pool"
+            style={{ overflowY: "scroll", height: "400px" }}
+        >
             <Row>
                 <h5>Course Pool: </h5>
                 <Button
@@ -28,7 +30,7 @@ export function CoursePool({
                     className="Buttons"
                     data-testid="add-course-btn"
                 >
-                    Add Course to Pool
+                    {newCourse ? "Cancel" : "Add Course to Pool"}
                 </Button>
             </Row>
             <Row>
@@ -38,9 +40,13 @@ export function CoursePool({
                     ></ValidateNewCourse>
                 ) : null}
             </Row>
-            <Row lg={6} id="course-row" data-testid="course-pool">
+            <Row>
                 {poolCourses.map((course: Course) => (
-                    <CourseView key={course.code} course={course}></CourseView>
+                    <CoursePoolTable
+                        key={course.code}
+                        course={course}
+                        plans={DEGREEPLANS}
+                    ></CoursePoolTable>
                 ))}
             </Row>
         </Container>
