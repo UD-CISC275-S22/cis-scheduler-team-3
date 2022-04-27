@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import "./App.css";
 import { PlanList } from "./components/PlanList";
-import { CoursePool } from "./components/CoursePool";
 import { SAMPLE_PLANS } from "./interfaces/degreeplan";
 import { DegreePlan } from "./interfaces/degreeplan";
 import { Course } from "./interfaces/course";
 import { Button, Form } from "react-bootstrap";
+import { CoursePool } from "./components/CoursePool";
 import POOL_DATA from "./data/course_catalog.json";
 
 type ChangeEvent = React.ChangeEvent<
