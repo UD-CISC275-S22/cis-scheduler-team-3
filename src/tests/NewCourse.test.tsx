@@ -3,10 +3,17 @@ import { render, screen } from "@testing-library/react";
 import { CoursePool } from "../components/CoursePool";
 import userEvent from "@testing-library/user-event";
 import { SAMPLE_PLANS } from "../interfaces/degreeplan";
+import { Course } from "../interfaces/course";
+import POOL_DATA from "../data/course_catalog.json";
+const POOLCOURSES = POOL_DATA as Course[];
 
 describe("Test suite for CoursePool component", () => {
     beforeEach(() => {
         render(<CoursePool plans={SAMPLE_PLANS} />);
+
+describe("Test suite for CoursePool component", () => {
+    beforeEach(() => {
+        render(<CoursePool plan_pool={POOLCOURSES} />);
     });
     test("Can add a new course", () => {
         const addcourse = screen.getByTestId("add-course-btn");
@@ -24,6 +31,5 @@ describe("Test suite for CoursePool component", () => {
         expect(screen.queryByText(/test course/i)).toBeInTheDocument();
         expect(screen.queryByText(/test101/i)).toBeInTheDocument();
         expect(screen.queryByText(/intro to testing/i)).toBeInTheDocument();
-        expect(screen.queryByText(/Credits: 1/i)).toBeInTheDocument();
     });
 });

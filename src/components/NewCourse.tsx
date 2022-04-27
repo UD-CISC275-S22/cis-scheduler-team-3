@@ -216,7 +216,7 @@ export function ValidateNewCourse({
                     )}
                 </Row>
                 <Button
-                    type="submit"
+                    //type="submit"
                     onClick={saveNewQuiz}
                     data-testid="addcourse-btn"
                 >

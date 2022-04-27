@@ -5,40 +5,52 @@ import { Semester } from "../interfaces/semester";
 
 export function CourseMover({
     semesters,
+    plan_pool,
     completeMove
 }: {
     semesters: Semester[];
-    completeMove: (
-        course: Course,
-        origin: Semester,
-        destination: Semester
-    ) => void;
+    plan_pool: Course[];
+    completeMove: (course: string, origin: string, destination: string) => void;
 }): JSX.Element {
-    const [origin, setOrigin] = useState<Semester>(semesters[0]);
-    const [course, setCourse] = useState<Course>(origin.courses[0]);
-    const [destination, setDestination] = useState<Semester>(semesters[0]);
+    const [origin, setOrigin] = useState<string>("Course_Pool");
+    const [course, setCourse] = useState<string>("");
+    const [destination, setDestination] = useState<string>("Course_Pool");
+    //let flag = false;
 
+    function courseListSelector(): Course[] {
+        let toReturn: Course[];
+        if (origin === "Course_Pool") {
+            toReturn = plan_pool;
+        } else {
+            const index = semesters.findIndex(
+                (semester: Semester): boolean =>
+                    semester.session + ":" + semester.year === origin
+            );
+            toReturn = semesters[index].courses;
+        }
+        return toReturn;
+    }
     function updateOrigin(event: React.ChangeEvent<HTMLSelectElement>) {
-        const chosenInd = semesters.findIndex(
+        /*const chosenInd = semesters.findIndex(
             (semester: Semester): boolean =>
                 semester.session + ":" + semester.year === event.target.value
-        );
-        setOrigin(semesters[chosenInd]);
+        );*/
+        setOrigin(event.target.value);
     }
 
     function updateCourse(event: React.ChangeEvent<HTMLSelectElement>) {
-        const chosenInd = origin.courses.findIndex(
+        /* const chosenInd = origin.courses.findIndex(
             (course: Course): boolean => course.code === event.target.value
-        );
-        setCourse(origin.courses[chosenInd]);
+        );*/
+        setCourse(event.target.value);
     }
 
     function updateDestination(event: React.ChangeEvent<HTMLSelectElement>) {
-        const chosenInd = semesters.findIndex(
+        /*const chosenInd = semesters.findIndex(
             (semester: Semester): boolean =>
                 semester.session + ":" + semester.year === event.target.value
-        );
-        setDestination(semesters[chosenInd]);
+        );*/
+        setDestination(event.target.value);
     }
 
     function startMove() {
@@ -48,11 +60,14 @@ export function CourseMover({
         <Col>
             <Row>
                 <Form.Group>
-                    <Form.Label>Select a Semester to Move From:</Form.Label>
-                    <Form.Select
-                        value={origin.session + ":" + origin.year}
-                        onChange={updateOrigin}
-                    >
+                    <Form.Label>
+                        Select a Semester or Course Pool to Move From:
+                    </Form.Label>
+                    <Form.Select value={origin} onChange={updateOrigin}>
+                        <option selected disabled>
+                            Choose an Origin
+                        </option>
+                        <option value="Course_Pool">Course Pool</option>
                         {semesters.map((semester: Semester) => (
                             <option
                                 key={semester.session + ":" + semester.year}
@@ -67,9 +82,9 @@ export function CourseMover({
             <Row>
                 <Form.Group>
                     <Form.Label>Select a Course to Move:</Form.Label>
-                    <Form.Select value={course.code} onChange={updateCourse}>
-                        <option></option>
-                        {origin.courses.map((course: Course) => (
+                    <Form.Select value={course} onChange={updateCourse}>
+                        <option selected>Choose Course</option>
+                        {courseListSelector().map((course: Course) => (
                             <option key={course.code} value={course.code}>
                                 {course.code}:{course.title}
                             </option>
@@ -83,10 +98,13 @@ export function CourseMover({
                         Select a Semester or Course Pool to move to:
                     </Form.Label>
                     <Form.Select
-                        value={destination.session + ":" + destination.year}
+                        value={destination}
                         onChange={updateDestination}
                     >
-                        {/*<option value="Course_Pool">Course Pool</option>*/}
+                        <option selected disabled>
+                            Choose a Destination
+                        </option>
+                        <option value="Course_Pool">Course Pool</option>
                         {semesters.map((semester: Semester) => (
                             <option
                                 key={semester.session + ":" + semester.year}

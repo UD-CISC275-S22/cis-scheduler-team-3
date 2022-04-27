@@ -50,10 +50,21 @@ const TEST_SEMESTERS = [
         semester_credits: 0
     }
 ];
-
+function completeRemove() {
+    return null;
+}
+function update(x: number) {
+    console.log(x);
+}
 describe("Test suite for SemesterList component", () => {
     beforeEach(() => {
-        render(<SemesterList semesters={TEST_SEMESTERS} />);
+        render(
+            <SemesterList
+                semesters={TEST_SEMESTERS}
+                removesem={completeRemove}
+                updateplan_credits={update}
+            />
+        );
     });
     test("There is at least one semester rendered.", () => {
         const list = screen.getByTestId("Semester_List");
