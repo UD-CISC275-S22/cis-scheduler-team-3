@@ -80,7 +80,6 @@ export function App(): JSX.Element {
                 </h5>
             </div>
             <div>
-                <Button onClick={saveData}>Save Changes</Button>
                 <PlanList plans={plans} remove={completeRemove}></PlanList>
             </div>
             <div>
@@ -123,6 +122,7 @@ export function App(): JSX.Element {
                     </Button>
                 </div>
             ) : null}
+            <Button onClick={saveData}>Save Changes</Button>
             <p> </p>
             <hr></hr>
         </>
