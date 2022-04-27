@@ -43,6 +43,7 @@ export function SemesterView({
         semester.semester_credits = new_credits;
         updateplan_credits(credits_gained);
         setcredits(new_credits);
+        semester.courses = [...semesterCourses, newCourse];
         setSemesterCourses([...semesterCourses, newCourse]);
     }
     //actually removes the course from the course array
@@ -68,6 +69,10 @@ export function SemesterView({
             semester.semester_credits = new_credits;
             updateplan_credits(credit_amt_lost);
             setcredits(new_credits);
+            semester.courses = [
+                ...semesterCourses.slice(0, delInd),
+                ...semesterCourses.slice(delInd + 1)
+            ];
             setSemesterCourses([
                 ...semesterCourses.slice(0, delInd),
                 ...semesterCourses.slice(delInd + 1)
