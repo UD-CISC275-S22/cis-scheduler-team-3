@@ -148,6 +148,10 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
                 (course: Course): boolean => course.code === moving
             );
             const moving_course = origin_final[moving_index];
+            const credits = parseInt(
+                moving_course.course_credits.trim().charAt(0)
+            );
+            updateplan_credits(credits);
             let destination_final =
                 allCourses.semesters[
                     allCourses.semesters.findIndex(
@@ -186,6 +190,9 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
                 courses: [...origin_final.courses.splice(moving_index, 1)]
             };
             const moving_course = origin_final.courses[moving_index];
+            const credits =
+                0 - parseInt(moving_course.course_credits.trim().charAt(0));
+            updateplan_credits(credits);
             const len = destination_final.length;
             destination_final = [
                 ...destination_final.splice(len, 0, moving_course)
