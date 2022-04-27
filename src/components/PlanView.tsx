@@ -28,22 +28,27 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
     function updatenewsem() {
         setnewsem(!newsem);
     }
+    //changes plan credits based on state of courses (deleted course credits go in as a negative)
     function updateplan_credits(credits: number) {
         const new_credits = plan_credits + credits;
         setplan_credits(new_credits);
     }
+    //creates an array of course arrays
     const courses = allCourses.semesters.map(
         (sem: Semester): Course[] => sem.courses
     );
     let sum = 0;
     if (courses.length > 0) {
+        //converts 2D array to one long array of course objects
         const indv_courses = courses.reduce(
             (currArr: Course[], c: Course[]) => currArr.concat(c),
             []
         );
+        //converts course objects to array of numbers representing credits
         const courses_as_nums = indv_courses.map((c: Course): number =>
             parseInt(c.course_credits.trim().charAt(0))
         );
+        //sums credits
         if (courses_as_nums.length > 0) {
             sum = courses_as_nums.reduce(
                 (currentTotal: number, credits: number) =>
@@ -51,11 +56,14 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
             );
         }
     }
+    //set plan_credits initial value to sum calculated above
     const [plan_credits, setplan_credits] = useState<number>(sum);
+    //actually removes semester from the array based on id obtained from SemesterView
     function removeSemester(termyear: string) {
         const newsemesters = [...allCourses.semesters].filter(
             (sem: Semester): boolean => sem.session + ":" + sem.year != termyear
         );
+        //same logic as above to update plan_credits
         const courses = newsemesters.map(
             (sem: Semester): Course[] => sem.courses
         );
@@ -79,6 +87,7 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
             coursePool: allCourses.coursePool
         });
     }
+    //actually adds a semester to the array
     function addSemester() {
         const newSemester = {
             courses: [],
@@ -87,6 +96,7 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
             semester_credits: 0
         };
         const newSemesterList = [...allCourses.semesters, newSemester];
+        //same logic as above to calculate plan credit total
         const courses = newSemesterList.map(
             (sem: Semester): Course[] => sem.courses
         );
@@ -144,6 +154,10 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
                 (course: Course): boolean => course.code === moving
             );
             const moving_course = origin_final[moving_index];
+            const credits = parseInt(
+                moving_course.course_credits.trim().charAt(0)
+            );
+            updateplan_credits(credits);
             let destination_final =
                 allCourses.semesters[
                     allCourses.semesters.findIndex(
@@ -182,6 +196,9 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
                 courses: [...origin_final.courses.splice(moving_index, 1)]
             };
             const moving_course = origin_final.courses[moving_index];
+            const credits =
+                0 - parseInt(moving_course.course_credits.trim().charAt(0));
+            updateplan_credits(credits);
             const len = destination_final.length;
             destination_final = [
                 ...destination_final.splice(len, 0, moving_course)
@@ -232,6 +249,7 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
             semesters: [],
             coursePool: [...allCourses.coursePool]
         });
+        setplan_credits(0);
     }
     return (
         <div data-testid="degree-plan">
@@ -297,6 +315,7 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
                 ) : null}
             </div>
             <Button
+                data-testid="clear-sem-btn"
                 className="Buttons"
                 variant="warning"
                 onClick={() => clearSemesters()}

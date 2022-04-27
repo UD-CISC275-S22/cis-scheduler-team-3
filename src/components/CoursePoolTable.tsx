@@ -164,7 +164,10 @@ export function CoursePoolTable({ course }: { course: Course }): JSX.Element {
 
     return (
         <div>
-            <Container className="course-pool-scrollable">
+            <Container
+                data-testid="scroll-courses"
+                className="course-pool-scrollable"
+            >
                 <Row>
                     <Col>
                         {" "}

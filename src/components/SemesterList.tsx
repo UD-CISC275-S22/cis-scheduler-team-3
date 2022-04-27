@@ -12,6 +12,7 @@ export function SemesterList({
     removesem: (n: string) => void;
     updateplan_credits: (credit: number) => void;
 }): JSX.Element {
+    //sends the id value of the semester to be deleted to a fn in PlanView that performs deletion
     function deleteSemester(semester: Semester) {
         const ty = semester.session + ":" + semester.year;
         removesem(ty);

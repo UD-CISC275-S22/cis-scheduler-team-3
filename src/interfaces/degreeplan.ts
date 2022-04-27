@@ -11,8 +11,9 @@ export interface DegreePlan {
     degree_credits: number; // Total credit alloted to the degree plan
     plan_pool: Course[];
 }
-
+//imported data from UD's website
 const POOLCOURSES = POOL_DATA as Course[];
+//our sample data to test the display
 export const SAMPLE_PLANS = [
     {
         name: "Sample Plan 1",

@@ -83,17 +83,15 @@ export function ValidateNewCourse({
     }
 
     function saveNewQuiz() {
-        if (validated) {
-            createCourse({
-                code: code,
-                title: title,
-                description: description,
-                course_credits: credits,
-                prerequisites: prerequisiteList,
-                requirement: isRequired
-            });
-            clearForm();
-        }
+        createCourse({
+            code: code,
+            title: title,
+            description: description,
+            course_credits: credits,
+            prerequisites: prerequisiteList,
+            requirement: isRequired
+        });
+        clearForm();
     }
 
     return (
