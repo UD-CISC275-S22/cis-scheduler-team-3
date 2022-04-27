@@ -684,6 +684,12 @@ FAIL src/App.test.tsx
             [0mAdd Plan[0m
           [36m</button>[39m
         [36m</div>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"btn btn-primary"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mSave Changes[0m
+        [36m</button>[39m
         [36m<p>[39m
           [0m [0m
         [36m</p>[39m
@@ -713,9 +719,9 @@ FAIL src/App.test.tsx
 ----------------------|---------|----------|---------|---------|--------------------------
 File                  | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s        
 ----------------------|---------|----------|---------|---------|--------------------------
-All files             |   49.62 |    48.07 |   52.33 |   49.62 |                          
- src                  |   81.81 |      100 |      80 |   81.81 |                          
-  App.tsx             |   81.81 |      100 |      80 |   81.81 | 39-44                    
+All files             |      50 |    48.14 |   51.85 |      50 |                          
+ src                  |   78.57 |       75 |   72.72 |   78.57 |                          
+  App.tsx             |   78.57 |       75 |   72.72 |   78.57 | 18,30,50-55              
  src/components       |   46.05 |       46 |   49.48 |   46.05 |                          
   AddCourseToPlan.tsx |       0 |      100 |       0 |       0 | 16-77                    
   CourseList.tsx      |     100 |      100 |     100 |     100 |                          
@@ -736,5 +742,5 @@ All files             |   49.62 |    48.07 |   52.33 |   49.62 |
 Test Suites: 3 failed, 10 passed, 13 total
 Tests:       3 failed, 26 passed, 29 total
 Snapshots:   0 total
-Time:        9.79 s
+Time:        9.666 s
 Ran all test suites.
