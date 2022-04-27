@@ -3,14 +3,17 @@ import "./App.css";
 import { PlanList } from "./components/PlanList";
 import { SAMPLE_PLANS } from "./interfaces/degreeplan";
 import { DegreePlan } from "./interfaces/degreeplan";
+import { Course } from "./interfaces/course";
 import { Button, Form } from "react-bootstrap";
 import { CoursePool } from "./components/CoursePool";
+import POOL_DATA from "./data/course_catalog.json";
 
 type ChangeEvent = React.ChangeEvent<
     HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement
 >;
 
-function App(): JSX.Element {
+export function App(): JSX.Element {
+    const POOLCOURSES = POOL_DATA as Course[];
     const [plans, setplans] = useState<DegreePlan[]>(SAMPLE_PLANS);
     const [name, setname] = useState<string>("");
     const [start, setstart] = useState<number>(0);
@@ -27,7 +30,8 @@ function App(): JSX.Element {
             Start_Year: start,
             End_Year: end,
             semesters: [],
-            degree_credits: 0
+            degree_credits: 0,
+            plan_pool: POOLCOURSES
         };
         const newPlanList = [...plans, newPlan];
         updateAdd();
@@ -44,6 +48,12 @@ function App(): JSX.Element {
     function updateName(event: ChangeEvent) {
         setname(event.target.value);
     }
+    function completeRemove(n: string) {
+        const newplans = [...plans].filter(
+            (dp: DegreePlan): boolean => dp.name != n
+        );
+        setplans(newplans);
+    }
 
     function showCoursePool() {
         setShowPool(!showPool);
@@ -52,18 +62,16 @@ function App(): JSX.Element {
     return (
         <>
             <div className="App">
-                <header className="App-header">CIS Scheduler</header>
+                <header className="App-header">UD CIS Scheduler</header>
                 <h6>
                     Group Members: Madison Holloway, John Neilson, & Sara Fleck
                 </h6>
                 <p> </p>
                 <h5 className="Description">
-                    Hello! Welcome to our CIS scheduler. In this app, you will
-                    be able to map out different CIS degree plans. At the top,
-                    you can see a pool of typical courses at UD. You can add to
-                    and edit these courses as you see fit. Below, you may
-                    construct and edit your semesters all while making sure
-                    requirements for graduation are met.
+                    Hello! Welcome to our UD CIS scheduler. In this app, you
+                    will be able to map out different CIS degree plans. You can
+                    add, edit, move, and delete semesters and courses as you see
+                    fit.
                 </h5>
             </div>
             <div>
@@ -79,13 +87,18 @@ function App(): JSX.Element {
                             : "Show Pool of CISC-related courses"}
                     </Button>
                 </div>
-                {showPool ? <CoursePool plans={plans}></CoursePool> : null}
                 <div>
-                    <PlanList plans={plans}></PlanList>
+                    {showPool ? <CoursePool plans={plans}></CoursePool> : null}
+                    <PlanList plans={plans} remove={completeRemove}></PlanList>
                 </div>
             </div>
             <div>
-                <Button variant="success" size="sm" onClick={() => updateAdd()}>
+                <Button
+                    variant="success"
+                    className="Delete-plan"
+                    onClick={() => updateAdd()}
+                    data-testid="add-plan-btn"
+                >
                     Add Plan
                 </Button>
             </div>
@@ -113,14 +126,15 @@ function App(): JSX.Element {
                         variant="success"
                         size="sm"
                         onClick={() => addPlan()}
+                        data-testid="add-btn"
                     >
                         add
                     </Button>
                 </div>
             ) : null}
+            <p> </p>
             <hr></hr>
         </>
     );
 }
-
 export default App;

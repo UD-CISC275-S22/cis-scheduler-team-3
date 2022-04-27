@@ -6,28 +6,61 @@ import { ValidateNewCourse } from "./NewCourse";
 import { Course } from "../interfaces/course";
 
 export function SemesterView({
-    semester
+    semester,
+    updateplan_credits
 }: {
     semester: Semester;
+    updateplan_credits: (credit: number) => void;
 }): JSX.Element {
     const [newCourse, setNewCourse] = useState<boolean>(false);
     const [removeCourse, setRemoveCourse] = useState<boolean>(false);
     const [semesterCourses, setSemesterCourses] = useState<Course[]>(
         semester.courses
     );
+    const courses = semester.courses;
+    const courses_as_nums = courses.map((c: Course): number =>
+        parseInt(c.course_credits.trim().charAt(0))
+    );
+    let sum = 0;
+    if (courses_as_nums.length > 0) {
+        sum = courses_as_nums.reduce(
+            (currentTotal: number, credits: number) => currentTotal + credits
+        );
+    }
+    semester.semester_credits = sum;
+    const [credits, setcredits] = useState<number>(sum);
     const [course, setCourse] = useState<Course>(semesterCourses[0]);
-
     function createCourse(newCourse: Course) {
+        const credits_gained = parseInt(
+            newCourse.course_credits.trim().charAt(0).charAt(0)
+        );
+        const new_credits = credits + credits_gained;
+        semester.semester_credits = new_credits;
+        updateplan_credits(credits_gained);
+        setcredits(new_credits);
         setSemesterCourses([...semesterCourses, newCourse]);
     }
 
     function deleteCourse() {
-        if (semesterCourses.length === 0) {
+        if (semesterCourses.length === 1) {
+            semester.semester_credits = 0;
+            setcredits(0);
             setSemesterCourses([]);
         } else {
             const delInd = semesterCourses.findIndex(
                 (c_course: Course): boolean => c_course.code === course.code
             );
+            let credit_amt_lost = parseInt(
+                semesterCourses[delInd].course_credits
+                    .trim()
+                    .charAt(0)
+                    .charAt(0)
+            );
+            credit_amt_lost = 0 - credit_amt_lost;
+            const new_credits = credits + credit_amt_lost;
+            semester.semester_credits = new_credits;
+            updateplan_credits(credit_amt_lost);
+            setcredits(new_credits);
             setSemesterCourses([
                 ...semesterCourses.slice(0, delInd),
                 ...semesterCourses.slice(delInd + 1)
@@ -42,6 +75,10 @@ export function SemesterView({
         setCourse(semesterCourses[chosenInd]);
     }
 
+    function clearCourses() {
+        setSemesterCourses([]);
+    }
+
     return (
         <Container data-testid="Semester">
             <Row>
@@ -50,7 +87,7 @@ export function SemesterView({
                         {semester.session}:{semester.year}
                     </h5>
                     <i data-testid="Semester_Credits">
-                        Total Credits: {semester.semester_credits}
+                        Total Credits: {credits}
                     </i>
                     <p> </p>
                     <Row>
@@ -70,6 +107,7 @@ export function SemesterView({
                     </Row>
                     <Row>
                         <Button
+                            data-testid="Remove Toggle"
                             className="Buttons"
                             variant="outline-dark"
                             onClick={() => setRemoveCourse(!removeCourse)}
@@ -87,10 +125,10 @@ export function SemesterView({
                                         value={course.code}
                                         onChange={updateCourse}
                                     >
-                                        <option></option>
                                         {semesterCourses.map(
                                             (course: Course) => (
                                                 <option
+                                                    data-testid={course.code}
                                                     key={course.code}
                                                     value={course.code}
                                                 >
@@ -100,11 +138,25 @@ export function SemesterView({
                                         )}
                                     </Form.Select>
                                 </Form.Group>
-                                <Button onClick={deleteCourse}>
+                                <Button
+                                    data-testid="Remove Confirm"
+                                    className="Buttons"
+                                    variant="outline-dark"
+                                    onClick={deleteCourse}
+                                >
                                     Delete Course
                                 </Button>
+                                <p> </p>
                             </div>
                         ) : null}
+                        <Button
+                            className="Buttons"
+                            variant="outline-dark"
+                            onClick={clearCourses}
+                        >
+                            Clear Courses
+                        </Button>
+                        <p> </p>
                     </Row>
                     <CourseList courses={semesterCourses}></CourseList>
                 </Col>

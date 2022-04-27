@@ -24,6 +24,5 @@ describe("Test suite for CoursePool component", () => {
         expect(screen.queryByText(/test course/i)).toBeInTheDocument();
         expect(screen.queryByText(/test101/i)).toBeInTheDocument();
         expect(screen.queryByText(/intro to testing/i)).toBeInTheDocument();
-        expect(screen.queryByText(/Credits: 1/i)).toBeInTheDocument();
     });
 });

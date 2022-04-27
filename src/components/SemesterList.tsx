@@ -1,13 +1,21 @@
 import React from "react";
-import { Container, Row } from "react-bootstrap";
+import { Button, Container, Row } from "react-bootstrap";
 import { Semester } from "../interfaces/semester";
 import { SemesterView } from "./SemesterView";
 
 export function SemesterList({
-    semesters
+    semesters,
+    removesem,
+    updateplan_credits
 }: {
     semesters: Semester[];
+    removesem: (n: string) => void;
+    updateplan_credits: (credit: number) => void;
 }): JSX.Element {
+    function deleteSemester(semester: Semester) {
+        const ty = semester.session + ":" + semester.year;
+        removesem(ty);
+    }
     return (
         <Container className="Semester" data-testid="Semester_List">
             <Row>
@@ -17,7 +25,19 @@ export function SemesterList({
                         key={semester.session + semester.year}
                         className="bg-light border m-2 p-2"
                     >
-                        <SemesterView semester={semester}></SemesterView>
+                        <SemesterView
+                            semester={semester}
+                            updateplan_credits={updateplan_credits}
+                        ></SemesterView>
+                        <Button
+                            className="me-3"
+                            size="sm"
+                            variant="outline-danger"
+                            onClick={() => deleteSemester(semester)}
+                            data-testid="delete-sem-btn"
+                        >
+                            delete semester
+                        </Button>
                     </div>
                 ))}
             </Row>
