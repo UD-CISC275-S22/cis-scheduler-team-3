@@ -5,7 +5,7 @@ import { SAMPLE_PLANS } from "../interfaces/degreeplan";
 
 describe("Test suite for CoursePool component", () => {
     beforeEach(() => {
-        render(<CoursePool plans={SAMPLE_PLANS} />);
+        render(<CoursePool plan_pool={SAMPLE_PLANS[0].plan_pool} />);
     });
     test("The course pool renders courses", () => {
         const pool = screen.getByTestId("course-pool");
