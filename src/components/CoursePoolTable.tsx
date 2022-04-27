@@ -14,6 +14,8 @@ export function CoursePoolTable({
     const [open, setOpen] = useState<boolean>(false);
     const [style, setStyle] = useState<string>("collapse hide");
     const [showModal, setShowModal] = useState<boolean>(false);
+    //the following code may be implemented in the future to allow users to
+    //edit courses in the course pool.
     // const [editMode, setEditMode] = useState<boolean>(false);
     // const [updateCode, setUpdatedCode] = useState<string>(course.code);
     // const [updateTitle, setUpdatedTitle] = useState<string>(course.title);
