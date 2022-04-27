@@ -11,7 +11,7 @@ describe("Test suite for CoursePool component", () => {
         const pool = screen.getByTestId("course-pool");
         expect(pool).toBeInTheDocument();
     });
-    test("Add course to pool btn exists", () => {
+    test("Add course to pool button exists", () => {
         const addcourse = screen.getByTestId("add-course-btn");
         expect(addcourse).toBeInTheDocument();
     });
