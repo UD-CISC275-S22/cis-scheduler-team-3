@@ -16,6 +16,8 @@ function App(): JSX.Element {
     const [start, setstart] = useState<number>(0);
     const [end, setend] = useState<number>(0);
     const [add, setadd] = useState<boolean>(false);
+    const [showPool, setShowPool] = useState<boolean>(false);
+
     function updateAdd() {
         setadd(!add);
     }
@@ -43,6 +45,10 @@ function App(): JSX.Element {
         setname(event.target.value);
     }
 
+    function showCoursePool() {
+        setShowPool(!showPool);
+    }
+
     return (
         <>
             <div className="App">
@@ -61,8 +67,22 @@ function App(): JSX.Element {
                 </h5>
             </div>
             <div>
-                <CoursePool></CoursePool>
-                <PlanList plans={plans}></PlanList>
+                <div className="show-course-pool-button">
+                    <Button
+                        variant="success"
+                        size="sm"
+                        onClick={showCoursePool}
+                        className="show-course-pool-button"
+                    >
+                        {showPool
+                            ? "Hide Pool of CISC-related courses"
+                            : "Show Pool of CISC-related courses"}
+                    </Button>
+                </div>
+                {showPool ? <CoursePool plans={plans}></CoursePool> : null}
+                <div>
+                    <PlanList plans={plans}></PlanList>
+                </div>
             </div>
             <div>
                 <Button variant="success" size="sm" onClick={() => updateAdd()}>

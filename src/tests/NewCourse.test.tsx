@@ -2,10 +2,11 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import { CoursePool } from "../components/CoursePool";
 import userEvent from "@testing-library/user-event";
+import { SAMPLE_PLANS } from "../interfaces/degreeplan";
 
 describe("Test suite for CoursePool component", () => {
     beforeEach(() => {
-        render(<CoursePool />);
+        render(<CoursePool plans={SAMPLE_PLANS} />);
     });
     test("Can add a new course", () => {
         const addcourse = screen.getByTestId("add-course-btn");

@@ -1126,7 +1126,7 @@
         "code": "CHEM 134",
         "title": "General Chemistry Laboratory",
         "description": "This laboratory course is the second in a two-semester sequence designed (and required) for science and engineering majors. Covers thermodynamics, kinetics, equilibrium among gases, liquids and solids, equilibrium in solution, acids and bases, electrochemistry, and nuclear chemistry.  Topics touched on briefly include transition elements and types and nomenclature of organic compounds. Descriptive chemistry of representative elements is interspersed throughout the course.  42h laboratory experiments.",
-        "credits": " 1",
+        "credits": "1",
         "preReq": "CHEM 103 and CHEM 133, or CHEM 111.",
         "requirement": true
     }
