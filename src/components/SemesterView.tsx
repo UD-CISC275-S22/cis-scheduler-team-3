@@ -33,6 +33,8 @@ export function SemesterView({
     const [course, setCourse] = useState<Course>(semesterCourses[0]);
     //adds course to the Course array
     function createCourse(newCourse: Course) {
+        console.log("made it to create course");
+        console.log("new course title:" + newCourse.title);
         const credits_gained = parseInt(
             newCourse.course_credits.trim().charAt(0).charAt(0)
         );
