@@ -82,3 +82,42 @@
         transform: rotate(360deg);
     }
 }
+
+#edit-course-info-button {
+    justify-content: right;
+}
+
+#course-info-collapse {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: 1rem;
+}
+
+.show-course-pool-button {
+    text-align: right;
+    margin-right: 5rem;
+}
+
+#add-course-button {
+    margin-bottom: 1rem;
+}
+
+.Container .course-pool-scrollable {
+    overflow-y: scroll;
+    height: 400px;
+}
+
+/* .course-pool-scrollable {
+    height: 110px;
+    overflow: scroll;
+} */
+/* 
+.course-pool-div {
+    height: 300px;
+    overflow-y: scoll;
+} */
+
+/* .title-text {
+    padding: 5px 0;
+} */

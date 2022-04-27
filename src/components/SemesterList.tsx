@@ -5,10 +5,12 @@ import { SemesterView } from "./SemesterView";
 
 export function SemesterList({
     semesters,
-    removesem
+    removesem,
+    updateplan_credits
 }: {
     semesters: Semester[];
     removesem: (n: string) => void;
+    updateplan_credits: (credit: number) => void;
 }): JSX.Element {
     function deleteSemester(semester: Semester) {
         const ty = semester.session + ":" + semester.year;
@@ -23,7 +25,10 @@ export function SemesterList({
                         key={semester.session + semester.year}
                         className="bg-light border m-2 p-2"
                     >
-                        <SemesterView semester={semester}></SemesterView>
+                        <SemesterView
+                            semester={semester}
+                            updateplan_credits={updateplan_credits}
+                        ></SemesterView>
                         <Button
                             className="me-3"
                             size="sm"

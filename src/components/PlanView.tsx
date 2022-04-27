@@ -4,8 +4,8 @@ import { Course } from "../interfaces/course";
 import { DegreePlan } from "../interfaces/degreeplan";
 import { Semester } from "../interfaces/semester";
 import { CourseMover } from "./CourseMover";
-import { SemesterList } from "./SemesterList";
 import { CoursePool } from "./CoursePool";
+import { SemesterList } from "./SemesterList";
 
 type ChangeEvent = React.ChangeEvent<
     HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement
@@ -19,14 +19,61 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
     });
     const [newsem, setnewsem] = useState<boolean>(false);
     const [moveCourse, setMoveCourse] = useState<boolean>(false);
+    const [showPool, setShowPool] = useState<boolean>(false);
+
+    function showCoursePool() {
+        setShowPool(!showPool);
+    }
 
     function updatenewsem() {
         setnewsem(!newsem);
     }
+    function updateplan_credits(credits: number) {
+        const new_credits = plan_credits + credits;
+        setplan_credits(new_credits);
+    }
+    const courses = allCourses.semesters.map(
+        (sem: Semester): Course[] => sem.courses
+    );
+    let sum = 0;
+    if (courses.length > 0) {
+        const indv_courses = courses.reduce(
+            (currArr: Course[], c: Course[]) => currArr.concat(c),
+            []
+        );
+        const courses_as_nums = indv_courses.map((c: Course): number =>
+            parseInt(c.course_credits.trim().charAt(0))
+        );
+        if (courses_as_nums.length > 0) {
+            sum = courses_as_nums.reduce(
+                (currentTotal: number, credits: number) =>
+                    currentTotal + credits
+            );
+        }
+    }
+    const [plan_credits, setplan_credits] = useState<number>(sum);
     function removeSemester(termyear: string) {
         const newsemesters = [...allCourses.semesters].filter(
             (sem: Semester): boolean => sem.session + ":" + sem.year != termyear
         );
+        const courses = newsemesters.map(
+            (sem: Semester): Course[] => sem.courses
+        );
+        let sum = 0;
+        if (courses.length > 0) {
+            const indv_courses = courses.reduce(
+                (currArr: Course[], c: Course[]) => currArr.concat(c),
+                []
+            );
+            const courses_as_nums = indv_courses.map((c: Course): number =>
+                parseInt(c.course_credits.trim().charAt(0))
+            );
+            sum = courses_as_nums.reduce(
+                (currentTotal: number, credits: number) =>
+                    currentTotal + credits
+            );
+        }
+        setplan_credits(sum);
         setAllCourses({
             semesters: newsemesters,
             coursePool: allCourses.coursePool
@@ -40,6 +87,26 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
             semester_credits: 0
         };
         const newSemesterList = [...allCourses.semesters, newSemester];
+        const courses = newSemesterList.map(
+            (sem: Semester): Course[] => sem.courses
+        );
+        let sum = 0;
+        if (courses.length > 0) {
+            const indv_courses = courses.reduce(
+                (currArr: Course[], c: Course[]) => currArr.concat(c),
+                []
+            );
+            const courses_as_nums = indv_courses.map((c: Course): number =>
+                parseInt(c.course_credits.trim().charAt(0))
+            );
+            if (courses_as_nums.length > 0) {
+                sum = courses_as_nums.reduce(
+                    (currentTotal: number, credits: number) =>
+                        currentTotal + credits
+                );
+            }
+        }
+        setplan_credits(sum);
         setAllCourses({
             semesters: newSemesterList,
             coursePool: allCourses.coursePool
@@ -50,6 +117,7 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
         setyear(inputToNumber);
     }
     function updatesession(event: ChangeEvent) {
+        console.log(event.target.value);
         setsession(event.target.value);
     }
     function completeMove(moving: string, origin: string, destination: string) {
@@ -159,13 +227,19 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
             });
         }
     }
+    function clearSemesters() {
+        setAllCourses({
+            semesters: [],
+            coursePool: [...allCourses.coursePool]
+        });
+    }
     return (
         <div data-testid="degree-plan">
             <h4 data-testid="name">{plan.name}</h4>
             <h6 data-testid="start-year">Start Year: {plan.Start_Year}</h6>
             <h6 data-testid="end-year">End Year: {plan.End_Year}</h6>
             <h6 data-testid="degree-credits">
-                Degree Credits: {plan.degree_credits}
+                Degree Credits: {plan_credits}/ 124 required
             </h6>
             <Button
                 className="Buttons"
@@ -194,13 +268,17 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
                 {newsem ? (
                     <>
                         <Form.Group>
-                            <Form.Label>
-                                Semester Session (Fall, Winter, Spring, Summer):
-                            </Form.Label>
-                            <Form.Control
+                            <Form.Label>Semester Session:</Form.Label>
+                            <Form.Select
                                 value={session}
                                 onChange={updatesession}
-                            ></Form.Control>
+                            >
+                                <option> </option>
+                                <option value={"Fall"}>Fall</option>
+                                <option value={"Winter"}>Winter</option>
+                                <option value={"Spring"}>Spring</option>
+                                <option value={"Summer"}>Summer</option>
+                            </Form.Select>
                             <Form.Label>Semester Year: </Form.Label>
                             <Form.Control
                                 value={year}
@@ -218,15 +296,35 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
                     </>
                 ) : null}
             </div>
+            <Button
+                className="Buttons"
+                variant="warning"
+                onClick={() => clearSemesters()}
+            >
+                Clear Semesters
+            </Button>
             <h6 data-testid="semester-list">
                 <SemesterList
                     semesters={allCourses.semesters}
                     removesem={removeSemester}
+                    updateplan_credits={updateplan_credits}
                 ></SemesterList>
+                <div className="show-course-pool-button">
+                    <Button
+                        variant="success"
+                        size="sm"
+                        onClick={showCoursePool}
+                        className="show-course-pool-button"
+                    >
+                        {showPool
+                            ? "Hide Pool of CISC-related courses"
+                            : "Show Pool of CISC-related courses"}
+                    </Button>
+                </div>
+                {showPool ? (
+                    <CoursePool plan_pool={plan.plan_pool}></CoursePool>
+                ) : null}
             </h6>
-            <div>
-                <CoursePool plan_pool={allCourses.coursePool}></CoursePool>
-            </div>
         </div>
     );
 }

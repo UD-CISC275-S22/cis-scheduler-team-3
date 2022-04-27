@@ -53,12 +53,16 @@ const TEST_SEMESTERS = [
 function completeRemove() {
     return null;
 }
+function update(x: number) {
+    console.log(x);
+}
 describe("Test suite for SemesterList component", () => {
     beforeEach(() => {
         render(
             <SemesterList
                 semesters={TEST_SEMESTERS}
                 removesem={completeRemove}
+                updateplan_credits={update}
             />
         );
     });

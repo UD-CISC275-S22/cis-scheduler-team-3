@@ -70,20 +70,35 @@ export function ValidateNewCourse({
         setPrerequisiteList(prerequisiteList + currentPrereq);
     }
 
+    function clearForm() {
+        setCode("");
+        setTitle("");
+        setDescription("");
+        setCredits("");
+        setHasPrerequisites(false);
+        setPrerequisiteList("");
+        setCurrentPrereq("");
+        setIsRequired(false);
+        setValidated(false);
+    }
+
     function saveNewQuiz() {
-        createCourse({
-            code: code,
-            title: title,
-            description: description,
-            course_credits: credits,
-            prerequisites: prerequisiteList,
-            requirement: isRequired
-        });
+        if (validated) {
+            createCourse({
+                code: code,
+                title: title,
+                description: description,
+                course_credits: credits,
+                prerequisites: prerequisiteList,
+                requirement: isRequired
+            });
+            clearForm();
+        }
     }
 
     return (
         <Row>
-            <Form noValidate validated={validated} onSubmit={handleSubmit}>
+            <Form validated={validated} onSubmit={handleSubmit}>
                 <Row className="mb-3">
                     <Form.Group as={Col} controlId="valid-course-title">
                         <Form.Label>Course Title: </Form.Label>
@@ -138,6 +153,7 @@ export function ValidateNewCourse({
                             data-testid="course-credits-box"
                             value={credits}
                             onChange={updateCredits}
+                            required
                         >
                             {possibleCredits.map((creditAmount: string) => (
                                 <option key={creditAmount} value={creditAmount}>
@@ -200,7 +216,7 @@ export function ValidateNewCourse({
                     )}
                 </Row>
                 <Button
-                    type="submit"
+                    //type="submit"
                     onClick={saveNewQuiz}
                     data-testid="addcourse-btn"
                 >
