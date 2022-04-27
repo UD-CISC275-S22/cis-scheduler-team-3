@@ -119,6 +119,7 @@ FAIL src/App.test.tsx
                   [36m>[39m
                     [0mDegree Credits: [0m
                     [0m12[0m
+                    [0m/ 124 required[0m
                   [36m</h6>[39m
                   [36m<button[39m
                     [33mclass[39m=[32m"Buttons btn btn-primary"[39m
@@ -223,8 +224,7 @@ FAIL src/App.test.tsx
                                   [36m</button>[39m
                                   [36m<p>[39m
                                     [0m [0m
-                                  [36m</p>[39m
-                                [3...
+                                  [36m</...
 
        5 | test("renders the course name somewhere", () => {
        6 |     render(<App />);
@@ -258,7 +258,7 @@ All files          |   55.75 |       50 |   58.06 |   55.75 |
   CourseView.tsx   |     100 |      100 |     100 |     100 |                       
   NewCourse.tsx    |   62.06 |       25 |   58.33 |   62.06 | 24-30,52-70           
   PlanList.tsx     |     100 |      100 |     100 |     100 |                       
-  PlanView.tsx     |   55.31 |       45 |    60.6 |   55.31 | 26-27,114-225,238,294 
+  PlanView.tsx     |   55.31 |       45 |    60.6 |   55.31 | 26-27,114-225,240,296 
   SemesterList.tsx |     100 |      100 |     100 |     100 |                       
   SemesterView.tsx |      35 |       50 |      25 |      35 | 34-79,97-130          
  src/interfaces    |     100 |      100 |     100 |     100 |                       
@@ -269,5 +269,5 @@ All files          |   55.75 |       50 |   58.06 |   55.75 |
 Test Suites: 2 failed, 11 passed, 13 total
 Tests:       2 failed, 27 passed, 29 total
 Snapshots:   0 total
-Time:        12.484 s
+Time:        15.641 s
 Ran all test suites.
