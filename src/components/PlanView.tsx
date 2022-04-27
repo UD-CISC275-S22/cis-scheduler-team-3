@@ -4,6 +4,7 @@ import { Course } from "../interfaces/course";
 import { DegreePlan } from "../interfaces/degreeplan";
 import { Semester } from "../interfaces/semester";
 import { CourseMover } from "./CourseMover";
+import { CoursePool } from "./CoursePool";
 import { SemesterList } from "./SemesterList";
 
 type ChangeEvent = React.ChangeEvent<
@@ -18,6 +19,12 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
     });
     const [newsem, setnewsem] = useState<boolean>(false);
     const [moveCourse, setMoveCourse] = useState<boolean>(false);
+    const [showPool, setShowPool] = useState<boolean>(false);
+
+    function showCoursePool() {
+        setShowPool(!showPool);
+    }
+
     function updatenewsem() {
         setnewsem(!newsem);
     }
@@ -302,6 +309,21 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
                     removesem={removeSemester}
                     updateplan_credits={updateplan_credits}
                 ></SemesterList>
+                <div className="show-course-pool-button">
+                    <Button
+                        variant="success"
+                        size="sm"
+                        onClick={showCoursePool}
+                        className="show-course-pool-button"
+                    >
+                        {showPool
+                            ? "Hide Pool of CISC-related courses"
+                            : "Show Pool of CISC-related courses"}
+                    </Button>
+                </div>
+                {showPool ? (
+                    <CoursePool plan_pool={plan.plan_pool}></CoursePool>
+                ) : null}
             </h6>
         </div>
     );

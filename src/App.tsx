@@ -5,7 +5,6 @@ import { SAMPLE_PLANS } from "./interfaces/degreeplan";
 import { DegreePlan } from "./interfaces/degreeplan";
 import { Course } from "./interfaces/course";
 import { Button, Form } from "react-bootstrap";
-import { CoursePool } from "./components/CoursePool";
 import POOL_DATA from "./data/course_catalog.json";
 
 type ChangeEvent = React.ChangeEvent<
@@ -19,7 +18,6 @@ export function App(): JSX.Element {
     const [start, setstart] = useState<number>(0);
     const [end, setend] = useState<number>(0);
     const [add, setadd] = useState<boolean>(false);
-    const [showPool, setShowPool] = useState<boolean>(false);
 
     function updateAdd() {
         setadd(!add);
@@ -55,10 +53,6 @@ export function App(): JSX.Element {
         setplans(newplans);
     }
 
-    function showCoursePool() {
-        setShowPool(!showPool);
-    }
-
     return (
         <>
             <div className="App">
@@ -75,22 +69,7 @@ export function App(): JSX.Element {
                 </h5>
             </div>
             <div>
-                <div className="show-course-pool-button">
-                    <Button
-                        variant="success"
-                        size="sm"
-                        onClick={showCoursePool}
-                        className="show-course-pool-button"
-                    >
-                        {showPool
-                            ? "Hide Pool of CISC-related courses"
-                            : "Show Pool of CISC-related courses"}
-                    </Button>
-                </div>
-                <div>
-                    {showPool ? <CoursePool plans={plans}></CoursePool> : null}
-                    <PlanList plans={plans} remove={completeRemove}></PlanList>
-                </div>
+                <PlanList plans={plans} remove={completeRemove}></PlanList>
             </div>
             <div>
                 <Button
