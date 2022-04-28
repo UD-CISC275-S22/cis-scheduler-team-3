@@ -94,6 +94,23 @@ export function CourseView({
         );
         const new_plan = { ...plan, semesters: semester_list };
         editplan(plan.name, new_plan);
+        updateeditmode();
+    }
+    function removeCourse() {
+        const course_list = semester.courses.filter(
+            (course: Course): boolean => course.title + ":" + course.code != id
+        );
+        const new_semester = { ...semester, courses: course_list };
+        const sem_id = semester.session + ":" + semester.year;
+        const semester_list = plan.semesters.map(
+            (semester: Semester): Semester =>
+                semester.session + ":" + semester.year === sem_id
+                    ? new_semester
+                    : semester
+        );
+        const new_plan = { ...plan, semesters: semester_list };
+        editplan(plan.name, new_plan);
+        updateeditmode();
     }
     return editmode ? (
         <Row>
@@ -200,8 +217,14 @@ export function CourseView({
                         </div>
                     )}
                 </Row>
-                <Button onClick={save} data-testid="addcourse-btn">
-                    Add course
+                <Button size="sm" onClick={save} data-testid="addcourse-btn">
+                    save
+                </Button>
+                <Button size="sm" onClick={updateeditmode} variant="warning">
+                    cancel
+                </Button>
+                <Button size="sm" onClick={removeCourse} variant="danger">
+                    delete
                 </Button>
             </Form>
         </Row>
@@ -215,9 +238,7 @@ export function CourseView({
                     checked={editmode}
                     onChange={updateeditmode}
                 />
-                <div>edit mode</div>
             </div>
-            ;
             <b className="title" data-testid="course-title">
                 Title: {course.title}
             </b>

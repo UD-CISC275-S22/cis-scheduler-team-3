@@ -15,7 +15,6 @@ export function CourseMover({
     const [origin, setOrigin] = useState<string>("Course_Pool");
     const [course, setCourse] = useState<string>("");
     const [destination, setDestination] = useState<string>("Course_Pool");
-    //let flag = false;
 
     function courseListSelector(): Course[] {
         let toReturn: Course[];

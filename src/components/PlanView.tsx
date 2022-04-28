@@ -3,6 +3,9 @@ import { Button, Form } from "react-bootstrap";
 import { DegreePlan } from "../interfaces/degreeplan";
 import { CoursePool } from "./CoursePool";
 import { SemesterList } from "./SemesterList";
+import { CourseMover } from "./CourseMover";
+import { Course } from "../interfaces/course";
+import { Semester } from "../interfaces/semester";
 
 export function PlanView({
     plan,
@@ -11,11 +14,15 @@ export function PlanView({
     plan: DegreePlan;
     editplan: (id: string, newPlan: DegreePlan) => void;
 }): JSX.Element {
-    //const [moveCourse, setMoveCourse] = useState<boolean>(false);
     const [showPool, setShowPool] = useState<boolean>(false);
     const [add, setadd] = useState<boolean>(false);
     const [year, setyear] = useState<number>(0);
     const [session, setsession] = useState<string>("");
+    const [movecourse, setmovecourse] = useState<boolean>(false);
+
+    function updatemovecourse() {
+        setmovecourse(!movecourse);
+    }
     function updateadd() {
         setadd(!add);
     }
@@ -50,6 +57,42 @@ export function PlanView({
         };
         editplan(plan.name, newplan);
         updateadd();
+    }
+    function completeMove(id: string, origin: string, destination: string) {
+        console.log(id, origin, destination);
+        if (destination === origin) {
+            return null;
+        } else if (origin === "Course_Pool") {
+            const course_to_be_moved_index = plan.plan_pool.findIndex(
+                (course: Course): boolean =>
+                    course.title + ":" + course.code === id
+            );
+            plan.plan_pool = plan.plan_pool.filter(
+                (course: Course): boolean =>
+                    course.title + ":" + course.code != id
+            );
+            const semester_accepting_index = plan.semesters.findIndex(
+                (semester: Semester): boolean =>
+                    semester.session + ":" + semester.year === destination
+            );
+            const sem_courses =
+                plan.semesters[semester_accepting_index].courses;
+            const course_to_be_moved =
+                plan.semesters[semester_accepting_index].courses[
+                    course_to_be_moved_index
+                ];
+            const new_semester = {
+                ...plan.semesters[semester_accepting_index],
+                courses: [...sem_courses, course_to_be_moved]
+            };
+            const new_semesters = [...plan.semesters, new_semester];
+            const newplan = {
+                ...plan,
+                semesters: new_semesters
+            };
+            editplan(plan.name, newplan);
+            updatemovecourse();
+        }
     }
     return add ? (
         <div>
@@ -86,14 +129,26 @@ export function PlanView({
             >
                 Clear Semesters
             </Button>
+            <p></p>
             <Button
                 data-testid="clear-sem-btn"
                 className="Buttons"
-                variant="warning"
+                variant="success"
                 onClick={() => updateadd()}
             >
                 Add Semester
             </Button>
+            <p></p>
+            <Button className="Buttons" onClick={updatemovecourse}>
+                move courses
+            </Button>
+            {movecourse ? (
+                <CourseMover
+                    semesters={plan.semesters}
+                    plan_pool={plan.plan_pool}
+                    completeMove={completeMove}
+                ></CourseMover>
+            ) : null}
             <SemesterList plan={plan} editplan={editplan}></SemesterList>
             <div className="show-course-pool-button">
                 <Button
