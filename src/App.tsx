@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
 import { PlanList } from "./components/PlanList";
-import { SAMPLE_PLANS } from "./interfaces/degreeplan";
 import { DegreePlan } from "./interfaces/degreeplan";
 import { Course } from "./interfaces/course";
 import { Button, Form } from "react-bootstrap";
@@ -72,7 +71,11 @@ export function App(): JSX.Element {
                 </h5>
             </div>
             <div>
-                <PlanList plans={plans} setplans={setplans}></PlanList>
+                <PlanList
+                    plans={plans}
+                    editplan={editPlan}
+                    deleteplan={deletePlan}
+                ></PlanList>
             </div>
             <div>
                 <Button
