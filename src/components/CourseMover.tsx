@@ -30,25 +30,14 @@ export function CourseMover({
         return toReturn;
     }
     function updateOrigin(event: React.ChangeEvent<HTMLSelectElement>) {
-        /*const chosenInd = semesters.findIndex(
-            (semester: Semester): boolean =>
-                semester.session + ":" + semester.year === event.target.value
-        );*/
         setOrigin(event.target.value);
     }
 
     function updateCourse(event: React.ChangeEvent<HTMLSelectElement>) {
-        /* const chosenInd = origin.courses.findIndex(
-            (course: Course): boolean => course.code === event.target.value
-        );*/
         setCourse(event.target.value);
     }
 
     function updateDestination(event: React.ChangeEvent<HTMLSelectElement>) {
-        /*const chosenInd = semesters.findIndex(
-            (semester: Semester): boolean =>
-                semester.session + ":" + semester.year === event.target.value
-        );*/
         setDestination(event.target.value);
     }
 
