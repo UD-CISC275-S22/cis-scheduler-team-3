@@ -18,7 +18,6 @@ export function App(): JSX.Element {
     const [start, setstart] = useState<number>(0);
     const [end, setend] = useState<number>(0);
     const [add, setadd] = useState<boolean>(false);
-
     function updateAdd() {
         setadd(!add);
     }
