@@ -14,9 +14,10 @@ export function SemesterView({
     editplan: (id: string, newPlan: DegreePlan) => void;
 }): JSX.Element {
     function addCourse() {
+        const random_code = Math.floor(Math.random() * 100);
         const newCourse = {
-            code: "",
-            title: "",
+            code: "" + random_code,
+            title: "Edit course info",
             description: "",
             course_credits: "",
             prerequisites: "",

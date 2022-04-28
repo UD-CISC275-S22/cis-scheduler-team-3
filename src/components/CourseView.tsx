@@ -114,6 +114,13 @@ export function CourseView({
     }
     return editmode ? (
         <Row>
+            <Form.Check
+                type="switch"
+                id="course_editmode"
+                label="edit"
+                checked={editmode}
+                onChange={updateeditmode}
+            />
             <Form>
                 <Row className="mb-3">
                     <Form.Group as={Col} controlId="valid-course-title">
@@ -219,9 +226,6 @@ export function CourseView({
                 </Row>
                 <Button size="sm" onClick={save} data-testid="addcourse-btn">
                     save
-                </Button>
-                <Button size="sm" onClick={updateeditmode} variant="warning">
-                    cancel
                 </Button>
                 <Button size="sm" onClick={removeCourse} variant="danger">
                     delete
