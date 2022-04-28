@@ -238,6 +238,12 @@ export function PlanView({ plan }: { plan: DegreePlan }): JSX.Element {
                     ...destination_final.courses.splice(len, 0, moving_course)
                 ]
             };
+            console.log(
+                "Semester 1 courses:" + allCourses.semesters[0].courses.length
+            );
+            console.log(
+                "Semester 2 courses:" + allCourses.semesters[1].courses.length
+            );
             setAllCourses({
                 semesters: [...allCourses.semesters],
                 coursePool: [...allCourses.coursePool]

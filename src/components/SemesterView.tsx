@@ -90,6 +90,9 @@ export function SemesterView({
     function clearCourses() {
         setSemesterCourses([]);
     }
+    console.log(
+        "Semester course length in SemesterView: " + semesterCourses.length
+    );
 
     return (
         <Container data-testid="Semester">
