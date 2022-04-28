@@ -5,13 +5,16 @@ import { PlanView } from "./PlanView";
 
 export function PlanList({
     plans,
-    remove
+    setplans
 }: {
     plans: DegreePlan[];
-    remove: (n: string) => void;
+    setplans: (newPlans: DegreePlan[]) => void;
 }): JSX.Element {
-    function deletePlan(name: string) {
-        remove(name);
+    function deletePlan(plan: DegreePlan) {
+        const newplans = [...plans].filter(
+            (dp: DegreePlan): boolean => dp.name != plan.name
+        );
+        setplans(newplans);
     }
     return (
         <Container data-testid="Plan-list">
@@ -23,11 +26,11 @@ export function PlanList({
                         key={plan.Start_Year + plan.End_Year}
                         data-testid="plan"
                     >
-                        <PlanView plan={plan}></PlanView>
+                        <PlanView plan={plan} setplans={setplans}></PlanView>
                         <Button
                             className="me-3"
                             variant="outline-danger"
-                            onClick={() => deletePlan(plan.name)}
+                            onClick={() => deletePlan(plan)}
                             data-testid="delete-plan-btn"
                         >
                             delete plan

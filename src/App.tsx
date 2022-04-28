@@ -13,7 +13,7 @@ type ChangeEvent = React.ChangeEvent<
 
 export function App(): JSX.Element {
     const POOLCOURSES = POOL_DATA as Course[];
-    const [plans, setplans] = useState<DegreePlan[]>(SAMPLE_PLANS);
+    const [plans, setplans] = useState<DegreePlan[]>([]);
     const [name, setname] = useState<string>("");
     const [start, setstart] = useState<number>(0);
     const [end, setend] = useState<number>(0);
@@ -34,6 +34,17 @@ export function App(): JSX.Element {
         updateAdd();
         setplans(newPlanList);
     }
+    function deletePlan(id: string) {
+        setplans(plans.filter((plan: DegreePlan): boolean => plan.name != id));
+    }
+    function editPlan(id: string, newPlan: DegreePlan) {
+        setplans(
+            plans.map(
+                (plan: DegreePlan): DegreePlan =>
+                    plan.name === id ? newPlan : plan
+            )
+        );
+    }
     function updateStart(event: ChangeEvent) {
         const inputToNumber = parseInt(event.target.value);
         setstart(inputToNumber);
@@ -44,12 +55,6 @@ export function App(): JSX.Element {
     }
     function updateName(event: ChangeEvent) {
         setname(event.target.value);
-    }
-    function completeRemove(n: string) {
-        const newplans = [...plans].filter(
-            (dp: DegreePlan): boolean => dp.name != n
-        );
-        setplans(newplans);
     }
 
     return (
@@ -67,7 +72,7 @@ export function App(): JSX.Element {
                 </h5>
             </div>
             <div>
-                <PlanList plans={plans} remove={completeRemove}></PlanList>
+                <PlanList plans={plans} setplans={setplans}></PlanList>
             </div>
             <div>
                 <Button
