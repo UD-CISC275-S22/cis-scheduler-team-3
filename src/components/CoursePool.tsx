@@ -12,11 +12,12 @@ export function CoursePool({
         <Container
             className="course-pool"
             style={{ overflowY: "scroll", height: "400px" }}
+            data-testid="course-pool"
         >
             <Row>
                 <h5>Course Pool: </h5>
             </Row>
-            <Row lg={6} id="course-row" data-testid="course-pool">
+            <Row lg={6} id="course-row">
                 {plan_pool.map((course: Course) => (
                     <CoursePoolTable
                         key={course.code}

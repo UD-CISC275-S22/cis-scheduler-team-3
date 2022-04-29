@@ -258,7 +258,12 @@ export function CourseView({
                 <Button size="sm" onClick={save} data-testid="addcourse-btn">
                     save
                 </Button>
-                <Button size="sm" onClick={removeCourse} variant="danger">
+                <Button
+                    data-testid="delete-course-btn"
+                    size="sm"
+                    onClick={removeCourse}
+                    variant="danger"
+                >
                     delete
                 </Button>
             </Form>
@@ -272,6 +277,7 @@ export function CourseView({
                     label="edit"
                     checked={editmode}
                     onChange={updateeditmode}
+                    data-testid="editcourse-switch"
                 />
             </div>
             <b className="title" data-testid="course-title">

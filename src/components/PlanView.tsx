@@ -111,7 +111,11 @@ export function PlanView({
                 <Form.Label>Enter the year:</Form.Label>
                 <Form.Control value={year} onChange={updateYear}></Form.Control>
             </Form.Group>
-            <Button size="sm" onClick={() => addSemester()}>
+            <Button
+                data-testid="save-sem"
+                size="sm"
+                onClick={() => addSemester()}
+            >
                 add
             </Button>
         </div>
@@ -133,7 +137,7 @@ export function PlanView({
             </Button>
             <p></p>
             <Button
-                data-testid="clear-sem-btn"
+                data-testid="add-sem-btn"
                 className="Buttons"
                 variant="success"
                 onClick={() => updateadd()}
@@ -154,6 +158,7 @@ export function PlanView({
             <SemesterList plan={plan} editplan={editplan}></SemesterList>
             <div className="show-course-pool-button">
                 <Button
+                    data-testid="show-pool-btn"
                     variant="success"
                     size="sm"
                     onClick={showCoursePool}

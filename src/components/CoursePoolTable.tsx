@@ -50,6 +50,7 @@ export function CoursePoolTable({ course }: { course: Course }): JSX.Element {
                         <p>
                             <button
                                 className="btn default"
+                                data-testid="pool-show/hide-btn"
                                 type="button"
                                 data-bs-toggle="collapse"
                                 data-bs-target="#collapseExample"

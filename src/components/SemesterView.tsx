@@ -60,7 +60,11 @@ export function SemesterView({
             </Row>
             <Row>
                 <Col>
-                    <Button size="sm" onClick={() => addCourse()}>
+                    <Button
+                        size="sm"
+                        onClick={() => addCourse()}
+                        data-testid="add-course-btn"
+                    >
                         add course
                     </Button>
                 </Col>
