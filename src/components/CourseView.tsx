@@ -118,7 +118,14 @@ export function CourseView({
         const course_list = semester.courses.filter(
             (course: Course): boolean => course.title + ":" + course.code != id
         );
-        const new_semester = { ...semester, courses: course_list };
+        const new_SemCredits =
+            semester.semester_credits -
+            parseInt(course_credits.trim().charAt(0));
+        const new_semester = {
+            ...semester,
+            courses: course_list,
+            semester_credits: new_SemCredits
+        };
         const sem_id = semester.session + ":" + semester.year;
         const semester_list = plan.semesters.map(
             (semester: Semester): Semester =>
@@ -126,7 +133,13 @@ export function CourseView({
                     ? new_semester
                     : semester
         );
-        const new_plan = { ...plan, semesters: semester_list };
+        const new_PlanCredits =
+            plan.degree_credits - parseInt(course_credits.trim().charAt(0));
+        const new_plan = {
+            ...plan,
+            semesters: semester_list,
+            degree_credits: new_PlanCredits
+        };
         editplan(plan.name, new_plan);
         updateeditmode();
     }
