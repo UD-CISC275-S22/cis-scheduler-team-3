@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Row } from "react-bootstrap";
 import type { Course } from "../interfaces/course";
 import { CoursePoolTable } from "./CoursePoolTable";
-
+//function that loops through array of courses in the pool, calling CoursePoolTable on each
 export function CoursePool({
     plan_pool
 }: {

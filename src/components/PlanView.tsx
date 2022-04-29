@@ -6,7 +6,9 @@ import { SemesterList } from "./SemesterList";
 import { CourseMover } from "./CourseMover";
 import { Course } from "../interfaces/course";
 import { Semester } from "../interfaces/semester";
-
+/* this function generates a container with all the plan information such as:
+    plan name, start/end year, degree credits. User can add & clear semesters.
+    Complete move function doesn't currently work, so move courses button isn't usable */
 export function PlanView({
     plan,
     editplan

@@ -3,7 +3,7 @@ import { Button, Container, Row } from "react-bootstrap";
 import { Semester } from "../interfaces/semester";
 import { DegreePlan } from "../interfaces/degreeplan";
 import { SemesterView } from "./SemesterView";
-
+/* loops through array of semesters, calling SemesterView for each, also contains function to delete semester */
 export function SemesterList({
     plan,
     editplan

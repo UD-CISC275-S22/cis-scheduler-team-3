@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { Course } from "../interfaces/course";
-
+/* function that generates the view for each course in the course pool, can use show/hide to see course info*/
 export function CoursePoolTable({ course }: { course: Course }): JSX.Element {
     const [open, setOpen] = useState<boolean>(false);
     const [style, setStyle] = useState<string>("collapse hide");

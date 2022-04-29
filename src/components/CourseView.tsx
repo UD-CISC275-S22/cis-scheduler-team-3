@@ -3,7 +3,9 @@ import { Button, Col, Form, Row } from "react-bootstrap";
 import { Course } from "../interfaces/course";
 import { DegreePlan } from "../interfaces/degreeplan";
 import { Semester } from "../interfaces/semester";
-
+/*this function generates the Container which displays all the course info, it 
+    also contains the form for editing a course, and a lengthy function that will
+    eventually call edit plan to process these edits and display the correct result*/
 export function CourseView({
     course,
     semester,
@@ -33,6 +35,7 @@ export function CourseView({
     function updateeditmode() {
         seteditmode(!editmode);
     }
+    //used to print the boolean value from the Course object
     function isRequirement() {
         if (course.requirement) {
             return "yes";
@@ -40,6 +43,7 @@ export function CourseView({
             return "no";
         }
     }
+    //update helper functions for the form
     function updateCredits(event: React.ChangeEvent<HTMLSelectElement>) {
         setcourse_credits(event.target.value);
     }
@@ -71,6 +75,7 @@ export function CourseView({
     function updatePrereqList() {
         setPrerequisiteList(PrerequisiteList + currentprereq);
     }
+    //actually updates the course list of the current semester, eventually calling edit plan, which updates the state in App.tsx
     function save() {
         const newCourse = {
             code: code,

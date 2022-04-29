@@ -12,6 +12,9 @@ type ChangeEvent = React.ChangeEvent<
 
 export function App(): JSX.Element {
     const POOLCOURSES = POOL_DATA as Course[];
+    /*plans represents essentially the state of the app, there are multiple plans, each contains semesters, and courses
+    plans and a function called editplans is passed down through the rest of our files to ensure everything is updated as 
+    the user makes changes*/
     const [plans, setplans] = useState<DegreePlan[]>([]);
     const [name, setname] = useState<string>("");
     const [start, setstart] = useState<number>(0);
@@ -32,6 +35,12 @@ export function App(): JSX.Element {
         const newPlanList = [...plans, newPlan];
         updateAdd();
         setplans(newPlanList);
+        clearForm();
+    }
+    function clearForm() {
+        setname("");
+        setstart(0);
+        setend(0);
     }
     function deletePlan(id: string) {
         setplans(plans.filter((plan: DegreePlan): boolean => plan.name != id));

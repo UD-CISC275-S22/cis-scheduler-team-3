@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Container, Row } from "react-bootstrap";
 import { DegreePlan } from "../interfaces/degreeplan";
 import { PlanView } from "./PlanView";
-
+/*this function loops through the array of plans and calls PlanView for each plan object*/
 export function PlanList({
     plans,
     editplan,
