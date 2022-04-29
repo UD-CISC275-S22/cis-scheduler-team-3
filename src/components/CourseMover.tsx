@@ -10,7 +10,7 @@ export function CourseMover({
 }: {
     semesters: Semester[];
     plan_pool: Course[];
-    completeMove: (course: string, origin: string, destination: string) => void;
+    completeMove: (course: Course, origin: string, destination: string) => void;
 }): JSX.Element {
     const [origin, setOrigin] = useState<string>("Course_Pool");
     const [course, setCourse] = useState<string>("");
@@ -42,7 +42,16 @@ export function CourseMover({
     }
 
     function startMove() {
-        completeMove(course, origin, destination);
+        const id = course;
+        const course_to_be_moved_index = plan_pool.findIndex(
+            (course: Course): boolean => course.title + ":" + course.code === id
+        );
+        const course_to_be_moved = plan_pool[course_to_be_moved_index];
+        console.log(
+            "course to be moved index from CourseMover: " +
+                course_to_be_moved.code
+        );
+        completeMove(course_to_be_moved, origin, destination);
     }
     return (
         <Col>

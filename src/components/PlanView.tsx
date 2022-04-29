@@ -60,33 +60,32 @@ export function PlanView({
         editplan(plan.name, newplan);
         updateadd();
     }
-    function completeMove(id: string, origin: string, destination: string) {
-        console.log(id, origin, destination);
+    function completeMove(course: Course, origin: string, destination: string) {
+        console.log(course.code, origin, destination);
         if (destination === origin) {
             return null;
         } else if (origin === "Course_Pool") {
-            const course_to_be_moved_index = plan.plan_pool.findIndex(
-                (course: Course): boolean =>
-                    course.title + ":" + course.code === id
-            );
+            const id = course.title + ":" + course.code;
             plan.plan_pool = plan.plan_pool.filter(
                 (course: Course): boolean =>
                     course.title + ":" + course.code != id
             );
+            console.log("destination: " + destination);
             const semester_accepting_index = plan.semesters.findIndex(
                 (semester: Semester): boolean =>
                     semester.session + ":" + semester.year === destination
             );
+            console.log("accepting sem index: " + semester_accepting_index);
             const sem_courses =
                 plan.semesters[semester_accepting_index].courses;
-            const course_to_be_moved =
-                plan.semesters[semester_accepting_index].courses[
-                    course_to_be_moved_index
-                ];
             const new_semester = {
                 ...plan.semesters[semester_accepting_index],
-                courses: [...sem_courses, course_to_be_moved]
+                courses: [...sem_courses, course]
             };
+            console.log(
+                "new semester courses length: " + new_semester.courses.length
+            );
+            console.log("course to be moved code: " + course.code);
             const new_semesters = [...plan.semesters, new_semester];
             const newplan = {
                 ...plan,

@@ -9,6 +9,13 @@ import POOL_DATA from "./data/course_catalog.json";
 type ChangeEvent = React.ChangeEvent<
     HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement
 >;
+//Sample data for new users
+//let loadedData = [];
+//const saveDataKey = "MY-PAGE-DATA";
+//const previousData = localStorage.getItem(saveDataKey);
+//if (previousData !== null) {
+//loadedData = JSON.parse(previousData);
+//}
 
 export function App(): JSX.Element {
     const POOLCOURSES = POOL_DATA as Course[];
@@ -20,6 +27,11 @@ export function App(): JSX.Element {
     const [start, setstart] = useState<number>(0);
     const [end, setend] = useState<number>(0);
     const [add, setadd] = useState<boolean>(false);
+    /*
+    function saveData() {
+        localStorage.setItem(saveDataKey, JSON.stringify(plans));
+    }
+*/
     function updateAdd() {
         setadd(!add);
     }
@@ -139,6 +151,7 @@ export function App(): JSX.Element {
                     </Button>
                 </Container>
             ) : null}
+            {/*<Button onClick={saveData}>Save Changes</Button>*/}
             <p> </p>
             <hr></hr>
         </>
