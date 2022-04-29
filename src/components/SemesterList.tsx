@@ -11,14 +11,16 @@ export function SemesterList({
     plan: DegreePlan;
     editplan: (id: string, newPlan: DegreePlan) => void;
 }): JSX.Element {
-    function deleteSemester(id: string) {
+    function deleteSemester(id: string, credits: number) {
         const newsemesters = plan.semesters.filter(
             (semester: Semester): boolean =>
                 semester.session + ":" + semester.year != id
         );
+        const new_PlanCredits = plan.degree_credits - credits;
         const newPlan = {
             ...plan,
-            semesters: newsemesters
+            semesters: newsemesters,
+            degree_credits: new_PlanCredits
         };
         editplan(plan.name, newPlan);
     }
@@ -42,7 +44,8 @@ export function SemesterList({
                             variant="outline-danger"
                             onClick={() =>
                                 deleteSemester(
-                                    semester.session + ":" + semester.year
+                                    semester.session + ":" + semester.year,
+                                    semester.semester_credits
                                 )
                             }
                             data-testid="delete-sem-btn"
