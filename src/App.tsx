@@ -3,7 +3,7 @@ import "./App.css";
 import { PlanList } from "./components/PlanList";
 import { DegreePlan } from "./interfaces/degreeplan";
 import { Course } from "./interfaces/course";
-import { Button, Form } from "react-bootstrap";
+import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import POOL_DATA from "./data/course_catalog.json";
 
 type ChangeEvent = React.ChangeEvent<
@@ -66,8 +66,8 @@ export function App(): JSX.Element {
                 <p> </p>
                 <h5 className="Description">
                     Hello! Welcome to our scheduler. In this app, you will be
-                    able to map out different CIS degree plans. You can add,
-                    edit, move, and delete semesters and courses as you see fit.
+                    able to map out different CIS degree plans. Click Add Plan
+                    to get started!
                 </h5>
             </div>
             <div>
@@ -77,6 +77,7 @@ export function App(): JSX.Element {
                     deleteplan={deletePlan}
                 ></PlanList>
             </div>
+            <p> </p>
             <div>
                 <Button
                     variant="success"
@@ -88,24 +89,36 @@ export function App(): JSX.Element {
                 </Button>
             </div>
             {add ? (
-                <div>
-                    <Form.Group className="Add-Plan" data-testid="addNewPlan">
-                        <Form.Label>Plan Name: </Form.Label>
-                        <Form.Control
-                            value={name}
-                            onChange={updateName}
-                        ></Form.Control>
-                        <Form.Label>Start Year: </Form.Label>
-                        <Form.Control
-                            value={start}
-                            onChange={updateStart}
-                        ></Form.Control>
-                        <Form.Label>End Year: </Form.Label>
-                        <Form.Control
-                            value={end}
-                            onChange={updateEnd}
-                        ></Form.Control>
-                    </Form.Group>
+                <Container>
+                    <Row>
+                        <Form.Group
+                            className="Add-Plan"
+                            data-testid="addNewPlan"
+                        >
+                            <Form.Label>Plan Name: </Form.Label>
+                            <Form.Control
+                                value={name}
+                                onChange={updateName}
+                            ></Form.Control>
+                        </Form.Group>
+                    </Row>
+                    <Row>
+                        <Form.Group as={Col}>
+                            <Form.Label>Start Year: </Form.Label>
+                            <Form.Control
+                                value={start}
+                                onChange={updateStart}
+                            ></Form.Control>
+                        </Form.Group>
+                        <Form.Group as={Col}>
+                            <Form.Label>End Year: </Form.Label>
+                            <Form.Control
+                                value={end}
+                                onChange={updateEnd}
+                            ></Form.Control>
+                        </Form.Group>
+                    </Row>
+                    <p></p>
                     <Button
                         className="me-3"
                         variant="success"
@@ -115,7 +128,7 @@ export function App(): JSX.Element {
                     >
                         add
                     </Button>
-                </div>
+                </Container>
             ) : null}
             <p> </p>
             <hr></hr>

@@ -27,6 +27,9 @@
     height: 50%;
     font-size: 12px;
 }
+.Form {
+    margin: 25px;
+}
 .Move-course {
     width: 15%;
     font-size: 13px;
@@ -43,7 +46,6 @@
 
 #course-row {
     margin: 0;
-    /* justify-content: center; */
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -107,17 +109,3 @@
     overflow-y: scroll;
     height: 400px;
 }
-
-/* .course-pool-scrollable {
-    height: 110px;
-    overflow: scroll;
-} */
-/* 
-.course-pool-div {
-    height: 300px;
-    overflow-y: scoll;
-} */
-
-/* .title-text {
-    padding: 5px 0;
-} */
