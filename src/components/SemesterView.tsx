@@ -45,6 +45,28 @@ export function SemesterView({
         };
         editplan(plan.name, new_plan);
     }
+    function clearCourses() {
+        const credits_lost = semester.semester_credits;
+        const newSemester = {
+            ...semester,
+            courses: [],
+            semester_credits: 0
+        };
+        const sem_id = newSemester.session + ":" + newSemester.year;
+        const newSemesters = plan.semesters.map(
+            (semester: Semester): Semester =>
+                semester.session + ":" + semester.year === sem_id
+                    ? newSemester
+                    : semester
+        );
+        const new_plan_credits = plan.degree_credits - credits_lost;
+        const new_plan = {
+            ...plan,
+            semesters: newSemesters,
+            degree_credits: new_plan_credits
+        };
+        editplan(plan.name, new_plan);
+    }
     return (
         <Container data-testid="Semester">
             <Row>
@@ -66,6 +88,14 @@ export function SemesterView({
                         data-testid="add-course-btn"
                     >
                         add course
+                    </Button>
+                    <p></p>
+                    <Button
+                        size="sm"
+                        onClick={() => clearCourses()}
+                        variant="warning"
+                    >
+                        clear courses
                     </Button>
                 </Col>
             </Row>
