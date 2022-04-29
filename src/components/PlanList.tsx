@@ -2,16 +2,18 @@ import React from "react";
 import { Button, Container, Row } from "react-bootstrap";
 import { DegreePlan } from "../interfaces/degreeplan";
 import { PlanView } from "./PlanView";
-
+/*this function loops through the array of plans and calls PlanView for each plan object*/
 export function PlanList({
     plans,
-    remove
+    editplan,
+    deleteplan
 }: {
     plans: DegreePlan[];
-    remove: (n: string) => void;
+    editplan: (name: string, newPlan: DegreePlan) => void;
+    deleteplan: (name: string) => void;
 }): JSX.Element {
-    function deletePlan(name: string) {
-        remove(name);
+    function removeplan(plan: DegreePlan) {
+        deleteplan(plan.name);
     }
     return (
         <Container data-testid="Plan-list">
@@ -23,11 +25,11 @@ export function PlanList({
                         key={plan.Start_Year + plan.End_Year}
                         data-testid="plan"
                     >
-                        <PlanView plan={plan}></PlanView>
+                        <PlanView plan={plan} editplan={editplan}></PlanView>
                         <Button
                             className="me-3"
                             variant="outline-danger"
-                            onClick={() => deletePlan(plan.name)}
+                            onClick={() => removeplan(plan)}
                             data-testid="delete-plan-btn"
                         >
                             delete plan

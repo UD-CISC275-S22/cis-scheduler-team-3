@@ -10,12 +10,11 @@ export function CourseMover({
 }: {
     semesters: Semester[];
     plan_pool: Course[];
-    completeMove: (course: string, origin: string, destination: string) => void;
+    completeMove: (course: Course, origin: string, destination: string) => void;
 }): JSX.Element {
     const [origin, setOrigin] = useState<string>("Course_Pool");
     const [course, setCourse] = useState<string>("");
     const [destination, setDestination] = useState<string>("Course_Pool");
-    //let flag = false;
 
     function courseListSelector(): Course[] {
         let toReturn: Course[];
@@ -31,30 +30,28 @@ export function CourseMover({
         return toReturn;
     }
     function updateOrigin(event: React.ChangeEvent<HTMLSelectElement>) {
-        /*const chosenInd = semesters.findIndex(
-            (semester: Semester): boolean =>
-                semester.session + ":" + semester.year === event.target.value
-        );*/
         setOrigin(event.target.value);
     }
 
     function updateCourse(event: React.ChangeEvent<HTMLSelectElement>) {
-        /* const chosenInd = origin.courses.findIndex(
-            (course: Course): boolean => course.code === event.target.value
-        );*/
         setCourse(event.target.value);
     }
 
     function updateDestination(event: React.ChangeEvent<HTMLSelectElement>) {
-        /*const chosenInd = semesters.findIndex(
-            (semester: Semester): boolean =>
-                semester.session + ":" + semester.year === event.target.value
-        );*/
         setDestination(event.target.value);
     }
 
     function startMove() {
-        completeMove(course, origin, destination);
+        const id = course;
+        const course_to_be_moved_index = plan_pool.findIndex(
+            (course: Course): boolean => course.title + ":" + course.code === id
+        );
+        const course_to_be_moved = plan_pool[course_to_be_moved_index];
+        console.log(
+            "course to be moved index from CourseMover: " +
+                course_to_be_moved.code
+        );
+        completeMove(course_to_be_moved, origin, destination);
     }
     return (
         <Col>

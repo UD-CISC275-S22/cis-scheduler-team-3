@@ -1,49 +1,24 @@
-import React, { useState } from "react";
-import { Button, Container, Row } from "react-bootstrap";
-//import { CourseView } from "./CourseView";
-import { ValidateNewCourse } from "./NewCourse";
+import React from "react";
+import { Container, Row } from "react-bootstrap";
 import type { Course } from "../interfaces/course";
 import { CoursePoolTable } from "./CoursePoolTable";
-
+//function that loops through array of courses in the pool, calling CoursePoolTable on each
 export function CoursePool({
     plan_pool
 }: {
     plan_pool: Course[];
 }): JSX.Element {
-    const [newCourse, setNewCourse] = useState<boolean>(false);
-    const [poolCourses, setPoolCourses] = useState<Course[]>(plan_pool);
-
-    function createCourse(newCourse: Course) {
-        setPoolCourses([...poolCourses, newCourse]);
-    }
-
-    function hasNewQuiz() {
-        setNewCourse(!newCourse);
-    }
     return (
         <Container
             className="course-pool"
             style={{ overflowY: "scroll", height: "400px" }}
+            data-testid="course-pool"
         >
             <Row>
                 <h5>Course Pool: </h5>
-                <Button
-                    onClick={hasNewQuiz}
-                    className="Buttons"
-                    data-testid="add-course-btn"
-                >
-                    Add Course to Pool
-                </Button>
             </Row>
-            <Row>
-                {newCourse ? (
-                    <ValidateNewCourse
-                        createCourse={createCourse}
-                    ></ValidateNewCourse>
-                ) : null}
-            </Row>
-            <Row lg={6} id="course-row" data-testid="course-pool">
-                {poolCourses.map((course: Course) => (
+            <Row lg={6} id="course-row">
+                {plan_pool.map((course: Course) => (
                     <CoursePoolTable
                         key={course.code}
                         course={course}

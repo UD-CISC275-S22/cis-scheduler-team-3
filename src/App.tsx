@@ -1,35 +1,37 @@
 import React, { useState } from "react";
 import "./App.css";
 import { PlanList } from "./components/PlanList";
-import { SAMPLE_PLANS } from "./interfaces/degreeplan";
 import { DegreePlan } from "./interfaces/degreeplan";
 import { Course } from "./interfaces/course";
-import { Button, Form } from "react-bootstrap";
+import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import POOL_DATA from "./data/course_catalog.json";
 
 type ChangeEvent = React.ChangeEvent<
     HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement
 >;
 //Sample data for new users
-let loadedData = [...SAMPLE_PLANS];
-const saveDataKey = "MY-PAGE-DATA";
-const previousData = localStorage.getItem(saveDataKey);
-if (previousData !== null) {
-    loadedData = JSON.parse(previousData);
-}
+//let loadedData = [];
+//const saveDataKey = "MY-PAGE-DATA";
+//const previousData = localStorage.getItem(saveDataKey);
+//if (previousData !== null) {
+//loadedData = JSON.parse(previousData);
+//}
 
 export function App(): JSX.Element {
     const POOLCOURSES = POOL_DATA as Course[];
-    const [plans, setplans] = useState<DegreePlan[]>(loadedData);
+    /*plans represents essentially the state of the app, there are multiple plans, each contains semesters, and courses
+    plans and a function called editplans is passed down through the rest of our files to ensure everything is updated as 
+    the user makes changes*/
+    const [plans, setplans] = useState<DegreePlan[]>([]);
     const [name, setname] = useState<string>("");
     const [start, setstart] = useState<number>(0);
     const [end, setend] = useState<number>(0);
     const [add, setadd] = useState<boolean>(false);
-
+    /*
     function saveData() {
         localStorage.setItem(saveDataKey, JSON.stringify(plans));
     }
-
+*/
     function updateAdd() {
         setadd(!add);
     }
@@ -45,6 +47,23 @@ export function App(): JSX.Element {
         const newPlanList = [...plans, newPlan];
         updateAdd();
         setplans(newPlanList);
+        clearForm();
+    }
+    function clearForm() {
+        setname("");
+        setstart(0);
+        setend(0);
+    }
+    function deletePlan(id: string) {
+        setplans(plans.filter((plan: DegreePlan): boolean => plan.name != id));
+    }
+    function editPlan(id: string, newPlan: DegreePlan) {
+        setplans(
+            plans.map(
+                (plan: DegreePlan): DegreePlan =>
+                    plan.name === id ? newPlan : plan
+            )
+        );
     }
     function updateStart(event: ChangeEvent) {
         const inputToNumber = parseInt(event.target.value);
@@ -57,12 +76,6 @@ export function App(): JSX.Element {
     function updateName(event: ChangeEvent) {
         setname(event.target.value);
     }
-    function completeRemove(n: string) {
-        const newplans = [...plans].filter(
-            (dp: DegreePlan): boolean => dp.name != n
-        );
-        setplans(newplans);
-    }
 
     return (
         <>
@@ -74,13 +87,18 @@ export function App(): JSX.Element {
                 <p> </p>
                 <h5 className="Description">
                     Hello! Welcome to our scheduler. In this app, you will be
-                    able to map out different CIS degree plans. You can add,
-                    edit, move, and delete semesters and courses as you see fit.
+                    able to map out different CIS degree plans. Click Add Plan
+                    to get started!
                 </h5>
             </div>
             <div>
-                <PlanList plans={plans} remove={completeRemove}></PlanList>
+                <PlanList
+                    plans={plans}
+                    editplan={editPlan}
+                    deleteplan={deletePlan}
+                ></PlanList>
             </div>
+            <p> </p>
             <div>
                 <Button
                     variant="success"
@@ -92,24 +110,36 @@ export function App(): JSX.Element {
                 </Button>
             </div>
             {add ? (
-                <div>
-                    <Form.Group className="Add-Plan" data-testid="addNewPlan">
-                        <Form.Label>Plan Name: </Form.Label>
-                        <Form.Control
-                            value={name}
-                            onChange={updateName}
-                        ></Form.Control>
-                        <Form.Label>Start Year: </Form.Label>
-                        <Form.Control
-                            value={start}
-                            onChange={updateStart}
-                        ></Form.Control>
-                        <Form.Label>End Year: </Form.Label>
-                        <Form.Control
-                            value={end}
-                            onChange={updateEnd}
-                        ></Form.Control>
-                    </Form.Group>
+                <Container>
+                    <Row>
+                        <Form.Group
+                            className="Add-Plan"
+                            data-testid="addNewPlan"
+                        >
+                            <Form.Label>Plan Name: </Form.Label>
+                            <Form.Control
+                                value={name}
+                                onChange={updateName}
+                            ></Form.Control>
+                        </Form.Group>
+                    </Row>
+                    <Row>
+                        <Form.Group as={Col}>
+                            <Form.Label>Start Year: </Form.Label>
+                            <Form.Control
+                                value={start}
+                                onChange={updateStart}
+                            ></Form.Control>
+                        </Form.Group>
+                        <Form.Group as={Col}>
+                            <Form.Label>End Year: </Form.Label>
+                            <Form.Control
+                                value={end}
+                                onChange={updateEnd}
+                            ></Form.Control>
+                        </Form.Group>
+                    </Row>
+                    <p></p>
                     <Button
                         className="me-3"
                         variant="success"
@@ -119,9 +149,9 @@ export function App(): JSX.Element {
                     >
                         add
                     </Button>
-                </div>
+                </Container>
             ) : null}
-            <Button onClick={saveData}>Save Changes</Button>
+            {/*<Button onClick={saveData}>Save Changes</Button>*/}
             <p> </p>
             <hr></hr>
         </>
