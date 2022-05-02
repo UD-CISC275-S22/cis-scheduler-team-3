@@ -63,6 +63,8 @@ export function PlanView({
             semesters: new_semesters
         };
         editplan(plan.name, newplan);
+        setyear(0);
+        setsession("");
         updateadd();
     }
     function completeMove(course: Course, origin: string, destination: string) {
@@ -105,6 +107,7 @@ export function PlanView({
             <Form.Group controlId="session-textbox">
                 <Form.Label>What session?:</Form.Label>
                 <Form.Select value={session} onChange={updateSession}>
+                    <option value="">Select an option</option>
                     <option value="Fall">Fall</option>
                     <option value="Winter">Winter</option>
                     <option value="Spring">Spring</option>
@@ -128,6 +131,16 @@ export function PlanView({
             <h4 data-testid="name">{plan.name}</h4>
             <h6 data-testid="start-year">Start Year: {plan.Start_Year}</h6>
             <h6 data-testid="end-year">End Year: {plan.End_Year}</h6>
+            <p>
+                University Requirements: ENGL110, First year seminar, Discovery
+                Learning Experience, Multicultural, University Breadth (3), &
+                Capstone{" "}
+            </p>
+            <p>College Requirements: 9 additional breadth credits </p>
+            <p>
+                Major Requirements: Core, Capstone, Science, 300 level or above
+                math class, ENGL312 or ENGL 410, & CISC355
+            </p>
             <h6 data-testid="degree-credits">
                 Degree Credits: {plan.degree_credits}/ 124 required
             </h6>
