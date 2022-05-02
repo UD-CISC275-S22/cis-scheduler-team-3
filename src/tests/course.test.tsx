@@ -17,10 +17,10 @@ describe("Add & Remove Courses Tests", () => {
         const addsem = screen.getByTestId("add-sem-btn");
         addsem.click();
         const txtbox2 = screen.queryAllByRole("textbox");
-        userEvent.type(txtbox2[0], "test semester");
+        userEvent.type(txtbox2[0], "2020");
         const add2 = screen.getByTestId("save-sem");
         add2.click();
-        expect(screen.queryByText(/test semester/i)).toBeInTheDocument();
+        expect(screen.queryByText(/:2020/i)).toBeInTheDocument();
         const add_course = screen.getByTestId("add-course-btn");
         add_course.click();
         expect(
@@ -38,10 +38,10 @@ describe("Add & Remove Courses Tests", () => {
         const addsem = screen.getByTestId("add-sem-btn");
         addsem.click();
         const txtbox2 = screen.queryAllByRole("textbox");
-        userEvent.type(txtbox2[0], "test semester");
+        userEvent.type(txtbox2[0], "2020");
         const add2 = screen.getByTestId("save-sem");
         add2.click();
-        expect(screen.queryByText(/test semester/i)).toBeInTheDocument();
+        expect(screen.queryByText(/:2020/i)).toBeInTheDocument();
         const add_course = screen.getByTestId("add-course-btn");
         add_course.click();
         expect(

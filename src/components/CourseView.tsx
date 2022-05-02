@@ -273,7 +273,6 @@ export function CourseView({
             <div>
                 <Form.Check
                     type="switch"
-                    id="course_editmode"
                     label="edit"
                     checked={editmode}
                     onChange={updateeditmode}

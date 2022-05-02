@@ -17,16 +17,24 @@ describe("Edit Courses and Credit totals", () => {
         const addsem = screen.getByTestId("add-sem-btn");
         addsem.click();
         const txtbox2 = screen.queryAllByRole("textbox");
-        userEvent.type(txtbox2[0], "test semester");
+        userEvent.type(txtbox2[0], "2020");
         const add2 = screen.getByTestId("save-sem");
         add2.click();
-        expect(screen.queryByText(/test semester/i)).toBeInTheDocument();
+        expect(screen.queryByText(/:2020/i)).toBeInTheDocument();
         const add_course = screen.getByTestId("add-course-btn");
         add_course.click();
         expect(
             screen.queryByText(/Title: Edit course info/i)
         ).toBeInTheDocument();
-        const editmode = screen.getByTestId("course_editmode");
+        const editmode = screen.getByTestId("editcourse-switch");
         editmode.click();
+        const titlebox = screen.getByTestId("course-title-box");
+        userEvent.type(titlebox, "CISC101");
+        userEvent.selectOptions(screen.getByTestId("course-credits-box"), "3");
+        const addcourse = screen.getByTestId("addcourse-btn");
+        addcourse.click();
+        expect(screen.queryByText(/CISC101/i)).toBeInTheDocument();
+        expect(screen.queryByText(/Degree Credits: 3/i)).toBeInTheDocument();
+        expect(screen.queryByText(/Total Credits: 3/i)).toBeInTheDocument();
     });
 });
