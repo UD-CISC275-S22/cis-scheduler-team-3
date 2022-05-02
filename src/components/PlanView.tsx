@@ -89,13 +89,10 @@ export function PlanView({
                 moving_course
             );
             origin_final.splice(moving_index, 1);
+            plan.semesters.splice(destination_index, 1, destination_final);
             const newplan = {
                 ...plan,
-                semesters: plan.semesters.splice(
-                    destination_index,
-                    1,
-                    destination_final
-                ),
+                semesters: [...plan.semesters],
                 plan_pool: [...origin_final]
             };
             editplan(plan.name, newplan);
@@ -119,9 +116,10 @@ export function PlanView({
                 ...origin_final,
                 courses: origin_final.courses.splice(moving_index, 1)
             };
+            plan.semesters.splice(origin_index, 1, origin_final);
             const newplan = {
                 ...plan,
-                semesters: plan.semesters.splice(origin_index, 1, origin_final),
+                semesters: [...plan.semesters],
                 plan_pool: [...destination_final]
             };
             editplan(plan.name, newplan);
