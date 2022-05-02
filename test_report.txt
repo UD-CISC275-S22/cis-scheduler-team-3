@@ -10,17 +10,17 @@ PASS src/App.test.tsx
 ----------------------|---------|----------|---------|---------|-------------------
 File                  | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ----------------------|---------|----------|---------|---------|-------------------
-All files             |   62.05 |    47.82 |      65 |   61.85 |                   
+All files             |   56.01 |    45.83 |    61.9 |   55.81 |                   
  src                  |   74.19 |     37.5 |   84.61 |   73.33 |                   
   App.tsx             |   74.19 |     37.5 |   84.61 |   73.33 | 69-82             
- src/components       |   60.86 |       50 |   61.19 |   60.86 |                   
+ src/components       |   53.84 |     47.5 |   57.74 |   53.84 |                   
   CourseList.tsx      |     100 |      100 |     100 |     100 |                   
-  CourseMover.tsx     |       0 |        0 |       0 |       0 | 15-106            
+  CourseMover.tsx     |       0 |        0 |       0 |       0 | 19-112            
   CoursePool.tsx      |     100 |      100 |     100 |     100 |                   
   CoursePoolTable.tsx |      70 |       50 |      75 |      70 | 15-17             
   CourseView.tsx      |   85.41 |    58.33 |   66.66 |   85.41 | 41,56-76          
   PlanList.tsx        |     100 |      100 |     100 |     100 |                   
-  PlanView.tsx        |   51.11 |    57.14 |   64.28 |   51.11 | 26,32,36,71-102   
+  PlanView.tsx        |   32.39 |       50 |   47.36 |   32.39 | 26,32,36,75-166   
   SemesterList.tsx    |     100 |      100 |     100 |     100 |                   
   SemesterView.tsx    |      55 |       25 |   57.14 |      55 | 49-68,95          
  src/interfaces       |       0 |      100 |     100 |       0 |                   
@@ -32,5 +32,5 @@ All files             |   62.05 |    47.82 |      65 |   61.85 |
 Test Suites: 5 passed, 5 total
 Tests:       10 passed, 10 total
 Snapshots:   0 total
-Time:        6.39 s
+Time:        6.585 s
 Ran all test suites.
