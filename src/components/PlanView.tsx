@@ -111,6 +111,28 @@ export function PlanView({
             // Destination of moving course is the coursepool
             console.log("Origin: " + origin);
             console.log("Destination: Course_Pool");
+            const origin_index = plan.semesters.findIndex(
+                (semester: Semester): boolean =>
+                    semester.session + ":" + semester.year === origin
+            );
+            let origin_final = plan.semesters[origin_index];
+            const moving_index = origin_final.courses.findIndex(
+                (course: Course): boolean => course.code === course_code
+            );
+            const destination_final = [
+                ...plan.plan_pool,
+                origin_final.courses[moving_index]
+            ];
+            origin_final = {
+                ...origin_final,
+                courses: origin_final.courses.splice(moving_index, 1)
+            };
+            const newplan = {
+                ...plan,
+                semesters: plan.semesters.splice(origin_index, 1, origin_final),
+                plan_pool: [...destination_final]
+            };
+            editplan(plan.name, newplan);
         } else {
             // Origin and destination do not involve the coursepool
             console.log("Destination: " + origin);
