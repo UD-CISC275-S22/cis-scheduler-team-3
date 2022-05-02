@@ -2,34 +2,129 @@
 > react-typescript-starter@0.1.0 test
 > react-scripts test "--coverage"
 
-PASS src/tests/semesters.test.tsx
-PASS src/tests/course.test.tsx
+FAIL src/tests/semesters.test.tsx
+  ● Add, Remove, & Clear Semesters › can add a semester
+
+    expect(received).toBeInTheDocument()
+
+    received value must be an HTMLElement or an SVGElement.
+    Received has value: null
+
+      21 |         const add2 = screen.getByTestId("save-sem");
+      22 |         add2.click();
+    > 23 |         expect(screen.queryByText(/test semester/i)).toBeInTheDocument();
+         |                                                      ^
+      24 |     });
+      25 |     test("can remove a semester", () => {
+      26 |         const addplan = screen.getByTestId("add-plan-btn");
+
+      at __EXTERNAL_MATCHER_TRAP__ (node_modules/expect/build/index.js:386:30)
+      at Object.toBeInTheDocument (node_modules/expect/build/index.js:387:15)
+      at Object.<anonymous> (src/tests/semesters.test.tsx:23:54)
+
+  ● Add, Remove, & Clear Semesters › can remove a semester
+
+    expect(received).toBeInTheDocument()
+
+    received value must be an HTMLElement or an SVGElement.
+    Received has value: null
+
+      37 |         const add2 = screen.getByTestId("save-sem");
+      38 |         add2.click();
+    > 39 |         expect(screen.queryByText(/test semester/i)).toBeInTheDocument();
+         |                                                      ^
+      40 |         const delsem = screen.getByTestId("delete-sem-btn");
+      41 |         delsem.click();
+      42 |         expect(screen.queryByText(/test semester/i)).not.toBeInTheDocument();
+
+      at __EXTERNAL_MATCHER_TRAP__ (node_modules/expect/build/index.js:386:30)
+      at Object.toBeInTheDocument (node_modules/expect/build/index.js:387:15)
+      at Object.<anonymous> (src/tests/semesters.test.tsx:39:54)
+
+  ● Add, Remove, & Clear Semesters › can clear semesters
+
+    expect(received).toBeInTheDocument()
+
+    received value must be an HTMLElement or an SVGElement.
+    Received has value: null
+
+      56 |         const add2 = screen.getByTestId("save-sem");
+      57 |         add2.click();
+    > 58 |         expect(screen.queryByText(/test semester/i)).toBeInTheDocument();
+         |                                                      ^
+      59 |         const addsem2 = screen.getByTestId("add-sem-btn");
+      60 |         addsem2.click();
+      61 |         const txtbox3 = screen.queryAllByRole("textbox");
+
+      at __EXTERNAL_MATCHER_TRAP__ (node_modules/expect/build/index.js:386:30)
+      at Object.toBeInTheDocument (node_modules/expect/build/index.js:387:15)
+      at Object.<anonymous> (src/tests/semesters.test.tsx:58:54)
+
+FAIL src/tests/course.test.tsx
+  ● Add & Remove Courses Tests › can add a course
+
+    expect(received).toBeInTheDocument()
+
+    received value must be an HTMLElement or an SVGElement.
+    Received has value: null
+
+      21 |         const add2 = screen.getByTestId("save-sem");
+      22 |         add2.click();
+    > 23 |         expect(screen.queryByText(/test semester/i)).toBeInTheDocument();
+         |                                                      ^
+      24 |         const add_course = screen.getByTestId("add-course-btn");
+      25 |         add_course.click();
+      26 |         expect(
+
+      at __EXTERNAL_MATCHER_TRAP__ (node_modules/expect/build/index.js:386:30)
+      at Object.toBeInTheDocument (node_modules/expect/build/index.js:387:15)
+      at Object.<anonymous> (src/tests/course.test.tsx:23:54)
+
+  ● Add & Remove Courses Tests › can remove a course
+
+    expect(received).toBeInTheDocument()
+
+    received value must be an HTMLElement or an SVGElement.
+    Received has value: null
+
+      42 |         const add2 = screen.getByTestId("save-sem");
+      43 |         add2.click();
+    > 44 |         expect(screen.queryByText(/test semester/i)).toBeInTheDocument();
+         |                                                      ^
+      45 |         const add_course = screen.getByTestId("add-course-btn");
+      46 |         add_course.click();
+      47 |         expect(
+
+      at __EXTERNAL_MATCHER_TRAP__ (node_modules/expect/build/index.js:386:30)
+      at Object.toBeInTheDocument (node_modules/expect/build/index.js:387:15)
+      at Object.<anonymous> (src/tests/course.test.tsx:44:54)
+
 PASS src/tests/plans.test.tsx
 PASS src/App.test.tsx
-----------------------|---------|----------|---------|---------|-------------------
-File                  | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
-----------------------|---------|----------|---------|---------|-------------------
-All files             |   55.08 |     47.5 |   58.75 |   54.83 |                   
- src                  |   85.18 |       75 |   84.61 |   84.61 |                   
-  App.tsx             |   85.18 |       75 |   84.61 |   84.61 | 69-74             
- src/components       |   50.95 |    44.44 |   53.73 |   50.95 |                   
-  CourseList.tsx      |     100 |      100 |     100 |     100 |                   
-  CourseMover.tsx     |       0 |        0 |       0 |       0 | 15-106            
-  CoursePool.tsx      |     100 |      100 |     100 |     100 |                   
-  CoursePoolTable.tsx |      70 |       50 |      75 |      70 | 15-17             
-  CourseView.tsx      |   56.25 |    41.66 |   38.88 |   56.25 | 41,48-115         
-  PlanList.tsx        |     100 |      100 |     100 |     100 |                   
-  PlanView.tsx        |   46.34 |    58.33 |   64.28 |   46.34 | 26,35-36,64-95    
-  SemesterList.tsx    |     100 |      100 |     100 |     100 |                   
-  SemesterView.tsx    |      55 |       25 |   57.14 |      55 | 49-68,95          
- src/interfaces       |       0 |      100 |     100 |       0 |                   
-  course.ts           |       0 |        0 |       0 |       0 |                   
-  degreeplan.ts       |       0 |      100 |     100 |       0 | 15-17             
-  semester.ts         |       0 |      100 |     100 |       0 | 10                
-----------------------|---------|----------|---------|---------|-------------------
+----------------------|---------|----------|---------|---------|-----------------------
+File                  | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s     
+----------------------|---------|----------|---------|---------|-----------------------
+All files             |   30.48 |     32.5 |   38.75 |    30.1 |                       
+ src                  |   85.18 |       75 |   84.61 |   84.61 |                       
+  App.tsx             |   85.18 |       75 |   84.61 |   84.61 | 69-74                 
+ src/components       |   21.65 |    27.77 |   29.85 |   21.65 |                       
+  CourseList.tsx      |      50 |      100 |      50 |      50 | 23                    
+  CourseMover.tsx     |       0 |        0 |       0 |       0 | 15-106                
+  CoursePool.tsx      |     100 |      100 |     100 |     100 |                       
+  CoursePoolTable.tsx |      70 |       50 |      75 |      70 | 15-17                 
+  CourseView.tsx      |       0 |        0 |       0 |       0 | 20-204                
+  PlanList.tsx        |     100 |      100 |     100 |     100 |                       
+  PlanView.tsx        |   41.46 |    58.33 |      50 |   41.46 | 26,32,42-46,64-95,133 
+  SemesterList.tsx    |      25 |      100 |      40 |      25 | 15-25,46              
+  SemesterView.tsx    |       5 |        0 |   14.28 |       5 | 21-68,87-95           
+ src/interfaces       |       0 |      100 |     100 |       0 |                       
+  course.ts           |       0 |        0 |       0 |       0 |                       
+  degreeplan.ts       |       0 |      100 |     100 |       0 | 15-17                 
+  semester.ts         |       0 |      100 |     100 |       0 | 10                    
+----------------------|---------|----------|---------|---------|-----------------------
 
-Test Suites: 4 passed, 4 total
-Tests:       9 passed, 9 total
+Test Suites: 2 failed, 2 passed, 4 total
+Tests:       5 failed, 4 passed, 9 total
 Snapshots:   0 total
-Time:        6.086 s
+Time:        6.475 s
 Ran all test suites.
