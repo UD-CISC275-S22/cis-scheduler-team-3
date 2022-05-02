@@ -67,9 +67,10 @@ export function PlanView({
     ) {
         console.log(course_code, origin, destination);
         if (destination === origin) {
+            // If the origin and destination are the same do nothing
             return null;
         } else if (origin === "Course_Pool") {
-            //const id = course.title + ":" + course.code;
+            // Origin is the coursepool
             const index = plan.plan_pool.findIndex(
                 (course: Course): boolean =>
                     course.code + ":" + course.title === course_code
@@ -103,13 +104,19 @@ export function PlanView({
                 ),
                 new_semester
             ];
-            /*
             const newplan = {
                 ...plan,
                 semesters: new_semesters
-            };*/
+            };
+            console.log(newplan);
             console.log("Final log of move");
-            editplan(plan.name, { ...plan, semesters: new_semesters });
+            editplan(plan.name, newplan);
+        } else if (destination === "Course_Pool") {
+            // Destination of moving course is the coursepool
+            console.log("Destination: CoursePool");
+        } else {
+            // Origin and destination do not involve the coursepool
+            console.log("");
         }
     }
     return add ? (
