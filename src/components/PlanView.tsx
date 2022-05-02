@@ -71,6 +71,8 @@ export function PlanView({
             return null;
         } else if (origin === "Course_Pool") {
             // Origin is the coursepool
+            console.log("Origin: Course_Pool");
+            console.log("Destination:" + destination);
             const index = plan.plan_pool.findIndex(
                 (course: Course): boolean =>
                     course.code + ":" + course.title === course_code
@@ -80,22 +82,16 @@ export function PlanView({
                 (course: Course): boolean =>
                     course.title + ":" + course.code != course_code
             );
-            console.log("destination: " + destination);
             const semester_accepting_index = plan.semesters.findIndex(
                 (semester: Semester): boolean =>
                     semester.session + ":" + semester.year === destination
             );
-            console.log("accepting sem index: " + semester_accepting_index);
             const sem_courses =
                 plan.semesters[semester_accepting_index].courses;
             const new_semester = {
                 ...plan.semesters[semester_accepting_index],
                 courses: [...sem_courses, moving_course]
             };
-            console.log(
-                "new semester courses length: " + new_semester.courses.length
-            );
-            console.log("course to be moved code: " + course_code);
             const new_semesters = [
                 ...plan.semesters.filter(
                     (semester: Semester): boolean =>
@@ -113,10 +109,12 @@ export function PlanView({
             editplan(plan.name, newplan);
         } else if (destination === "Course_Pool") {
             // Destination of moving course is the coursepool
-            console.log("Destination: CoursePool");
+            console.log("Origin: " + origin);
+            console.log("Destination: Course_Pool");
         } else {
             // Origin and destination do not involve the coursepool
-            console.log("");
+            console.log("Destination: " + origin);
+            console.log("Destination: " + destination);
         }
     }
     return add ? (
