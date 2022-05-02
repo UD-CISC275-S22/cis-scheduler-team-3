@@ -60,15 +60,24 @@ export function PlanView({
         editplan(plan.name, newplan);
         updateadd();
     }
-    function completeMove(course: Course, origin: string, destination: string) {
-        console.log(course.code, origin, destination);
+    function completeMove(
+        course_code: string,
+        origin: string,
+        destination: string
+    ) {
+        console.log(course_code, origin, destination);
         if (destination === origin) {
             return null;
         } else if (origin === "Course_Pool") {
-            const id = course.title + ":" + course.code;
+            //const id = course.title + ":" + course.code;
+            const index = plan.plan_pool.findIndex(
+                (course: Course): boolean =>
+                    course.code + ":" + course.title === course_code
+            );
+            const moving_course = plan.plan_pool[index];
             plan.plan_pool = plan.plan_pool.filter(
                 (course: Course): boolean =>
-                    course.title + ":" + course.code != id
+                    course.title + ":" + course.code != course_code
             );
             console.log("destination: " + destination);
             const semester_accepting_index = plan.semesters.findIndex(
@@ -80,19 +89,27 @@ export function PlanView({
                 plan.semesters[semester_accepting_index].courses;
             const new_semester = {
                 ...plan.semesters[semester_accepting_index],
-                courses: [...sem_courses, course]
+                courses: [...sem_courses, moving_course]
             };
             console.log(
                 "new semester courses length: " + new_semester.courses.length
             );
-            console.log("course to be moved code: " + course.code);
-            const new_semesters = [...plan.semesters, new_semester];
+            console.log("course to be moved code: " + course_code);
+            const new_semesters = [
+                ...plan.semesters.filter(
+                    (semester: Semester): boolean =>
+                        semester.session + ":" + semester.year !=
+                        new_semester.session + ":" + new_semester.year
+                ),
+                new_semester
+            ];
+            /*
             const newplan = {
                 ...plan,
                 semesters: new_semesters
-            };
-            editplan(plan.name, newplan);
-            updatemovecourse();
+            };*/
+            console.log("Final log of move");
+            editplan(plan.name, { ...plan, semesters: new_semesters });
         }
     }
     return add ? (
