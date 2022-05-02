@@ -28,7 +28,7 @@ export function PlanView({
     function updateadd() {
         setadd(!add);
     }
-    function updateSession(event: React.ChangeEvent<HTMLInputElement>) {
+    function updateSession(event: React.ChangeEvent<HTMLSelectElement>) {
         setsession(event.target.value);
     }
     function updateYear(event: React.ChangeEvent<HTMLInputElement>) {
@@ -98,13 +98,13 @@ export function PlanView({
     return add ? (
         <div>
             <Form.Group controlId="session-textbox">
-                <Form.Label>
-                    Enter the session (fall, winter, spring, summer):
-                </Form.Label>
-                <Form.Control
-                    value={session}
-                    onChange={updateSession}
-                ></Form.Control>
+                <Form.Label>What session?:</Form.Label>
+                <Form.Select value={session} onChange={updateSession}>
+                    <option value="Fall">Fall</option>
+                    <option value="Winter">Winter</option>
+                    <option value="Spring">Spring</option>
+                    <option value="Summer">Summer</option>
+                </Form.Select>
             </Form.Group>
             <Form.Group controlId="year-textbox">
                 <Form.Label>Enter the year:</Form.Label>
