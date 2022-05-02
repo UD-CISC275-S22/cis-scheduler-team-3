@@ -146,29 +146,20 @@ export function PlanView({
                     semester.session + ":" + semester.year === destination
             );
             const origin_final = plan.semesters[origin_index];
-            let destination_final = plan.semesters[destination_index];
+            const destination_final = plan.semesters[destination_index];
             const moving_index = origin_final.courses.findIndex(
                 (course: Course): boolean => course.code === course_code
             );
             const moving_course = origin_final.courses[moving_index];
-            destination_final = {
-                ...destination_final,
-                courses: destination_final.courses.splice(
-                    destination_final.courses.length,
-                    0,
-                    moving_course
-                )
-            };
-            /*
-            origin_final = {
-                ...origin_final,
-                courses: 
-            };*/
+            destination_final.courses.splice(
+                destination_final.courses.length,
+                0,
+                moving_course
+            );
             origin_final.courses.splice(moving_index, 1);
             plan.semesters
                 .splice(origin_index, 1, origin_final)
                 .splice(destination_index, 1, destination_final);
-            console.log(plan.semesters);
             const newplan = {
                 ...plan,
                 semesters: [...plan.semesters]
