@@ -32,9 +32,14 @@ export function PlanView({
         setsession(event.target.value);
     }
     function updateYear(event: React.ChangeEvent<HTMLInputElement>) {
-        const inputToNumber = parseInt(event.target.value);
-        setyear(inputToNumber);
+        if (isNaN(parseInt(event.target.value))) {
+            setyear(0);
+        } else {
+            const inputToNumber = parseInt(event.target.value);
+            setyear(inputToNumber);
+        }
     }
+
     function showCoursePool() {
         setShowPool(!showPool);
     }
