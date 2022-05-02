@@ -96,13 +96,10 @@ export function PlanView({
                 moving_course
             );
             origin_final.splice(moving_index, 1);
+            plan.semesters.splice(destination_index, 1, destination_final);
             const newplan = {
                 ...plan,
-                semesters: plan.semesters.splice(
-                    destination_index,
-                    1,
-                    destination_final
-                ),
+                semesters: [...plan.semesters],
                 plan_pool: [...origin_final]
             };
             editplan(plan.name, newplan);
@@ -114,7 +111,7 @@ export function PlanView({
                 (semester: Semester): boolean =>
                     semester.session + ":" + semester.year === origin
             );
-            let origin_final = plan.semesters[origin_index];
+            const origin_final = plan.semesters[origin_index];
             const moving_index = origin_final.courses.findIndex(
                 (course: Course): boolean => course.code === course_code
             );
@@ -122,13 +119,11 @@ export function PlanView({
                 ...plan.plan_pool,
                 origin_final.courses[moving_index]
             ];
-            origin_final = {
-                ...origin_final,
-                courses: origin_final.courses.splice(moving_index, 1)
-            };
+            origin_final.courses.splice(moving_index, 1);
+            plan.semesters.splice(origin_index, 1, origin_final);
             const newplan = {
                 ...plan,
-                semesters: plan.semesters.splice(origin_index, 1, origin_final),
+                semesters: [...plan.semesters],
                 plan_pool: [...destination_final]
             };
             editplan(plan.name, newplan);
