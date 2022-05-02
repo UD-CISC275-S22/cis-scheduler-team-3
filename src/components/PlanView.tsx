@@ -67,39 +67,103 @@ export function PlanView({
         setsession("");
         updateadd();
     }
-    function completeMove(course: Course, origin: string, destination: string) {
-        console.log(course.code, origin, destination);
+    function completeMove(
+        course_code: string,
+        origin: string,
+        destination: string
+    ) {
+        console.log(course_code, origin, destination);
         if (destination === origin) {
+            // If the origin and destination are the same do nothing
             return null;
         } else if (origin === "Course_Pool") {
-            const id = course.title + ":" + course.code;
-            plan.plan_pool = plan.plan_pool.filter(
-                (course: Course): boolean =>
-                    course.title + ":" + course.code != id
-            );
-            console.log("destination: " + destination);
-            const semester_accepting_index = plan.semesters.findIndex(
+            // Origin is the coursepool
+            console.log("Origin: Course_Pool");
+            console.log("Destination:" + destination);
+            const origin_final = plan.plan_pool;
+            const destination_index = plan.semesters.findIndex(
                 (semester: Semester): boolean =>
                     semester.session + ":" + semester.year === destination
             );
-            console.log("accepting sem index: " + semester_accepting_index);
-            const sem_courses =
-                plan.semesters[semester_accepting_index].courses;
-            const new_semester = {
-                ...plan.semesters[semester_accepting_index],
-                courses: [...sem_courses, course]
-            };
-            console.log(
-                "new semester courses length: " + new_semester.courses.length
+            const destination_final = plan.semesters[destination_index];
+            const moving_index = plan.plan_pool.findIndex(
+                (course: Course): boolean => course.code === course_code
             );
-            console.log("course to be moved code: " + course.code);
-            const new_semesters = [...plan.semesters, new_semester];
+            const moving_course = origin_final[moving_index];
+            destination_final.courses.splice(
+                destination_final.courses.length,
+                0,
+                moving_course
+            );
+            origin_final.splice(moving_index, 1);
             const newplan = {
                 ...plan,
-                semesters: new_semesters
+                semesters: plan.semesters.splice(
+                    destination_index,
+                    1,
+                    destination_final
+                ),
+                plan_pool: [...origin_final]
             };
             editplan(plan.name, newplan);
-            updatemovecourse();
+        } else if (destination === "Course_Pool") {
+            // Destination of moving course is the coursepool
+            console.log("Origin: " + origin);
+            console.log("Destination: Course_Pool");
+            const origin_index = plan.semesters.findIndex(
+                (semester: Semester): boolean =>
+                    semester.session + ":" + semester.year === origin
+            );
+            let origin_final = plan.semesters[origin_index];
+            const moving_index = origin_final.courses.findIndex(
+                (course: Course): boolean => course.code === course_code
+            );
+            const destination_final = [
+                ...plan.plan_pool,
+                origin_final.courses[moving_index]
+            ];
+            origin_final = {
+                ...origin_final,
+                courses: origin_final.courses.splice(moving_index, 1)
+            };
+            const newplan = {
+                ...plan,
+                semesters: plan.semesters.splice(origin_index, 1, origin_final),
+                plan_pool: [...destination_final]
+            };
+            editplan(plan.name, newplan);
+        } else {
+            // Origin and destination do not involve the coursepool
+            console.log("Origin: " + origin);
+            console.log("Destination: " + destination);
+            const origin_index = plan.semesters.findIndex(
+                (semester: Semester): boolean =>
+                    semester.session + ":" + semester.year === origin
+            );
+            const destination_index = plan.semesters.findIndex(
+                (semester: Semester): boolean =>
+                    semester.session + ":" + semester.year === destination
+            );
+            const origin_final = plan.semesters[origin_index];
+            const destination_final = plan.semesters[destination_index];
+            const moving_index = origin_final.courses.findIndex(
+                (course: Course): boolean => course.code === course_code
+            );
+            const moving_course = origin_final.courses[moving_index];
+            destination_final.courses.splice(
+                destination_final.courses.length,
+                0,
+                moving_course
+            );
+            origin_final.courses.splice(moving_index, 1);
+            plan.semesters
+                .splice(origin_index, 1, origin_final)
+                .splice(destination_index, 1, destination_final);
+            const newplan = {
+                ...plan,
+                semesters: [...plan.semesters]
+            };
+            editplan(plan.name, newplan);
         }
     }
     return add ? (
