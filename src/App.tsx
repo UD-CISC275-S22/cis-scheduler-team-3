@@ -66,12 +66,21 @@ export function App(): JSX.Element {
         );
     }
     function updateStart(event: ChangeEvent) {
-        const inputToNumber = parseInt(event.target.value);
-        setstart(inputToNumber);
+        if (isNaN(parseInt(event.target.value))) {
+            setstart(0);
+        } else {
+            const inputToNumber = parseInt(event.target.value);
+            setstart(inputToNumber);
+        }
     }
+
     function updateEnd(event: ChangeEvent) {
-        const inputToNumber = parseInt(event.target.value);
-        setend(inputToNumber);
+        if (isNaN(parseInt(event.target.value))) {
+            setend(0);
+        } else {
+            const inputToNumber = parseInt(event.target.value);
+            setend(inputToNumber);
+        }
     }
     function updateName(event: ChangeEvent) {
         setname(event.target.value);
@@ -132,7 +141,7 @@ export function App(): JSX.Element {
                             ></Form.Control>
                         </Form.Group>
                         <Form.Group as={Col}>
-                            <Form.Label>End Year: </Form.Label>
+                            <Form.Label>Expected Graduation Year: </Form.Label>
                             <Form.Control
                                 value={end}
                                 onChange={updateEnd}
