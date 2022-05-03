@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, ButtonGroup } from "react-bootstrap";
 import { DegreePlan } from "../interfaces/degreeplan";
 import { CoursePool } from "./CoursePool";
 import { SemesterList } from "./SemesterList";
@@ -103,6 +103,7 @@ export function PlanView({
     return add ? (
         <div>
             <Form.Group controlId="session-textbox">
+                <h4>Add a Semester: </h4>
                 <Form.Label>
                     Enter the session (fall, winter, spring, summer):
                 </Form.Label>
@@ -131,27 +132,29 @@ export function PlanView({
             <h6 data-testid="degree-credits">
                 Degree Credits: {plan.degree_credits}/ 124 required
             </h6>
-            <Button
-                data-testid="clear-sem-btn"
-                className="Buttons"
-                variant="warning"
-                onClick={() => clearSemesters()}
-            >
-                Clear Semesters
-            </Button>
-            <p></p>
-            <Button
-                data-testid="add-sem-btn"
-                className="Buttons"
-                variant="success"
-                onClick={() => updateadd()}
-            >
-                Add Semester
-            </Button>
-            <p></p>
-            <Button className="Buttons" onClick={updatemovecourse}>
-                move courses
-            </Button>
+            <ButtonGroup className="mb-2">
+                <Button
+                    data-testid="clear-sem-btn"
+                    className="Buttons"
+                    variant="warning"
+                    onClick={() => clearSemesters()}
+                >
+                    Clear Semesters
+                </Button>
+                <p></p>
+                <Button
+                    data-testid="add-sem-btn"
+                    className="Buttons"
+                    variant="success"
+                    onClick={() => updateadd()}
+                >
+                    Add Semester
+                </Button>
+                <p></p>
+                <Button className="Buttons" onClick={updatemovecourse}>
+                    move courses
+                </Button>
+            </ButtonGroup>
             {movecourse ? (
                 <CourseMover
                     semesters={plan.semesters}

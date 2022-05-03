@@ -100,24 +100,23 @@ export function App(): JSX.Element {
                     to get started!
                 </h5>
             </div>
-            <div>
-                <PlanList
-                    plans={plans}
-                    editplan={editPlan}
-                    deleteplan={deletePlan}
-                ></PlanList>
-            </div>
-            <p> </p>
-            <div>
-                <Button
-                    variant="success"
-                    className="Delete-plan"
-                    onClick={() => updateAdd()}
-                    data-testid="add-plan-btn"
-                >
-                    Add Plan
-                </Button>
-            </div>
+            <PlanList
+                plans={plans}
+                editplan={editPlan}
+                deleteplan={deletePlan}
+            ></PlanList>
+            <Container>
+                <Row>
+                    <Button
+                        variant="success"
+                        className="Delete-plan"
+                        onClick={() => updateAdd()}
+                        data-testid="add-plan-btn"
+                    >
+                        Add Plan
+                    </Button>
+                </Row>
+            </Container>
             {add ? (
                 <Container>
                     <Row>
