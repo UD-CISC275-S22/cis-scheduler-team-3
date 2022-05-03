@@ -89,7 +89,6 @@ export function SemesterView({
                     >
                         add course
                     </Button>
-                    <p></p>
                     <Button
                         size="sm"
                         onClick={() => clearCourses()}

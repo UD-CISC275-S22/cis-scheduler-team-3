@@ -38,6 +38,7 @@ export function SemesterList({
                             editplan={editplan}
                             semester={semester}
                         ></SemesterView>
+                        <p></p>
                         <Button
                             className="me-3"
                             size="sm"

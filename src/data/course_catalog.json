@@ -3,7 +3,7 @@
         "code": "CISC 101",
         "title": "Principles of Computing",
         "description": "Introduces students to the central ideas of computing and computer science including programs, algorithms, abstraction, the internet, and information systems. Instills ideas and practices of computational thinking and engages students in activities that show how computing and computer science change the world. Explores computing as a creative activity and empowers students to apply computational thinking to all disciplines including the arts, humanities, business, social and physical sciences, health, and entertainment.",
-        "course_credits": " 3",
+        "course_credits": "3",
         "prerequisites": "",
         "requirement": false
     },

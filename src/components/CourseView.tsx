@@ -89,6 +89,11 @@ export function CourseView({
             (course: Course): Course =>
                 course.title + ":" + course.code === id ? newCourse : course
         );
+        if (course.course_credits !== "") {
+            semester.semester_credits =
+                semester.semester_credits -
+                parseInt(course.course_credits.trim().charAt(0));
+        }
         const new_SemCredits =
             semester.semester_credits +
             parseInt(course_credits.trim().charAt(0));
@@ -104,6 +109,11 @@ export function CourseView({
                     ? new_semester
                     : semester
         );
+        if (course.course_credits !== "") {
+            plan.degree_credits =
+                plan.degree_credits -
+                parseInt(course.course_credits.trim().charAt(0));
+        }
         const new_PlanCredits =
             plan.degree_credits + parseInt(course_credits.trim().charAt(0));
         const new_plan = {
