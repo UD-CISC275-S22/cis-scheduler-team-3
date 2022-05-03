@@ -216,6 +216,9 @@ export function PlanView({
             <h4 data-testid="name">{plan.name}</h4>
             <h6 data-testid="start-year">Start Year: {plan.Start_Year}</h6>
             <h6 data-testid="end-year">End Year: {plan.End_Year}</h6>
+            <h6 data-testid="degree-credits">
+                Degree Credits: {plan.degree_credits}/ 124 required
+            </h6>
             <p>
                 University Requirements: ENGL110, First year seminar, Discovery
                 Learning Experience, Multicultural, University Breadth (3), &
@@ -226,28 +229,27 @@ export function PlanView({
                 Major Requirements: Core, Capstone, Science, 300 level or above
                 math class, ENGL312 or ENGL 410, & CISC355
             </p>
-            <h6 data-testid="degree-credits">
-                Degree Credits: {plan.degree_credits}/ 124 required
-            </h6>
-            <Button
-                data-testid="clear-sem-btn"
-                className="Buttons"
-                variant="warning"
-                onClick={() => clearSemesters()}
-            >
-                Clear Semesters
-            </Button>
-            <p></p>
             <Button
                 data-testid="add-sem-btn"
                 className="Buttons"
-                variant="success"
+                variant="outline-success"
                 onClick={() => updateadd()}
             >
                 Add Semester
             </Button>
-            <p></p>
-            <Button className="Buttons" onClick={updatemovecourse}>
+            <Button
+                data-testid="clear-sem-btn"
+                className="Buttons"
+                variant="outline-primary"
+                onClick={() => clearSemesters()}
+            >
+                Clear Semesters
+            </Button>
+            <Button
+                className="Buttons"
+                onClick={updatemovecourse}
+                variant="outline-dark"
+            >
                 move courses
             </Button>
             {movecourse ? (
