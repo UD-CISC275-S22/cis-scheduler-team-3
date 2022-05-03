@@ -73,7 +73,7 @@ export function CourseView({
     }
 
     function updatePrereqList() {
-        setPrerequisiteList(PrerequisiteList + currentprereq);
+        setPrerequisiteList(PrerequisiteList + ", " + currentprereq);
     }
     //actually updates the course list of the current semester, eventually calling edit plan, which updates the state in App.tsx
     function save() {
