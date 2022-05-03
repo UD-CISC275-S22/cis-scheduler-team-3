@@ -10,17 +10,17 @@ PASS src/App.test.tsx
 ----------------------|---------|----------|---------|---------|-------------------
 File                  | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ----------------------|---------|----------|---------|---------|-------------------
-All files             |   54.97 |    46.29 |   61.17 |   54.78 |                   
+All files             |   54.04 |     43.1 |   61.17 |   53.84 |                   
  src                  |   72.97 |       40 |   78.57 |   72.22 |                   
   App.tsx             |   72.97 |       40 |   78.57 |   72.22 | 17,32,69-82       
- src/components       |   51.54 |    47.72 |   57.74 |   51.54 |                   
+ src/components       |    50.5 |    43.75 |   57.74 |    50.5 |                   
   CourseList.tsx      |     100 |      100 |     100 |     100 |                   
   CourseMover.tsx     |       0 |        0 |       0 |       0 | 19-112            
   CoursePool.tsx      |     100 |      100 |     100 |     100 |                   
   CoursePoolTable.tsx |      70 |       50 |      75 |      70 | 15-17             
   CourseView.tsx      |   82.69 |    56.25 |   66.66 |   82.69 | 41,56-76,93,113   
   PlanList.tsx        |     100 |      100 |     100 |     100 |                   
-  PlanView.tsx        |   29.11 |       50 |   47.36 |   29.11 | 26,32,36,75-187   
+  PlanView.tsx        |   27.71 |       40 |   47.36 |   27.71 | 26,32,36,75-199   
   SemesterList.tsx    |     100 |      100 |     100 |     100 |                   
   SemesterView.tsx    |      55 |       25 |   57.14 |      55 | 49-68,94          
  src/interfaces       |       0 |        0 |       0 |       0 |                   
@@ -32,5 +32,5 @@ All files             |   54.97 |    46.29 |   61.17 |   54.78 |
 Test Suites: 5 passed, 5 total
 Tests:       10 passed, 10 total
 Snapshots:   0 total
-Time:        6.155 s
+Time:        6.271 s
 Ran all test suites.
