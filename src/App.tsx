@@ -10,28 +10,28 @@ type ChangeEvent = React.ChangeEvent<
     HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement
 >;
 //Sample data for new users
-//let loadedData = [];
-//const saveDataKey = "MY-PAGE-DATA";
-//const previousData = localStorage.getItem(saveDataKey);
-//if (previousData !== null) {
-//loadedData = JSON.parse(previousData);
-//}
+let loadedData: DegreePlan[] = [];
+const saveDataKey = "MY-PAGE-DATA";
+const previousData = localStorage.getItem(saveDataKey);
+if (previousData !== null) {
+    loadedData = JSON.parse(previousData);
+}
 
 export function App(): JSX.Element {
     const POOLCOURSES = POOL_DATA as Course[];
     /*plans represents essentially the state of the app, there are multiple plans, each contains semesters, and courses
     plans and a function called editplans is passed down through the rest of our files to ensure everything is updated as 
     the user makes changes*/
-    const [plans, setplans] = useState<DegreePlan[]>([]);
+    const [plans, setplans] = useState<DegreePlan[]>(loadedData);
     const [name, setname] = useState<string>("");
     const [start, setstart] = useState<number>(0);
     const [end, setend] = useState<number>(0);
     const [add, setadd] = useState<boolean>(false);
-    /*
+
     function saveData() {
         localStorage.setItem(saveDataKey, JSON.stringify(plans));
     }
-*/
+
     function updateAdd() {
         setadd(!add);
     }
@@ -105,6 +105,7 @@ export function App(): JSX.Element {
                     plans={plans}
                     editplan={editPlan}
                     deleteplan={deletePlan}
+                    saveData={saveData}
                 ></PlanList>
             </div>
             <p> </p>
@@ -160,7 +161,6 @@ export function App(): JSX.Element {
                     </Button>
                 </Container>
             ) : null}
-            {/*<Button onClick={saveData}>Save Changes</Button>*/}
             <p> </p>
             <hr></hr>
         </>
