@@ -34,42 +34,40 @@ export function CoursePoolTable({ course }: { course: Course }): JSX.Element {
     }
 
     return (
-        <div>
-            <Container
-                data-testid="scroll-courses"
-                className="course-pool-scrollable"
-            >
-                <Row>
-                    <Col>
-                        {" "}
-                        <p>
-                            {course.code} : {course.title}
-                        </p>
-                    </Col>
-                    <Col md="auto">
-                        <p>
-                            <button
-                                className="btn default"
-                                data-testid="pool-show/hide-btn"
-                                type="button"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#collapseExample"
-                                aria-expanded="false"
-                                aria-controls="collapseExample"
-                                onClick={toggleRow}
-                            >
-                                {open ? "hide course info" : " see course info"}
-                                <i className="bi bi-plus-lg"></i>
-                            </button>
-                        </p>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
-                        <ViewCourseInfo />
-                    </Col>
-                </Row>
-            </Container>
-        </div>
+        <Container
+            data-testid="scroll-courses"
+            className="course-pool-scrollable"
+        >
+            <Row>
+                <Col>
+                    {" "}
+                    <p>
+                        {course.code} : {course.title}
+                    </p>
+                </Col>
+                <Col md="auto">
+                    <p>
+                        <button
+                            className="btn default"
+                            data-testid="pool-show/hide-btn"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#collapseExample"
+                            aria-expanded="false"
+                            aria-controls="collapseExample"
+                            onClick={toggleRow}
+                        >
+                            {open ? "hide course info" : " see course info"}
+                            <i className="bi bi-plus-lg"></i>
+                        </button>
+                    </p>
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                    <ViewCourseInfo />
+                </Col>
+            </Row>
+        </Container>
     );
 }

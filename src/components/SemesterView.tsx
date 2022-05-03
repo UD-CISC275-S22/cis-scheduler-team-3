@@ -75,7 +75,10 @@ export function SemesterView({
                         {semester.session}:{semester.year}
                     </h5>
                     <i data-testid="Semester_Credits">
-                        Total Credits: {semester.semester_credits}
+                        Total Credits:{" "}
+                        {isNaN(semester.semester_credits)
+                            ? 0
+                            : semester.semester_credits}
                     </i>
                     <p> </p>
                 </Col>

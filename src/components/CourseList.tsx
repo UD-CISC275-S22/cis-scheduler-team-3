@@ -17,8 +17,8 @@ export function CourseList({
     editplan: (id: string, newPlan: DegreePlan) => void;
 }): JSX.Element {
     return (
-        <Container className="course-pool" data-testid="Course_List">
-            <Row lg={4} id="course-row">
+        <Container data-testid="Course_List">
+            <Row>
                 {courses.map((course: Course) => (
                     <div key={course.code}>
                         <CourseView
