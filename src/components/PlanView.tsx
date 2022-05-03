@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Form, ButtonGroup } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import { DegreePlan } from "../interfaces/degreeplan";
 import { CoursePool } from "./CoursePool";
 import { SemesterList } from "./SemesterList";
