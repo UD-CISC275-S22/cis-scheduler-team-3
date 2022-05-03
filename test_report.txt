@@ -10,9 +10,9 @@ PASS src/App.test.tsx
 ----------------------|---------|----------|---------|---------|-------------------
 File                  | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ----------------------|---------|----------|---------|---------|-------------------
-All files             |    55.5 |    45.83 |    61.9 |   55.29 |                   
- src                  |   74.19 |     37.5 |   84.61 |   73.33 |                   
-  App.tsx             |   74.19 |     37.5 |   84.61 |   73.33 | 69-82             
+All files             |    55.8 |       46 |   61.17 |    55.6 |                   
+ src                  |   72.97 |       40 |   78.57 |   72.22 |                   
+  App.tsx             |   72.97 |       40 |   78.57 |   72.22 | 17,32,69-82       
  src/components       |   53.26 |     47.5 |   57.74 |   53.26 |                   
   CourseList.tsx      |     100 |      100 |     100 |     100 |                   
   CourseMover.tsx     |       0 |        0 |       0 |       0 | 19-112            
@@ -32,5 +32,5 @@ All files             |    55.5 |    45.83 |    61.9 |   55.29 |
 Test Suites: 5 passed, 5 total
 Tests:       10 passed, 10 total
 Snapshots:   0 total
-Time:        7.939 s
+Time:        5.933 s
 Ran all test suites.
