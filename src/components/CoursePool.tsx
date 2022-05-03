@@ -10,14 +10,13 @@ export function CoursePool({
 }): JSX.Element {
     return (
         <Container
-            className="course-pool"
             style={{ overflowY: "scroll", height: "400px" }}
             data-testid="course-pool"
         >
             <Row>
                 <h5>Course Pool: </h5>
             </Row>
-            <Row lg={6} id="course-row">
+            <Row>
                 {plan_pool.map((course: Course) => (
                     <CoursePoolTable
                         key={course.code}
