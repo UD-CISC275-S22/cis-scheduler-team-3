@@ -97,10 +97,19 @@ export function PlanView({
             );
             origin_final.splice(moving_index, 1);
             plan.semesters.splice(destination_index, 1, destination_final);
+            const new_deg_credits =
+                plan.degree_credits +
+                parseInt(moving_course.course_credits.trim().charAt(0));
+            const new_semester_credits =
+                destination_final.semester_credits +
+                parseInt(moving_course.course_credits.trim().charAt(0));
+            plan.semesters[destination_index].semester_credits =
+                new_semester_credits;
             const newplan = {
                 ...plan,
                 semesters: [...plan.semesters],
-                plan_pool: [...origin_final]
+                plan_pool: [...origin_final],
+                degree_credits: new_deg_credits
             };
             editplan(plan.name, newplan);
         } else if (destination === "Course_Pool") {
@@ -121,10 +130,27 @@ export function PlanView({
             ];
             origin_final.courses.splice(moving_index, 1);
             plan.semesters.splice(origin_index, 1, origin_final);
+            const new_deg_credits =
+                plan.degree_credits -
+                parseInt(
+                    origin_final.courses[moving_index].course_credits
+                        .trim()
+                        .charAt(0)
+                );
+            const new_semester_credits =
+                origin_final.semester_credits -
+                parseInt(
+                    origin_final.courses[moving_index].course_credits
+                        .trim()
+                        .charAt(0)
+                );
+            plan.semesters[origin_index].semester_credits =
+                new_semester_credits;
             const newplan = {
                 ...plan,
                 semesters: [...plan.semesters],
-                plan_pool: [...destination_final]
+                plan_pool: [...destination_final],
+                degree_credits: new_deg_credits
             };
             editplan(plan.name, newplan);
         } else {
