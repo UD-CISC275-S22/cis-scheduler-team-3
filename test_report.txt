@@ -10,27 +10,27 @@ PASS src/App.test.tsx
 ----------------------|---------|----------|---------|---------|-------------------
 File                  | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ----------------------|---------|----------|---------|---------|-------------------
-All files             |    55.8 |       46 |   61.17 |    55.6 |                   
+All files             |   54.97 |    46.29 |   61.17 |   54.78 |                   
  src                  |   72.97 |       40 |   78.57 |   72.22 |                   
   App.tsx             |   72.97 |       40 |   78.57 |   72.22 | 17,32,69-82       
- src/components       |   53.26 |     47.5 |   57.74 |   53.26 |                   
+ src/components       |   51.54 |    47.72 |   57.74 |   51.54 |                   
   CourseList.tsx      |     100 |      100 |     100 |     100 |                   
   CourseMover.tsx     |       0 |        0 |       0 |       0 | 19-112            
   CoursePool.tsx      |     100 |      100 |     100 |     100 |                   
   CoursePoolTable.tsx |      70 |       50 |      75 |      70 | 15-17             
-  CourseView.tsx      |   85.41 |    58.33 |   66.66 |   85.41 | 41,56-76          
+  CourseView.tsx      |   82.69 |    56.25 |   66.66 |   82.69 | 41,56-76,93,113   
   PlanList.tsx        |     100 |      100 |     100 |     100 |                   
-  PlanView.tsx        |    31.5 |       50 |   47.36 |    31.5 | 26,32,36,75-161   
+  PlanView.tsx        |   29.11 |       50 |   47.36 |   29.11 | 26,32,36,75-187   
   SemesterList.tsx    |     100 |      100 |     100 |     100 |                   
-  SemesterView.tsx    |      55 |       25 |   57.14 |      55 | 49-68,95          
- src/interfaces       |       0 |      100 |     100 |       0 |                   
+  SemesterView.tsx    |      55 |       25 |   57.14 |      55 | 49-68,94          
+ src/interfaces       |       0 |        0 |       0 |       0 |                   
   course.ts           |       0 |        0 |       0 |       0 |                   
-  degreeplan.ts       |       0 |      100 |     100 |       0 | 15-17             
-  semester.ts         |       0 |      100 |     100 |       0 | 10                
+  degreeplan.ts       |       0 |        0 |       0 |       0 |                   
+  semester.ts         |       0 |        0 |       0 |       0 |                   
 ----------------------|---------|----------|---------|---------|-------------------
 
 Test Suites: 5 passed, 5 total
 Tests:       10 passed, 10 total
 Snapshots:   0 total
-Time:        5.933 s
+Time:        6.155 s
 Ran all test suites.
