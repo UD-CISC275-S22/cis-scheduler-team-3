@@ -6,11 +6,13 @@ import { PlanView } from "./PlanView";
 export function PlanList({
     plans,
     editplan,
-    deleteplan
+    deleteplan,
+    saveData
 }: {
     plans: DegreePlan[];
     editplan: (name: string, newPlan: DegreePlan) => void;
     deleteplan: (name: string) => void;
+    saveData: () => void;
 }): JSX.Element {
     function removeplan(plan: DegreePlan) {
         deleteplan(plan.name);
@@ -31,12 +33,14 @@ export function PlanList({
                             variant="outline-danger"
                             onClick={() => removeplan(plan)}
                             data-testid="delete-plan-btn"
+                            size="sm"
                         >
                             delete plan
                         </Button>
                         <hr />
                     </div>
                 ))}
+                <Button onClick={saveData}>Save Changes</Button>
             </Row>
         </Container>
     );

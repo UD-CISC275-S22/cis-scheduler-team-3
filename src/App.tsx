@@ -10,28 +10,28 @@ type ChangeEvent = React.ChangeEvent<
     HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement
 >;
 //Sample data for new users
-//let loadedData = [];
-//const saveDataKey = "MY-PAGE-DATA";
-//const previousData = localStorage.getItem(saveDataKey);
-//if (previousData !== null) {
-//loadedData = JSON.parse(previousData);
-//}
+let loadedData: DegreePlan[] = [];
+const saveDataKey = "MY-PAGE-DATA";
+const previousData = localStorage.getItem(saveDataKey);
+if (previousData !== null) {
+    loadedData = JSON.parse(previousData);
+}
 
 export function App(): JSX.Element {
     const POOLCOURSES = POOL_DATA as Course[];
     /*plans represents essentially the state of the app, there are multiple plans, each contains semesters, and courses
     plans and a function called editplans is passed down through the rest of our files to ensure everything is updated as 
     the user makes changes*/
-    const [plans, setplans] = useState<DegreePlan[]>([]);
+    const [plans, setplans] = useState<DegreePlan[]>(loadedData);
     const [name, setname] = useState<string>("");
     const [start, setstart] = useState<number>(0);
     const [end, setend] = useState<number>(0);
     const [add, setadd] = useState<boolean>(false);
-    /*
+
     function saveData() {
         localStorage.setItem(saveDataKey, JSON.stringify(plans));
     }
-*/
+
     function updateAdd() {
         setadd(!add);
     }
@@ -100,23 +100,25 @@ export function App(): JSX.Element {
                     to get started!
                 </h5>
             </div>
-            <PlanList
-                plans={plans}
-                editplan={editPlan}
-                deleteplan={deletePlan}
-            ></PlanList>
-            <Container>
-                <Row>
-                    <Button
-                        variant="success"
-                        className="Delete-plan"
-                        onClick={() => updateAdd()}
-                        data-testid="add-plan-btn"
-                    >
-                        Add Plan
-                    </Button>
-                </Row>
-            </Container>
+            <div>
+                <PlanList
+                    plans={plans}
+                    editplan={editPlan}
+                    deleteplan={deletePlan}
+                    saveData={saveData}
+                ></PlanList>
+            </div>
+            <p> </p>
+            <div>
+                <Button
+                    variant="success"
+                    className="Delete-plan"
+                    onClick={() => updateAdd()}
+                    data-testid="add-plan-btn"
+                >
+                    Add Plan
+                </Button>
+            </div>
             {add ? (
                 <Container>
                     <Row>
@@ -159,7 +161,6 @@ export function App(): JSX.Element {
                     </Button>
                 </Container>
             ) : null}
-            {/*<Button onClick={saveData}>Save Changes</Button>*/}
             <p> </p>
             <hr></hr>
         </>
