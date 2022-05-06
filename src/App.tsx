@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import { PlanList } from "./components/PlanList";
 import { DegreePlan } from "./interfaces/degreeplan";
+import { Semester } from "./interfaces/semester";
 import { Course } from "./interfaces/course";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import POOL_DATA from "./data/course_catalog.json";
@@ -32,6 +33,49 @@ export function App(): JSX.Element {
         localStorage.setItem(saveDataKey, JSON.stringify(plans));
     }
 
+    function downloadPlan(plan: DegreePlan) {
+        const CSVdata: string[][] = [
+            [
+                "Semesters",
+                "Years",
+                "Courses",
+                "CourseID",
+                "Credits",
+                "Prereqs",
+                "Description"
+            ]
+        ];
+        plan.semesters.map((semester: Semester) => {
+            const courses = semester.courses;
+            const semester_session = semester.session;
+            const semester_year = semester.year.toString();
+            courses.map((course: Course) => {
+                const course_code = course.code;
+                const course_title = course.title;
+                const course_credits = course.course_credits;
+                const course_desc = course.description;
+                const course_prereq = course.prerequisites;
+                CSVdata.splice(CSVdata.length, 0, [
+                    semester_session,
+                    semester_year,
+                    course_title,
+                    course_code,
+                    course_credits,
+                    course_prereq,
+                    course_desc
+                ]);
+            });
+        });
+        const csvContent = `data:text/csv;charset=utf-8,${CSVdata.map((e) =>
+            e.join(",")
+        ).join("\n")}`;
+        const encodedUri = encodeURI(csvContent);
+        const link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", plan.name);
+        document.body.appendChild(link);
+        link.click();
+    }
     function updateAdd() {
         setadd(!add);
     }
@@ -106,6 +150,7 @@ export function App(): JSX.Element {
                     editplan={editPlan}
                     deleteplan={deletePlan}
                     saveData={saveData}
+                    downloadPlan={downloadPlan}
                 ></PlanList>
             </div>
             <p> </p>
