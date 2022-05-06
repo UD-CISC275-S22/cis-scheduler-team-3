@@ -7,12 +7,14 @@ export function PlanList({
     plans,
     editplan,
     deleteplan,
-    saveData
+    saveData,
+    downloadPlan
 }: {
     plans: DegreePlan[];
     editplan: (name: string, newPlan: DegreePlan) => void;
     deleteplan: (name: string) => void;
     saveData: () => void;
+    downloadPlan: (plan: DegreePlan) => void;
 }): JSX.Element {
     function removeplan(plan: DegreePlan) {
         deleteplan(plan.name);
@@ -27,7 +29,11 @@ export function PlanList({
                         key={plan.Start_Year + plan.End_Year}
                         data-testid="plan"
                     >
-                        <PlanView plan={plan} editplan={editplan}></PlanView>
+                        <PlanView
+                            plan={plan}
+                            editplan={editplan}
+                            downloadPlan={downloadPlan}
+                        ></PlanView>
                         <Button
                             className="me-3"
                             variant="outline-danger"

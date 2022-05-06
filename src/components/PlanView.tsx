@@ -11,10 +11,12 @@ import { Semester } from "../interfaces/semester";
     Complete move function doesn't currently work, so move courses button isn't usable */
 export function PlanView({
     plan,
-    editplan
+    editplan,
+    downloadPlan
 }: {
     plan: DegreePlan;
     editplan: (id: string, newPlan: DegreePlan) => void;
+    downloadPlan: (plan: DegreePlan) => void;
 }): JSX.Element {
     const [showPool, setShowPool] = useState<boolean>(false);
     const [add, setadd] = useState<boolean>(false);
@@ -271,6 +273,13 @@ export function PlanView({
                     completeMove={completeMove}
                 ></CourseMover>
             ) : null}
+            <Button
+                className="Buttons"
+                onClick={() => downloadPlan(plan)}
+                variant="outline-dark"
+            >
+                Export to CSV
+            </Button>
             <SemesterList plan={plan} editplan={editplan}></SemesterList>
             <div className="show-course-pool-button">
                 <Button
