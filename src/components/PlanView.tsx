@@ -23,6 +23,11 @@ export function PlanView({
     const [year, setyear] = useState<number>(0);
     const [session, setsession] = useState<string>("");
     const [movecourse, setmovecourse] = useState<boolean>(false);
+    const [showreq, setshowreq] = useState<boolean>(false);
+
+    function updateShowReq() {
+        setshowreq(!showreq);
+    }
 
     function updatemovecourse() {
         setmovecourse(!movecourse);
@@ -215,16 +220,15 @@ export function PlanView({
             <h6 data-testid="degree-credits">
                 Degree Credits: {plan.degree_credits}/ 124 required
             </h6>
-            <p>
-                University Requirements: ENGL110, First year seminar, Discovery
-                Learning Experience, Multicultural, University Breadth (3), &
-                Capstone{" "}
-            </p>
-            <p>College Requirements: 9 additional breadth credits </p>
-            <p>
-                Major Requirements: Core, Capstone, Science, 300 level or above
-                math class, ENGL312 or ENGL 410, & CISC355
-            </p>
+            <Button
+                data-testid="show/hide requirements"
+                className="Buttons"
+                variant="outline-primary"
+                onClick={updateShowReq}
+            >
+                show/hide requirements
+            </Button>
+            {showreq ? <p>these are the requirements</p> : null}
             <Button
                 data-testid="add-sem-btn"
                 className="Buttons"
