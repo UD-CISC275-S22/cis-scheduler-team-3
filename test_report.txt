@@ -7,30 +7,30 @@ PASS src/tests/course.test.tsx
 PASS src/tests/credits.test.tsx
 PASS src/tests/plans.test.tsx
 PASS src/App.test.tsx
-----------------------|---------|----------|---------|---------|---------------------
-File                  | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s   
-----------------------|---------|----------|---------|---------|---------------------
-All files             |   51.02 |       46 |    57.3 |   50.81 |                     
- src                  |   47.36 |       40 |   61.11 |   46.42 |                     
-  App.tsx             |   47.36 |       40 |   61.11 |   46.42 | 18,33-77,113-126    
- src/components       |   52.12 |     47.5 |   56.33 |   52.12 |                     
-  CourseList.tsx      |     100 |      100 |     100 |     100 |                     
-  CourseMover.tsx     |       0 |        0 |       0 |       0 | 19-112              
-  CoursePool.tsx      |     100 |      100 |     100 |     100 |                     
-  CoursePoolTable.tsx |      70 |       50 |      75 |      70 | 15-17               
-  CourseView.tsx      |   87.23 |       60 |    64.7 |   87.23 | 48-68               
-  PlanList.tsx        |     100 |      100 |     100 |     100 |                     
-  PlanView.tsx        |   29.48 |       50 |      45 |   29.48 | 28,34,38,77-183,260 
-  SemesterList.tsx    |     100 |      100 |     100 |     100 |                     
-  SemesterView.tsx    |      55 |    33.33 |   57.14 |      55 | 49-68,97            
- src/interfaces       |       0 |        0 |       0 |       0 |                     
-  course.ts           |       0 |        0 |       0 |       0 |                     
-  degreeplan.ts       |       0 |        0 |       0 |       0 |                     
-  semester.ts         |       0 |        0 |       0 |       0 |                     
-----------------------|---------|----------|---------|---------|---------------------
+----------------------|---------|----------|---------|---------|----------------------------
+File                  | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s          
+----------------------|---------|----------|---------|---------|----------------------------
+All files             |   34.52 |    21.81 |    41.8 |   34.34 |                            
+ src                  |   47.36 |       40 |   61.11 |   46.42 |                            
+  App.tsx             |   47.36 |       40 |   61.11 |   46.42 | 18,33-77,113-126           
+ src/components       |   32.14 |       20 |   38.46 |   32.14 |                            
+  CourseList.tsx      |     100 |      100 |     100 |     100 |                            
+  CourseMover.tsx     |       0 |        0 |       0 |       0 | 19-112                     
+  CoursePool.tsx      |     100 |      100 |     100 |     100 |                            
+  CoursePoolTable.tsx |      70 |       50 |      75 |      70 | 15-17                      
+  CourseView.tsx      |   87.23 |       60 |    64.7 |   87.23 | 48-68                      
+  PlanList.tsx        |     100 |      100 |     100 |     100 |                            
+  PlanView.tsx        |   12.12 |    11.84 |   16.98 |   12.12 | 29-304,311,315,357-463,542 
+  SemesterList.tsx    |     100 |      100 |     100 |     100 |                            
+  SemesterView.tsx    |      55 |    33.33 |   57.14 |      55 | 49-68,97                   
+ src/interfaces       |       0 |        0 |       0 |       0 |                            
+  course.ts           |       0 |        0 |       0 |       0 |                            
+  degreeplan.ts       |       0 |        0 |       0 |       0 |                            
+  semester.ts         |       0 |        0 |       0 |       0 |                            
+----------------------|---------|----------|---------|---------|----------------------------
 
 Test Suites: 5 passed, 5 total
 Tests:       10 passed, 10 total
 Snapshots:   0 total
-Time:        6.464 s
+Time:        7.073 s
 Ran all test suites.
