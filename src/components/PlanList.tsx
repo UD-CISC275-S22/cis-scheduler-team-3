@@ -46,7 +46,7 @@ export function PlanList({
                         <hr />
                     </div>
                 ))}
-                <Button onClick={saveData}>Save Changes</Button>
+                <Button onClick={saveData}> 💾 Save Changes</Button>
             </Row>
         </Container>
     );
