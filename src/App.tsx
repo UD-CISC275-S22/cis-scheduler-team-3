@@ -52,7 +52,7 @@ export function App(): JSX.Element {
             courses.map((course: Course) => {
                 const course_code = course.code;
                 const course_title = course.title;
-                const course_credits = course.course_credits;
+                const course_credits = course.course_credits + "";
                 const course_desc = course.description;
                 const course_prereq = course.prerequisites;
                 CSVdata.splice(CSVdata.length, 0, [

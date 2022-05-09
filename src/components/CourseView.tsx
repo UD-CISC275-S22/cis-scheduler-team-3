@@ -22,30 +22,22 @@ export function CourseView({
     const [code, setcode] = useState<string>(course.code);
     const [title, settitle] = useState<string>(course.title);
     const [description, setdescription] = useState<string>(course.description);
-    const [course_credits, setcourse_credits] = useState<string>(
+    const [course_credits, setcourse_credits] = useState<number>(
         course.course_credits
     );
     const [currentprereq, setcurrentprereq] = useState<string>("");
-    const [requirement, setrequirement] = useState<boolean>(course.requirement);
+    const [requirement, setrequirement] = useState<string>(course.requirement);
     const [hasPrerequisites, setHasPrerequisites] = useState<boolean>(false);
     const [PrerequisiteList, setPrerequisiteList] = useState<string>(
         course.prerequisites
     );
-    const possibleCredits = ["", "1", "2", "3", "4"];
+    const possibleCredits = [0, 1, 2, 3, 4, 5, 6];
     function updateeditmode() {
         seteditmode(!editmode);
     }
-    //used to print the boolean value from the Course object
-    function isRequirement() {
-        if (course.requirement) {
-            return "yes";
-        } else {
-            return "no";
-        }
-    }
     //update helper functions for the form
     function updateCredits(event: React.ChangeEvent<HTMLSelectElement>) {
-        setcourse_credits(event.target.value);
+        setcourse_credits(parseInt(event.target.value));
     }
 
     function updateTitle(event: React.ChangeEvent<HTMLInputElement>) {
@@ -64,8 +56,8 @@ export function CourseView({
         setHasPrerequisites(event.target.checked);
     }
 
-    function updateRequired() {
-        setrequirement(!requirement);
+    function updateRequired(event: React.ChangeEvent<HTMLInputElement>) {
+        setrequirement(event.target.value);
     }
 
     function updateCurrentPrereq(event: React.ChangeEvent<HTMLInputElement>) {
@@ -73,7 +65,7 @@ export function CourseView({
     }
 
     function updatePrereqList() {
-        setPrerequisiteList(PrerequisiteList + ", " + currentprereq);
+        setPrerequisiteList(PrerequisiteList + " " + currentprereq + ",");
     }
     //actually updates the course list of the current semester, eventually calling edit plan, which updates the state in App.tsx
     function save() {
@@ -89,14 +81,9 @@ export function CourseView({
             (course: Course): Course =>
                 course.title + ":" + course.code === id ? newCourse : course
         );
-        if (course.course_credits !== "") {
-            semester.semester_credits =
-                semester.semester_credits -
-                parseInt(course.course_credits.trim().charAt(0));
-        }
-        const new_SemCredits =
-            semester.semester_credits +
-            parseInt(course_credits.trim().charAt(0));
+        semester.semester_credits =
+            semester.semester_credits - course.course_credits;
+        const new_SemCredits = semester.semester_credits + course_credits;
         const new_semester = {
             ...semester,
             courses: course_list,
@@ -109,13 +96,8 @@ export function CourseView({
                     ? new_semester
                     : semester
         );
-        if (course.course_credits !== "") {
-            plan.degree_credits =
-                plan.degree_credits -
-                parseInt(course.course_credits.trim().charAt(0));
-        }
-        const new_PlanCredits =
-            plan.degree_credits + parseInt(course_credits.trim().charAt(0));
+        plan.degree_credits = plan.degree_credits - course.course_credits;
+        const new_PlanCredits = plan.degree_credits + course_credits;
         const new_plan = {
             ...plan,
             semesters: semester_list,
@@ -128,9 +110,7 @@ export function CourseView({
         const course_list = semester.courses.filter(
             (course: Course): boolean => course.title + ":" + course.code != id
         );
-        const new_SemCredits =
-            semester.semester_credits -
-            parseInt(course_credits.trim().charAt(0));
+        const new_SemCredits = semester.semester_credits - course_credits;
         const new_semester = {
             ...semester,
             courses: course_list,
@@ -143,8 +123,7 @@ export function CourseView({
                     ? new_semester
                     : semester
         );
-        const new_PlanCredits =
-            plan.degree_credits - parseInt(course_credits.trim().charAt(0));
+        const new_PlanCredits = plan.degree_credits - course_credits;
         const new_plan = {
             ...plan,
             semesters: semester_list,
@@ -210,29 +189,86 @@ export function CourseView({
                             onChange={updateCredits}
                             required
                         >
-                            {possibleCredits.map((creditAmount: string) => (
+                            {possibleCredits.map((creditAmount: number) => (
                                 <option key={creditAmount} value={creditAmount}>
                                     {creditAmount}
                                 </option>
                             ))}
                         </Form.Select>
+                        <p></p>
                     </Form.Group>
                     <div>
+                        <p>Fulfills Requirement:</p>
                         <Form.Check
                             inline
                             type="radio"
-                            id="has-prerequisites"
-                            checked={requirement}
+                            checked={requirement === "core"}
                             onChange={updateRequired}
-                            label="this course is required for my degree"
+                            label="core"
+                            value="core"
                         />
                         <Form.Check
                             inline
                             type="radio"
                             id="has-prerequisites"
-                            checked={!requirement}
+                            checked={requirement === "university breadth"}
                             onChange={updateRequired}
-                            label="this course is not required for my degree"
+                            label="university breadth"
+                            value="university breadth"
+                        />
+                        <Form.Check
+                            inline
+                            type="radio"
+                            id="has-prerequisites"
+                            checked={requirement === "multicultural"}
+                            onChange={updateRequired}
+                            label="multicultural"
+                            value="multicultural"
+                        />
+                        <Form.Check
+                            inline
+                            type="radio"
+                            id="has-prerequisites"
+                            checked={requirement === "first year seminar"}
+                            onChange={updateRequired}
+                            label="first year seminar"
+                            value="first year seminar"
+                        />
+                        <Form.Check
+                            inline
+                            type="radio"
+                            id="has-prerequisites"
+                            checked={requirement === "DLE"}
+                            onChange={updateRequired}
+                            label="DLE"
+                            value="DLE"
+                        />
+                        <Form.Check
+                            inline
+                            type="radio"
+                            id="has-prerequisites"
+                            checked={requirement === "capstone"}
+                            onChange={updateRequired}
+                            label="capstone"
+                            value="capstone"
+                        />
+                        <Form.Check
+                            inline
+                            type="radio"
+                            id="has-prerequisites"
+                            checked={requirement === "additional"}
+                            onChange={updateRequired}
+                            label="additional"
+                            value="additional"
+                        />
+                        <Form.Check
+                            inline
+                            type="radio"
+                            id="has-prerequisites"
+                            checked={requirement === "science"}
+                            onChange={updateRequired}
+                            label="science"
+                            value="science"
                         />
                     </div>
                     <Form.Group>
@@ -257,6 +293,7 @@ export function CourseView({
                             <Button
                                 id="prereq-add-button"
                                 onClick={updatePrereqList}
+                                size="sm"
                             >
                                 add prerequisite
                             </Button>
@@ -303,7 +340,7 @@ export function CourseView({
                     Credits: {course.course_credits}
                 </li>
                 <li data-testid="course-req" className="Course">
-                    Fulfills requirement: {isRequirement()}
+                    Fulfills requirement: {course.requirement}
                 </li>
                 <li data-testid="course-prereq" className="Course">
                     Prerequisites:

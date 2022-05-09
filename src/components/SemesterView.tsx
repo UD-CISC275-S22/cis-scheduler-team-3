@@ -23,9 +23,9 @@ export function SemesterView({
             code: "" + random_code,
             title: "Edit course info",
             description: "",
-            course_credits: "",
+            course_credits: 0,
             prerequisites: "",
-            requirement: false
+            requirement: ""
         };
         const new_courses = [...semester.courses, newCourse];
         const newSemester = {

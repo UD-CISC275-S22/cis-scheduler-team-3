@@ -100,11 +100,10 @@ export function PlanView({
             origin_final.splice(moving_index, 1);
             plan.semesters.splice(destination_index, 1, destination_final);
             const new_deg_credits =
-                plan.degree_credits +
-                parseInt(moving_course.course_credits.trim().charAt(0));
+                plan.degree_credits + moving_course.course_credits;
             const new_semester_credits =
                 destination_final.semester_credits +
-                parseInt(moving_course.course_credits.trim().charAt(0));
+                moving_course.course_credits;
             plan.semesters[destination_index].semester_credits =
                 new_semester_credits;
             const newplan = {
@@ -116,8 +115,6 @@ export function PlanView({
             editplan(plan.name, newplan);
         } else if (destination === "Course_Pool") {
             // Destination of moving course is the coursepool
-            console.log("Origin: " + origin);
-            console.log("Destination: Course_Pool");
             const origin_index = plan.semesters.findIndex(
                 (semester: Semester): boolean =>
                     semester.session + ":" + semester.year === origin
@@ -133,25 +130,14 @@ export function PlanView({
             origin_final.courses.splice(moving_index, 1);
             plan.semesters.splice(origin_index, 1, origin_final);
             //updating the credits
-            if (origin_final.courses[moving_index].course_credits !== "") {
-                plan.degree_credits =
-                    plan.degree_credits -
-                    parseInt(
-                        origin_final.courses[moving_index].course_credits
-                            .trim()
-                            .charAt(0)
-                    );
-                const new_semester_credits =
-                    origin_final.semester_credits -
-                    parseInt(
-                        origin_final.courses[moving_index].course_credits
-                            .trim()
-                            .charAt(0)
-                    );
-                plan.semesters[origin_index].semester_credits =
-                    new_semester_credits;
-            }
-
+            plan.degree_credits =
+                plan.degree_credits -
+                origin_final.courses[moving_index].course_credits;
+            const new_semester_credits =
+                origin_final.semester_credits -
+                origin_final.courses[moving_index].course_credits;
+            plan.semesters[origin_index].semester_credits =
+                new_semester_credits;
             const newplan = {
                 ...plan,
                 semesters: [...plan.semesters],
@@ -160,8 +146,6 @@ export function PlanView({
             editplan(plan.name, newplan);
         } else {
             // Origin and destination do not involve the coursepool
-            console.log("Origin: " + origin);
-            console.log("Destination: " + destination);
             const origin_index = plan.semesters.findIndex(
                 (semester: Semester): boolean =>
                     semester.session + ":" + semester.year === origin
@@ -177,14 +161,12 @@ export function PlanView({
             );
             const moving_course = origin_final.courses[moving_index];
             //updating the credits
-            if (moving_course.course_credits !== "") {
-                plan.semesters[destination_index].semester_credits =
-                    plan.semesters[destination_index].semester_credits +
-                    parseInt(moving_course.course_credits.trim().charAt(0));
-                plan.semesters[origin_index].semester_credits =
-                    plan.semesters[origin_index].semester_credits -
-                    parseInt(moving_course.course_credits.trim().charAt(0));
-            }
+            plan.semesters[destination_index].semester_credits =
+                plan.semesters[destination_index].semester_credits +
+                moving_course.course_credits;
+            plan.semesters[origin_index].semester_credits =
+                plan.semesters[origin_index].semester_credits -
+                moving_course.course_credits;
             destination_final.courses.splice(
                 destination_final.courses.length,
                 0,
