@@ -76,6 +76,7 @@ export function App(): JSX.Element {
         document.body.appendChild(link);
         link.click();
     }
+    function importPlan() {}
     function updateAdd() {
         setadd(!add);
     }
@@ -162,6 +163,9 @@ export function App(): JSX.Element {
                     data-testid="add-plan-btn"
                 >
                     Add Plan
+                </Button>
+                <Button variant="success" onClick={() => importPlan()}>
+                    Import from CSV
                 </Button>
             </div>
             {add ? (
