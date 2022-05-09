@@ -210,7 +210,6 @@ export function CourseView({
                         <Form.Check
                             inline
                             type="radio"
-                            id="has-prerequisites"
                             checked={requirement === "university breadth"}
                             onChange={updateRequired}
                             label="university breadth"
@@ -219,7 +218,6 @@ export function CourseView({
                         <Form.Check
                             inline
                             type="radio"
-                            id="has-prerequisites"
                             checked={requirement === "multicultural"}
                             onChange={updateRequired}
                             label="multicultural"
@@ -228,7 +226,6 @@ export function CourseView({
                         <Form.Check
                             inline
                             type="radio"
-                            id="has-prerequisites"
                             checked={requirement === "first year seminar"}
                             onChange={updateRequired}
                             label="first year seminar"
@@ -237,7 +234,6 @@ export function CourseView({
                         <Form.Check
                             inline
                             type="radio"
-                            id="has-prerequisites"
                             checked={requirement === "DLE"}
                             onChange={updateRequired}
                             label="DLE"
@@ -246,7 +242,6 @@ export function CourseView({
                         <Form.Check
                             inline
                             type="radio"
-                            id="has-prerequisites"
                             checked={requirement === "capstone"}
                             onChange={updateRequired}
                             label="capstone"

@@ -140,6 +140,99 @@ export function PlanView({
             } else {
                 req = req + "CISC 372 ❌ \n ";
             }
+            if (
+                courses.findIndex(
+                    (course: Course): boolean => course.code === "CISC 355"
+                ) >= 0
+            ) {
+                req = req + "CISC 355 ✔️ \n ";
+            } else {
+                req = req + "CISC 355 ❌ \n ";
+            }
+            if (
+                courses.findIndex(
+                    (course: Course): boolean => course.code === "ENGL 312"
+                ) >= 0 ||
+                courses.findIndex(
+                    (course: Course): boolean => course.code === "ENGL 410"
+                ) >= 0
+            ) {
+                req = req + "ENGL 312/410 ✔️ \n ";
+            } else {
+                req = req + "ENGL312/410 ❌ \n ";
+            }
+            if (
+                courses.findIndex(
+                    (course: Course): boolean => course.code === "MATH 205"
+                ) >= 0 ||
+                courses.findIndex(
+                    (course: Course): boolean => course.code === "MATH 350"
+                ) >= 0
+            ) {
+                req = req + "MATH 205/350 ✔️ \n ";
+            } else {
+                req = req + "MATH 205/350 ❌ \n ";
+            }
+            if (
+                courses.findIndex(
+                    (course: Course): boolean => course.code === "MATH 210"
+                ) >= 0
+            ) {
+                req = req + "MATH 210 ✔️ \n ";
+            } else {
+                req = req + "MATH 210 ❌ \n ";
+            }
+            if (
+                courses.findIndex(
+                    (course: Course): boolean => course.code === "MATH 241"
+                ) >= 0
+            ) {
+                req = req + "MATH 241 ✔️ \n ";
+            } else {
+                req = req + "MATH 241 ❌ \n ";
+            }
+            if (
+                courses.findIndex(
+                    (course: Course): boolean => course.code === "MATH 242"
+                ) >= 0
+            ) {
+                req = req + "MATH 242 ✔️ \n ";
+            } else {
+                req = req + "MATH 242 ❌ \n ";
+            }
+            if (
+                courses.findIndex(
+                    (course: Course): boolean =>
+                        course.requirement === "first year seminar"
+                ) >= 0
+            ) {
+                req =
+                    req +
+                    "Additional University Requirements: \nFirst Year Seminar ✔️ \n ";
+            } else {
+                req =
+                    req +
+                    "Additional University Requirements: \nFirst Year Seminar ❌ \n ";
+            }
+            if (
+                courses.findIndex(
+                    (course: Course): boolean => course.requirement === "DLE"
+                ) >= 0
+            ) {
+                req = req + "DLE ✔️ \n ";
+            } else {
+                req = req + "DLE ❌ \n ";
+            }
+            if (
+                courses.findIndex(
+                    (course: Course): boolean =>
+                        course.requirement === "multicultural"
+                ) >= 0
+            ) {
+                req = req + "Multicultural ✔️ \n ";
+            } else {
+                req = req + "Multicultural ❌ \n ";
+            }
         } else {
             req =
                 " None of the requirements have been met. Please add courses to semesters. ";

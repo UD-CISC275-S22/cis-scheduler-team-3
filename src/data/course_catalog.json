@@ -157,7 +157,7 @@
         "description": "",
         "course_credits": 3,
         "prerequisites": "",
-        "requirement": "additional"
+        "requirement": "core"
     },
     {
         "code": "CISC 356",
@@ -350,7 +350,7 @@
         "course_credits": 3,
         "prerequisites": "",
         "restrict": "Students who have received credit in CISC665, CPEG 465, CPEG665, ELEG 465, ELEG665, MISY 465 or MISY665 are not eligible to take this course without permission.",
-        "breadth": "University: ; A&S: ",
+        "breadth": "",
         "offered": "",
         "requirement": ""
     },
@@ -928,7 +928,7 @@
         "descriptiion": "",
         "course_credits": 3,
         "preReq": "",
-        "requirement": "university"
+        "requirement": "core"
     },
     {
         "code": "ENGL 312",
@@ -936,7 +936,7 @@
         "descriptiion": "",
         "course_credits": 3,
         "preReq": "ENGL 110.",
-        "requirement": "additional"
+        "requirement": "core"
     },
     {
         "code": "ENGL 410",
@@ -944,7 +944,7 @@
         "descriptiion": "",
         "course_credits": 3,
         "preReq": "ENGL 110.",
-        "requirement": "additional"
+        "requirement": "core"
     },
     {
         "code": "UNIV 101",
