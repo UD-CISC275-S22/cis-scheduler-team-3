@@ -76,7 +76,17 @@ export function App(): JSX.Element {
         document.body.appendChild(link);
         link.click();
     }
-    function importPlan() {}
+    function importPlan() {
+        const newplan: DegreePlan = {
+            name: "new plan",
+            Start_Year: 0,
+            End_Year: 0,
+            semesters: [],
+            degree_credits: 0,
+            plan_pool: []
+        };
+        setplans([...plans, newplan]);
+    }
     function updateAdd() {
         setadd(!add);
     }
