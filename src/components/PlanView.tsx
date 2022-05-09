@@ -435,14 +435,13 @@ export function PlanView({
             <h6 data-testid="degree-credits">
                 Degree Credits: {plan.degree_credits}/ 124 required
             </h6>
-            <Button
+            <Form.Check
+                type="switch"
                 data-testid="show/hide requirements"
-                className="Buttons"
-                variant="outline-primary"
-                onClick={updateShowReq}
-            >
-                show/hide requirements
-            </Button>
+                label="view requirements"
+                onChange={updateShowReq}
+                checked={showreq}
+            />
             {showreq ? (
                 <div style={{ whiteSpace: "pre-line" }}>
                     {showRequirements()}
