@@ -265,6 +265,15 @@ export function CourseView({
                             label="science"
                             value="science"
                         />
+                        <Form.Check
+                            inline
+                            type="radio"
+                            id="has-prerequisites"
+                            checked={requirement === "tech elective"}
+                            onChange={updateRequired}
+                            label="tech elective"
+                            value="tech elective"
+                        />
                     </div>
                     <Form.Group>
                         <Form.Check

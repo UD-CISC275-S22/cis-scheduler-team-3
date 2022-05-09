@@ -35,6 +35,7 @@ export function PlanView({
         );
         let req = "";
         //check if there are any courses
+        console.log(twoDcourses);
         if (twoDcourses.length > 0) {
             const courses = twoDcourses.reduce(
                 (courses: Course[], curr_courses: Course[]) =>
@@ -233,9 +234,68 @@ export function PlanView({
             } else {
                 req = req + "Multicultural ❌ \n ";
             }
+            if (
+                courses.filter(
+                    (course: Course): boolean =>
+                        course.requirement == "university breadth"
+                ).length >= 3
+            ) {
+                req = req + "University Breadth (3) ✔️ \n ";
+            } else {
+                req = req + "University Breadth (3) ❌ \n ";
+            }
+            if (
+                courses.filter(
+                    (course: Course): boolean =>
+                        course.requirement == "capstone"
+                ).length >= 2
+            ) {
+                req = req + "Capstone (2) ✔️ \n ";
+            } else {
+                req = req + "Capstone (2) ❌ \n ";
+            }
+            if (
+                courses.filter(
+                    (course: Course): boolean =>
+                        course.requirement == "additional"
+                ).length >= 3
+            ) {
+                req = req + "Additional Breadth (3) ✔️ \n ";
+            } else {
+                req = req + "Additional Breadth (3) ❌ \n ";
+            }
+            if (
+                courses.filter(
+                    (course: Course): boolean =>
+                        course.requirement == "tech elective"
+                ).length >= 2
+            ) {
+                req = req + "Tech Elective (2) ✔️ \n ";
+            } else {
+                req = req + "Tech Elective (2) ❌ \n ";
+            }
+            const science_courses = courses.filter(
+                (course: Course): boolean =>
+                    course.requirement == "tech elective"
+            );
+            const science_credits = science_courses.map(
+                (course: Course): number => course.course_credits
+            );
+            if (science_credits.length > 0) {
+                const total_sci_credits = science_credits.reduce(
+                    (totcred: number, cred: number) => (totcred += cred)
+                );
+                if (total_sci_credits >= 12) {
+                    req = req + "Minimum 12 credits science ✔️ \n ";
+                } else {
+                    req = req + "Minimum 12 credits science ❌ \n ";
+                }
+            } else {
+                req = req + "Minimum 12 credits science ❌ \n ";
+            }
         } else {
             req =
-                " None of the requirements have been met. Please add courses to semesters. ";
+                " None of the requirements have been met. Please add courses to semesters. \n";
         }
         return req;
     }
