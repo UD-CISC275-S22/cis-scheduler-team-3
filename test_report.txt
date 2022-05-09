@@ -10,19 +10,19 @@ PASS src/App.test.tsx
 ----------------------|---------|----------|---------|---------|---------------------
 File                  | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s   
 ----------------------|---------|----------|---------|---------|---------------------
-All files             |    49.6 |       45 |   57.77 |   49.41 |                     
+All files             |   51.02 |       46 |    57.3 |   50.81 |                     
  src                  |   47.36 |       40 |   61.11 |   46.42 |                     
   App.tsx             |   47.36 |       40 |   61.11 |   46.42 | 18,33-77,113-126    
- src/components       |   50.25 |       46 |   56.94 |   50.25 |                     
+ src/components       |   52.12 |     47.5 |   56.33 |   52.12 |                     
   CourseList.tsx      |     100 |      100 |     100 |     100 |                     
   CourseMover.tsx     |       0 |        0 |       0 |       0 | 19-112              
   CoursePool.tsx      |     100 |      100 |     100 |     100 |                     
   CoursePoolTable.tsx |      70 |       50 |      75 |      70 | 15-17               
-  CourseView.tsx      |   82.69 |    56.25 |   66.66 |   82.69 | 41,56-76,93,113     
+  CourseView.tsx      |   87.23 |       60 |    64.7 |   87.23 | 48-68               
   PlanList.tsx        |     100 |      100 |     100 |     100 |                     
-  PlanView.tsx        |   27.38 |       40 |      45 |   27.38 | 28,34,38,77-201,278 
+  PlanView.tsx        |   29.48 |       50 |      45 |   29.48 | 28,34,38,77-183,260 
   SemesterList.tsx    |     100 |      100 |     100 |     100 |                     
-  SemesterView.tsx    |      55 |       50 |   57.14 |      55 | 49-68,97            
+  SemesterView.tsx    |      55 |    33.33 |   57.14 |      55 | 49-68,97            
  src/interfaces       |       0 |        0 |       0 |       0 |                     
   course.ts           |       0 |        0 |       0 |       0 |                     
   degreeplan.ts       |       0 |        0 |       0 |       0 |                     
@@ -32,5 +32,5 @@ All files             |    49.6 |       45 |   57.77 |   49.41 |
 Test Suites: 5 passed, 5 total
 Tests:       10 passed, 10 total
 Snapshots:   0 total
-Time:        6.602 s
+Time:        6.464 s
 Ran all test suites.
