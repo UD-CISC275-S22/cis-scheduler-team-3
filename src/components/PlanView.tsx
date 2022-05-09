@@ -33,109 +33,116 @@ export function PlanView({
         const twoDcourses = plan.semesters.map(
             (semester: Semester): Course[] => semester.courses
         );
-        const courses = twoDcourses.reduce(
-            (courses: Course[], curr_courses: Course[]) =>
-                courses.concat(curr_courses)
-        );
         let req = "";
-        if (
-            courses.findIndex(
-                (course: Course): boolean => course.code === "ENGL 110"
-            ) >= 0
-        ) {
-            req = req + "ENGL 110 ✔️\n ";
+        //check if there are any courses
+        if (twoDcourses.length > 0) {
+            const courses = twoDcourses.reduce(
+                (courses: Course[], curr_courses: Course[]) =>
+                    courses.concat(curr_courses)
+            );
+            //series of statements to check core requirements by course code
+            if (
+                courses.findIndex(
+                    (course: Course): boolean => course.code === "ENGL 110"
+                ) >= 0
+            ) {
+                req = req + "Core: \n ENGL 110 ✔️ \n";
+            } else {
+                req = req + "Core: \n ENGL 110 ❌ \n";
+            }
+            if (
+                courses.findIndex(
+                    (course: Course): boolean => course.code === "CISC 108"
+                ) >= 0
+            ) {
+                req = req + "CISC 108 ✔️  \n";
+            } else {
+                req = req + "CISC 108 ❌ \n ";
+            }
+            if (
+                courses.findIndex(
+                    (course: Course): boolean => course.code === "CISC 181"
+                ) >= 0
+            ) {
+                req = req + "CISC 181 ✔️ \n ";
+            } else {
+                req = req + "CISC 181 ❌ \n ";
+            }
+            if (
+                courses.findIndex(
+                    (course: Course): boolean => course.code === "CISC 210"
+                ) >= 0
+            ) {
+                req = req + "CISC 210 ✔️ \n ";
+            } else {
+                req = req + "CISC 210 ❌ \n ";
+            }
+            if (
+                courses.findIndex(
+                    (course: Course): boolean => course.code === "CISC 220"
+                ) >= 0
+            ) {
+                req = req + "CISC 220 ✔️ \n ";
+            } else {
+                req = req + "CISC 220 ❌ \n ";
+            }
+            if (
+                courses.findIndex(
+                    (course: Course): boolean => course.code === "CISC 260"
+                ) >= 0
+            ) {
+                req = req + "CISC 260 ✔️ \n ";
+            } else {
+                req = req + "CISC 260 ❌ \n ";
+            }
+            if (
+                courses.findIndex(
+                    (course: Course): boolean => course.code === "CISC 275"
+                ) >= 0
+            ) {
+                req = req + "CISC 275 ✔️ \n ";
+            } else {
+                req = req + "CISC 275 ❌ \n ";
+            }
+            if (
+                courses.findIndex(
+                    (course: Course): boolean => course.code === "CISC 303"
+                ) >= 0
+            ) {
+                req = req + "CISC 303 ✔️ \n ";
+            } else {
+                req = req + "CISC 303 ❌ \n ";
+            }
+            if (
+                courses.findIndex(
+                    (course: Course): boolean => course.code === "CISC 320"
+                ) >= 0
+            ) {
+                req = req + "CISC 320 ✔️ \n ";
+            } else {
+                req = req + "CISC 320 ❌ \n ";
+            }
+            if (
+                courses.findIndex(
+                    (course: Course): boolean => course.code === "CISC 361"
+                ) >= 0
+            ) {
+                req = req + "CISC 361 ✔️ \n ";
+            } else {
+                req = req + "CISC 361 ❌ \n ";
+            }
+            if (
+                courses.findIndex(
+                    (course: Course): boolean => course.code === "CISC 372"
+                ) >= 0
+            ) {
+                req = req + "CISC 372 ✔️ \n ";
+            } else {
+                req = req + "CISC 372 ❌ \n ";
+            }
         } else {
-            req = req + "ENGL 110 ❌ \n";
-        }
-        if (
-            courses.findIndex(
-                (course: Course): boolean => course.code === "CISC 108"
-            ) >= 0
-        ) {
-            req = req + "CISC 108 ✔️ \n ";
-        } else {
-            req = req + "CISC 108 ❌ \n ";
-        }
-        if (
-            courses.findIndex(
-                (course: Course): boolean => course.code === "CISC 181"
-            ) >= 0
-        ) {
-            req = req + "CISC 181 ✔️ \n ";
-        } else {
-            req = req + "CISC 181 ❌ \n ";
-        }
-        if (
-            courses.findIndex(
-                (course: Course): boolean => course.code === "CISC 210"
-            ) >= 0
-        ) {
-            req = req + "CISC 210 ✔️ \n ";
-        } else {
-            req = req + "CISC 210 ❌ \n ";
-        }
-        if (
-            courses.findIndex(
-                (course: Course): boolean => course.code === "CISC 220"
-            ) >= 0
-        ) {
-            req = req + "CISC 220 ✔️ \n ";
-        } else {
-            req = req + "CISC 220 ❌ \n ";
-        }
-        if (
-            courses.findIndex(
-                (course: Course): boolean => course.code === "CISC 260"
-            ) >= 0
-        ) {
-            req = req + "CISC 260 ✔️ \n ";
-        } else {
-            req = req + "CISC 260 ❌ \n ";
-        }
-        if (
-            courses.findIndex(
-                (course: Course): boolean => course.code === "CISC 275"
-            ) >= 0
-        ) {
-            req = req + "CISC 275 ✔️ \n ";
-        } else {
-            req = req + "CISC 275 ❌ \n ";
-        }
-        if (
-            courses.findIndex(
-                (course: Course): boolean => course.code === "CISC 303"
-            ) >= 0
-        ) {
-            req = req + "CISC 303 ✔️ \n ";
-        } else {
-            req = req + "CISC 303 ❌ \n ";
-        }
-        if (
-            courses.findIndex(
-                (course: Course): boolean => course.code === "CISC 320"
-            ) >= 0
-        ) {
-            req = req + "CISC 320 ✔️ \n ";
-        } else {
-            req = req + "CISC 320 ❌ \n ";
-        }
-        if (
-            courses.findIndex(
-                (course: Course): boolean => course.code === "CISC 361"
-            ) >= 0
-        ) {
-            req = req + "CISC 361 ✔️ \n ";
-        } else {
-            req = req + "CISC 361 ❌ \n ";
-        }
-        if (
-            courses.findIndex(
-                (course: Course): boolean => course.code === "CISC 372"
-            ) >= 0
-        ) {
-            req = req + "CISC 372 ✔️ \n ";
-        } else {
-            req = req + "CISC 372 ❌ \n ";
+            req =
+                " None of the requirements have been met. Please add courses to semesters. ";
         }
         return req;
     }
@@ -143,6 +150,7 @@ export function PlanView({
     function updatemovecourse() {
         setmovecourse(!movecourse);
     }
+    //open add semester form view
     function updateadd() {
         setadd(!add);
     }
@@ -157,10 +165,11 @@ export function PlanView({
             setyear(inputToNumber);
         }
     }
-
+    //view CISC related courses in the pool
     function showCoursePool() {
         setShowPool(!showPool);
     }
+    //make semester list empty array
     function clearSemesters() {
         const newplan = {
             ...plan,
@@ -168,6 +177,7 @@ export function PlanView({
         };
         editplan(plan.name, newplan);
     }
+    //creates a new semester, then calls edit plan to update the state
     function addSemester() {
         const newSemester = {
             courses: [],
@@ -185,6 +195,7 @@ export function PlanView({
         setsession("");
         updateadd();
     }
+    //completes the move of a course between the course pool, or different semesters, eventually calls edit plan to update the state
     function completeMove(
         course_code: string,
         origin: string,
@@ -339,7 +350,11 @@ export function PlanView({
             >
                 show/hide requirements
             </Button>
-            {showreq ? showRequirements() : null}
+            {showreq ? (
+                <div style={{ whiteSpace: "pre-line" }}>
+                    {showRequirements()}
+                </div>
+            ) : null}
             <Button
                 data-testid="add-sem-btn"
                 className="Buttons"
