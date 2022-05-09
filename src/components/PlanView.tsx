@@ -28,6 +28,117 @@ export function PlanView({
     function updateShowReq() {
         setshowreq(!showreq);
     }
+    //function to calculate which requirements are met/unmet
+    function showRequirements(): string {
+        const twoDcourses = plan.semesters.map(
+            (semester: Semester): Course[] => semester.courses
+        );
+        const courses = twoDcourses.reduce(
+            (courses: Course[], curr_courses: Course[]) =>
+                courses.concat(curr_courses)
+        );
+        let req = "";
+        if (
+            courses.findIndex(
+                (course: Course): boolean => course.code === "ENGL 110"
+            ) >= 0
+        ) {
+            req = req + "ENGL 110 ✔️\n ";
+        } else {
+            req = req + "ENGL 110 ❌ \n";
+        }
+        if (
+            courses.findIndex(
+                (course: Course): boolean => course.code === "CISC 108"
+            ) >= 0
+        ) {
+            req = req + "CISC 108 ✔️ \n ";
+        } else {
+            req = req + "CISC 108 ❌ \n ";
+        }
+        if (
+            courses.findIndex(
+                (course: Course): boolean => course.code === "CISC 181"
+            ) >= 0
+        ) {
+            req = req + "CISC 181 ✔️ \n ";
+        } else {
+            req = req + "CISC 181 ❌ \n ";
+        }
+        if (
+            courses.findIndex(
+                (course: Course): boolean => course.code === "CISC 210"
+            ) >= 0
+        ) {
+            req = req + "CISC 210 ✔️ \n ";
+        } else {
+            req = req + "CISC 210 ❌ \n ";
+        }
+        if (
+            courses.findIndex(
+                (course: Course): boolean => course.code === "CISC 220"
+            ) >= 0
+        ) {
+            req = req + "CISC 220 ✔️ \n ";
+        } else {
+            req = req + "CISC 220 ❌ \n ";
+        }
+        if (
+            courses.findIndex(
+                (course: Course): boolean => course.code === "CISC 260"
+            ) >= 0
+        ) {
+            req = req + "CISC 260 ✔️ \n ";
+        } else {
+            req = req + "CISC 260 ❌ \n ";
+        }
+        if (
+            courses.findIndex(
+                (course: Course): boolean => course.code === "CISC 275"
+            ) >= 0
+        ) {
+            req = req + "CISC 275 ✔️ \n ";
+        } else {
+            req = req + "CISC 275 ❌ \n ";
+        }
+        if (
+            courses.findIndex(
+                (course: Course): boolean => course.code === "CISC 303"
+            ) >= 0
+        ) {
+            req = req + "CISC 303 ✔️ \n ";
+        } else {
+            req = req + "CISC 303 ❌ \n ";
+        }
+        if (
+            courses.findIndex(
+                (course: Course): boolean => course.code === "CISC 320"
+            ) >= 0
+        ) {
+            req = req + "CISC 320 ✔️ \n ";
+        } else {
+            req = req + "CISC 320 ❌ \n ";
+        }
+        if (
+            courses.findIndex(
+                (course: Course): boolean => course.code === "CISC 361"
+            ) >= 0
+        ) {
+            req = req + "CISC 361 ✔️ \n ";
+        } else {
+            req = req + "CISC 361 ❌ \n ";
+        }
+        if (
+            courses.findIndex(
+                (course: Course): boolean => course.code === "CISC 372"
+            ) >= 0
+        ) {
+            req = req + "CISC 372 ✔️ \n ";
+        } else {
+            req = req + "CISC 372 ❌ \n ";
+        }
+        return req;
+    }
 
     function updatemovecourse() {
         setmovecourse(!movecourse);
@@ -228,7 +339,7 @@ export function PlanView({
             >
                 show/hide requirements
             </Button>
-            {showreq ? <p>these are the requirements</p> : null}
+            {showreq ? showRequirements() : null}
             <Button
                 data-testid="add-sem-btn"
                 className="Buttons"
