@@ -513,7 +513,7 @@ export function PlanView({
                 variant="outline-success"
                 onClick={() => updateadd()}
             >
-                Add Semester
+                ➕ Add Semester
             </Button>
             <Button
                 data-testid="clear-sem-btn"

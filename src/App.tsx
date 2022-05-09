@@ -161,7 +161,7 @@ export function App(): JSX.Element {
                     onClick={() => updateAdd()}
                     data-testid="add-plan-btn"
                 >
-                    Add Plan
+                    ➕ Add Plan
                 </Button>
             </div>
             {add ? (

@@ -41,7 +41,7 @@ export function PlanList({
                             data-testid="delete-plan-btn"
                             size="sm"
                         >
-                            delete plan
+                            🗑 delete plan
                         </Button>
                         <hr />
                     </div>
