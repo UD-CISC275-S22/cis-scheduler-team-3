@@ -360,82 +360,86 @@ export function PlanView({
             updateAdd();
         }
     }
+    //helper function for the course mover, if the course is being moved from the pool
+    function moveOrigincoursepool(course_code: string, destination: string) {
+        const origin_final = plan.plan_pool;
+        const destination_index = plan.semesters.findIndex(
+            (semester: Semester): boolean =>
+                semester.session + ":" + semester.year === destination
+        );
+        const destination_final = plan.semesters[destination_index];
+        const moving_index = plan.plan_pool.findIndex(
+            (course: Course): boolean => course.code === course_code
+        );
+        const moving_course = origin_final[moving_index];
+        destination_final.courses.splice(
+            destination_final.courses.length,
+            0,
+            moving_course
+        );
+        origin_final.splice(moving_index, 1);
+        plan.semesters.splice(destination_index, 1, destination_final);
+        const new_deg_credits =
+            plan.degree_credits + moving_course.course_credits;
+        const new_semester_credits =
+            destination_final.semester_credits + moving_course.course_credits;
+        plan.semesters[destination_index].semester_credits =
+            new_semester_credits;
+        const newplan = {
+            ...plan,
+            semesters: [...plan.semesters],
+            plan_pool: [...origin_final],
+            degree_credits: new_deg_credits
+        };
+        editPlan(plan.name, newplan);
+    }
+    //course mover helper function, if the course is being moved to the pool
+    function moveDestinationcoursepool(course_code: string, origin: string) {
+        const origin_index = plan.semesters.findIndex(
+            (semester: Semester): boolean =>
+                semester.session + ":" + semester.year === origin
+        );
+        const origin_final = plan.semesters[origin_index];
+        const moving_index = origin_final.courses.findIndex(
+            (course: Course): boolean => course.code === course_code
+        );
+        plan.plan_pool.splice(
+            plan.plan_pool.length,
+            0,
+            origin_final.courses[moving_index]
+        );
+        origin_final.courses.splice(moving_index, 1);
+        plan.semesters.splice(origin_index, 1, origin_final);
+        //updating the credits
+        plan.degree_credits =
+            plan.degree_credits -
+            origin_final.courses[moving_index].course_credits;
+        const new_semester_credits =
+            origin_final.semester_credits -
+            origin_final.courses[moving_index].course_credits;
+        plan.semesters[origin_index].semester_credits = new_semester_credits;
+        const newplan = {
+            ...plan,
+            semesters: [...plan.semesters],
+            plan_pool: [...plan.plan_pool]
+        };
+        editPlan(plan.name, newplan);
+    }
     //completes the move of a course between the course pool, or different semesters, eventually calls edit plan to update the state
     function completeMove(
         course_code: string,
         origin: string,
         destination: string
     ) {
-        console.log(course_code, origin, destination);
         if (destination === origin) {
             // If the origin and destination are the same do nothing
             return null;
         } else if (origin === "Course_Pool") {
             // Origin is the coursepool
-            console.log("Origin: Course_Pool");
-            console.log("Destination:" + destination);
-            const origin_final = plan.plan_pool;
-            const destination_index = plan.semesters.findIndex(
-                (semester: Semester): boolean =>
-                    semester.session + ":" + semester.year === destination
-            );
-            const destination_final = plan.semesters[destination_index];
-            const moving_index = plan.plan_pool.findIndex(
-                (course: Course): boolean => course.code === course_code
-            );
-            const moving_course = origin_final[moving_index];
-            destination_final.courses.splice(
-                destination_final.courses.length,
-                0,
-                moving_course
-            );
-            origin_final.splice(moving_index, 1);
-            plan.semesters.splice(destination_index, 1, destination_final);
-            const new_deg_credits =
-                plan.degree_credits + moving_course.course_credits;
-            const new_semester_credits =
-                destination_final.semester_credits +
-                moving_course.course_credits;
-            plan.semesters[destination_index].semester_credits =
-                new_semester_credits;
-            const newplan = {
-                ...plan,
-                semesters: [...plan.semesters],
-                plan_pool: [...origin_final],
-                degree_credits: new_deg_credits
-            };
-            editPlan(plan.name, newplan);
+            moveOrigincoursepool(course_code, destination);
         } else if (destination === "Course_Pool") {
             // Destination of moving course is the coursepool
-            const origin_index = plan.semesters.findIndex(
-                (semester: Semester): boolean =>
-                    semester.session + ":" + semester.year === origin
-            );
-            const origin_final = plan.semesters[origin_index];
-            const moving_index = origin_final.courses.findIndex(
-                (course: Course): boolean => course.code === course_code
-            );
-            const destination_final = [
-                ...plan.plan_pool,
-                origin_final.courses[moving_index]
-            ];
-            origin_final.courses.splice(moving_index, 1);
-            plan.semesters.splice(origin_index, 1, origin_final);
-            //updating the credits
-            plan.degree_credits =
-                plan.degree_credits -
-                origin_final.courses[moving_index].course_credits;
-            const new_semester_credits =
-                origin_final.semester_credits -
-                origin_final.courses[moving_index].course_credits;
-            plan.semesters[origin_index].semester_credits =
-                new_semester_credits;
-            const newplan = {
-                ...plan,
-                semesters: [...plan.semesters],
-                plan_pool: [...destination_final]
-            };
-            editPlan(plan.name, newplan);
+            moveDestinationcoursepool(course_code, origin);
         } else {
             // Origin and destination do not involve the coursepool
             const origin_index = plan.semesters.findIndex(

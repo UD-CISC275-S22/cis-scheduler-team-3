@@ -35,8 +35,7 @@ export function App(): JSX.Element {
     function saveData() {
         localStorage.setItem(savedatakey, JSON.stringify(plans));
     }
-
-    function downloadPlan(plan: DegreePlan) {
+    function createCSV(plan: DegreePlan): string[][] {
         const CSVdata: string[][] = [
             [
                 "Semesters",
@@ -69,6 +68,11 @@ export function App(): JSX.Element {
                 ]);
             });
         });
+        return CSVdata;
+    }
+
+    function downloadPlan(plan: DegreePlan) {
+        const CSVdata = createCSV(plan);
         const csvContent = `data:text/csv;charset=utf-8,${CSVdata.map((e) =>
             e.join(",")
         ).join("\n")}`;
