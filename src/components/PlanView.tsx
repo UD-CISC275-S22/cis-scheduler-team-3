@@ -513,7 +513,7 @@ export function PlanView({
                 variant="outline-success"
                 onClick={() => updateadd()}
             >
-                Add Semester
+                ➕ Add Semester
             </Button>
             <Button
                 data-testid="clear-sem-btn"
@@ -528,7 +528,7 @@ export function PlanView({
                 onClick={updatemovecourse}
                 variant="outline-dark"
             >
-                move courses
+                🔄 Move Courses
             </Button>
             {movecourse ? (
                 <CourseMover
@@ -542,7 +542,7 @@ export function PlanView({
                 onClick={() => downloadPlan(plan)}
                 variant="outline-dark"
             >
-                Export to CSV
+                📂 Export to CSV
             </Button>
             <SemesterList plan={plan} editplan={editplan}></SemesterList>
             <div className="show-course-pool-button">

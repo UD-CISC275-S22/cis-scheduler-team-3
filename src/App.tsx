@@ -6,6 +6,7 @@ import { Semester } from "./interfaces/semester";
 import { Course } from "./interfaces/course";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import POOL_DATA from "./data/course_catalog.json";
+import UD_header from "./data/UD-header-2.png";
 
 type ChangeEvent = React.ChangeEvent<
     HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement
@@ -101,6 +102,7 @@ export function App(): JSX.Element {
     function deletePlan(id: string) {
         setplans(plans.filter((plan: DegreePlan): boolean => plan.name != id));
     }
+    //primary function for manipulating state; it's passed to all components
     function editPlan(id: string, newPlan: DegreePlan) {
         setplans(
             plans.map(
@@ -133,16 +135,13 @@ export function App(): JSX.Element {
     return (
         <>
             <div className="App">
-                <header className="App-header">UD CIS Scheduler</header>
-                <h6>
-                    Group Members: Madison Holloway, John Neilson, & Sara Fleck
-                </h6>
-                <p> </p>
-                <h5 className="Description">
+                <img className="App-header" src={UD_header} />
+                <i>Created By: Madison Holloway, John Neilson, & Sara Fleck</i>
+                <p className="Description">
                     Hello! Welcome to our scheduler. In this app, you will be
                     able to map out different CIS degree plans. Click Add Plan
                     to get started!
-                </h5>
+                </p>
             </div>
             <div>
                 <PlanList
@@ -161,7 +160,7 @@ export function App(): JSX.Element {
                     onClick={() => updateAdd()}
                     data-testid="add-plan-btn"
                 >
-                    Add Plan
+                    ➕ Add Plan
                 </Button>
             </div>
             {add ? (

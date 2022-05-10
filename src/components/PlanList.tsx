@@ -41,12 +41,12 @@ export function PlanList({
                             data-testid="delete-plan-btn"
                             size="sm"
                         >
-                            delete plan
+                            🗑 delete plan
                         </Button>
                         <hr />
                     </div>
                 ))}
-                <Button onClick={saveData}>Save Changes</Button>
+                <Button onClick={saveData}> 💾 Save Changes</Button>
             </Row>
         </Container>
     );

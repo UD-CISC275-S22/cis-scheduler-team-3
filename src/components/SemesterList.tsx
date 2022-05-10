@@ -51,7 +51,7 @@ export function SemesterList({
                             }
                             data-testid="delete-sem-btn"
                         >
-                            delete semester
+                            🗑 delete semester
                         </Button>
                     </div>
                 ))}

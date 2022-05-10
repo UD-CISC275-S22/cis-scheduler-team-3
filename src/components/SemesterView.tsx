@@ -90,7 +90,7 @@ export function SemesterView({
                         onClick={() => addCourse()}
                         data-testid="add-course-btn"
                     >
-                        add course
+                        ➕ add course
                     </Button>
                     <Button
                         size="sm"
