@@ -102,6 +102,7 @@ export function App(): JSX.Element {
     function deletePlan(id: string) {
         setplans(plans.filter((plan: DegreePlan): boolean => plan.name != id));
     }
+    //primary function for manipulating state; it's passed to all components
     function editPlan(id: string, newPlan: DegreePlan) {
         setplans(
             plans.map(
