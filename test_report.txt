@@ -88,29 +88,29 @@ FAIL src/App.test.tsx
       at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
       at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
 
-----------------------|---------|----------|---------|---------|----------------------------
-File                  | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s          
-----------------------|---------|----------|---------|---------|----------------------------
-All files             |   34.52 |    21.81 |    41.8 |   34.34 |                            
- src                  |   47.36 |       40 |   61.11 |   46.42 |                            
-  App.tsx             |   47.36 |       40 |   61.11 |   46.42 | 19,34-78,115-128           
- src/components       |   32.14 |       20 |   38.46 |   32.14 |                            
-  CourseList.tsx      |     100 |      100 |     100 |     100 |                            
-  CourseMover.tsx     |       0 |        0 |       0 |       0 | 19-112                     
-  CoursePool.tsx      |     100 |      100 |     100 |     100 |                            
-  CoursePoolTable.tsx |      70 |       50 |      75 |      70 | 15-17                      
-  CourseView.tsx      |   87.23 |       60 |    64.7 |   87.23 | 48-68                      
-  PlanList.tsx        |     100 |      100 |     100 |     100 |                            
-  PlanView.tsx        |   12.12 |    11.84 |   16.98 |   12.12 | 29-304,311,315,357-463,542 
-  SemesterList.tsx    |     100 |      100 |     100 |     100 |                            
-  SemesterView.tsx    |      55 |    33.33 |   57.14 |      55 | 49-68,97                   
- src/interfaces       |       0 |        0 |       0 |       0 |                            
-  course.ts           |       0 |        0 |       0 |       0 |                            
-  degreeplan.ts       |       0 |        0 |       0 |       0 |                            
-  semester.ts         |       0 |        0 |       0 |       0 |                            
-----------------------|---------|----------|---------|---------|----------------------------
+----------------------|---------|----------|---------|---------|--------------------------------
+File                  | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s              
+----------------------|---------|----------|---------|---------|--------------------------------
+All files             |   35.54 |    24.59 |    42.4 |   35.37 |                                
+ src                  |   47.54 |    42.85 |   57.89 |   46.66 |                                
+  App.tsx             |   47.54 |    42.85 |   57.89 |   46.66 | 19,36-80,88-91,125-138         
+ src/components       |   33.22 |    22.22 |   39.62 |   33.22 |                                
+  CourseList.tsx      |     100 |      100 |     100 |     100 |                                
+  CourseMover.tsx     |       0 |        0 |       0 |       0 | 19-112                         
+  CoursePool.tsx      |     100 |      100 |     100 |     100 |                                
+  CoursePoolTable.tsx |      70 |       50 |      75 |      70 | 15-17                          
+  CourseView.tsx      |   86.27 |    57.14 |   66.66 |   86.27 | 49-69,79                       
+  PlanList.tsx        |     100 |      100 |     100 |     100 |                                
+  PlanView.tsx        |   13.36 |    13.75 |   18.51 |   13.36 | 31-306,313,317,343,368-474,556 
+  SemesterList.tsx    |     100 |      100 |     100 |     100 |                                
+  SemesterView.tsx    |      55 |    33.33 |   57.14 |      55 | 49-68,97                       
+ src/interfaces       |       0 |        0 |       0 |       0 |                                
+  course.ts           |       0 |        0 |       0 |       0 |                                
+  degreeplan.ts       |       0 |        0 |       0 |       0 |                                
+  semester.ts         |       0 |        0 |       0 |       0 |                                
+----------------------|---------|----------|---------|---------|--------------------------------
 Test Suites: 1 failed, 4 passed, 5 total
 Tests:       1 failed, 9 passed, 10 total
 Snapshots:   0 total
-Time:        6.589 s
+Time:        6.657 s
 Ran all test suites.
