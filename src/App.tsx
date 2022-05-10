@@ -26,7 +26,8 @@ export function App(): JSX.Element {
     the user makes changes*/
     const [plans, setplans] = useState<DegreePlan[]>(loadedData);
     const [name, setname] = useState<string>("");
-    const [notvalidname, setvalidname] = useState<boolean>(false);
+    //state representing whether user has entered the name of a plan that already exists
+    const [invalidname, setinvalidname] = useState<boolean>(false);
     const [start, setstart] = useState<number>(0);
     const [end, setend] = useState<number>(0);
     const [add, setadd] = useState<boolean>(false);
@@ -87,7 +88,7 @@ export function App(): JSX.Element {
                 (plan: DegreePlan): boolean => plan.name === name
             ) >= 0
         ) {
-            setvalidname(true);
+            setinvalidname(true);
         } else {
             const newPlan = {
                 name: name,
@@ -212,7 +213,7 @@ export function App(): JSX.Element {
                     >
                         add
                     </Button>
-                    {notvalidname ? (
+                    {invalidname ? (
                         <i> oops! please enter a unique plan name</i>
                     ) : null}
                 </Container>

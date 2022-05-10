@@ -31,6 +31,7 @@ export function CourseView({
     const [PrerequisiteList, setPrerequisiteList] = useState<string>(
         course.prerequisites
     );
+    const [invalidcourse, setinvalidcourse] = useState<boolean>(false);
     const possibleCredits = [0, 1, 2, 3, 4, 5, 6];
     function updateeditmode() {
         seteditmode(!editmode);
@@ -69,42 +70,51 @@ export function CourseView({
     }
     //actually updates the course list of the current semester, eventually calling edit plan, which updates the state in App.tsx
     function save() {
-        const newCourse = {
-            code: code,
-            title: title,
-            description: description,
-            course_credits: course_credits,
-            prerequisites: PrerequisiteList,
-            requirement: requirement
-        };
-        const course_list = semester.courses.map(
-            (course: Course): Course =>
-                course.title + ":" + course.code === id ? newCourse : course
-        );
-        semester.semester_credits =
-            semester.semester_credits - course.course_credits;
-        const new_SemCredits = semester.semester_credits + course_credits;
-        const new_semester = {
-            ...semester,
-            courses: course_list,
-            semester_credits: new_SemCredits
-        };
-        const sem_id = semester.session + ":" + semester.year;
-        const semester_list = plan.semesters.map(
-            (semester: Semester): Semester =>
-                semester.session + ":" + semester.year === sem_id
-                    ? new_semester
-                    : semester
-        );
-        plan.degree_credits = plan.degree_credits - course.course_credits;
-        const new_PlanCredits = plan.degree_credits + course_credits;
-        const new_plan = {
-            ...plan,
-            semesters: semester_list,
-            degree_credits: new_PlanCredits
-        };
-        editplan(plan.name, new_plan);
-        updateeditmode();
+        if (
+            semester.courses.findIndex(
+                (course: Course): boolean =>
+                    course.title + course.code === title + code
+            ) >= 0
+        ) {
+            setinvalidcourse(true);
+        } else {
+            const newCourse = {
+                code: code,
+                title: title,
+                description: description,
+                course_credits: course_credits,
+                prerequisites: PrerequisiteList,
+                requirement: requirement
+            };
+            const course_list = semester.courses.map(
+                (course: Course): Course =>
+                    course.title + ":" + course.code === id ? newCourse : course
+            );
+            semester.semester_credits =
+                semester.semester_credits - course.course_credits;
+            const new_SemCredits = semester.semester_credits + course_credits;
+            const new_semester = {
+                ...semester,
+                courses: course_list,
+                semester_credits: new_SemCredits
+            };
+            const sem_id = semester.session + ":" + semester.year;
+            const semester_list = plan.semesters.map(
+                (semester: Semester): Semester =>
+                    semester.session + ":" + semester.year === sem_id
+                        ? new_semester
+                        : semester
+            );
+            plan.degree_credits = plan.degree_credits - course.course_credits;
+            const new_PlanCredits = plan.degree_credits + course_credits;
+            const new_plan = {
+                ...plan,
+                semesters: semester_list,
+                degree_credits: new_PlanCredits
+            };
+            editplan(plan.name, new_plan);
+            updateeditmode();
+        }
     }
     function removeCourse() {
         const course_list = semester.courses.filter(
@@ -309,6 +319,9 @@ export function CourseView({
                 <Button size="sm" onClick={save} data-testid="addcourse-btn">
                     save
                 </Button>
+                {invalidcourse ? (
+                    <i> oops! course already exists in this semester</i>
+                ) : null}
                 <Button
                     data-testid="delete-course-btn"
                     size="sm"
