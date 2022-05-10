@@ -342,6 +342,7 @@ export function PlanView({
         ) {
             setinvalidsem(true);
         } else {
+            setinvalidsem(false);
             const newSemester = {
                 courses: [],
                 year: year,

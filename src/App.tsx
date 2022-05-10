@@ -90,6 +90,7 @@ export function App(): JSX.Element {
         ) {
             setinvalidname(true);
         } else {
+            setinvalidname(false);
             const newPlan = {
                 name: name,
                 Start_Year: start,
