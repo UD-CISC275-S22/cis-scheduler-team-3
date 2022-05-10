@@ -29,6 +29,7 @@ export function App(): JSX.Element {
     const [end, setend] = useState<number>(0);
     const [add, setadd] = useState<boolean>(false);
     const [viewImport, setViewImport] = useState<boolean>(false);
+    const [content, setContent] = useState<string>("No file uploaded");
 
     function saveData() {
         localStorage.setItem(saveDataKey, JSON.stringify(plans));
@@ -76,6 +77,18 @@ export function App(): JSX.Element {
         link.setAttribute("download", plan.name);
         document.body.appendChild(link);
         link.click();
+    }
+    function uploadFile(event: React.ChangeEvent<HTMLInputElement>) {
+        if (event.target.files && event.target.files.length) {
+            const filename = event.target.files[0];
+            const reader = new FileReader();
+            reader.onload = (loadEvent) => {
+                const newContent =
+                    loadEvent.target?.result || "Data was not loaded";
+                setContent(newContent as string);
+            };
+            reader.readAsText(filename);
+        }
     }
     function updateAdd() {
         setadd(!add);
@@ -170,7 +183,14 @@ export function App(): JSX.Element {
                 >
                     Import from CSV
                 </Button>
-                {viewImport ? <div></div> : null}
+                {viewImport ? (
+                    <div>
+                        <Form.Group>
+                            <Form.Label>Upload a file</Form.Label>
+                            <Form.Control type="file" onChange={uploadFile} />
+                        </Form.Group>
+                    </div>
+                ) : null}
             </div>
             {add ? (
                 <Container>
