@@ -5,19 +5,19 @@ import { PlanView } from "./PlanView";
 /*this function loops through the array of plans and calls PlanView for each plan object*/
 export function PlanList({
     plans,
-    editplan,
-    deleteplan,
+    editPlan,
+    deletePlan,
     saveData,
     downloadPlan
 }: {
     plans: DegreePlan[];
-    editplan: (name: string, newPlan: DegreePlan) => void;
-    deleteplan: (name: string) => void;
+    editPlan: (name: string, newPlan: DegreePlan) => void;
+    deletePlan: (name: string) => void;
     saveData: () => void;
     downloadPlan: (plan: DegreePlan) => void;
 }): JSX.Element {
-    function removeplan(plan: DegreePlan) {
-        deleteplan(plan.name);
+    function removePlan(plan: DegreePlan) {
+        deletePlan(plan.name);
     }
     return (
         <Container data-testid="Plan-list">
@@ -31,13 +31,13 @@ export function PlanList({
                     >
                         <PlanView
                             plan={plan}
-                            editplan={editplan}
+                            editPlan={editPlan}
                             downloadPlan={downloadPlan}
                         ></PlanView>
                         <Button
                             className="me-3"
                             variant="outline-danger"
-                            onClick={() => removeplan(plan)}
+                            onClick={() => removePlan(plan)}
                             data-testid="delete-plan-btn"
                             size="sm"
                         >

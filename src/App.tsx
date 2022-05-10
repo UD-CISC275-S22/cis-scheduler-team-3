@@ -157,8 +157,8 @@ export function App(): JSX.Element {
             <div>
                 <PlanList
                     plans={plans}
-                    editplan={editPlan}
-                    deleteplan={deletePlan}
+                    editPlan={editPlan}
+                    deletePlan={deletePlan}
                     saveData={saveData}
                     downloadPlan={downloadPlan}
                 ></PlanList>

@@ -10,63 +10,63 @@ export function CourseView({
     course,
     semester,
     plan,
-    editplan
+    editPlan
 }: {
     course: Course;
     semester: Semester;
     plan: DegreePlan;
-    editplan: (id: string, newPlan: DegreePlan) => void;
+    editPlan: (id: string, newPlan: DegreePlan) => void;
 }): JSX.Element {
     const id = course.title + ":" + course.code;
-    const [editmode, seteditmode] = useState<boolean>(false);
-    const [code, setcode] = useState<string>(course.code);
-    const [title, settitle] = useState<string>(course.title);
-    const [description, setdescription] = useState<string>(course.description);
-    const [course_credits, setcourse_credits] = useState<number>(
+    const [editmode, setEditmode] = useState<boolean>(false);
+    const [code, setCode] = useState<string>(course.code);
+    const [title, setTitle] = useState<string>(course.title);
+    const [description, setDescription] = useState<string>(course.description);
+    const [course_credits, setCourse_credits] = useState<number>(
         course.course_credits
     );
-    const [currentprereq, setcurrentprereq] = useState<string>("");
-    const [requirement, setrequirement] = useState<string>(course.requirement);
-    const [hasPrerequisites, setHasPrerequisites] = useState<boolean>(false);
-    const [PrerequisiteList, setPrerequisiteList] = useState<string>(
+    const [currentprereq, setCurrentprereq] = useState<string>("");
+    const [requirement, setRequirement] = useState<string>(course.requirement);
+    const [hasPrerequisites, setHasprerequisites] = useState<boolean>(false);
+    const [PrerequisiteList, setPrerequisitelist] = useState<string>(
         course.prerequisites
     );
-    const [invalidcourse, setinvalidcourse] = useState<boolean>(false);
-    const possibleCredits = [0, 1, 2, 3, 4, 5, 6];
-    function updateeditmode() {
-        seteditmode(!editmode);
+    const [invalidcourse, setInvalidcourse] = useState<boolean>(false);
+    const possiblecredits = [0, 1, 2, 3, 4, 5, 6];
+    function updateEditmode() {
+        setEditmode(!editmode);
     }
     //update helper functions for the form
     function updateCredits(event: React.ChangeEvent<HTMLSelectElement>) {
-        setcourse_credits(parseInt(event.target.value));
+        setCourse_credits(parseInt(event.target.value));
     }
 
     function updateTitle(event: React.ChangeEvent<HTMLInputElement>) {
-        settitle(event.target.value);
+        setTitle(event.target.value);
     }
 
     function updateCode(event: React.ChangeEvent<HTMLInputElement>) {
-        setcode(event.target.value);
+        setCode(event.target.value);
     }
 
     function updateDescription(event: React.ChangeEvent<HTMLInputElement>) {
-        setdescription(event.target.value);
+        setDescription(event.target.value);
     }
 
     function updatePrerequisites(event: React.ChangeEvent<HTMLInputElement>) {
-        setHasPrerequisites(event.target.checked);
+        setHasprerequisites(event.target.checked);
     }
 
     function updateRequired(event: React.ChangeEvent<HTMLInputElement>) {
-        setrequirement(event.target.value);
+        setRequirement(event.target.value);
     }
 
-    function updateCurrentPrereq(event: React.ChangeEvent<HTMLInputElement>) {
-        setcurrentprereq(event.target.value);
+    function updateCurrentprereq(event: React.ChangeEvent<HTMLInputElement>) {
+        setCurrentprereq(event.target.value);
     }
 
-    function updatePrereqList() {
-        setPrerequisiteList(PrerequisiteList + " " + currentprereq + ",");
+    function updatePrereqlist() {
+        setPrerequisitelist(PrerequisiteList + " " + currentprereq + ",");
     }
     //function that resets course info back to default if it was from the course pool, otherwise it just clears the fields
 
@@ -79,9 +79,9 @@ export function CourseView({
                     course.title + course.code === title + code
             ) >= 0
         ) {
-            setinvalidcourse(true);
+            setInvalidcourse(true);
         } else {
-            setinvalidcourse(false);
+            setInvalidcourse(false);
             const newCourse = {
                 code: code,
                 title: title,
@@ -116,8 +116,8 @@ export function CourseView({
                 semesters: semester_list,
                 degree_credits: new_PlanCredits
             };
-            editplan(plan.name, new_plan);
-            updateeditmode();
+            editPlan(plan.name, new_plan);
+            updateEditmode();
         }
     }
     function removeCourse() {
@@ -143,8 +143,8 @@ export function CourseView({
             semesters: semester_list,
             degree_credits: new_PlanCredits
         };
-        editplan(plan.name, new_plan);
-        updateeditmode();
+        editPlan(plan.name, new_plan);
+        updateEditmode();
     }
     return editmode ? (
         <Row>
@@ -153,7 +153,7 @@ export function CourseView({
                 id="course_editmode"
                 label="✏️ edit"
                 checked={editmode}
-                onChange={updateeditmode}
+                onChange={updateEditmode}
             />
             <Form>
                 <Row className="mb-3">
@@ -203,7 +203,7 @@ export function CourseView({
                             onChange={updateCredits}
                             required
                         >
-                            {possibleCredits.map((creditAmount: number) => (
+                            {possiblecredits.map((creditAmount: number) => (
                                 <option key={creditAmount} value={creditAmount}>
                                     {creditAmount}
                                 </option>
@@ -305,12 +305,12 @@ export function CourseView({
                                     type="text"
                                     placeholder=""
                                     value={currentprereq}
-                                    onChange={updateCurrentPrereq}
+                                    onChange={updateCurrentprereq}
                                 />
                             </Form.Group>
                             <Button
                                 id="prereq-add-button"
-                                onClick={updatePrereqList}
+                                onClick={updatePrereqlist}
                                 size="sm"
                             >
                                 add prerequisite
@@ -343,7 +343,7 @@ export function CourseView({
                     type="switch"
                     label="✏️edit"
                     checked={editmode}
-                    onChange={updateeditmode}
+                    onChange={updateEditmode}
                     data-testid="editcourse-switch"
                 />
             </div>

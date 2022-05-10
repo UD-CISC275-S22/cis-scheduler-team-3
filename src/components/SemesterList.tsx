@@ -6,10 +6,10 @@ import { SemesterView } from "./SemesterView";
 /* loops through array of semesters, calling SemesterView for each, also contains function to delete semester */
 export function SemesterList({
     plan,
-    editplan
+    editPlan
 }: {
     plan: DegreePlan;
-    editplan: (id: string, newPlan: DegreePlan) => void;
+    editPlan: (id: string, newPlan: DegreePlan) => void;
 }): JSX.Element {
     function deleteSemester(id: string, credits: number) {
         const newsemesters = plan.semesters.filter(
@@ -22,7 +22,7 @@ export function SemesterList({
             semesters: newsemesters,
             degree_credits: new_PlanCredits
         };
-        editplan(plan.name, newPlan);
+        editPlan(plan.name, newPlan);
     }
     return (
         <Container className="Semester" data-testid="Semester_List">
@@ -35,7 +35,7 @@ export function SemesterList({
                     >
                         <SemesterView
                             plan={plan}
-                            editplan={editplan}
+                            editPlan={editPlan}
                             semester={semester}
                         ></SemesterView>
                         <p></p>
