@@ -71,6 +71,7 @@ export function CourseView({
     //actually updates the course list of the current semester, eventually calling edit plan, which updates the state in App.tsx
     function save() {
         if (
+            id !== title + ":" + code &&
             semester.courses.findIndex(
                 (course: Course): boolean =>
                     course.title + course.code === title + code
@@ -78,6 +79,7 @@ export function CourseView({
         ) {
             setinvalidcourse(true);
         } else {
+            setinvalidcourse(false);
             const newCourse = {
                 code: code,
                 title: title,
