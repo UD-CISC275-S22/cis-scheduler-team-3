@@ -28,6 +28,7 @@ export function App(): JSX.Element {
     const [start, setstart] = useState<number>(0);
     const [end, setend] = useState<number>(0);
     const [add, setadd] = useState<boolean>(false);
+    const [viewImport, setViewImport] = useState<boolean>(false);
 
     function saveData() {
         localStorage.setItem(saveDataKey, JSON.stringify(plans));
@@ -174,7 +175,10 @@ export function App(): JSX.Element {
                 >
                     Add Plan
                 </Button>
-                <Button variant="success" onClick={() => importPlan()}>
+                <Button
+                    variant="success"
+                    onClick={() => setViewImport(!viewImport)}
+                >
                     Import from CSV
                 </Button>
             </div>
