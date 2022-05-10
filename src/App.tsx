@@ -136,12 +136,11 @@ export function App(): JSX.Element {
             <div className="App">
                 <img className="App-header" src={UD_header} />
                 <i>Created By: Madison Holloway, John Neilson, & Sara Fleck</i>
-                <p> </p>
-                <h5 className="Description">
+                <p className="Description">
                     Hello! Welcome to our scheduler. In this app, you will be
                     able to map out different CIS degree plans. Click Add Plan
                     to get started!
-                </h5>
+                </p>
             </div>
             <div>
                 <PlanList
