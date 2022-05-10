@@ -9,12 +9,12 @@ export function CourseList({
     courses,
     plan,
     semester,
-    editplan
+    editPlan
 }: {
     courses: Course[];
     plan: DegreePlan;
     semester: Semester;
-    editplan: (id: string, newPlan: DegreePlan) => void;
+    editPlan: (id: string, newPlan: DegreePlan) => void;
 }): JSX.Element {
     return (
         <Container data-testid="Course_List">
@@ -25,7 +25,7 @@ export function CourseList({
                             course={course}
                             semester={semester}
                             plan={plan}
-                            editplan={editplan}
+                            editPlan={editPlan}
                         ></CourseView>
                     </div>
                 ))}

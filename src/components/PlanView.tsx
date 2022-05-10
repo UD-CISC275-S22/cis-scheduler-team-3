@@ -11,24 +11,24 @@ import { Semester } from "../interfaces/semester";
     Complete move function doesn't currently work, so move courses button isn't usable */
 export function PlanView({
     plan,
-    editplan,
+    editPlan,
     downloadPlan
 }: {
     plan: DegreePlan;
-    editplan: (id: string, newPlan: DegreePlan) => void;
+    editPlan: (id: string, newPlan: DegreePlan) => void;
     downloadPlan: (plan: DegreePlan) => void;
 }): JSX.Element {
     const [showPool, setShowPool] = useState<boolean>(false);
-    const [add, setadd] = useState<boolean>(false);
-    const [year, setyear] = useState<number>(0);
-    const [session, setsession] = useState<string>("");
-    const [movecourse, setmovecourse] = useState<boolean>(false);
-    const [showreq, setshowreq] = useState<boolean>(false);
+    const [add, setAdd] = useState<boolean>(false);
+    const [year, setYear] = useState<number>(0);
+    const [session, setSession] = useState<string>("");
+    const [movecourse, setMovecourse] = useState<boolean>(false);
+    const [showreq, setShowreq] = useState<boolean>(false);
     //state to check if semester being added is a duplicate
-    const [invalidsem, setinvalidsem] = useState<boolean>(false);
+    const [invalidsem, setInvalidsem] = useState<boolean>(false);
 
     function updateShowReq() {
-        setshowreq(!showreq);
+        setShowreq(!showreq);
     }
     //function to calculate which requirements are met/unmet
     function showRequirements(): string {
@@ -302,22 +302,22 @@ export function PlanView({
         return req;
     }
 
-    function updatemovecourse() {
-        setmovecourse(!movecourse);
+    function updateMovecourse() {
+        setMovecourse(!movecourse);
     }
     //open add semester form view
-    function updateadd() {
-        setadd(!add);
+    function updateAdd() {
+        setAdd(!add);
     }
     function updateSession(event: React.ChangeEvent<HTMLSelectElement>) {
-        setsession(event.target.value);
+        setSession(event.target.value);
     }
     function updateYear(event: React.ChangeEvent<HTMLInputElement>) {
         if (isNaN(parseInt(event.target.value))) {
-            setyear(0);
+            setYear(0);
         } else {
             const inputToNumber = parseInt(event.target.value);
-            setyear(inputToNumber);
+            setYear(inputToNumber);
         }
     }
     //view CISC related courses in the pool
@@ -330,7 +330,7 @@ export function PlanView({
             ...plan,
             semesters: []
         };
-        editplan(plan.name, newplan);
+        editPlan(plan.name, newplan);
     }
     //creates a new semester, then calls edit plan to update the state
     function addSemester() {
@@ -340,9 +340,9 @@ export function PlanView({
                     semester.session + semester.year === session + year
             ) >= 0
         ) {
-            setinvalidsem(true);
+            setInvalidsem(true);
         } else {
-            setinvalidsem(false);
+            setInvalidsem(false);
             const newSemester = {
                 courses: [],
                 year: year,
@@ -354,11 +354,76 @@ export function PlanView({
                 ...plan,
                 semesters: new_semesters
             };
-            editplan(plan.name, newplan);
-            setyear(0);
-            setsession("");
-            updateadd();
+            editPlan(plan.name, newplan);
+            setYear(0);
+            setSession("");
+            updateAdd();
         }
+    }
+    //helper function for the course mover, if the course is being moved from the pool
+    function moveOrigincoursepool(course_code: string, destination: string) {
+        const origin_final = plan.plan_pool;
+        const destination_index = plan.semesters.findIndex(
+            (semester: Semester): boolean =>
+                semester.session + ":" + semester.year === destination
+        );
+        const destination_final = plan.semesters[destination_index];
+        const moving_index = plan.plan_pool.findIndex(
+            (course: Course): boolean => course.code === course_code
+        );
+        const moving_course = origin_final[moving_index];
+        destination_final.courses.splice(
+            destination_final.courses.length,
+            0,
+            moving_course
+        );
+        origin_final.splice(moving_index, 1);
+        plan.semesters.splice(destination_index, 1, destination_final);
+        const new_deg_credits =
+            plan.degree_credits + moving_course.course_credits;
+        const new_semester_credits =
+            destination_final.semester_credits + moving_course.course_credits;
+        plan.semesters[destination_index].semester_credits =
+            new_semester_credits;
+        const newplan = {
+            ...plan,
+            semesters: [...plan.semesters],
+            plan_pool: [...origin_final],
+            degree_credits: new_deg_credits
+        };
+        editPlan(plan.name, newplan);
+    }
+    //course mover helper function, if the course is being moved to the pool
+    function moveDestinationcoursepool(course_code: string, origin: string) {
+        const origin_index = plan.semesters.findIndex(
+            (semester: Semester): boolean =>
+                semester.session + ":" + semester.year === origin
+        );
+        const origin_final = plan.semesters[origin_index];
+        const moving_index = origin_final.courses.findIndex(
+            (course: Course): boolean => course.code === course_code
+        );
+        plan.plan_pool.splice(
+            plan.plan_pool.length,
+            0,
+            origin_final.courses[moving_index]
+        );
+        origin_final.courses.splice(moving_index, 1);
+        plan.semesters.splice(origin_index, 1, origin_final);
+        //updating the credits
+        plan.degree_credits =
+            plan.degree_credits -
+            origin_final.courses[moving_index].course_credits;
+        const new_semester_credits =
+            origin_final.semester_credits -
+            origin_final.courses[moving_index].course_credits;
+        plan.semesters[origin_index].semester_credits = new_semester_credits;
+        const newplan = {
+            ...plan,
+            semesters: [...plan.semesters],
+            plan_pool: [...plan.plan_pool]
+        };
+        editPlan(plan.name, newplan);
     }
     //completes the move of a course between the course pool, or different semesters, eventually calls edit plan to update the state
     function completeMove(
@@ -366,76 +431,15 @@ export function PlanView({
         origin: string,
         destination: string
     ) {
-        console.log(course_code, origin, destination);
         if (destination === origin) {
             // If the origin and destination are the same do nothing
             return null;
         } else if (origin === "Course_Pool") {
             // Origin is the coursepool
-            console.log("Origin: Course_Pool");
-            console.log("Destination:" + destination);
-            const origin_final = plan.plan_pool;
-            const destination_index = plan.semesters.findIndex(
-                (semester: Semester): boolean =>
-                    semester.session + ":" + semester.year === destination
-            );
-            const destination_final = plan.semesters[destination_index];
-            const moving_index = plan.plan_pool.findIndex(
-                (course: Course): boolean => course.code === course_code
-            );
-            const moving_course = origin_final[moving_index];
-            destination_final.courses.splice(
-                destination_final.courses.length,
-                0,
-                moving_course
-            );
-            origin_final.splice(moving_index, 1);
-            plan.semesters.splice(destination_index, 1, destination_final);
-            const new_deg_credits =
-                plan.degree_credits + moving_course.course_credits;
-            const new_semester_credits =
-                destination_final.semester_credits +
-                moving_course.course_credits;
-            plan.semesters[destination_index].semester_credits =
-                new_semester_credits;
-            const newplan = {
-                ...plan,
-                semesters: [...plan.semesters],
-                plan_pool: [...origin_final],
-                degree_credits: new_deg_credits
-            };
-            editplan(plan.name, newplan);
+            moveOrigincoursepool(course_code, destination);
         } else if (destination === "Course_Pool") {
             // Destination of moving course is the coursepool
-            const origin_index = plan.semesters.findIndex(
-                (semester: Semester): boolean =>
-                    semester.session + ":" + semester.year === origin
-            );
-            const origin_final = plan.semesters[origin_index];
-            const moving_index = origin_final.courses.findIndex(
-                (course: Course): boolean => course.code === course_code
-            );
-            const destination_final = [
-                ...plan.plan_pool,
-                origin_final.courses[moving_index]
-            ];
-            origin_final.courses.splice(moving_index, 1);
-            plan.semesters.splice(origin_index, 1, origin_final);
-            //updating the credits
-            plan.degree_credits =
-                plan.degree_credits -
-                origin_final.courses[moving_index].course_credits;
-            const new_semester_credits =
-                origin_final.semester_credits -
-                origin_final.courses[moving_index].course_credits;
-            plan.semesters[origin_index].semester_credits =
-                new_semester_credits;
-            const newplan = {
-                ...plan,
-                semesters: [...plan.semesters],
-                plan_pool: [...destination_final]
-            };
-            editplan(plan.name, newplan);
+            moveDestinationcoursepool(course_code, origin);
         } else {
             // Origin and destination do not involve the coursepool
             const origin_index = plan.semesters.findIndex(
@@ -472,37 +476,10 @@ export function PlanView({
                 ...plan,
                 semesters: [...plan.semesters]
             };
-            editplan(plan.name, newplan);
+            editPlan(plan.name, newplan);
         }
     }
-    return add ? (
-        <div>
-            <Form.Group controlId="session-textbox">
-                <Form.Label>What session?:</Form.Label>
-                <Form.Select value={session} onChange={updateSession}>
-                    <option value="">Select an option</option>
-                    <option value="Fall">Fall</option>
-                    <option value="Winter">Winter</option>
-                    <option value="Spring">Spring</option>
-                    <option value="Summer">Summer</option>
-                </Form.Select>
-            </Form.Group>
-            <Form.Group controlId="year-textbox">
-                <Form.Label>Enter the year:</Form.Label>
-                <Form.Control value={year} onChange={updateYear}></Form.Control>
-            </Form.Group>
-            <Button
-                data-testid="save-sem"
-                size="sm"
-                onClick={() => addSemester()}
-            >
-                add
-            </Button>
-            {invalidsem ? (
-                <i> oops! semester already exists in this plan</i>
-            ) : null}
-        </div>
-    ) : (
+    return (
         <div data-testid="degree-plan">
             <h4 data-testid="name">{plan.name}</h4>
             <h6 data-testid="start-year">Start Year: {plan.Start_Year}</h6>
@@ -526,7 +503,7 @@ export function PlanView({
                 data-testid="add-sem-btn"
                 className="Buttons"
                 variant="outline-success"
-                onClick={() => updateadd()}
+                onClick={() => updateAdd()}
             >
                 ➕ Add Semester
             </Button>
@@ -540,7 +517,7 @@ export function PlanView({
             </Button>
             <Button
                 className="Buttons"
-                onClick={updatemovecourse}
+                onClick={updateMovecourse}
                 variant="outline-dark"
             >
                 🔄 Move Courses
@@ -559,7 +536,38 @@ export function PlanView({
             >
                 📂 Export to CSV
             </Button>
-            <SemesterList plan={plan} editplan={editplan}></SemesterList>
+            {add ? (
+                <div>
+                    <Form.Group controlId="session-textbox">
+                        <Form.Label>What session?:</Form.Label>
+                        <Form.Select value={session} onChange={updateSession}>
+                            <option value="">Select an option</option>
+                            <option value="Fall">Fall</option>
+                            <option value="Winter">Winter</option>
+                            <option value="Spring">Spring</option>
+                            <option value="Summer">Summer</option>
+                        </Form.Select>
+                    </Form.Group>
+                    <Form.Group controlId="year-textbox">
+                        <Form.Label>Enter the year:</Form.Label>
+                        <Form.Control
+                            value={year}
+                            onChange={updateYear}
+                        ></Form.Control>
+                    </Form.Group>
+                    <Button
+                        data-testid="save-sem"
+                        size="sm"
+                        onClick={() => addSemester()}
+                    >
+                        add
+                    </Button>
+                    {invalidsem ? (
+                        <i> oops! semester already exists in this plan</i>
+                    ) : null}
+                </div>
+            ) : null}
+            <SemesterList plan={plan} editPlan={editPlan}></SemesterList>
             <div className="show-course-pool-button">
                 <Button
                     data-testid="show-pool-btn"

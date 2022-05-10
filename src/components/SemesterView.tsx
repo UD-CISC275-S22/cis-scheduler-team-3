@@ -10,11 +10,11 @@ session, year, total credits, course list, and add course button
 export function SemesterView({
     semester,
     plan,
-    editplan
+    editPlan
 }: {
     semester: Semester;
     plan: DegreePlan;
-    editplan: (id: string, newPlan: DegreePlan) => void;
+    editPlan: (id: string, newPlan: DegreePlan) => void;
 }): JSX.Element {
     //function that generates an empty course with a random code and adds it to the semester & plan
     function addCourse() {
@@ -43,7 +43,7 @@ export function SemesterView({
             ...plan,
             semesters: newSemesters
         };
-        editplan(plan.name, new_plan);
+        editPlan(plan.name, new_plan);
     }
     function clearCourses() {
         const credits_lost = semester.semester_credits;
@@ -65,7 +65,7 @@ export function SemesterView({
             semesters: newSemesters,
             degree_credits: new_plan_credits
         };
-        editplan(plan.name, new_plan);
+        editPlan(plan.name, new_plan);
     }
     return (
         <Container data-testid="Semester">
@@ -107,7 +107,7 @@ export function SemesterView({
                         courses={semester.courses}
                         semester={semester}
                         plan={plan}
-                        editplan={editplan}
+                        editPlan={editPlan}
                     ></CourseList>
                 </Col>
             </Row>
