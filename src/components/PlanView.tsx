@@ -24,6 +24,8 @@ export function PlanView({
     const [session, setsession] = useState<string>("");
     const [movecourse, setmovecourse] = useState<boolean>(false);
     const [showreq, setshowreq] = useState<boolean>(false);
+    //state to check if semester being added is a duplicate
+    const [invalidsem, setinvalidsem] = useState<boolean>(false);
 
     function updateShowReq() {
         setshowreq(!showreq);
@@ -332,21 +334,30 @@ export function PlanView({
     }
     //creates a new semester, then calls edit plan to update the state
     function addSemester() {
-        const newSemester = {
-            courses: [],
-            year: year,
-            session: session,
-            semester_credits: 0
-        };
-        const new_semesters = [...plan.semesters, newSemester];
-        const newplan = {
-            ...plan,
-            semesters: new_semesters
-        };
-        editplan(plan.name, newplan);
-        setyear(0);
-        setsession("");
-        updateadd();
+        if (
+            plan.semesters.findIndex(
+                (semester: Semester): boolean =>
+                    semester.session + semester.year === session + year
+            ) >= 0
+        ) {
+            setinvalidsem(true);
+        } else {
+            const newSemester = {
+                courses: [],
+                year: year,
+                session: session,
+                semester_credits: 0
+            };
+            const new_semesters = [...plan.semesters, newSemester];
+            const newplan = {
+                ...plan,
+                semesters: new_semesters
+            };
+            editplan(plan.name, newplan);
+            setyear(0);
+            setsession("");
+            updateadd();
+        }
     }
     //completes the move of a course between the course pool, or different semesters, eventually calls edit plan to update the state
     function completeMove(
@@ -486,6 +497,9 @@ export function PlanView({
             >
                 add
             </Button>
+            {invalidsem ? (
+                <i> oops! semester already exists in this plan</i>
+            ) : null}
         </div>
     ) : (
         <div data-testid="degree-plan">
