@@ -11,10 +11,10 @@ import UD_header from "./data/UD-header-2.png";
 type ChangeEvent = React.ChangeEvent<
     HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement
 >;
-//Sample data for new users
+
 let loadedData: DegreePlan[] = [];
-const saveDataKey = "MY-PAGE-DATA";
-const previousData = localStorage.getItem(saveDataKey);
+const savedatakey = "MY-PAGE-DATA";
+const previousData = localStorage.getItem(savedatakey);
 if (previousData !== null) {
     loadedData = JSON.parse(previousData);
 }
@@ -24,16 +24,16 @@ export function App(): JSX.Element {
     /*plans represents essentially the state of the app, there are multiple plans, each contains semesters, and courses
     plans and a function called editplans is passed down through the rest of our files to ensure everything is updated as 
     the user makes changes*/
-    const [plans, setplans] = useState<DegreePlan[]>(loadedData);
-    const [name, setname] = useState<string>("");
+    const [plans, setPlans] = useState<DegreePlan[]>(loadedData);
+    const [name, setName] = useState<string>("");
     //state representing whether user has entered the name of a plan that already exists
-    const [invalidname, setinvalidname] = useState<boolean>(false);
-    const [start, setstart] = useState<number>(0);
-    const [end, setend] = useState<number>(0);
-    const [add, setadd] = useState<boolean>(false);
+    const [invalidname, setInvalidname] = useState<boolean>(false);
+    const [start, setStart] = useState<number>(0);
+    const [end, setEnd] = useState<number>(0);
+    const [add, setAdd] = useState<boolean>(false);
 
     function saveData() {
-        localStorage.setItem(saveDataKey, JSON.stringify(plans));
+        localStorage.setItem(savedatakey, JSON.stringify(plans));
     }
 
     function downloadPlan(plan: DegreePlan) {
@@ -80,7 +80,7 @@ export function App(): JSX.Element {
         link.click();
     }
     function updateAdd() {
-        setadd(!add);
+        setAdd(!add);
     }
     function addPlan() {
         if (
@@ -88,9 +88,9 @@ export function App(): JSX.Element {
                 (plan: DegreePlan): boolean => plan.name === name
             ) >= 0
         ) {
-            setinvalidname(true);
+            setInvalidname(true);
         } else {
-            setinvalidname(false);
+            setInvalidname(false);
             const newPlan = {
                 name: name,
                 Start_Year: start,
@@ -101,21 +101,21 @@ export function App(): JSX.Element {
             };
             const newPlanList = [...plans, newPlan];
             updateAdd();
-            setplans(newPlanList);
+            setPlans(newPlanList);
             clearForm();
         }
     }
     function clearForm() {
-        setname("");
-        setstart(0);
-        setend(0);
+        setName("");
+        setStart(0);
+        setEnd(0);
     }
     function deletePlan(id: string) {
-        setplans(plans.filter((plan: DegreePlan): boolean => plan.name != id));
+        setPlans(plans.filter((plan: DegreePlan): boolean => plan.name != id));
     }
     //primary function for manipulating state; it's passed to all components
     function editPlan(id: string, newPlan: DegreePlan) {
-        setplans(
+        setPlans(
             plans.map(
                 (plan: DegreePlan): DegreePlan =>
                     plan.name === id ? newPlan : plan
@@ -124,23 +124,23 @@ export function App(): JSX.Element {
     }
     function updateStart(event: ChangeEvent) {
         if (isNaN(parseInt(event.target.value))) {
-            setstart(0);
+            setStart(0);
         } else {
             const inputToNumber = parseInt(event.target.value);
-            setstart(inputToNumber);
+            setStart(inputToNumber);
         }
     }
 
     function updateEnd(event: ChangeEvent) {
         if (isNaN(parseInt(event.target.value))) {
-            setend(0);
+            setEnd(0);
         } else {
             const inputToNumber = parseInt(event.target.value);
-            setend(inputToNumber);
+            setEnd(inputToNumber);
         }
     }
     function updateName(event: ChangeEvent) {
-        setname(event.target.value);
+        setName(event.target.value);
     }
 
     return (

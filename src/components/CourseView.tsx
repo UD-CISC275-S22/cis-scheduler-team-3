@@ -68,6 +68,8 @@ export function CourseView({
     function updatePrereqList() {
         setPrerequisiteList(PrerequisiteList + " " + currentprereq + ",");
     }
+    //function that resets course info back to default if it was from the course pool, otherwise it just clears the fields
+
     //actually updates the course list of the current semester, eventually calling edit plan, which updates the state in App.tsx
     function save() {
         if (
