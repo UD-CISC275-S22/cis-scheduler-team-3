@@ -26,6 +26,7 @@ export function App(): JSX.Element {
     the user makes changes*/
     const [plans, setplans] = useState<DegreePlan[]>(loadedData);
     const [name, setname] = useState<string>("");
+    const [notvalidname, setvalidname] = useState<boolean>(false);
     const [start, setstart] = useState<number>(0);
     const [end, setend] = useState<number>(0);
     const [add, setadd] = useState<boolean>(false);
@@ -81,18 +82,26 @@ export function App(): JSX.Element {
         setadd(!add);
     }
     function addPlan() {
-        const newPlan = {
-            name: name,
-            Start_Year: start,
-            End_Year: end,
-            semesters: [],
-            degree_credits: 0,
-            plan_pool: POOLCOURSES
-        };
-        const newPlanList = [...plans, newPlan];
-        updateAdd();
-        setplans(newPlanList);
-        clearForm();
+        if (
+            plans.findIndex(
+                (plan: DegreePlan): boolean => plan.name === name
+            ) >= 0
+        ) {
+            setvalidname(true);
+        } else {
+            const newPlan = {
+                name: name,
+                Start_Year: start,
+                End_Year: end,
+                semesters: [],
+                degree_credits: 0,
+                plan_pool: POOLCOURSES
+            };
+            const newPlanList = [...plans, newPlan];
+            updateAdd();
+            setplans(newPlanList);
+            clearForm();
+        }
     }
     function clearForm() {
         setname("");
@@ -203,6 +212,9 @@ export function App(): JSX.Element {
                     >
                         add
                     </Button>
+                    {notvalidname ? (
+                        <i> oops! please enter a unique plan name</i>
+                    ) : null}
                 </Container>
             ) : null}
             <p> </p>
