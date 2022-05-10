@@ -6,6 +6,7 @@ import { Semester } from "./interfaces/semester";
 import { Course } from "./interfaces/course";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import POOL_DATA from "./data/course_catalog.json";
+import UD_header from "./data/UD-header-2.png";
 
 type ChangeEvent = React.ChangeEvent<
     HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement
@@ -133,10 +134,8 @@ export function App(): JSX.Element {
     return (
         <>
             <div className="App">
-                <header className="App-header">UD CIS Scheduler</header>
-                <h6>
-                    Group Members: Madison Holloway, John Neilson, & Sara Fleck
-                </h6>
+                <img className="App-header" src={UD_header} />
+                <i>Created By: Madison Holloway, John Neilson, & Sara Fleck</i>
                 <p> </p>
                 <h5 className="Description">
                     Hello! Welcome to our scheduler. In this app, you will be
