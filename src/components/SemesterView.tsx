@@ -64,7 +64,7 @@ export function SemesterView({
                 code: code,
                 title: title,
                 description: "",
-                course_credits: 0,
+                coursecredits: 0,
                 prerequisites: "",
                 requirement: ""
             };
@@ -73,10 +73,10 @@ export function SemesterView({
                 ...semester,
                 courses: new_courses
             };
-            const sem_id = newSemester.session + ":" + newSemester.year;
+            const semesterid = newSemester.session + ":" + newSemester.year;
             const newSemesters = plan.semesters.map(
                 (semester: Semester): Semester =>
-                    semester.session + ":" + semester.year === sem_id
+                    semester.session + ":" + semester.year === semesterid
                         ? newSemester
                         : semester
             );
@@ -89,24 +89,24 @@ export function SemesterView({
         }
     }
     function clearCourses() {
-        const credits_lost = semester.semester_credits;
+        const credits_lost = semester.semestercredits;
         const newSemester = {
             ...semester,
             courses: [],
-            semester_credits: 0
+            semestercredits: 0
         };
-        const sem_id = newSemester.session + ":" + newSemester.year;
+        const semesterid = newSemester.session + ":" + newSemester.year;
         const newSemesters = plan.semesters.map(
             (semester: Semester): Semester =>
-                semester.session + ":" + semester.year === sem_id
+                semester.session + ":" + semester.year === semesterid
                     ? newSemester
                     : semester
         );
-        const new_plan_credits = plan.degree_credits - credits_lost;
+        const new_plan_credits = plan.degreecredits - credits_lost;
         const new_plan = {
             ...plan,
             semesters: newSemesters,
-            degree_credits: new_plan_credits
+            degreecredits: new_plan_credits
         };
         editPlan(plan.name, new_plan);
     }
@@ -117,11 +117,11 @@ export function SemesterView({
                     <h5 data-testid="Semester_Title">
                         {semester.session}:{semester.year}
                     </h5>
-                    <i data-testid="Semester_Credits">
+                    <i data-testid="semestercredits">
                         Total Credits:{" "}
-                        {isNaN(semester.semester_credits)
+                        {isNaN(semester.semestercredits)
                             ? 0
-                            : semester.semester_credits}
+                            : semester.semestercredits}
                     </i>
                     <p> </p>
                 </Col>

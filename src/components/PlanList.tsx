@@ -25,10 +25,7 @@ export function PlanList({
                 <h2>Plans:</h2>
                 <hr />
                 {plans.map((plan: DegreePlan) => (
-                    <div
-                        key={plan.Start_Year + plan.End_Year}
-                        data-testid="plan"
-                    >
+                    <div key={plan.startyear + plan.endyear} data-testid="plan">
                         <PlanView
                             plan={plan}
                             editPlan={editPlan}

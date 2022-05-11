@@ -281,7 +281,7 @@ export function PlanView({
                     course.requirement == "tech elective"
             );
             const science_credits = science_courses.map(
-                (course: Course): number => course.course_credits
+                (course: Course): number => course.coursecredits
             );
             if (science_credits.length > 0) {
                 const total_sci_credits = science_credits.reduce(
@@ -347,7 +347,7 @@ export function PlanView({
                 courses: [],
                 year: year,
                 session: session,
-                semester_credits: 0
+                semestercredits: 0
             };
             const new_semesters = [...plan.semesters, newSemester];
             const newplan = {
@@ -362,13 +362,13 @@ export function PlanView({
     }
     //helper function for the course mover, if the course is being moved from the pool
     function moveOrigincoursepool(course_code: string, destination: string) {
-        const origin_final = plan.plan_pool;
+        const origin_final = plan.planpool;
         const destination_index = plan.semesters.findIndex(
             (semester: Semester): boolean =>
                 semester.session + ":" + semester.year === destination
         );
         const destination_final = plan.semesters[destination_index];
-        const moving_index = plan.plan_pool.findIndex(
+        const moving_index = plan.planpool.findIndex(
             (course: Course): boolean => course.code === course_code
         );
         const moving_course = origin_final[moving_index];
@@ -380,16 +380,15 @@ export function PlanView({
         origin_final.splice(moving_index, 1);
         plan.semesters.splice(destination_index, 1, destination_final);
         const new_deg_credits =
-            plan.degree_credits + moving_course.course_credits;
-        const new_semester_credits =
-            destination_final.semester_credits + moving_course.course_credits;
-        plan.semesters[destination_index].semester_credits =
-            new_semester_credits;
+            plan.degreecredits + moving_course.coursecredits;
+        const new_semestercredits =
+            destination_final.semestercredits + moving_course.coursecredits;
+        plan.semesters[destination_index].semestercredits = new_semestercredits;
         const newplan = {
             ...plan,
             semesters: [...plan.semesters],
-            plan_pool: [...origin_final],
-            degree_credits: new_deg_credits
+            planpool: [...origin_final],
+            degreecredits: new_deg_credits
         };
         editPlan(plan.name, newplan);
     }
@@ -403,25 +402,25 @@ export function PlanView({
         const moving_index = origin_final.courses.findIndex(
             (course: Course): boolean => course.code === course_code
         );
-        plan.plan_pool.splice(
-            plan.plan_pool.length,
+        plan.planpool.splice(
+            plan.planpool.length,
             0,
             origin_final.courses[moving_index]
         );
         origin_final.courses.splice(moving_index, 1);
         plan.semesters.splice(origin_index, 1, origin_final);
         //updating the credits
-        plan.degree_credits =
-            plan.degree_credits -
-            origin_final.courses[moving_index].course_credits;
-        const new_semester_credits =
-            origin_final.semester_credits -
-            origin_final.courses[moving_index].course_credits;
-        plan.semesters[origin_index].semester_credits = new_semester_credits;
+        plan.degreecredits =
+            plan.degreecredits -
+            origin_final.courses[moving_index].coursecredits;
+        const new_semestercredits =
+            origin_final.semestercredits -
+            origin_final.courses[moving_index].coursecredits;
+        plan.semesters[origin_index].semestercredits = new_semestercredits;
         const newplan = {
             ...plan,
             semesters: [...plan.semesters],
-            plan_pool: [...plan.plan_pool]
+            planpool: [...plan.planpool]
         };
         editPlan(plan.name, newplan);
     }
@@ -457,12 +456,12 @@ export function PlanView({
             );
             const moving_course = origin_final.courses[moving_index];
             //updating the credits
-            plan.semesters[destination_index].semester_credits =
-                plan.semesters[destination_index].semester_credits +
-                moving_course.course_credits;
-            plan.semesters[origin_index].semester_credits =
-                plan.semesters[origin_index].semester_credits -
-                moving_course.course_credits;
+            plan.semesters[destination_index].semestercredits =
+                plan.semesters[destination_index].semestercredits +
+                moving_course.coursecredits;
+            plan.semesters[origin_index].semestercredits =
+                plan.semesters[origin_index].semestercredits -
+                moving_course.coursecredits;
             destination_final.courses.splice(
                 destination_final.courses.length,
                 0,
@@ -482,10 +481,10 @@ export function PlanView({
     return (
         <div data-testid="degree-plan">
             <h4 data-testid="name">{plan.name}</h4>
-            <h6 data-testid="start-year">Start Year: {plan.Start_Year}</h6>
-            <h6 data-testid="end-year">End Year: {plan.End_Year}</h6>
+            <h6 data-testid="start-year">Start Year: {plan.startyear}</h6>
+            <h6 data-testid="end-year">End Year: {plan.endyear}</h6>
             <h6 data-testid="degree-credits">
-                Degree Credits: {plan.degree_credits}/ 124 required
+                Degree Credits: {plan.degreecredits}/ 124 required
             </h6>
             <Form.Check
                 type="switch"
@@ -525,7 +524,7 @@ export function PlanView({
             {movecourse ? (
                 <CourseMover
                     semesters={plan.semesters}
-                    plan_pool={plan.plan_pool}
+                    planpool={plan.planpool}
                     completeMove={completeMove}
                 ></CourseMover>
             ) : null}
@@ -582,7 +581,7 @@ export function PlanView({
                 </Button>
             </div>
             {showPool ? (
-                <CoursePool plan_pool={plan.plan_pool}></CoursePool>
+                <CoursePool planpool={plan.planpool}></CoursePool>
             ) : null}
         </div>
     );
