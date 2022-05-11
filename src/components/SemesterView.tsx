@@ -1,8 +1,9 @@
-import React from "react";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import React, { useState } from "react";
+import { Container, Row, Col, Button, Form } from "react-bootstrap";
 import { Semester } from "../interfaces/semester";
 import { DegreePlan } from "../interfaces/degreeplan";
 import { CourseList } from "./CourseList";
+import { Course } from "../interfaces/course";
 /*
 this function displays a container with all the Semester data:
 session, year, total credits, course list, and add course button
@@ -16,34 +17,74 @@ export function SemesterView({
     plan: DegreePlan;
     editPlan: (id: string, newPlan: DegreePlan) => void;
 }): JSX.Element {
-    //function that generates an empty course with a random code and adds it to the semester & plan
+    const [add, setAdd] = useState<boolean>(false);
+    const [code, setCode] = useState<string>("");
+    const [title, setTitle] = useState<string>("");
+    const [isempty, setIsempty] = useState<boolean>(false);
+    const [invalidcourse, setInvalidcourse] = useState<boolean>(false);
+    function updateAdd() {
+        setAdd(!add);
+    }
+    function updateTitle(event: React.ChangeEvent<HTMLInputElement>) {
+        setTitle(event.target.value);
+    }
+
+    function updateCode(event: React.ChangeEvent<HTMLInputElement>) {
+        setCode(event.target.value);
+    }
+    function cancelAddcourse() {
+        setAdd(false);
+        setTitle("");
+        setCode("");
+        setIsempty(false);
+        setInvalidcourse(false);
+    }
+    function clearForm() {
+        setCode("");
+        setTitle("");
+    }
+    //function that generates a new course with given title & code, user edits other fields in courseView
+    //function also checks if course already exists; doesn't allow user to add emtpy course
     function addCourse() {
-        const random_code = Math.floor(Math.random() * 999);
-        const newCourse = {
-            code: "" + random_code,
-            title: "Edit course info",
-            description: "",
-            course_credits: 0,
-            prerequisites: "",
-            requirement: ""
-        };
-        const new_courses = [...semester.courses, newCourse];
-        const newSemester = {
-            ...semester,
-            courses: new_courses
-        };
-        const sem_id = newSemester.session + ":" + newSemester.year;
-        const newSemesters = plan.semesters.map(
-            (semester: Semester): Semester =>
-                semester.session + ":" + semester.year === sem_id
-                    ? newSemester
-                    : semester
-        );
-        const new_plan = {
-            ...plan,
-            semesters: newSemesters
-        };
-        editPlan(plan.name, new_plan);
+        if (title === "" || code === "") {
+            setIsempty(true);
+        } else if (
+            semester.courses.findIndex(
+                (course: Course): boolean =>
+                    course.title + course.code === title + code
+            ) >= 0
+        ) {
+            setInvalidcourse(true);
+        } else {
+            setIsempty(false);
+            setInvalidcourse(false);
+            const newCourse = {
+                code: code,
+                title: title,
+                description: "",
+                course_credits: 0,
+                prerequisites: "",
+                requirement: ""
+            };
+            const new_courses = [...semester.courses, newCourse];
+            const newSemester = {
+                ...semester,
+                courses: new_courses
+            };
+            const sem_id = newSemester.session + ":" + newSemester.year;
+            const newSemesters = plan.semesters.map(
+                (semester: Semester): Semester =>
+                    semester.session + ":" + semester.year === sem_id
+                        ? newSemester
+                        : semester
+            );
+            const new_plan = {
+                ...plan,
+                semesters: newSemesters
+            };
+            editPlan(plan.name, new_plan);
+            clearForm();
+        }
     }
     function clearCourses() {
         const credits_lost = semester.semester_credits;
@@ -87,7 +128,7 @@ export function SemesterView({
                 <Col>
                     <Button
                         size="sm"
-                        onClick={() => addCourse()}
+                        onClick={() => updateAdd()}
                         data-testid="add-course-btn"
                     >
                         ➕ add course
@@ -99,6 +140,52 @@ export function SemesterView({
                     >
                         clear courses
                     </Button>
+                    {add ? (
+                        <div>
+                            <Form.Group as={Col} controlId="valid-course-title">
+                                <Form.Label>Course Title: </Form.Label>
+                                <Form.Control
+                                    required
+                                    type="text"
+                                    placeholder=""
+                                    value={title}
+                                    data-testid="course-title-box"
+                                    onChange={updateTitle}
+                                />
+                            </Form.Group>
+                            <Form.Group as={Col} controlId="valid-course-title">
+                                <Form.Label>Course Code: </Form.Label>
+                                <Form.Control
+                                    required
+                                    type="text"
+                                    placeholder=""
+                                    value={code}
+                                    onChange={updateCode}
+                                    data-testid="course-code-box"
+                                />
+                            </Form.Group>
+                            <Button
+                                size="sm"
+                                onClick={addCourse}
+                                data-testid="addcourse-btn"
+                            >
+                                add
+                            </Button>
+                            {isempty ? (
+                                <i>please enter course title and code.</i>
+                            ) : null}
+                            {invalidcourse ? (
+                                <i>course already exists in this semester.</i>
+                            ) : null}
+                            <Button
+                                size="sm"
+                                onClick={cancelAddcourse}
+                                variant="warning"
+                            >
+                                cancel
+                            </Button>
+                        </div>
+                    ) : null}
                 </Col>
             </Row>
             <Row>
