@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Button, Col, Form, Row } from "react-bootstrap";
+import { Button, Col, Form, Row, Container } from "react-bootstrap";
 import { Course } from "../interfaces/course";
 import { DegreePlan } from "../interfaces/degreeplan";
 import { Semester } from "../interfaces/semester";
+import { CoursePoolTable } from "./CoursePoolTable";
 /*this function generates the Container which displays all the course info, it 
     also contains the form for editing a course, and a lengthy function that will
     eventually call edit plan to process these edits and display the correct result*/
@@ -337,7 +338,7 @@ export function CourseView({
             </Form>
         </Row>
     ) : (
-        <div className="bg-light border m-2 p-2" data-testid="Course">
+        <Container className="bg-light border m-2 p-2">
             <div>
                 <Form.Check
                     type="switch"
@@ -347,27 +348,7 @@ export function CourseView({
                     data-testid="editcourse-switch"
                 />
             </div>
-            <b className="title" data-testid="course-title">
-                Title: {course.title}
-            </b>
-            <ul>
-                <li data-testid="course-code" className="Course">
-                    Code: {course.code}
-                </li>
-                <li data-testid="course-des" className="Course">
-                    Description: {course.description}
-                </li>
-                <li data-testid="course-credits" className="Course">
-                    Credits: {course.course_credits}
-                </li>
-                <li data-testid="course-req" className="Course">
-                    Fulfills requirement: {course.requirement}
-                </li>
-                <li data-testid="course-prereq" className="Course">
-                    Prerequisites:
-                    {course.prerequisites}
-                </li>
-            </ul>
-        </div>
+            <CoursePoolTable course={course}></CoursePoolTable>
+        </Container>
     );
 }
