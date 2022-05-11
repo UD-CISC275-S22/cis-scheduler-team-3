@@ -46,18 +46,13 @@ export function CourseMover({
     }
 
     function startMove() {
-        /*
-        const id = course;
-        const course_to_be_moved_index = plan_pool.findIndex(
-            (course: Course): boolean => course.title + ":" + course.code === id
-        );
-        const course_to_be_moved = plan_pool[course_to_be_moved_index];
-        console.log(
-            "course to be moved index from CourseMover: " +
-                course_to_be_moved.code
-        );
-        */
         completeMove(course, origin, destination);
+        resetMover();
+    }
+    function resetMover() {
+        setOrigin("Course_Pool");
+        setCourse("");
+        setDestination("Course_Pool");
     }
     return (
         <Col>
