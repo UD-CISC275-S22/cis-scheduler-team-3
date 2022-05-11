@@ -39,7 +39,12 @@ export function SemesterView({
         setIsempty(false);
         setInvalidcourse(false);
     }
-    //function that generates an empty course with a random code and adds it to the semester & plan
+    function clearForm() {
+        setCode("");
+        setTitle("");
+    }
+    //function that generates a new course with given title & code, user edits other fields in courseView
+    //function also checks if course already exists; doesn't allow user to add emtpy course
     function addCourse() {
         if (title === "" || code === "") {
             setIsempty(true);
@@ -78,6 +83,7 @@ export function SemesterView({
                 semesters: newSemesters
             };
             editPlan(plan.name, new_plan);
+            clearForm();
         }
     }
     function clearCourses() {
