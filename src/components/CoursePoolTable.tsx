@@ -7,8 +7,12 @@ export function CoursePoolTable({ course }: { course: Course }): JSX.Element {
     const [style, setStyle] = useState<string>("collapse hide");
 
     function checkPrerequisites(): boolean {
-        const isEmptyString = course.prerequisites?.length === 0;
-        return isEmptyString;
+        const isemptystring = course.prerequisites?.length === 0;
+        return isemptystring;
+    }
+    function checkRequirement(): boolean {
+        const isemptystring = course.requirement?.length === 0;
+        return isemptystring;
     }
 
     const toggleRow = () => {
@@ -21,12 +25,17 @@ export function CoursePoolTable({ course }: { course: Course }): JSX.Element {
         return (
             <div className={style} id="course-info-collapse">
                 <div className="card card-body">
-                    <h6>Credits: {course.course_credits}</h6>
-                    <h6>Description: {course.description}</h6>
+                    <p>Credits: {course.course_credits}</p>
+                    <p>Description: {course.description}</p>
                     {checkPrerequisites() ? (
-                        <h6>Prerequisites: none</h6>
+                        <p>Prerequisites: none</p>
                     ) : (
-                        <h6>Prerequisites: {course.prerequisites}</h6>
+                        <p>Prerequisites: {course.prerequisites}</p>
+                    )}
+                    {checkRequirement() ? (
+                        <p>Requirement fulfilled: none</p>
+                    ) : (
+                        <p>Requirement fulfilled: {course.requirement}</p>
                     )}
                 </div>
             </div>
@@ -41,9 +50,9 @@ export function CoursePoolTable({ course }: { course: Course }): JSX.Element {
             <Row>
                 <Col>
                     {" "}
-                    <p>
+                    <h6>
                         {course.code} : {course.title}
-                    </p>
+                    </h6>
                 </Col>
                 <Col md="auto">
                     <p>

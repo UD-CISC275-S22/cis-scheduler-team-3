@@ -48,12 +48,14 @@ export function SemesterView({
     function addCourse() {
         if (title === "" || code === "") {
             setIsempty(true);
+            setInvalidcourse(false);
         } else if (
             semester.courses.findIndex(
                 (course: Course): boolean =>
                     course.title + course.code === title + code
             ) >= 0
         ) {
+            setIsempty(false);
             setInvalidcourse(true);
         } else {
             setIsempty(false);
