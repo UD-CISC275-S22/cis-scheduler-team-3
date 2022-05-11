@@ -321,7 +321,7 @@ export function CourseView({
                         </div>
                     )}
                 </Row>
-                <Button size="sm" onClick={save} data-testid="addcourse-btn">
+                <Button size="sm" onClick={save} data-testid="savecourse-btn">
                     save
                 </Button>
                 {invalidcourse ? (
