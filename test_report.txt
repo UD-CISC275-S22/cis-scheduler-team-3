@@ -10,17 +10,17 @@ PASS src/App.test.tsx
 ----------------------|---------|----------|---------|---------|--------------------------------
 File                  | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s              
 ----------------------|---------|----------|---------|---------|--------------------------------
-All files             |   37.22 |    30.43 |   42.64 |   37.07 |                                
+All files             |   37.37 |    30.43 |   43.06 |   37.22 |                                
  src                  |   46.87 |    42.85 |      55 |   46.03 |                                
   App.tsx             |   46.87 |    42.85 |      55 |   46.03 | 19,36-84,92-95,130-143         
- src/components       |   35.44 |    29.03 |   40.51 |   35.44 |                                
+ src/components       |   35.63 |    29.03 |   41.02 |   35.63 |                                
   CourseList.tsx      |     100 |      100 |     100 |     100 |                                
   CourseMover.tsx     |       0 |        0 |       0 |       0 | 19-107                         
   CoursePool.tsx      |     100 |      100 |     100 |     100 |                                
   CoursePoolTable.tsx |      75 |     62.5 |      80 |      75 | 19-21                          
-  CourseView.tsx      |   86.53 |     62.5 |   66.66 |   86.53 | 50-70,83                       
+  CourseView.tsx      |   86.79 |     62.5 |   68.42 |   86.79 | 50-70,86                       
   PlanList.tsx        |     100 |      100 |     100 |     100 |                                
-  PlanView.tsx        |   13.86 |    13.75 |   17.85 |   13.86 | 31-306,313,317,343,365-479,534 
+  PlanView.tsx        |   13.86 |    13.75 |   17.85 |   13.86 | 31-306,313,317,343,365-478,533 
   SemesterList.tsx    |     100 |      100 |     100 |     100 |                                
   SemesterView.tsx    |   56.81 |    55.55 |   61.53 |   56.81 | 36-40,50-51,55-59,92-111,140   
  src/interfaces       |       0 |        0 |       0 |       0 |                                
@@ -32,5 +32,5 @@ All files             |   37.22 |    30.43 |   42.64 |   37.07 |
 Test Suites: 5 passed, 5 total
 Tests:       11 passed, 11 total
 Snapshots:   0 total
-Time:        10.502 s
+Time:        7.532 s
 Ran all test suites.
