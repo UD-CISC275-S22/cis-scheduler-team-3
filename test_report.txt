@@ -2,92 +2,35 @@
 > react-typescript-starter@0.1.0 test
 > react-scripts test "--coverage"
 
+PASS src/tests/edit-course.test.tsx
 PASS src/tests/semesters.test.tsx
-FAIL src/tests/course.test.tsx
-  ● Add & Remove Courses Tests › can add a course
-
-    expect(received).toBeInTheDocument()
-
-    received value must be an HTMLElement or an SVGElement.
-    Received has value: null
-
-      26 |         expect(
-      27 |             screen.queryByText(/Title: Edit course info/i)
-    > 28 |         ).toBeInTheDocument();
-         |           ^
-      29 |     });
-      30 |     test("can remove a course", () => {
-      31 |         const addplan = screen.getByTestId("add-plan-btn");
-
-      at __EXTERNAL_MATCHER_TRAP__ (node_modules/expect/build/index.js:386:30)
-      at Object.toBeInTheDocument (node_modules/expect/build/index.js:387:15)
-      at Object.<anonymous> (src/tests/course.test.tsx:28:11)
-
-  ● Add & Remove Courses Tests › can remove a course
-
-    expect(received).toBeInTheDocument()
-
-    received value must be an HTMLElement or an SVGElement.
-    Received has value: null
-
-      47 |         expect(
-      48 |             screen.queryByText(/Title: Edit course info/i)
-    > 49 |         ).toBeInTheDocument();
-         |           ^
-      50 |         const edit = screen.getByTestId("editcourse-switch");
-      51 |         edit.click();
-      52 |         const del_course = screen.getByTestId("delete-course-btn");
-
-      at __EXTERNAL_MATCHER_TRAP__ (node_modules/expect/build/index.js:386:30)
-      at Object.toBeInTheDocument (node_modules/expect/build/index.js:387:15)
-      at Object.<anonymous> (src/tests/course.test.tsx:49:11)
-
-FAIL src/tests/credits.test.tsx
-  ● Edit Courses and Credit totals › Course credits update automatically
-
-    expect(received).toBeInTheDocument()
-
-    received value must be an HTMLElement or an SVGElement.
-    Received has value: null
-
-      26 |         expect(
-      27 |             screen.queryByText(/Title: Edit course info/i)
-    > 28 |         ).toBeInTheDocument();
-         |           ^
-      29 |         const editmode = screen.getByTestId("editcourse-switch");
-      30 |         editmode.click();
-      31 |         const titlebox = screen.getByTestId("course-title-box");
-
-      at __EXTERNAL_MATCHER_TRAP__ (node_modules/expect/build/index.js:386:30)
-      at Object.toBeInTheDocument (node_modules/expect/build/index.js:387:15)
-      at Object.<anonymous> (src/tests/credits.test.tsx:28:11)
-
+PASS src/tests/course.test.tsx
 PASS src/tests/plans.test.tsx
 PASS src/App.test.tsx
 ----------------------|---------|----------|---------|---------|--------------------------------
 File                  | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s              
 ----------------------|---------|----------|---------|---------|--------------------------------
-All files             |   21.89 |    19.56 |   29.41 |    21.7 |                                
+All files             |   37.22 |    30.43 |   42.64 |   37.07 |                                
  src                  |   46.87 |    42.85 |      55 |   46.03 |                                
   App.tsx             |   46.87 |    42.85 |      55 |   46.03 | 19,36-84,92-95,130-143         
- src/components       |   17.29 |    16.93 |      25 |   17.29 |                                
-  CourseList.tsx      |      50 |      100 |      50 |      50 | 23                             
+ src/components       |   35.44 |    29.03 |   40.51 |   35.44 |                                
+  CourseList.tsx      |     100 |      100 |     100 |     100 |                                
   CourseMover.tsx     |       0 |        0 |       0 |       0 | 19-107                         
   CoursePool.tsx      |     100 |      100 |     100 |     100 |                                
   CoursePoolTable.tsx |      75 |     62.5 |      80 |      75 | 19-21                          
-  CourseView.tsx      |       0 |        0 |       0 |       0 | 21-208                         
+  CourseView.tsx      |   86.53 |     62.5 |   66.66 |   86.53 | 50-70,83                       
   PlanList.tsx        |     100 |      100 |     100 |     100 |                                
   PlanView.tsx        |   13.86 |    13.75 |   17.85 |   13.86 | 31-306,313,317,343,365-479,534 
   SemesterList.tsx    |     100 |      100 |     100 |     100 |                                
-  SemesterView.tsx    |   18.18 |    27.77 |   23.07 |   18.18 | 29-111,140                     
+  SemesterView.tsx    |   56.81 |    55.55 |   61.53 |   56.81 | 36-40,50-51,55-59,92-111,140   
  src/interfaces       |       0 |        0 |       0 |       0 |                                
   course.ts           |       0 |        0 |       0 |       0 |                                
   degreeplan.ts       |       0 |        0 |       0 |       0 |                                
   semester.ts         |       0 |        0 |       0 |       0 |                                
 ----------------------|---------|----------|---------|---------|--------------------------------
 
-Test Suites: 2 failed, 3 passed, 5 total
-Tests:       3 failed, 7 passed, 10 total
+Test Suites: 5 passed, 5 total
+Tests:       11 passed, 11 total
 Snapshots:   0 total
-Time:        7.001 s
+Time:        10.502 s
 Ran all test suites.
