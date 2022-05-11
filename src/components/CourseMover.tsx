@@ -5,13 +5,13 @@ import { Semester } from "../interfaces/semester";
 
 export function CourseMover({
     semesters,
-    plan_pool,
+    planpool,
     completeMove
 }: {
     semesters: Semester[];
-    plan_pool: Course[];
+    planpool: Course[];
     completeMove: (
-        course_code: string,
+        coursecode: string,
         origin: string,
         destination: string
     ) => void;
@@ -23,7 +23,7 @@ export function CourseMover({
     function courseListSelector(): Course[] {
         let toReturn: Course[];
         if (origin === "Course_Pool") {
-            toReturn = plan_pool;
+            toReturn = planpool;
         } else {
             const index = semesters.findIndex(
                 (semester: Semester): boolean =>

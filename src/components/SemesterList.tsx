@@ -16,7 +16,7 @@ export function SemesterList({
             (semester: Semester): boolean =>
                 semester.session + ":" + semester.year != id
         );
-        const new_PlanCredits = plan.degree_credits - credits;
+        const new_PlanCredits = plan.degreecredits - credits;
         const newPlan = {
             ...plan,
             semesters: newsemesters,
@@ -46,7 +46,7 @@ export function SemesterList({
                             onClick={() =>
                                 deleteSemester(
                                     semester.session + ":" + semester.year,
-                                    semester.semester_credits
+                                    semester.semestercredits
                                 )
                             }
                             data-testid="delete-sem-btn"

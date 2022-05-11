@@ -23,8 +23,8 @@ export function CourseView({
     const [code, setCode] = useState<string>(course.code);
     const [title, setTitle] = useState<string>(course.title);
     const [description, setDescription] = useState<string>(course.description);
-    const [course_credits, setCourse_credits] = useState<number>(
-        course.course_credits
+    const [coursecredits, setcoursecredits] = useState<number>(
+        course.coursecredits
     );
     const [currentprereq, setCurrentprereq] = useState<string>("");
     const [requirement, setRequirement] = useState<string>(course.requirement);
@@ -39,7 +39,7 @@ export function CourseView({
     }
     //update helper functions for the form
     function updateCredits(event: React.ChangeEvent<HTMLSelectElement>) {
-        setCourse_credits(parseInt(event.target.value));
+        setcoursecredits(parseInt(event.target.value));
     }
 
     function updateTitle(event: React.ChangeEvent<HTMLInputElement>) {
@@ -72,14 +72,17 @@ export function CourseView({
     //function that resets course info back to default if it was from the course pool, otherwise it just clears the fields
 
     //actually updates the course list of the current semester, eventually calling edit plan, which updates the state in App.tsx
-    function save() {
-        if (
+    function checkValidity(): boolean {
+        return (
             id !== title + ":" + code &&
             semester.courses.findIndex(
                 (course: Course): boolean =>
                     course.title + course.code === title + code
             ) >= 0
-        ) {
+        );
+    }
+    function save() {
+        if (checkValidity()) {
             setInvalidcourse(true);
         } else {
             setInvalidcourse(false);
@@ -87,49 +90,49 @@ export function CourseView({
                 code: code,
                 title: title,
                 description: description,
-                course_credits: course_credits,
+                coursecredits: coursecredits,
                 prerequisites: PrerequisiteList,
                 requirement: requirement
             };
-            const course_list = semester.courses.map(
+            const courselist = semester.courses.map(
                 (course: Course): Course =>
                     course.title + ":" + course.code === id ? newCourse : course
             );
-            semester.semester_credits =
-                semester.semester_credits - course.course_credits;
-            const new_SemCredits = semester.semester_credits + course_credits;
-            const new_semester = {
+            semester.semestercredits =
+                semester.semestercredits - course.coursecredits;
+            const newSemCredits = semester.semestercredits + coursecredits;
+            const newsemester = {
                 ...semester,
-                courses: course_list,
-                semester_credits: new_SemCredits
+                courses: courselist,
+                semestercredits: newSemCredits
             };
-            const sem_id = semester.session + ":" + semester.year;
-            const semester_list = plan.semesters.map(
+            const semid = semester.session + ":" + semester.year;
+            const semesterlist = plan.semesters.map(
                 (semester: Semester): Semester =>
-                    semester.session + ":" + semester.year === sem_id
-                        ? new_semester
+                    semester.session + ":" + semester.year === semid
+                        ? newsemester
                         : semester
             );
-            plan.degree_credits = plan.degree_credits - course.course_credits;
-            const new_PlanCredits = plan.degree_credits + course_credits;
-            const new_plan = {
+            plan.degreecredits = plan.degreecredits - course.coursecredits;
+            const newplancredits = plan.degreecredits + coursecredits;
+            const newplan = {
                 ...plan,
-                semesters: semester_list,
-                degree_credits: new_PlanCredits
+                semesters: semesterlist,
+                degreecredits: newplancredits
             };
-            editPlan(plan.name, new_plan);
+            editPlan(plan.name, newplan);
             updateEditmode();
         }
     }
     function removeCourse() {
-        const course_list = semester.courses.filter(
+        const courselist = semester.courses.filter(
             (course: Course): boolean => course.title + ":" + course.code != id
         );
-        const new_SemCredits = semester.semester_credits - course_credits;
+        const new_SemCredits = semester.semestercredits - coursecredits;
         const new_semester = {
             ...semester,
-            courses: course_list,
-            semester_credits: new_SemCredits
+            courses: courselist,
+            semestercredits: new_SemCredits
         };
         const sem_id = semester.session + ":" + semester.year;
         const semester_list = plan.semesters.map(
@@ -138,11 +141,11 @@ export function CourseView({
                     ? new_semester
                     : semester
         );
-        const new_PlanCredits = plan.degree_credits - course_credits;
+        const new_PlanCredits = plan.degreecredits - coursecredits;
         const new_plan = {
             ...plan,
             semesters: semester_list,
-            degree_credits: new_PlanCredits
+            degreecredits: new_PlanCredits
         };
         editPlan(plan.name, new_plan);
         updateEditmode();
@@ -200,7 +203,7 @@ export function CourseView({
                         <Form.Label>Number of Credits: </Form.Label>
                         <Form.Select
                             data-testid="course-credits-box"
-                            value={course_credits}
+                            value={coursecredits}
                             onChange={updateCredits}
                             required
                         >

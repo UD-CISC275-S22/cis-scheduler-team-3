@@ -5,8 +5,8 @@ import { DegreePlan } from "./interfaces/degreeplan";
 import { Semester } from "./interfaces/semester";
 import { Course } from "./interfaces/course";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import POOL_DATA from "./data/course_catalog.json";
-import UD_header from "./data/UD-header-2.png";
+import POOLDATA from "./data/course_catalog.json";
+import UDHEADER from "./data/UD-header-2.png";
 
 type ChangeEvent = React.ChangeEvent<
     HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement
@@ -20,7 +20,7 @@ if (previousData !== null) {
 }
 
 export function App(): JSX.Element {
-    const POOLCOURSES = POOL_DATA as Course[];
+    const POOLCOURSES = POOLDATA as Course[];
     /*plans represents essentially the state of the app, there are multiple plans, each contains semesters, and courses
     plans and a function called editplans is passed down through the rest of our files to ensure everything is updated as 
     the user makes changes*/
@@ -49,22 +49,22 @@ export function App(): JSX.Element {
         ];
         plan.semesters.map((semester: Semester) => {
             const courses = semester.courses;
-            const semester_session = semester.session;
-            const semester_year = semester.year.toString();
+            const semestersession = semester.session;
+            const semesteryear = semester.year.toString();
             courses.map((course: Course) => {
-                const course_code = course.code;
-                const course_title = course.title;
-                const course_credits = course.course_credits + "";
-                const course_desc = course.description;
-                const course_prereq = course.prerequisites;
+                const coursecode = course.code;
+                const coursetitle = course.title;
+                const coursecredits = course.coursecredits + "";
+                const coursedesc = course.description;
+                const courseprereq = course.prerequisites;
                 CSVdata.splice(CSVdata.length, 0, [
-                    semester_session,
-                    semester_year,
-                    course_title,
-                    course_code,
-                    course_credits,
-                    course_prereq,
-                    course_desc
+                    semestersession,
+                    semesteryear,
+                    coursetitle,
+                    coursecode,
+                    coursecredits,
+                    courseprereq,
+                    coursedesc
                 ]);
             });
         });
@@ -97,15 +97,15 @@ export function App(): JSX.Element {
             setInvalidname(false);
             const newPlan = {
                 name: name,
-                Start_Year: start,
-                End_Year: end,
+                startyear: start,
+                endyear: end,
                 semesters: [],
-                degree_credits: 0,
-                plan_pool: POOLCOURSES
+                degreecredits: 0,
+                planpool: POOLCOURSES
             };
-            const newPlanList = [...plans, newPlan];
+            const newplanlist = [...plans, newPlan];
             updateAdd();
-            setPlans(newPlanList);
+            setPlans(newplanlist);
             clearForm();
         }
     }
@@ -150,7 +150,7 @@ export function App(): JSX.Element {
     return (
         <>
             <div className="App">
-                <img className="App-header" src={UD_header} />
+                <img className="App-header" src={UDHEADER} />
                 <i>Created By: Madison Holloway, John Neilson, & Sara Fleck</i>
                 <p className="Description">
                     Hello! Welcome to our scheduler. In this app, you will be
