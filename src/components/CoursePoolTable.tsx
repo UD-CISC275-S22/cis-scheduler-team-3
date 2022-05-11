@@ -25,7 +25,7 @@ export function CoursePoolTable({ course }: { course: Course }): JSX.Element {
         return (
             <div className={style} id="course-info-collapse">
                 <div className="card card-body">
-                    <p>Credits: {course.course_credits}</p>
+                    <p>Credits: {course.coursecredits}</p>
                     <p>Description: {course.description}</p>
                     {checkPrerequisites() ? (
                         <p>Prerequisites: none</p>
