@@ -151,7 +151,6 @@ export function SemesterView({
                                     type="text"
                                     placeholder=""
                                     value={title}
-                                    data-testid="course-title-box"
                                     onChange={updateTitle}
                                 />
                             </Form.Group>
@@ -163,7 +162,6 @@ export function SemesterView({
                                     placeholder=""
                                     value={code}
                                     onChange={updateCode}
-                                    data-testid="course-code-box"
                                 />
                             </Form.Group>
                             <Button

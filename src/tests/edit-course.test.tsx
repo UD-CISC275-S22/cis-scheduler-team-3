@@ -2,11 +2,11 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import { App } from "../App";
 import userEvent from "@testing-library/user-event";
-describe("Add & Remove Courses Tests", () => {
+describe("Edit Courses and Credit totals", () => {
     beforeEach(() => {
         render(<App />);
     });
-    test("can add a course", () => {
+    test("Course credits update automatically", () => {
         const addplan = screen.getByTestId("add-plan-btn");
         addplan.click();
         const txtbox = screen.queryAllByRole("textbox");
@@ -31,8 +31,15 @@ describe("Add & Remove Courses Tests", () => {
         expect(
             screen.queryByText(/CISC:100 : new course/i)
         ).toBeInTheDocument();
+        const editmode = screen.getByTestId("editcourse-switch");
+        editmode.click();
+        userEvent.selectOptions(screen.getByTestId("course-credits-box"), "3");
+        const addcourse = screen.getByTestId("savecourse-btn");
+        addcourse.click();
+        expect(screen.queryByText(/Degree Credits: 3/i)).toBeInTheDocument();
+        expect(screen.queryByText(/Total Credits: 3/i)).toBeInTheDocument();
     });
-    test("can remove a course", () => {
+    test("Edit fields of course", () => {
         const addplan = screen.getByTestId("add-plan-btn");
         addplan.click();
         const txtbox = screen.queryAllByRole("textbox");
@@ -57,12 +64,14 @@ describe("Add & Remove Courses Tests", () => {
         expect(
             screen.queryByText(/CISC:100 : new course/i)
         ).toBeInTheDocument();
-        const edit = screen.getByTestId("editcourse-switch");
-        edit.click();
-        const del_course = screen.getByTestId("delete-course-btn");
-        del_course.click();
+        const editmode = screen.getByTestId("editcourse-switch");
+        editmode.click();
+        const titlebox = screen.getByTestId("course-title-box");
+        userEvent.type(titlebox, " intro");
+        const savecourse = screen.getByTestId("savecourse-btn");
+        savecourse.click();
         expect(
-            screen.queryByText(/CISC:100 : new course/i)
-        ).not.toBeInTheDocument();
+            screen.queryByText(/CISC:100 : new course intro/i)
+        ).toBeInTheDocument();
     });
 });
