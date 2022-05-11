@@ -67,19 +67,19 @@ PASS src/App.test.tsx
 ----------------------|---------|----------|---------|---------|--------------------------------
 File                  | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s              
 ----------------------|---------|----------|---------|---------|--------------------------------
-All files             |   21.62 |    18.38 |   28.88 |   21.42 |                                
+All files             |   21.89 |    19.56 |   29.41 |    21.7 |                                
  src                  |   46.87 |    42.85 |      55 |   46.03 |                                
   App.tsx             |   46.87 |    42.85 |      55 |   46.03 | 19,36-84,92-95,130-143         
- src/components       |    16.9 |    15.57 |   24.34 |    16.9 |                                
+ src/components       |   17.29 |    16.93 |      25 |   17.29 |                                
   CourseList.tsx      |      50 |      100 |      50 |      50 | 23                             
   CourseMover.tsx     |       0 |        0 |       0 |       0 | 19-107                         
   CoursePool.tsx      |     100 |      100 |     100 |     100 |                                
-  CoursePoolTable.tsx |      70 |       50 |      75 |      70 | 15-17                          
-  CourseView.tsx      |       0 |        0 |       0 |       0 | 20-207                         
+  CoursePoolTable.tsx |      75 |     62.5 |      80 |      75 | 19-21                          
+  CourseView.tsx      |       0 |        0 |       0 |       0 | 21-208                         
   PlanList.tsx        |     100 |      100 |     100 |     100 |                                
   PlanView.tsx        |   13.86 |    13.75 |   17.85 |   13.86 | 31-306,313,317,343,365-479,534 
   SemesterList.tsx    |     100 |      100 |     100 |     100 |                                
-  SemesterView.tsx    |   19.04 |    27.77 |   23.07 |   19.04 | 29-109,138                     
+  SemesterView.tsx    |   18.18 |    27.77 |   23.07 |   18.18 | 29-111,140                     
  src/interfaces       |       0 |        0 |       0 |       0 |                                
   course.ts           |       0 |        0 |       0 |       0 |                                
   degreeplan.ts       |       0 |        0 |       0 |       0 |                                
@@ -89,5 +89,5 @@ All files             |   21.62 |    18.38 |   28.88 |   21.42 |
 Test Suites: 2 failed, 3 passed, 5 total
 Tests:       3 failed, 7 passed, 10 total
 Snapshots:   0 total
-Time:        8.436 s
+Time:        7.001 s
 Ran all test suites.
