@@ -89,6 +89,7 @@ export function App(): JSX.Element {
             };
             reader.readAsText(filename);
         }
+        console.log(content);
     }
     function updateAdd() {
         setadd(!add);
@@ -184,12 +185,13 @@ export function App(): JSX.Element {
                     Import from CSV
                 </Button>
                 {viewImport ? (
-                    <div>
+                    <Container>
                         <Form.Group>
                             <Form.Label>Upload a file</Form.Label>
                             <Form.Control type="file" onChange={uploadFile} />
                         </Form.Group>
-                    </div>
+                        <Button onClick={()=>}>Confirm Import</Button>
+                    </Container>
                 ) : null}
             </div>
             {add ? (
