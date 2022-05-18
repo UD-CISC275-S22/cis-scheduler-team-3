@@ -4,8 +4,6 @@ import { Semester } from "../interfaces/semester";
 import { DegreePlan } from "../interfaces/degreeplan";
 import { CourseList } from "./CourseList";
 import { Course } from "../interfaces/course";
-import { CoursePoolButton } from "../components/CoursePoolButton";
-
 /*
 this function displays a container with all the Semester data:
 session, year, total credits, course list, and add course button
@@ -144,11 +142,6 @@ export function SemesterView({
                     >
                         clear courses
                     </Button>
-                    <CoursePoolButton
-                        plan={plan}
-                        editPlan={editPlan}
-                        semester={semester}
-                    ></CoursePoolButton>
                     {add ? (
                         <div>
                             <Form.Group as={Col} controlId="valid-course-title">
