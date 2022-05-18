@@ -10,18 +10,18 @@ PASS src/App.test.tsx
 ------------------------|---------|----------|---------|---------|--------------------------------
 File                    | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s              
 ------------------------|---------|----------|---------|---------|--------------------------------
-All files               |   32.86 |    23.43 |   38.99 |   32.73 |                                
+All files               |   31.43 |    23.26 |   38.03 |    31.3 |                                
  src                    |   46.87 |    42.85 |      55 |   46.03 |                                
   App.tsx               |   46.87 |    42.85 |      55 |   46.03 | 19,36-84,92-95,130-143         
- src/components         |   30.82 |    21.91 |   36.69 |   30.82 |                                
+ src/components         |   29.31 |     21.8 |   35.66 |   29.31 |                                
   CourseInformation.tsx |      75 |     37.5 |      80 |      75 | 19-21                          
   CourseList.tsx        |     100 |      100 |     100 |     100 |                                
-  CourseMover.tsx       |       0 |        0 |       0 |       0 | 17-107                         
+  CourseMover.tsx       |       0 |        0 |       0 |       0 | 17-108                         
   CoursePool.tsx        |     100 |      100 |     100 |     100 |                                
   CoursePoolTable.tsx   |     9.4 |     9.25 |   10.71 |     9.4 | 26-44,52-240,244-245           
   CourseView.tsx        |   86.79 |     62.5 |   68.42 |   86.79 | 50-70,83                       
   PlanList.tsx          |     100 |      100 |     100 |     100 |                                
-  PlanView.tsx          |   15.56 |     9.72 |   18.36 |   15.56 | 29-303,310,314,336,362-400,454 
+  PlanView.tsx          |   13.98 |    10.97 |   16.98 |   13.98 | 30-304,311,315,337,359-456,513 
   SemesterList.tsx      |     100 |      100 |     100 |     100 |                                
   SemesterView.tsx      |   58.69 |    63.63 |   64.28 |   58.69 | 41-45,55-56,60-64,97-116,145   
  src/interfaces         |       0 |        0 |       0 |       0 |                                
@@ -33,5 +33,5 @@ All files               |   32.86 |    23.43 |   38.99 |   32.73 |
 Test Suites: 5 passed, 5 total
 Tests:       11 passed, 11 total
 Snapshots:   0 total
-Time:        8.817 s
+Time:        8.513 s
 Ran all test suites.
