@@ -4,8 +4,6 @@ import { Semester } from "../interfaces/semester";
 import { DegreePlan } from "../interfaces/degreeplan";
 import { CourseList } from "./CourseList";
 import { Course } from "../interfaces/course";
-import { CoursePoolButton } from "../components/CoursePoolButton";
-import { CoursePool } from "./CoursePool";
 /*
 this function displays a container with all the Semester data:
 session, year, total credits, course list, and add course button
@@ -24,7 +22,6 @@ export function SemesterView({
     const [title, setTitle] = useState<string>("");
     const [isempty, setIsempty] = useState<boolean>(false);
     const [invalidcourse, setInvalidcourse] = useState<boolean>(false);
-
     function updateAdd() {
         setAdd(!add);
     }
@@ -136,7 +133,7 @@ export function SemesterView({
                         onClick={() => updateAdd()}
                         data-testid="add-course-btn"
                     >
-                        ➕ add new course
+                        ➕ add course
                     </Button>
                     <Button
                         size="sm"
@@ -145,18 +142,6 @@ export function SemesterView({
                     >
                         clear courses
                     </Button>
-                    <CoursePoolButton
-                        plan={plan}
-                        editPlan={editPlan}
-                        semester={semester}
-                    ></CoursePoolButton>
-                    {/* <Button
-                        size="sm"
-                        onClick={() => console.log("hello")}
-                        data-testid="add-course-btn"
-                    >
-                        ➕ add course from course pool
-                    </Button> */}
                     {add ? (
                         <div>
                             <Form.Group as={Col} controlId="valid-course-title">
@@ -200,14 +185,6 @@ export function SemesterView({
                                 cancel
                             </Button>
                         </div>
-                    ) : null}
-                    {showPool && !add ? (
-                        <CoursePool
-                            planpool={plan.planpool}
-                            plan={plan}
-                            editPlan={editPlan}
-                            semester={semester}
-                        ></CoursePool>
                     ) : null}
                 </Col>
             </Row>
