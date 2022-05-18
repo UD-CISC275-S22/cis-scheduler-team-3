@@ -3,7 +3,7 @@ import { Button, Col, Form, Row, Container } from "react-bootstrap";
 import { Course } from "../interfaces/course";
 import { DegreePlan } from "../interfaces/degreeplan";
 import { Semester } from "../interfaces/semester";
-import { CoursePoolTable } from "./CoursePoolTable";
+import { CourseInformation } from "./CourseInformation";
 /*this function generates the Container which displays all the course info, it 
     also contains the form for editing a course, and a lengthy function that will
     eventually call edit plan to process these edits and display the correct result*/
@@ -69,9 +69,6 @@ export function CourseView({
     function updatePrereqlist() {
         setPrerequisitelist(PrerequisiteList + " " + currentprereq + ",");
     }
-    //function that resets course info back to default if it was from the course pool, otherwise it just clears the fields
-
-    //actually updates the course list of the current semester, eventually calling edit plan, which updates the state in App.tsx
     function checkValidity(): boolean {
         return (
             id !== title + ":" + code &&
@@ -351,7 +348,7 @@ export function CourseView({
                     data-testid="editcourse-switch"
                 />
             </div>
-            <CoursePoolTable course={course}></CoursePoolTable>
+            <CourseInformation course={course}></CourseInformation>
         </Container>
     );
 }

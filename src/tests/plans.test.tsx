@@ -36,7 +36,14 @@ describe("Add & Remove Plan Tests", () => {
         const add = screen.getByTestId("add-btn");
         add.click();
         expect(screen.queryByText(/test plan/i)).toBeInTheDocument();
-        const showpool = screen.getByTestId("show-pool-btn");
+        const addsem = screen.getByTestId("add-sem-btn");
+        addsem.click();
+        const txtbox2 = screen.queryAllByRole("textbox");
+        userEvent.type(txtbox2[0], "2020");
+        const add2 = screen.getByTestId("save-sem");
+        add2.click();
+        expect(screen.queryByText(/:2020/i)).toBeInTheDocument();
+        const showpool = screen.getByTestId("show-pool-button");
         showpool.click();
         const pool = screen.getAllByTestId("course-pool");
         expect(pool[0]).toBeInTheDocument();

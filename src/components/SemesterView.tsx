@@ -4,6 +4,7 @@ import { Semester } from "../interfaces/semester";
 import { DegreePlan } from "../interfaces/degreeplan";
 import { CourseList } from "./CourseList";
 import { Course } from "../interfaces/course";
+import { CoursePool } from "./CoursePool";
 /*
 this function displays a container with all the Semester data:
 session, year, total credits, course list, and add course button
@@ -22,8 +23,12 @@ export function SemesterView({
     const [title, setTitle] = useState<string>("");
     const [isempty, setIsempty] = useState<boolean>(false);
     const [invalidcourse, setInvalidcourse] = useState<boolean>(false);
+    const [showpool, setShowpool] = useState<boolean>(false);
     function updateAdd() {
         setAdd(!add);
+    }
+    function showCoursepool() {
+        setShowpool(!showpool);
     }
     function updateTitle(event: React.ChangeEvent<HTMLInputElement>) {
         setTitle(event.target.value);
@@ -142,6 +147,27 @@ export function SemesterView({
                     >
                         clear courses
                     </Button>
+                    <p> </p>
+                    <Button
+                        data-testid="show-pool-button"
+                        variant="success"
+                        size="sm"
+                        onClick={showCoursepool}
+                        className="show-course-pool-button"
+                    >
+                        {showpool
+                            ? "Hide Pool of CISC-related courses"
+                            : "Show Pool of CISC-related courses"}
+                    </Button>
+                    <p> </p>
+                    {showpool ? (
+                        <CoursePool
+                            planpool={plan.planpool}
+                            plan={plan}
+                            editPlan={editPlan}
+                            semester={semester}
+                        ></CoursePool>
+                    ) : null}
                     {add ? (
                         <div>
                             <Form.Group as={Col} controlId="valid-course-title">

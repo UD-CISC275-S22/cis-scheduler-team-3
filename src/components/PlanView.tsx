@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { DegreePlan } from "../interfaces/degreeplan";
-import { CoursePool } from "./CoursePool";
 import { SemesterList } from "./SemesterList";
 import { CourseMover } from "./CourseMover";
 import { Course } from "../interfaces/course";
@@ -18,7 +17,6 @@ export function PlanView({
     editPlan: (id: string, newPlan: DegreePlan) => void;
     downloadPlan: (plan: DegreePlan) => void;
 }): JSX.Element {
-    const [showPool, setShowPool] = useState<boolean>(false);
     const [add, setAdd] = useState<boolean>(false);
     const [year, setYear] = useState<number>(0);
     const [session, setSession] = useState<string>("");
@@ -37,7 +35,6 @@ export function PlanView({
         );
         let req = "";
         //check if there are any courses
-        console.log(twoDcourses);
         if (twoDcourses.length > 0) {
             const courses = twoDcourses.reduce(
                 (courses: Course[], curr_courses: Course[]) =>
@@ -320,10 +317,6 @@ export function PlanView({
             setYear(inputToNumber);
         }
     }
-    //view CISC related courses in the pool
-    function showCoursePool() {
-        setShowPool(!showPool);
-    }
     //make semester list empty array
     function clearSemesters() {
         const newplan = {
@@ -360,71 +353,7 @@ export function PlanView({
             updateAdd();
         }
     }
-    //helper function for the course mover, if the course is being moved from the pool
-    function moveOrigincoursepool(course_code: string, destination: string) {
-        const origin_final = plan.planpool;
-        const destination_index = plan.semesters.findIndex(
-            (semester: Semester): boolean =>
-                semester.session + ":" + semester.year === destination
-        );
-        const destination_final = plan.semesters[destination_index];
-        const moving_index = plan.planpool.findIndex(
-            (course: Course): boolean => course.code === course_code
-        );
-        const moving_course = origin_final[moving_index];
-        destination_final.courses.splice(
-            destination_final.courses.length,
-            0,
-            moving_course
-        );
-        origin_final.splice(moving_index, 1);
-        plan.semesters.splice(destination_index, 1, destination_final);
-        const new_deg_credits =
-            plan.degreecredits + moving_course.coursecredits;
-        const new_semestercredits =
-            destination_final.semestercredits + moving_course.coursecredits;
-        plan.semesters[destination_index].semestercredits = new_semestercredits;
-        const newplan = {
-            ...plan,
-            semesters: [...plan.semesters],
-            planpool: [...origin_final],
-            degreecredits: new_deg_credits
-        };
-        editPlan(plan.name, newplan);
-    }
-    //course mover helper function, if the course is being moved to the pool
-    function moveDestinationcoursepool(course_code: string, origin: string) {
-        const origin_index = plan.semesters.findIndex(
-            (semester: Semester): boolean =>
-                semester.session + ":" + semester.year === origin
-        );
-        const origin_final = plan.semesters[origin_index];
-        const moving_index = origin_final.courses.findIndex(
-            (course: Course): boolean => course.code === course_code
-        );
-        plan.planpool.splice(
-            plan.planpool.length,
-            0,
-            origin_final.courses[moving_index]
-        );
-        origin_final.courses.splice(moving_index, 1);
-        plan.semesters.splice(origin_index, 1, origin_final);
-        //updating the credits
-        plan.degreecredits =
-            plan.degreecredits -
-            origin_final.courses[moving_index].coursecredits;
-        const new_semestercredits =
-            origin_final.semestercredits -
-            origin_final.courses[moving_index].coursecredits;
-        plan.semesters[origin_index].semestercredits = new_semestercredits;
-        const newplan = {
-            ...plan,
-            semesters: [...plan.semesters],
-            planpool: [...plan.planpool]
-        };
-        editPlan(plan.name, newplan);
-    }
-    //completes the move of a course between the course pool, or different semesters, eventually calls edit plan to update the state
+    //completes the move of a course between different semesters, eventually calls edit plan to update the state
     function completeMove(
         course_code: string,
         origin: string,
@@ -433,14 +362,7 @@ export function PlanView({
         if (destination === origin) {
             // If the origin and destination are the same do nothing
             return null;
-        } else if (origin === "Course_Pool") {
-            // Origin is the coursepool
-            moveOrigincoursepool(course_code, destination);
-        } else if (destination === "Course_Pool") {
-            // Destination of moving course is the coursepool
-            moveDestinationcoursepool(course_code, origin);
         } else {
-            // Origin and destination do not involve the coursepool
             const origin_index = plan.semesters.findIndex(
                 (semester: Semester): boolean =>
                     semester.session + ":" + semester.year === origin
@@ -524,7 +446,6 @@ export function PlanView({
             {movecourse ? (
                 <CourseMover
                     semesters={plan.semesters}
-                    planpool={plan.planpool}
                     completeMove={completeMove}
                 ></CourseMover>
             ) : null}
@@ -567,22 +488,6 @@ export function PlanView({
                 </div>
             ) : null}
             <SemesterList plan={plan} editPlan={editPlan}></SemesterList>
-            <div className="show-course-pool-button">
-                <Button
-                    data-testid="show-pool-btn"
-                    variant="success"
-                    size="sm"
-                    onClick={showCoursePool}
-                    className="show-course-pool-button"
-                >
-                    {showPool
-                        ? "Hide Pool of CISC-related courses"
-                        : "Show Pool of CISC-related courses"}
-                </Button>
-            </div>
-            {showPool ? (
-                <CoursePool planpool={plan.planpool}></CoursePool>
-            ) : null}
         </div>
     );
 }
