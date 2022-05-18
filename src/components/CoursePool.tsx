@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import { Container, Row } from "react-bootstrap";
-import { SearchHeartFill } from "react-bootstrap-icons";
 import type { Course } from "../interfaces/course";
 import type { Semester } from "../interfaces/semester";
 import type { DegreePlan } from "../interfaces/degreeplan";
@@ -17,21 +16,6 @@ export function CoursePool({
     semester: Semester;
     editPlan: (id: string, newPlan: DegreePlan) => void;
 }): JSX.Element {
-    const [search, setSearch] = useState("");
-
-    // const filteredCourses = planpool.filter((course) => {
-    //     //if no input the return the original
-    //     if (search.length === 0) {
-    //         return planpool;
-    //     }
-    //     //return the item which contains the user input
-    //     else {
-    //         return course.code
-    //             .replace(/ /g, "")
-    //             .toLowerCase()
-    //             .includes(search.replace(/ /g, ""));
-    //     }
-    // });
     return (
         <Container
             style={{ overflowY: "scroll", height: "400px" }}

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import type { DegreePlan } from "../interfaces/degreeplan";
-import type { Course } from "../interfaces/course";
 import type { Semester } from "../interfaces/semester";
 import { CoursePool } from "./CoursePool";
 

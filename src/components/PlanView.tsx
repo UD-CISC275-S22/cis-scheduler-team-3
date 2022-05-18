@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { DegreePlan } from "../interfaces/degreeplan";
-import { CoursePool } from "./CoursePool";
 import { SemesterList } from "./SemesterList";
 import { CourseMover } from "./CourseMover";
 import { Course } from "../interfaces/course";
@@ -18,7 +17,6 @@ export function PlanView({
     editPlan: (id: string, newPlan: DegreePlan) => void;
     downloadPlan: (plan: DegreePlan) => void;
 }): JSX.Element {
-    const [showPool, setShowPool] = useState<boolean>(false);
     const [add, setAdd] = useState<boolean>(false);
     const [year, setYear] = useState<number>(0);
     const [session, setSession] = useState<string>("");
@@ -320,10 +318,7 @@ export function PlanView({
             setYear(inputToNumber);
         }
     }
-    //view CISC related courses in the pool
-    function showCoursePool() {
-        setShowPool(!showPool);
-    }
+
     //make semester list empty array
     function clearSemesters() {
         const newplan = {

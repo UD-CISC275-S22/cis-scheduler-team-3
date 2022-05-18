@@ -1,18 +1,8 @@
 import React, { useState } from "react";
-import {
-    Container,
-    Row,
-    Col,
-    Dropdown,
-    DropdownButton,
-    Alert,
-    Modal
-} from "react-bootstrap";
+import { Container, Row, Col, Alert, Modal } from "react-bootstrap";
 import { DegreePlan } from "../interfaces/degreeplan";
 import { Course } from "../interfaces/course";
 import { Semester } from "../interfaces/semester";
-import { TypeH1 } from "react-bootstrap-icons";
-import { SemesterList } from "./SemesterList";
 /* function that generates the view for each course in the course pool, can use show/hide to see course info*/
 export function CoursePoolTable({
     course,
@@ -45,19 +35,14 @@ export function CoursePoolTable({
     }
     function handleShowUnsatisfied() {
         setprereqUnsatisfied(true);
-        console.log("hello");
     }
     function handleCloseCourseExists() {
         setCourseExists(false);
-        console.log("hello #2");
     }
 
     function handleShowCourseExists() {
         setCourseExists(true);
-        console.log("hello #3");
     }
-    // const [search, setSearch] = useState("");
-
     function checkPrerequisites(): boolean {
         const isemptystring = course.prerequisites?.length === 0;
         return isemptystring;
@@ -89,39 +74,6 @@ export function CoursePoolTable({
             semesters: newSemesters
         };
         editPlan(plan.name, new_plan);
-    }
-
-    // function checkRequirement() {
-    //     const preReqNoSpaces = course.prerequisites;
-    //     // const preReqNoSpaces = course.prerequisites
-    //     //     .replace(/ /g, "")
-    //     //     .toLowerCase();
-    //     console.log(course.prerequisites);
-    //     if (preReqNoSpaces.length === 0) {
-    //         return false;
-    //     } else {
-    //         console.log(semester.courses);
-    //         const overlap = semester.courses.map((prereq) => {
-    //             const codeNoSpaces = prereq.code
-    //                 .replace(/ /g, "")
-    //                 .toLowerCase();
-    //             console.log(codeNoSpaces);
-    //             //     const exists = preReqNoSpaces.includes(codeNoSpaces);
-    //             //     if (exists) {
-    //             //         return true;
-    //             //     } else {
-    //             //         return false;
-    //             //     }
-    //         });
-    //         console.log(overlap);
-    //     }
-    // }
-    function checkRequirement() {
-        if (!checkPrerequisites()) {
-            return true;
-        } else {
-            return false;
-        }
     }
 
     function addClassToSemester() {
@@ -250,29 +202,6 @@ export function CoursePoolTable({
         }
     }
 
-    // function manyPrereq(statement: string) {
-    //     const classes = statement.replace(/[^0-9]/g, "").length / 3;
-    //     const semesterList: Semester[] = [...plan.semesters];
-    //     console.log(semesterList);
-    //     let courseList: string[] = [];
-    //     const allCourses = semesterList.map((semester) => {
-    //         semester.courses.map((course) => {
-    //             console.log(course);
-    //             courseList = [...courseList, course.code];
-    //         });
-    //         // const codeNoSpaces = prereq.code.replace(/ /g, "").toLowerCase();
-    //         // console.log(codeNoSpaces);
-    //         //     const exists = preReqNoSpaces.includes(codeNoSpaces);
-    //         //     if (exists) {
-    //         //         return true;
-    //         //     } else {
-    //         //         return false;
-    //         //     }
-    //     });
-    //     console.log(courseList);
-    //     console.log(allCourses);
-    // }
-
     function preReqInSemester(preReqSentence: string) {
         let prereqStatus = "";
         console.log(preReqSentence);
@@ -306,40 +235,10 @@ export function CoursePoolTable({
         return prereqStatus;
     }
 
-    function alertColor() {
-        const req = checkRequirement();
-        console.log(req);
-        return "success";
-        // console.log(checkRequirement());
-        // return checkRequirement() ? "sucess" : "warning";
-    }
-
     const toggleRow = () => {
         setOpen(!open);
         open ? setStyle("collapse hide") : setStyle("collapse show");
     };
-
-    function failPrereq() {
-        return (
-            <div>
-                <Alert variant="warning">
-                    You have not taken the prerequisite for {course.code}:{" "}
-                    {course.title} yet. The prerequisite course:{" "}
-                    {course.prerequisites}
-                </Alert>
-            </div>
-        );
-    }
-
-    function hasPrereq() {
-        return (
-            <div>
-                <Alert variant="success">
-                    {course} has been successfully added to {semester}
-                </Alert>
-            </div>
-        );
-    }
 
     function ViewCourseInfo(): JSX.Element {
         return (
@@ -367,19 +266,6 @@ export function CoursePoolTable({
             data-testid="scroll-courses"
             className="course-pool-scrollable"
         >
-            {/* <Row>
-                {addCourse ? (
-                    <Alert variant="warning">
-                        You have not taken the prerequisite for {course.code}:{" "}
-                        {course.title} yet. The prerequisite course:{" "}
-                        {course.prerequisites}
-                    </Alert>
-                ) : (
-                    <Alert variant="success">
-                        {course} has been successfully added to {semester}
-                    </Alert>
-                )}
-            </Row> */}
             <Row>
                 <Col className="course-title-code">
                     {" "}
@@ -402,20 +288,6 @@ export function CoursePoolTable({
                             {open ? "hide course info" : " see course info"}
                             <i className="bi bi-plus-lg"></i>
                         </button>
-                        {/* <DropdownButton
-                            id="dropdown-basic-button"
-                            title="add to semester"
-                        >
-                            <Dropdown.Item href="#/action-1">
-                                Action
-                            </Dropdown.Item>
-                            <Dropdown.Item href="#/action-2">
-                                Another action
-                            </Dropdown.Item>
-                            <Dropdown.Item href="#/action-3">
-                                Something else
-                            </Dropdown.Item>
-                        </DropdownButton> */}
                         <button
                             className="btn primary"
                             type="button"

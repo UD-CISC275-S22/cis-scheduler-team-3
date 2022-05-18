@@ -24,11 +24,7 @@ export function SemesterView({
     const [title, setTitle] = useState<string>("");
     const [isempty, setIsempty] = useState<boolean>(false);
     const [invalidcourse, setInvalidcourse] = useState<boolean>(false);
-    const [showPool, setShowPool] = useState<boolean>(false);
 
-    function showCoursePool() {
-        setShowPool(!showPool);
-    }
     function updateAdd() {
         setAdd(!add);
     }
