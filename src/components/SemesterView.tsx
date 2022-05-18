@@ -24,7 +24,6 @@ export function SemesterView({
     const [title, setTitle] = useState<string>("");
     const [isempty, setIsempty] = useState<boolean>(false);
     const [invalidcourse, setInvalidcourse] = useState<boolean>(false);
-
     function updateAdd() {
         setAdd(!add);
     }
@@ -136,7 +135,7 @@ export function SemesterView({
                         onClick={() => updateAdd()}
                         data-testid="add-course-btn"
                     >
-                        ➕ add new course
+                        ➕ add course
                     </Button>
                     <Button
                         size="sm"

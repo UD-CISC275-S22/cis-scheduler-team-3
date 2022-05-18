@@ -1,48 +1,11 @@
 import React, { useState } from "react";
-import { Container, Row, Col, Alert, Modal } from "react-bootstrap";
-import { DegreePlan } from "../interfaces/degreeplan";
+import { Container, Row, Col } from "react-bootstrap";
 import { Course } from "../interfaces/course";
-import { Semester } from "../interfaces/semester";
 /* function that generates the view for each course in the course pool, can use show/hide to see course info*/
-export function CoursePoolTable({
-    course,
-    plan,
-    semester,
-    editPlan
-}: {
-    course: Course;
-    plan: DegreePlan;
-    semester: Semester;
-    editPlan: (id: string, newPlan: DegreePlan) => void;
-}): JSX.Element {
+export function CoursePoolTable({ course }: { course: Course }): JSX.Element {
     const [open, setOpen] = useState<boolean>(false);
     const [style, setStyle] = useState<string>("collapse hide");
-    const [addCourse, setAddCourse] = useState<boolean>(false);
-    const [prereqSatisfied, setprereqSatisfied] = useState<boolean>(false);
-    const [prereqUnsatisfied, setprereqUnsatisfied] = useState<boolean>(false);
-    const [courseExists, setCourseExists] = useState<boolean>(false);
 
-    function handleCloseSatisfied() {
-        setprereqSatisfied(false);
-    }
-
-    function handleShowSatisfied() {
-        setprereqSatisfied(true);
-    }
-
-    function handleCloseUnsatisfied() {
-        setprereqUnsatisfied(false);
-    }
-    function handleShowUnsatisfied() {
-        setprereqUnsatisfied(true);
-    }
-    function handleCloseCourseExists() {
-        setCourseExists(false);
-    }
-
-    function handleShowCourseExists() {
-        setCourseExists(true);
-    }
     function checkPrerequisites(): boolean {
         const isemptystring = course.prerequisites?.length === 0;
         return isemptystring;
@@ -237,6 +200,7 @@ export function CoursePoolTable({
     }
 
     const toggleRow = () => {
+        console.log(course.code);
         setOpen(!open);
         open ? setStyle("collapse hide") : setStyle("collapse show");
     };
@@ -252,7 +216,7 @@ export function CoursePoolTable({
                     ) : (
                         <p>Prerequisites: {course.prerequisites}</p>
                     )}
-                    {checkPrerequisites() ? (
+                    {checkRequirement() ? (
                         <p>Requirement fulfilled: none</p>
                     ) : (
                         <p>Requirement fulfilled: {course.requirement}</p>
@@ -268,14 +232,14 @@ export function CoursePoolTable({
             className="course-pool-scrollable"
         >
             <Row>
-                <Col className="course-title-code">
+                <Col>
                     {" "}
                     <h6>
                         {course.code} : {course.title}
                     </h6>
                 </Col>
                 <Col md="auto">
-                    <Col>
+                    <p>
                         <button
                             className="btn default"
                             data-testid="pool-show/hide-btn"
@@ -289,14 +253,7 @@ export function CoursePoolTable({
                             {open ? "hide course info" : " see course info"}
                             <i className="bi bi-plus-lg"></i>
                         </button>
-                        <button
-                            className="btn primary"
-                            type="button"
-                            onClick={addClassToSemester}
-                        >
-                            add class to semester
-                        </button>
-                    </Col>
+                    </p>
                 </Col>
             </Row>
             <Row>
@@ -304,46 +261,6 @@ export function CoursePoolTable({
                     <ViewCourseInfo />
                 </Col>
             </Row>
-            <Modal
-                size="lg"
-                show={prereqSatisfied}
-                onHide={handleCloseSatisfied}
-            >
-                <Modal.Header closeButton></Modal.Header>
-                <Modal.Body>
-                    <Alert variant="success">
-                        {course.code}: {course.title} has been successfully
-                        added to {semester.session} {semester.year}.
-                    </Alert>
-                </Modal.Body>
-            </Modal>
-            <Modal
-                size="lg"
-                show={prereqUnsatisfied}
-                onHide={handleCloseUnsatisfied}
-            >
-                <Modal.Header closeButton></Modal.Header>
-                <Modal.Body>
-                    <Alert variant="warning">
-                        You have not taken the prerequisite for {course.code}:{" "}
-                        {course.title} yet. The prerequisite for this course:{" "}
-                        {course.prerequisites}
-                    </Alert>
-                </Modal.Body>
-            </Modal>
-            <Modal
-                size="lg"
-                show={courseExists}
-                onHide={handleCloseCourseExists}
-            >
-                <Modal.Header closeButton></Modal.Header>
-                <Modal.Body>
-                    <Alert variant="warning">
-                        {course.code}: {course.title} already exists in your
-                        Plan.
-                    </Alert>
-                </Modal.Body>
-            </Modal>
         </Container>
     );
 }
