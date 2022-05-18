@@ -93,10 +93,10 @@
     margin-bottom: 1rem;
 }
 
-.show-course-pool-button {
+/* .show-course-pool-button {
     text-align: right;
     margin-right: 5rem;
-}
+} */
 
 #add-course-button {
     margin-bottom: 1rem;
@@ -105,4 +105,11 @@
 .Container .course-pool-scrollable {
     overflow-y: scroll;
     height: 400px;
+}
+
+.Col.course-title-code {
+    vertical-align: middle;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

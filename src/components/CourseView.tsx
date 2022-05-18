@@ -3,7 +3,6 @@ import { Button, Col, Form, Row, Container } from "react-bootstrap";
 import { Course } from "../interfaces/course";
 import { DegreePlan } from "../interfaces/degreeplan";
 import { Semester } from "../interfaces/semester";
-import { CoursePoolTable } from "./CoursePoolTable";
 /*this function generates the Container which displays all the course info, it 
     also contains the form for editing a course, and a lengthy function that will
     eventually call edit plan to process these edits and display the correct result*/
@@ -351,7 +350,11 @@ export function CourseView({
                     data-testid="editcourse-switch"
                 />
             </div>
-            <CoursePoolTable course={course}></CoursePoolTable>
+            {/* <CoursePoolTable
+                course={course}
+                plan={plan}
+                semester={semester}
+            ></CoursePoolTable> */}
         </Container>
     );
 }

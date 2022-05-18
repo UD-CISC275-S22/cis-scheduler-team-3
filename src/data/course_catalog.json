@@ -140,7 +140,7 @@
         "title": "Logic for Programming",
         "description": "Propositional and predicate logic for general reasoning and advanced applications in knowledge representation in artificial intelligence and database, program correctness and programming semantics. Models, resolution, logic programming, and natural deduction.",
         "coursecredits": 3,
-        "prerequisites": "CISC 220, MATH 210 (with minimum C- grade in both).",
+        "prerequisites": "A minimum grade of C- in both CISC 220 and MATH 210",
         "requirement": ""
     },
     {
@@ -180,7 +180,7 @@
         "title": "Computer Architecture",
         "description": "Principles and techniques used in the architecture of digital computers. Machine elements and their interrelation. Instruction sets, risc vs cisc, registers, busses and switches.",
         "coursecredits": 3,
-        "prerequisites": "A minimum grade of C- in CISC 220 and CISC 260 (or equivalent courses).",
+        "prerequisites": "A minimum grade of C- in CISC 220 and CISC 260.",
         "requirement": ""
     },
     {
@@ -188,7 +188,7 @@
         "title": "Operating Systems",
         "description": "Principles and techniques employed in the development of operating systems and their control programs. Includes management of memory, processors, I/O devices.",
         "coursecredits": 3,
-        "prerequisites": "A minimum grade of C- in both CISC 220 and CISC 260. CPEG 222 may be substituted for CISC 260.",
+        "prerequisites": "A minimum grade of C- in both CISC 220 and CISC 260.",
         "requirement": "core"
     },
     {
@@ -268,7 +268,7 @@
         "title": "Formal Methods in Software Engineering",
         "description": "Formal approaches to the specification, verification, and design of software systems. Topics include representing programs as transition systems; liveness and safety properties; state space reachability; explicit, symbolic and automata-based model checking; temporal logics; symbolic execution; automated theorem-proving; and relational calculus. Learn to use state-of-the-art tools based on these methods, such as the model checker Spin.",
         "coursecredits": 3,
-        "prerequisites": "CISC 304 or equivalent course, or permission of instructor.",
+        "prerequisites": "CISC 304",
         "requirement": ""
     },
     {
@@ -276,7 +276,7 @@
         "title": "Computational Biology and Bioinformatics",
         "description": "Concepts, methodologies, and tools in bioinformatics. Abstraction of biological problems for computational solutions. Genome sequencing and assembly, bio-sequence analysis and comparison and database search, dynamics programming, hidden Markov models, and phylogenetic trees.",
         "coursecredits": 3,
-        "prerequisites": "CISC 220 or permission of instructor.",
+        "prerequisites": "CISC 220",
         "requirement": ""
     },
     {
@@ -324,7 +324,7 @@
         "title": "Simulation of Computer Networks",
         "description": "Modeling and computer simulation of discrete systems using discrete event simulation techniques. Application to the performance evaluation and modeling of computer networks and networking protocols. Study and use of simulation systems such as OPNET, Qualnet, and ns-2.",
         "coursecredits": 3,
-        "prerequisites": "CISC 450, or equivalent.",
+        "prerequisites": "CISC 450",
         "requirement": ""
     },
     {
@@ -332,7 +332,7 @@
         "title": "Topics in Communications, Distributed Computing and Networks",
         "description": "Contents vary to coincide with the interests of students and current faculty.",
         "coursecredits": 3,
-        "prerequisites": "CISC 450.",
+        "prerequisites": "CISC 450",
         "requirement": ""
     },
     {
@@ -340,7 +340,7 @@
         "title": "Introduction to Network Security",
         "description": "Practical introduction to network security field. Covers material on cryptography, intrusions, denial-of-service attacks, worms, honeynets and other hot topics in network security.",
         "coursecredits": 3,
-        "prerequisites": "CISC 450 or equivalent.",
+        "prerequisites": "CISC 450 or equivalent",
         "requirement": ""
     },
     {
@@ -407,7 +407,7 @@
         "title": "Advanced Software Engineering",
         "description": "Understand and apply a complete modern software engineering process. Topics include requirements analysis, specification, design, implementation, verification, and project management. Real-life team projects cover all aspects of the software development lifecycle, from the requirements to acceptance testing.",
         "coursecredits": 3,
-        "prerequisites": "CISC 275. CISC 361 is recommended.",
+        "prerequisites": "CISC 275",
         "requirement": ""
     },
     {
@@ -431,7 +431,7 @@
         "title": "Artificial Intelligence",
         "description": "Programming techniques for problems not amenable to algorithmic solutions. Problem formulation, search strategies, state spaces, applications of logic, knowledge representation, planning and application areas.",
         "coursecredits": 3,
-        "prerequisites": "CISC 220 with a minimum grade of C-, CISC 304.",
+        "prerequisites": "CISC 220 with a minimum grade of C-, and CISC 304.",
         "requirement": ""
     },
     {
@@ -447,7 +447,7 @@
         "title": "Introduction to Data Mining",
         "description": "Concepts, techniques, and algorithms for mining large data sets to discover structural patterns that can be used to make subsequent predictions. Emphasis on practical approaches and empirical evaluation. Use of a workbench of data mining tools, such as the Weka toolkit.",
         "coursecredits": 3,
-        "prerequisites": "CISC 220 and  MATH 205 or MATH 350.",
+        "prerequisites": "CISC 220 and MATH 205",
         "requirement": ""
     },
     {
@@ -455,7 +455,7 @@
         "title": "Introduction to Machine Learning",
         "description": "Development of methods to learn to solve a task using examples. Explore different machine learning algorithms/techniques and discuss their strengths and weaknesses and situations they are or are not suited for.",
         "coursecredits": 3,
-        "prerequisites": "CISC 220 and MATH 205 or MATH 350.",
+        "prerequisites": "CISC 220 and MATH 205",
         "requirement": ""
     },
     {
@@ -503,7 +503,7 @@
         "title": "Elements of the Theory of Computation",
         "description": "General models of computation, formal languages and automata theory, and algorithmic unsolvability",
         "coursecredits": 3,
-        "prerequisites": "A course in which the student was required to prove theorems",
+        "prerequisites": "",
         "requirement": ""
     },
     {
@@ -511,7 +511,7 @@
         "title": "Logic in Computer Science",
         "description": "Formal introduction to first-order logic with emphasis on its relevance to computer science. Syntax, semantics, models, formal proofs and results on soundness, consistency, completeness, compactness and undecidability. Automated theorem proving also covered.",
         "coursecredits": 3,
-        "prerequisites": "CISC304 equivalent.",
+        "prerequisites": "CISC304",
         "requirement": ""
     },
     {
@@ -575,7 +575,7 @@
         "title": "Algorithm Design and Analysis",
         "description": "Emphasis on developing expertise in the design and analysis of algorithms. Equal importance given to techniques and specific algorithms. Particular topics include advanced data structures, graph algorithms, disjoint set manipulation, sorting and selection, amortized analysis, NP-completeness, and matrix and polynomial multiplication.",
         "coursecredits": 3,
-        "prerequisites": "Undergraduate algorithms and discrete math courses",
+        "prerequisites": "CISC 320 equivalent and MATH 210 equivalent",
         "requirement": ""
     },
     {
@@ -583,7 +583,7 @@
         "title": "Computational Biology and Bioinformatics",
         "description": "Concepts, methodologies, and tools in bioinformatics. Abstraction of biological problems for computational solutions. Genome sequencing and assembly, bio-sequence analysis and comparison and database search, dynamics programming, hidden Markov models, and phylogenetic trees.",
         "coursecredits": 3,
-        "prerequisites": "CISC220 or permission of instructor.",
+        "prerequisites": "CISC220",
         "requirement": ""
     },
     {
@@ -591,7 +591,7 @@
         "title": "Database Systems",
         "description": "Physical and logical organization of databases. Data retrieval languages, relational database languages, security and integrity, concurrency, distributed databases.",
         "coursecredits": 3,
-        "prerequisites": "CISC220 or equivalent.",
+        "prerequisites": "CISC220 equivalent.",
         "requirement": ""
     },
     {
@@ -599,7 +599,7 @@
         "title": "Computer Graphics",
         "description": "Computer graphics technology, two- and three-dimensional systems, graphics software systems, modeling and object hierarchy, and animation.",
         "coursecredits": 3,
-        "prerequisites": "CISC220 or equivalent.",
+        "prerequisites": "CISC220 equivalent.",
         "requirement": ""
     },
     {
@@ -623,7 +623,7 @@
         "title": "Computer Networks II",
         "description": "Foundation principles, architectures, and techniques employed in computer and communication networks. Focuses on mechanisms used in TCP/IP protocol suite. Topics include connection management, end-to-end reliable data transfer, sliding window protocols, quality of service, flow control, congestion control, routing, LANs, framing, error control, analog versus digital transmission, packet versus circuit switching, multiplexing.",
         "coursecredits": 3,
-        "prerequisites": "An undergraduate level course in computer architecture and operating systems.",
+        "prerequisites": "CISC361 and CPEG202 equivalent",
         "requirement": ""
     },
     {
@@ -639,7 +639,7 @@
         "title": "Communication Skills for CS Researchers",
         "description": "Mentored experience in writing computer science research papers, proposals, and dissertations through focused writing exercises and critiques. Practice in developing and presenting elevator talks, research posters, conference and thesis defense presentations, and research interview talks. This course is open to graduate and undergraduates.",
         "coursecredits": 3,
-        "prerequisites": "One semester of computer science research experience with an advisor and a current research project.",
+        "prerequisites": "",
         "requirement": ""
     },
     {
@@ -655,7 +655,7 @@
         "title": "Computer Systems: Architecture",
         "description": "Recent advances in computer architecture and their impact on architectural design. Multicomputer and multiprocessor architectures. Parallel machines.",
         "coursecredits": 3,
-        "prerequisites": "CISC360 or equivalent.",
+        "prerequisites": "CISC360 equivalent.",
         "requirement": ""
     },
     {
@@ -663,7 +663,7 @@
         "title": "Operating Systems",
         "description": "Comparison and analysis of strategies for the management of memory, processors, I/O devices and file systems.",
         "coursecredits": 3,
-        "prerequisites": "CISC260 or equivalent",
+        "prerequisites": "CISC260 equivalent",
         "requirement": ""
     },
     {
@@ -703,7 +703,7 @@
         "title": "Programming Languages",
         "description": "Selection, use and implementation of appropriate language(s) for given problems. Syntax, semantics, pragmatics, parameter passing and abstract data types.",
         "coursecredits": 3,
-        "prerequisites": "CISC303 or equivalent.",
+        "prerequisites": "CISC303 equivalent.",
         "requirement": ""
     },
     {
@@ -711,7 +711,7 @@
         "title": "Compiler Construction",
         "description": "Advanced design and implementation of programming language translators. Emphasis on parsing methods, run-time, storage management techniques, code generation and optimization.",
         "coursecredits": 3,
-        "prerequisites": "CISC320 or equivalent, and CISC 601 recommended.",
+        "prerequisites": "CISC320 equivalent",
         "requirement": ""
     },
     {
@@ -719,7 +719,7 @@
         "title": "Software Engineering Principles and Practices",
         "description": "Understand and apply a complete modern software engineeringprocess. Topics include requirements analysis, specification, design,implementation, verification, and project management. Real-life teamprojects cover all aspects of software development lifecycle, from requirements to acceptance testing. Use of formal methods in the specification, design, and verification of software will be explored.",
         "coursecredits": 3,
-        "prerequisites": "By permission of instructor only.",
+        "prerequisites": "",
         "requirement": ""
     },
     {
@@ -735,7 +735,7 @@
         "title": "Introduction to Human-Computer Interaction",
         "description": "Research and theoretical methods for the study, design, implementation, and evaluation of effective user-interactive systems, including requirements for gathering, survey design, and rapid prototyping. Hands-on group projects supplement theoretical knowledge.",
         "coursecredits": 3,
-        "prerequisites": "Software engineering experience.",
+        "prerequisites": "",
         "requirement": ""
     },
     {
@@ -751,7 +751,7 @@
         "title": "Introduction to Machine Learning",
         "description": "Development of methods to learn to solve a task using examples. Explore different machine learning algorithms/techniques and discuss their strengths and weaknesses and situations they are or are not suited for.",
         "coursecredits": 3,
-        "prerequisites": "Basic background in probability and statistics.",
+        "prerequisites": "",
         "requirement": ""
     },
     {
@@ -823,7 +823,7 @@
         "title": "Computer Network Performance",
         "description": "Performance analysis of computer networks and network protocols. Introduction to queuing theory, stochastic processes, Markov chains, and various queuing models. Open and closed queuing networks. Analysis of ARQ retransmission strategies, multi-access communication, routing, flow control, and congestion control schemes.",
         "coursecredits": 3,
-        "prerequisites": "CISC 650 or equivalent.",
+        "prerequisites": "CISC 650 equivalent.",
         "requirement": ""
     },
     {
@@ -887,7 +887,7 @@
         "title": "Multi-Agent Systems",
         "description": "Introduction to the field of Multi-Agent Systems, examining issues that arise when groups of self-interested or cooperating autonomous agents interact to solve shared problems. Issues include reasoning about the knowledge and beliefs of other agents, communication and negotiation, computational organization, coordination and control.",
         "coursecredits": 3,
-        "prerequisites": "CISC 681 or equivalent.",
+        "prerequisites": "CISC 681 equivalent.",
         "requirement": ""
     },
     {
@@ -1031,7 +1031,7 @@
         "title": "Fundamentals of Physics II",
         "descriptiion": "Second course in a sequence with PHYS 207 that provides an introduction to physics for those in the physical sciences and engineering. Emphasis on electro- and magnetostatics in terms of forces, fields and potentials, with some elements of circuit theory. Furthermore, magnetic induction and Maxwell\u2019s equations in integral form are introduced. Integrates conceptual understanding with extensive problem solving.",
         "coursecredits": 3,
-        "preReq": "PHYS 203 or PHYS 207 and PHYS 227, MATH 241 or MATH 232.",
+        "preReq": "PHYS 203 and MATH 241.",
         "requirement": "science"
     },
     {
@@ -1111,7 +1111,7 @@
         "title": "General Chemistry",
         "descriptiion": "Continuation and application of CHEM 103 with additional emphasis on chemical spontaneity, equilibrium, rates of reactions, electrochemistry and organic chemistry.",
         "coursecredits": 3,
-        "preReq": "CHEM 103 and CHEM 133 or CHEM 111.",
+        "preReq": "CHEM 103 and CHEM 133",
         "requirement": "science"
     },
     {
@@ -1127,7 +1127,7 @@
         "title": "General Chemistry Laboratory",
         "description": "This laboratory course is the second in a two-semester sequence designed (and required) for science and engineering majors. Covers thermodynamics, kinetics, equilibrium among gases, liquids and solids, equilibrium in solution, acids and bases, electrochemistry, and nuclear chemistry.  Topics touched on briefly include transition elements and types and nomenclature of organic compounds. Descriptive chemistry of representative elements is interspersed throughout the course.  42h laboratory experiments.",
         "coursecredits": 1,
-        "preReq": "CHEM 103 and CHEM 133, or CHEM 111.",
+        "preReq": "CHEM 103 and CHEM 133",
         "requirement": "science"
     }
 ]

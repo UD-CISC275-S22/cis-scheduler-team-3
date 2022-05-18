@@ -567,7 +567,7 @@ export function PlanView({
                 </div>
             ) : null}
             <SemesterList plan={plan} editPlan={editPlan}></SemesterList>
-            <div className="show-course-pool-button">
+            {/* <div className="show-course-pool-button">
                 <Button
                     data-testid="show-pool-btn"
                     variant="success"
@@ -582,7 +582,7 @@ export function PlanView({
             </div>
             {showPool ? (
                 <CoursePool planpool={plan.planpool}></CoursePool>
-            ) : null}
+            ) : null} */}
         </div>
     );
 }
