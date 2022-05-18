@@ -1,11 +1,48 @@
 import React, { useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Alert, Modal } from "react-bootstrap";
+import { DegreePlan } from "../interfaces/degreeplan";
 import { Course } from "../interfaces/course";
+import { Semester } from "../interfaces/semester";
 /* function that generates the view for each course in the course pool, can use show/hide to see course info*/
-export function CoursePoolTable({ course }: { course: Course }): JSX.Element {
+export function CoursePoolTable({
+    course,
+    plan,
+    semester,
+    editPlan
+}: {
+    course: Course;
+    plan: DegreePlan;
+    semester: Semester;
+    editPlan: (id: string, newPlan: DegreePlan) => void;
+}): JSX.Element {
     const [open, setOpen] = useState<boolean>(false);
     const [style, setStyle] = useState<string>("collapse hide");
+    const [addCourse, setAddCourse] = useState<boolean>(false);
+    const [prereqSatisfied, setprereqSatisfied] = useState<boolean>(false);
+    const [prereqUnsatisfied, setprereqUnsatisfied] = useState<boolean>(false);
+    const [courseExists, setCourseExists] = useState<boolean>(false);
 
+    function handleCloseSatisfied() {
+        setprereqSatisfied(false);
+    }
+
+    function handleShowSatisfied() {
+        setprereqSatisfied(true);
+    }
+
+    function handleCloseUnsatisfied() {
+        setprereqUnsatisfied(false);
+    }
+    function handleShowUnsatisfied() {
+        setprereqUnsatisfied(true);
+    }
+    function handleCloseCourseExists() {
+        setCourseExists(false);
+    }
+
+    function handleShowCourseExists() {
+        setCourseExists(true);
+    }
     function checkPrerequisites(): boolean {
         const isemptystring = course.prerequisites?.length === 0;
         return isemptystring;
@@ -21,10 +58,12 @@ export function CoursePoolTable({ course }: { course: Course }): JSX.Element {
             requirement: newCourse.requirement
         };
         const new_courses = [...semester.courses, courseInfo];
+        const newsemcredits =
+            semester.semestercredits + newCourse.coursecredits;
         const newSemester = {
             ...semester,
-            courses: new_courses,
-            semestercredits: semester.semestercredits + courseInfo.coursecredits
+            semestercredits: newsemcredits,
+            courses: new_courses
         };
         const semesterid = newSemester.session + ":" + newSemester.year;
         const newSemesters = plan.semesters.map(
@@ -33,8 +72,10 @@ export function CoursePoolTable({ course }: { course: Course }): JSX.Element {
                     ? newSemester
                     : semester
         );
+        const newdegreecredits = plan.degreecredits + newCourse.coursecredits;
         const new_plan = {
             ...plan,
+            degreecredits: newdegreecredits,
             semesters: newSemesters
         };
         editPlan(plan.name, new_plan);
@@ -200,7 +241,6 @@ export function CoursePoolTable({ course }: { course: Course }): JSX.Element {
     }
 
     const toggleRow = () => {
-        console.log(course.code);
         setOpen(!open);
         open ? setStyle("collapse hide") : setStyle("collapse show");
     };
@@ -216,7 +256,7 @@ export function CoursePoolTable({ course }: { course: Course }): JSX.Element {
                     ) : (
                         <p>Prerequisites: {course.prerequisites}</p>
                     )}
-                    {checkRequirement() ? (
+                    {checkPrerequisites() ? (
                         <p>Requirement fulfilled: none</p>
                     ) : (
                         <p>Requirement fulfilled: {course.requirement}</p>
@@ -232,14 +272,14 @@ export function CoursePoolTable({ course }: { course: Course }): JSX.Element {
             className="course-pool-scrollable"
         >
             <Row>
-                <Col>
+                <Col className="course-title-code">
                     {" "}
                     <h6>
                         {course.code} : {course.title}
                     </h6>
                 </Col>
                 <Col md="auto">
-                    <p>
+                    <Col>
                         <button
                             className="btn default"
                             data-testid="pool-show/hide-btn"
@@ -253,7 +293,14 @@ export function CoursePoolTable({ course }: { course: Course }): JSX.Element {
                             {open ? "hide course info" : " see course info"}
                             <i className="bi bi-plus-lg"></i>
                         </button>
-                    </p>
+                        <button
+                            className="btn primary"
+                            type="button"
+                            onClick={addClassToSemester}
+                        >
+                            add class to semester
+                        </button>
+                    </Col>
                 </Col>
             </Row>
             <Row>
@@ -261,6 +308,46 @@ export function CoursePoolTable({ course }: { course: Course }): JSX.Element {
                     <ViewCourseInfo />
                 </Col>
             </Row>
+            <Modal
+                size="lg"
+                show={prereqSatisfied}
+                onHide={handleCloseSatisfied}
+            >
+                <Modal.Header closeButton></Modal.Header>
+                <Modal.Body>
+                    <Alert variant="success">
+                        {course.code}: {course.title} has been successfully
+                        added to {semester.session} {semester.year}.
+                    </Alert>
+                </Modal.Body>
+            </Modal>
+            <Modal
+                size="lg"
+                show={prereqUnsatisfied}
+                onHide={handleCloseUnsatisfied}
+            >
+                <Modal.Header closeButton></Modal.Header>
+                <Modal.Body>
+                    <Alert variant="warning">
+                        You have not taken the prerequisite for {course.code}:{" "}
+                        {course.title} yet. The prerequisite for this course:{" "}
+                        {course.prerequisites}
+                    </Alert>
+                </Modal.Body>
+            </Modal>
+            <Modal
+                size="lg"
+                show={courseExists}
+                onHide={handleCloseCourseExists}
+            >
+                <Modal.Header closeButton></Modal.Header>
+                <Modal.Body>
+                    <Alert variant="warning">
+                        {course.code}: {course.title} already exists in your
+                        Plan.
+                    </Alert>
+                </Modal.Body>
+            </Modal>
         </Container>
     );
 }

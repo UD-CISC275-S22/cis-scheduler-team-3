@@ -5,30 +5,26 @@ import { Semester } from "../interfaces/semester";
 
 export function CourseMover({
     semesters,
-    planpool,
     completeMove
 }: {
     semesters: Semester[];
-    planpool: Course[];
     completeMove: (
         coursecode: string,
         origin: string,
         destination: string
     ) => void;
 }): JSX.Element {
-    const [origin, setOrigin] = useState<string>("Course_Pool");
+    const [origin, setOrigin] = useState<string>("");
     const [course, setCourse] = useState<string>("");
-    const [destination, setDestination] = useState<string>("Course_Pool");
+    const [destination, setDestination] = useState<string>("");
 
     function courseListSelector(): Course[] {
-        let toReturn: Course[];
-        if (origin === "Course_Pool") {
-            toReturn = planpool;
-        } else {
-            const index = semesters.findIndex(
-                (semester: Semester): boolean =>
-                    semester.session + ":" + semester.year === origin
-            );
+        let toReturn: Course[] = [];
+        const index = semesters.findIndex(
+            (semester: Semester): boolean =>
+                semester.session + ":" + semester.year === origin
+        );
+        if (index >= 0) {
             toReturn = semesters[index].courses;
         }
         return toReturn;
@@ -50,22 +46,19 @@ export function CourseMover({
         resetMover();
     }
     function resetMover() {
-        setOrigin("Course_Pool");
+        setOrigin("");
         setCourse("");
-        setDestination("Course_Pool");
+        setDestination("");
     }
     return (
         <Col>
             <Row>
                 <Form.Group>
-                    <Form.Label>
-                        Select a Semester or Course Pool to Move From:
-                    </Form.Label>
+                    <Form.Label>Select a Semester to Move From:</Form.Label>
                     <Form.Select value={origin} onChange={updateOrigin}>
                         <option selected disabled>
                             Choose an Origin
                         </option>
-                        <option value="Course_Pool">Course Pool</option>
                         {semesters.map((semester: Semester) => (
                             <option
                                 key={semester.session + ":" + semester.year}
@@ -92,9 +85,7 @@ export function CourseMover({
             </Row>
             <Row>
                 <Form.Group>
-                    <Form.Label>
-                        Select a Semester or Course Pool to move to:
-                    </Form.Label>
+                    <Form.Label>Select a Semester to move to:</Form.Label>
                     <Form.Select
                         value={destination}
                         onChange={updateDestination}
@@ -102,7 +93,6 @@ export function CourseMover({
                         <option selected disabled>
                             Choose a Destination
                         </option>
-                        <option value="Course_Pool">Course Pool</option>
                         {semesters.map((semester: Semester) => (
                             <option
                                 key={semester.session + ":" + semester.year}
