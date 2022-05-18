@@ -60,7 +60,8 @@ export function CoursePoolTable({
         const new_courses = [...semester.courses, courseInfo];
         const newSemester = {
             ...semester,
-            courses: new_courses
+            courses: new_courses,
+            semestercredits: semester.semestercredits + courseInfo.coursecredits
         };
         const semesterid = newSemester.session + ":" + newSemester.year;
         const newSemesters = plan.semesters.map(
