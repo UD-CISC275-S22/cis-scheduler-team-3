@@ -45,13 +45,16 @@ export function CoursePoolTable({
     }
     function handleShowUnsatisfied() {
         setprereqUnsatisfied(true);
+        console.log("hello");
     }
     function handleCloseCourseExists() {
         setCourseExists(false);
+        console.log("hello #2");
     }
 
     function handleShowCourseExists() {
         setCourseExists(true);
+        console.log("hello #3");
     }
     // const [search, setSearch] = useState("");
 
@@ -129,10 +132,12 @@ export function CoursePoolTable({
         const prereq = prereqLowerCase();
         console.log("Course code: " + code);
         console.log("Prerequisite necessary: " + prereq);
-        const preReqSatisfied = preReqInSemester(prereq);
+        const satisfiedStatus = preReqInSemester(prereq);
+        console.log(satisfiedStatus);
         let CourseExistsInPlan = false;
         plan.semesters.map((currentSemester: Semester) => {
             currentSemester.courses.map((desiredCourse: Course) => {
+                console.log(desiredCourse);
                 if (
                     course.code.replace(/ /g, "").toLowerCase() ===
                     desiredCourse.code.replace(/ /g, "").toLowerCase()
@@ -145,12 +150,12 @@ export function CoursePoolTable({
             console.log("course already exists in plan");
             showModal("courseExists");
         }
-        if (preReqSatisfied === "prereq is satisfied" && !CourseExistsInPlan) {
+        if (satisfiedStatus === "prereq is satisfied" && !CourseExistsInPlan) {
             updateCourseList(course);
             console.log("course added");
             showModal("satisfied");
         }
-        if (preReqSatisfied === "prereq unsatisfied" && !CourseExistsInPlan) {
+        if (satisfiedStatus === "prereq unsatisfied" && !CourseExistsInPlan) {
             console.log("cannot add this course: prerequisite unsatisfied");
             showModal("unsatisfied");
         }
@@ -158,13 +163,13 @@ export function CoursePoolTable({
 
     function showModal(modalType: string) {
         if (modalType === "unsatisfied") {
-            setprereqUnsatisfied(true);
+            handleShowUnsatisfied();
         }
         if (modalType === "satisfied") {
-            setprereqSatisfied(true);
+            handleShowSatisfied();
         }
         if (modalType === "courseExists") {
-            setCourseExists(true);
+            handleShowCourseExists();
         }
     }
 
@@ -270,15 +275,16 @@ export function CoursePoolTable({
 
     function preReqInSemester(preReqSentence: string) {
         let prereqStatus = "";
+        console.log(preReqSentence);
         const coursesInSemester = semester.courses;
-        coursesInSemester.map((prereq) => {
-            const prereqId = prereq.code.replace(/ /g, "").toLowerCase();
-            console.log(prereqId);
-            console.log(preReqSentence);
-            if (preReqSentence === "") {
-                prereqStatus = "prereq is satisfied";
-                updateCourseAdded();
-            } else {
+        if (preReqSentence === "") {
+            prereqStatus = "prereq is satisfied";
+            updateCourseAdded();
+        } else {
+            coursesInSemester.map((prereq) => {
+                const prereqId = prereq.code.replace(/ /g, "").toLowerCase();
+                console.log(prereqId);
+                console.log(preReqSentence);
                 const type = multiplePrereqs(prereqId, preReqSentence);
                 if (type === "multiple") {
                     prereqStatus = manyPrereq(preReqSentence);
@@ -295,8 +301,8 @@ export function CoursePoolTable({
                         updateCourseAdded();
                     }
                 }
-            }
-        });
+            });
+        }
         return prereqStatus;
     }
 
@@ -447,8 +453,8 @@ export function CoursePoolTable({
                 <Modal.Body>
                     <Alert variant="warning">
                         You have not taken the prerequisite for {course.code}:{" "}
-                        {course.title} yet. The prerequisite for this course
-                        course: {course.prerequisites}
+                        {course.title} yet. The prerequisite for this course:{" "}
+                        {course.prerequisites}
                     </Alert>
                 </Modal.Body>
             </Modal>
