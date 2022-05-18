@@ -10,9 +10,193 @@ export function CoursePoolTable({ course }: { course: Course }): JSX.Element {
         const isemptystring = course.prerequisites?.length === 0;
         return isemptystring;
     }
-    function checkRequirement(): boolean {
-        const isemptystring = course.requirement?.length === 0;
-        return isemptystring;
+
+    function updateCourseList(newCourse: Course) {
+        const courseInfo = {
+            code: newCourse.code,
+            title: newCourse.title,
+            description: newCourse.description,
+            coursecredits: newCourse.coursecredits,
+            prerequisites: newCourse.prerequisites,
+            requirement: newCourse.requirement
+        };
+        const new_courses = [...semester.courses, courseInfo];
+        const newSemester = {
+            ...semester,
+            courses: new_courses,
+            semestercredits: semester.semestercredits + courseInfo.coursecredits
+        };
+        const semesterid = newSemester.session + ":" + newSemester.year;
+        const newSemesters = plan.semesters.map(
+            (semester: Semester): Semester =>
+                semester.session + ":" + semester.year === semesterid
+                    ? newSemester
+                    : semester
+        );
+        const new_plan = {
+            ...plan,
+            semesters: newSemesters
+        };
+        editPlan(plan.name, new_plan);
+    }
+
+    function addClassToSemester() {
+        updateCourseAdded();
+        console.log("Courses clicked:" + course.code);
+        console.log(course);
+        const code = courseLowerCase();
+        const prereq = prereqLowerCase();
+        console.log("Course code: " + code);
+        console.log("Prerequisite necessary: " + prereq);
+        const satisfiedStatus = preReqInSemester(prereq);
+        console.log(satisfiedStatus);
+        let CourseExistsInPlan = false;
+        plan.semesters.map((currentSemester: Semester) => {
+            currentSemester.courses.map((desiredCourse: Course) => {
+                console.log(desiredCourse);
+                if (
+                    course.code.replace(/ /g, "").toLowerCase() ===
+                    desiredCourse.code.replace(/ /g, "").toLowerCase()
+                ) {
+                    CourseExistsInPlan = true;
+                }
+            });
+        });
+        if (CourseExistsInPlan) {
+            console.log("course already exists in plan");
+            showModal("courseExists");
+        }
+        if (satisfiedStatus === "prereq is satisfied" && !CourseExistsInPlan) {
+            updateCourseList(course);
+            console.log("course added");
+            showModal("satisfied");
+        }
+        if (satisfiedStatus === "prereq unsatisfied" && !CourseExistsInPlan) {
+            console.log("cannot add this course: prerequisite unsatisfied");
+            showModal("unsatisfied");
+        }
+    }
+
+    function showModal(modalType: string) {
+        if (modalType === "unsatisfied") {
+            handleShowUnsatisfied();
+        }
+        if (modalType === "satisfied") {
+            handleShowSatisfied();
+        }
+        if (modalType === "courseExists") {
+            handleShowCourseExists();
+        }
+    }
+
+    function updateCourseAdded() {
+        setAddCourse(!addCourse);
+    }
+
+    function courseLowerCase(): string {
+        let codeNoSpaces = "";
+        if (!course.code) {
+            codeNoSpaces = "";
+        } else {
+            codeNoSpaces = course.code.replace(/ /g, "").toLowerCase();
+        }
+        return codeNoSpaces;
+    }
+
+    function prereqLowerCase() {
+        let codeNoSpaces = "";
+        if (!course.prerequisites) {
+            codeNoSpaces = "";
+        } else {
+            codeNoSpaces = course.prerequisites.replace(/ /g, "").toLowerCase();
+        }
+        return codeNoSpaces;
+    }
+
+    function multiplePrereqs(id: string, statement: string) {
+        let multiple = "";
+        if (statement.includes("and")) {
+            multiple = "multiple";
+        } else if (statement.includes("or")) {
+            multiple = "either";
+        } else {
+            multiple = "one";
+        }
+        return multiple;
+    }
+
+    function onePrereq(statement: string) {
+        let count = 0;
+        plan.semesters.map((semester: Semester) => {
+            semester.courses.map((course: Course) => {
+                if (
+                    statement.includes(
+                        course.code.replace(/ /g, "").toLowerCase()
+                    )
+                ) {
+                    count++;
+                }
+            });
+        });
+        if (count > 0) {
+            return "prereq is satisfied";
+        } else {
+            return "prereq unsatisfied";
+        }
+    }
+
+    function manyPrereq(statement: string) {
+        const classes = statement.replace(/[^0-9]/g, "").length / 3;
+        let count = 0;
+        plan.semesters.map((semester: Semester) => {
+            semester.courses.map((course: Course) => {
+                if (
+                    statement.includes(
+                        course.code.replace(/ /g, "").toLowerCase()
+                    )
+                ) {
+                    count++;
+                }
+            });
+        });
+        if (count === classes) {
+            return "prereq is satisfied";
+        } else {
+            return "prereq unsatisfied";
+        }
+    }
+
+    function preReqInSemester(preReqSentence: string) {
+        let prereqStatus = "";
+        console.log(preReqSentence);
+        const coursesInSemester = semester.courses;
+        if (preReqSentence === "") {
+            prereqStatus = "prereq is satisfied";
+            updateCourseAdded();
+        } else {
+            coursesInSemester.map((prereq) => {
+                const prereqId = prereq.code.replace(/ /g, "").toLowerCase();
+                console.log(prereqId);
+                console.log(preReqSentence);
+                const type = multiplePrereqs(prereqId, preReqSentence);
+                if (type === "multiple") {
+                    prereqStatus = manyPrereq(preReqSentence);
+                }
+                if (type === "either") {
+                    prereqStatus = onePrereq(preReqSentence);
+                }
+                if (type === "one") {
+                    if (preReqSentence.includes(prereqId)) {
+                        prereqStatus = "prereq is satisfied";
+                        updateCourseAdded();
+                    } else {
+                        prereqStatus = "prereq unsatisfied";
+                        updateCourseAdded();
+                    }
+                }
+            });
+        }
+        return prereqStatus;
     }
 
     const toggleRow = () => {
