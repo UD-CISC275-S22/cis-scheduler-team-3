@@ -363,7 +363,6 @@ export function PlanView({
             // If the origin and destination are the same do nothing
             return null;
         } else {
-            // Origin and destination do not involve the coursepool
             const origin_index = plan.semesters.findIndex(
                 (semester: Semester): boolean =>
                     semester.session + ":" + semester.year === origin

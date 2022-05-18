@@ -21,7 +21,7 @@ export function CoursePoolTable({
     const [prereqSatisfied, setprereqSatisfied] = useState<boolean>(false);
     const [prereqUnsatisfied, setprereqUnsatisfied] = useState<boolean>(false);
     const [courseExists, setCourseExists] = useState<boolean>(false);
-
+    //this file has a slightly different capitalization style due to long variable names
     function handleCloseSatisfied() {
         setprereqSatisfied(false);
     }
@@ -83,18 +83,11 @@ export function CoursePoolTable({
 
     function addClassToSemester() {
         updateCourseAdded();
-        console.log("Courses clicked:" + course.code);
-        console.log(course);
-        const code = courseLowerCase();
         const prereq = prereqLowerCase();
-        console.log("Course code: " + code);
-        console.log("Prerequisite necessary: " + prereq);
         const satisfiedStatus = preReqInSemester(prereq);
-        console.log(satisfiedStatus);
         let CourseExistsInPlan = false;
         plan.semesters.map((currentSemester: Semester) => {
             currentSemester.courses.map((desiredCourse: Course) => {
-                console.log(desiredCourse);
                 if (
                     course.code.replace(/ /g, "").toLowerCase() ===
                     desiredCourse.code.replace(/ /g, "").toLowerCase()
@@ -104,16 +97,13 @@ export function CoursePoolTable({
             });
         });
         if (CourseExistsInPlan) {
-            console.log("course already exists in plan");
             showModal("courseExists");
         }
         if (satisfiedStatus === "prereq is satisfied" && !CourseExistsInPlan) {
             updateCourseList(course);
-            console.log("course added");
             showModal("satisfied");
         }
         if (satisfiedStatus === "prereq unsatisfied" && !CourseExistsInPlan) {
-            console.log("cannot add this course: prerequisite unsatisfied");
             showModal("unsatisfied");
         }
     }
@@ -209,7 +199,6 @@ export function CoursePoolTable({
 
     function preReqInSemester(preReqSentence: string) {
         let prereqStatus = "";
-        console.log(preReqSentence);
         const coursesInSemester = semester.courses;
         if (preReqSentence === "") {
             prereqStatus = "prereq is satisfied";
@@ -217,8 +206,6 @@ export function CoursePoolTable({
         } else {
             coursesInSemester.map((prereq) => {
                 const prereqId = prereq.code.replace(/ /g, "").toLowerCase();
-                console.log(prereqId);
-                console.log(preReqSentence);
                 const type = multiplePrereqs(prereqId, preReqSentence);
                 if (type === "multiple") {
                     prereqStatus = manyPrereq(preReqSentence);
