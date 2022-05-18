@@ -13,7 +13,7 @@ type ChangeEvent = React.ChangeEvent<
 >;
 
 let loadedData: DegreePlan[] = [];
-const savedatakey = "GROUP3-SCHEDULER-DATA";
+const savedatakey = "MY-PAGE-DATA";
 const previousData = localStorage.getItem(savedatakey);
 if (previousData !== null) {
     loadedData = JSON.parse(previousData);
