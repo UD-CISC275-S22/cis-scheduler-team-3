@@ -149,7 +149,7 @@ export function SemesterView({
                     </Button>
                     <p> </p>
                     <Button
-                        data-testid="show-pool-btn"
+                        data-testid="show-pool-button"
                         variant="success"
                         size="sm"
                         onClick={showCoursepool}
