@@ -214,6 +214,24 @@ export function CoursePoolTable({
         if (preReqSentence === "") {
             prereqStatus = "prereq is satisfied";
             updateCourseAdded();
+        } else if (coursesInSemester.length === 0) {
+            const prereqId = course.code.replace(/ /g, "").toLowerCase();
+            const type = multiplePrereqs(prereqId, preReqSentence);
+            if (type === "multiple") {
+                prereqStatus = manyPrereq(preReqSentence);
+            }
+            if (type === "either") {
+                prereqStatus = onePrereq(preReqSentence);
+            }
+            if (type === "one") {
+                if (preReqSentence.includes(prereqId)) {
+                    prereqStatus = "prereq is satisfied";
+                    updateCourseAdded();
+                } else {
+                    prereqStatus = "prereq unsatisfied";
+                    updateCourseAdded();
+                }
+            }
         } else {
             coursesInSemester.map((prereq) => {
                 const prereqId = prereq.code.replace(/ /g, "").toLowerCase();
