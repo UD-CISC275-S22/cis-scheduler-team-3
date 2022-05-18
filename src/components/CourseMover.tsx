@@ -16,7 +16,7 @@ export function CourseMover({
 }): JSX.Element {
     const [origin, setOrigin] = useState<string>("");
     const [course, setCourse] = useState<string>("");
-    const [destination, setDestination] = useState<string>("");
+    const [destination, setDestination] = useState<string>("Course_Pool");
 
     function courseListSelector(): Course[] {
         let toReturn: Course[] = [];
@@ -57,7 +57,7 @@ export function CourseMover({
     function resetMover() {
         setOrigin("");
         setCourse("");
-        setDestination("");
+        setDestination("Course_Pool");
     }
     return (
         <Col>
@@ -103,6 +103,7 @@ export function CourseMover({
                         <option selected disabled>
                             Choose a Destination
                         </option>
+                        <option value="Course_Pool">Course Pool</option>
                         {semesters.map((semester: Semester) => (
                             <option
                                 key={semester.session + ":" + semester.year}

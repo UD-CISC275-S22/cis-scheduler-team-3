@@ -22,6 +22,7 @@ export function PlanView({
     const [session, setSession] = useState<string>("");
     const [movecourse, setMovecourse] = useState<boolean>(false);
     const [showreq, setShowreq] = useState<boolean>(false);
+    const [courseinpool, setCourseinpool] = useState<boolean>(false);
     //state to check if semester being added is a duplicate
     const [invalidsem, setInvalidsem] = useState<boolean>(false);
 
@@ -353,16 +354,71 @@ export function PlanView({
             updateAdd();
         }
     }
+    //course mover helper function, if the course is being moved to the pool
+    function moveDestinationcoursepool(course_code: string, origin: string) {
+        const origin_index = plan.semesters.findIndex(
+            (semester: Semester): boolean =>
+                semester.session + ":" + semester.year === origin
+        );
+        const origin_final = plan.semesters[origin_index];
+        const moving_index = origin_final.courses.findIndex(
+            (course: Course): boolean => course.code === course_code
+        );
+        if (
+            plan.planpool.findIndex(
+                (course: Course): boolean =>
+                    course.title + course.code ===
+                    origin_final.courses[moving_index].title +
+                        origin_final.courses[moving_index].code
+            ) < 0
+        ) {
+            setCourseinpool(false);
+            plan.planpool.splice(
+                plan.planpool.length,
+                0,
+                origin_final.courses[moving_index]
+            );
+            //updating the credits
+            const newdegreecredits =
+                plan.degreecredits -
+                origin_final.courses[moving_index].coursecredits;
+            const newsemestercredits =
+                origin_final.semestercredits -
+                origin_final.courses[moving_index].coursecredits;
+            origin_final.semestercredits = newsemestercredits;
+            origin_final.courses.splice(moving_index, 1);
+            plan.semesters.splice(origin_index, 1, origin_final);
+            const newplan = {
+                ...plan,
+                semesters: [...plan.semesters],
+                planpool: [...plan.planpool],
+                degreecredits: newdegreecredits
+            };
+            editPlan(plan.name, newplan);
+        } else {
+            setCourseinpool(true);
+        }
+    }
     //completes the move of a course between different semesters, eventually calls edit plan to update the state
     function completeMove(
         course_code: string,
         origin: string,
         destination: string
     ) {
+        console.log("destination: " + destination);
         if (destination === origin) {
             // If the origin and destination are the same do nothing
+            setCourseinpool(false);
             return null;
+        } else if (origin === "") {
+            setCourseinpool(false);
+            return null;
+        } else if (destination === "Course_Pool") {
+            // Destination of moving course is the coursepool
+            moveDestinationcoursepool(course_code, origin);
         } else {
+            //moving courses between semesters
+            setCourseinpool(false);
             const origin_index = plan.semesters.findIndex(
                 (semester: Semester): boolean =>
                     semester.session + ":" + semester.year === origin
@@ -448,6 +504,9 @@ export function PlanView({
                     semesters={plan.semesters}
                     completeMove={completeMove}
                 ></CourseMover>
+            ) : null}
+            {courseinpool && movecourse ? (
+                <p> oops! course already exists in the pool</p>
             ) : null}
             <Button
                 className="Buttons"
