@@ -20,14 +20,23 @@ export function CourseMover({
 
     function courseListSelector(): Course[] {
         let toReturn: Course[] = [];
-        const index = semesters.findIndex(
-            (semester: Semester): boolean =>
-                semester.session + ":" + semester.year === origin
-        );
-        if (index >= 0) {
-            toReturn = semesters[index].courses;
+        if (origin === "") {
+            return toReturn;
         }
-        return toReturn;
+        if (semesters.length === 0) {
+            return toReturn;
+        }
+        if (semesters.length === 1) {
+            toReturn = semesters[0].courses;
+            return toReturn;
+        } else {
+            const index = semesters.findIndex(
+                (semester: Semester): boolean =>
+                    semester.session + ":" + semester.year === origin
+            );
+            toReturn = semesters[index].courses;
+            return toReturn;
+        }
     }
     function updateOrigin(event: React.ChangeEvent<HTMLSelectElement>) {
         setOrigin(event.target.value);
@@ -59,6 +68,7 @@ export function CourseMover({
                         <option selected disabled>
                             Choose an Origin
                         </option>
+                        <option> </option>
                         {semesters.map((semester: Semester) => (
                             <option
                                 key={semester.session + ":" + semester.year}
